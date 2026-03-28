@@ -93,11 +93,18 @@ WHERE event_name = 'page_view'
 CREATE OR REPLACE TABLE `project.mart.channel_summary` AS
 SELECT
   event_date,
-  source,
-  medium,
-  COUNT(DISTINCT session_id) AS sessions,
-  COUNTIF(is_conversion = true) AS conversions
-FROM `project.staging.stg_sessions`
+  collected_traffic_source.manual_medium AS medium,
+  collected_traffic_source.manual_source AS source,
+  COUNT(DISTINCT
+    CONCAT(user_pseudo_id, CAST(
+      (SELECT value.int_value FROM UNNEST(event_params)
+       WHERE key = 'ga_session_id') AS STRING))
+  ) AS sessions,
+  COUNTIF(event_name = 'purchase') AS conversions
+FROM `project.analytics_XXXXXXXXX.events_*`
+WHERE _TABLE_SUFFIX BETWEEN
+  FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY))
+  AND FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY))
 GROUP BY 1, 2, 3
 ```
 
