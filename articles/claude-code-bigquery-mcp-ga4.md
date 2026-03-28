@@ -199,7 +199,7 @@ mart層     ビジネス指標に変換済みのテーブル ← MCPはここに
 mart層に向けてクエリを発行することで、Claude Codeへの指示がシンプルになり、精度も上がります。
 
 :::message
-3層設計の詳細は[「GA4のデータをBigQueryに繋ぐと何が変わるのか」](/articles/zenn_article_01)で解説しています。
+3層設計の詳細は[「GA4のデータをBigQueryに繋ぐと何が変わるのか」](/articles/ga4-bigquery-3layer-design)で解説しています。
 :::
 
 ---
