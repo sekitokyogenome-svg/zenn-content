@@ -2,7 +2,7 @@
 title: "Claude Code × BigQuery MCPでGA4分析を完全自動化する方法【EC事業者向け実践ガイド】"
 emoji: "🤖"
 type: "tech"
-topics: ["claudecode", "bigquery", "googleanalytics", "mcp", "looker"]
+topics: ["claudecode", "bigquery", "googleanalytics", "mcp", "lookerstudio"]
 published: false
 ---
 
@@ -39,7 +39,7 @@ BigQuery MCPを使うと以下が実現できます。
 ### 必要なもの
 
 - Google Cloud Platform（GCP）アカウント
-- GA4のBigQueryエクスポート設定済み（[設定方法はこちら](https://coconala.com/services/1791205)）
+- GA4のBigQueryエクスポート設定済み（[公式設定ガイド](https://support.google.com/analytics/answer/9358801)）
 - Claude Codeインストール済み
 - Python 3.10以上
 
@@ -58,7 +58,7 @@ gcloud config set project YOUR_PROJECT_ID
 ### 1. MCPサーバーのインストール
 
 ```bash
-pip install mcp-server-bigquery
+pip install bigquery-mcp-server
 ```
 
 ### 2. Claude Codeの設定ファイルに追記
@@ -70,10 +70,9 @@ pip install mcp-server-bigquery
   "mcpServers": {
     "bigquery": {
       "command": "python",
-      "args": ["-m", "mcp_server_bigquery"],
+      "args": ["-m", "bigquery_mcp_server"],
       "env": {
-        "GOOGLE_CLOUD_PROJECT": "YOUR_PROJECT_ID",
-        "BIGQUERY_DATASET": "analytics_XXXXXXXXX"
+        "GOOGLE_CLOUD_PROJECT": "YOUR_PROJECT_ID"
       }
     }
   }
@@ -86,6 +85,7 @@ Claude Codeを起動し、以下のように話しかけます。
 
 ```
 昨日のセッション数をBigQueryから取得してください。
+データセットはanalytics_XXXXXXXXXです。
 ```
 
 正常に接続されていれば、Claude Codeが自動でクエリを生成・実行し結果を返します。
@@ -94,7 +94,7 @@ Claude Codeを起動し、以下のように話しかけます。
 
 ## 実際の使用例（EC事業者向け）
 
-### ケース1：チャネル別ROAS確認
+### ケース1：チャネル別セッション数・CV数の確認
 
 ```
 先月のチャネル別セッション数とコンバージョン数を集計し、
@@ -105,16 +105,25 @@ Claude Codeが生成するクエリの例：
 
 ```sql
 SELECT
-  traffic_source.medium AS medium,
-  COUNT(DISTINCT session_id) AS sessions,
+  collected_traffic_source.manual_medium AS medium,
+  COUNT(DISTINCT
+    CONCAT(user_pseudo_id, CAST(
+      (SELECT value.int_value FROM UNNEST(event_params)
+       WHERE key = 'ga_session_id') AS STRING))
+  ) AS sessions,
   COUNTIF(event_name = 'purchase') AS conversions,
   ROUND(
-    COUNTIF(event_name = 'purchase') / COUNT(DISTINCT session_id) * 100, 2
+    COUNTIF(event_name = 'purchase') /
+    COUNT(DISTINCT
+      CONCAT(user_pseudo_id, CAST(
+        (SELECT value.int_value FROM UNNEST(event_params)
+         WHERE key = 'ga_session_id') AS STRING))
+    ) * 100, 2
   ) AS cvr_pct
 FROM `project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN
-  FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH))
-  AND FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY))
+  FORMAT_DATE('%Y%m%d', DATE_TRUNC(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH), MONTH))
+  AND FORMAT_DATE('%Y%m%d', LAST_DAY(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH)))
 GROUP BY 1
 ORDER BY sessions DESC
 ```
@@ -123,7 +132,7 @@ ORDER BY sessions DESC
 
 ```
 先週、商品詳細ページを見たあとカートに入れずに離脱したユーザーが
-多かったカテゴリを教えてください。
+多かったページを教えてください。
 ```
 
 ### ケース3：リピート率の確認
@@ -156,6 +165,7 @@ prompt = f"""
 4. 前週同日との比較
 5. 気になる変化があれば指摘
 
+BigQueryのデータセット: analytics_XXXXXXXXX
 データはBigQueryから取得してください。
 """
 
@@ -189,7 +199,7 @@ mart層     ビジネス指標に変換済みのテーブル ← MCPはここに
 mart層に向けてクエリを発行することで、Claude Codeへの指示がシンプルになり、精度も上がります。
 
 :::message
-3層設計の詳細は[こちらの記事](https://zenn.dev/sekitokyogenome-svg/articles/zenn_article_01)で解説しています。
+3層設計の詳細は[「GA4のデータをBigQueryに繋ぐと何が変わるのか」](/articles/zenn_article_01)で解説しています。
 :::
 
 ---
