@@ -1,5 +1,3 @@
-
-
 ```markdown
 ---
 title: "GA4のBigQueryエクスポート完全設定ガイド【2026年版】"
@@ -77,9 +75,10 @@ SELECT
   event_date,
   COUNT(*) AS event_count,
   COUNT(DISTINCT user_pseudo_id) AS unique_users,
-  COUNT(DISTINCT 
+  COUNT(DISTINCT
     CONCAT(
       user_pseudo_id,
+      '.',
       CAST((SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS STRING)
     )
   ) AS sessions
@@ -103,9 +102,9 @@ ORDER BY
 
 BigQueryのコストが心配な方は、以下の2つの設定を追加しておきましょう。
 
-### パーティション有効期限の設定
+### 古いテーブルの定期削除
 
-古いデータを自動削除したい場合は、テーブルにパーティション有効期限を設定できます。ただし、GA4のエクスポートテーブルは日付シャーディング（`events_YYYYMMDD`）で自動作成されるため、**Cloud Schedulerなどで古いテーブルを定期削除するスクリプト**を組むほうが現実的です。
+GA4のエクスポートテーブルは日付シャーディング（`events_YYYYMMDD`）で日ごとにテーブルが作成されます。保持期限を過ぎたデータを自動削除したい場合は、**Cloud Schedulerと Cloud Functions（またはBigQueryのスケジュールクエリで `DROP TABLE` を実行）で古いテーブルを定期削除するジョブ**を組むのが現実的です。
 
 ### カスタムクエリのコスト上限
 
