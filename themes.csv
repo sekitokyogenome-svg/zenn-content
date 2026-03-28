@@ -1,7 +1,7 @@
 id,category,title,type,priority,published,published_date,filename
 A-01,BigQuery×GA4,GA4のBigQueryエクスポート完全設定ガイド【2026年版】,tech,1,FALSE,,
 A-02,BigQuery×GA4,BigQueryでGA4の生データ構造を理解する【eventsテーブル解説】,tech,2,FALSE,,
-A-03,BigQuery×GA4,raw→staging→martの3層設計をGA4データで実装する,tech,1,TRUE,2026-03-23,zenn_article_01.md
+A-03,BigQuery×GA4,raw→staging→martの3層設計をGA4データで実装する,tech,1,TRUE,2026-03-28,zenn_article_01.md
 A-04,BigQuery×GA4,GA4×BigQueryでセッションIDを正しく定義する方法,tech,2,FALSE,,
 A-05,BigQuery×GA4,BigQueryでGA4のサンプリングを回避して正確な数値を出す,tech,2,FALSE,,
 A-06,BigQuery×GA4,GA4イベントパラメータをUNNESTで展開するSQLパターン集,tech,1,FALSE,,
