@@ -1,101 +1,191 @@
 id,category,title,type,priority,published,published_date,filename
 A-01,BigQuery×GA4,GA4のBigQueryエクスポート完全設定ガイド【2026年版】,tech,1,FALSE,,ga4-bigquery-export-setup-guide-2026.md
-A-02,BigQuery×GA4,BigQueryでGA4の生データ構造を理解する【eventsテーブル解説】,tech,2,FALSE,,
+A-02,BigQuery×GA4,BigQueryでGA4の生データ構造を理解する【eventsテーブル解説】,tech,2,FALSE,,ga4-bigquery-events-table-raw-data-structure.md
 A-03,BigQuery×GA4,raw→staging→martの3層設計をGA4データで実装する,tech,1,TRUE,2026-03-28,ga4-bigquery-3layer-design.md
-A-04,BigQuery×GA4,GA4×BigQueryでセッションIDを正しく定義する方法,tech,2,FALSE,,
-A-05,BigQuery×GA4,BigQueryでGA4のサンプリングを回避して正確な数値を出す,tech,2,FALSE,,
+A-04,BigQuery×GA4,GA4×BigQueryでセッションIDを正しく定義する方法,tech,2,FALSE,,ga4-bigquery-session-id-definition.md
+A-05,BigQuery×GA4,BigQueryでGA4のサンプリングを回避して正確な数値を出す,tech,2,FALSE,,ga4-bigquery-avoid-sampling.md
 A-06,BigQuery×GA4,GA4イベントパラメータをUNNESTで展開するSQLパターン集,tech,1,FALSE,,ga4-bigquery-unnest-sql-patterns.md
-A-07,BigQuery×GA4,BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）,tech,2,FALSE,,
-A-08,BigQuery×GA4,GA4×BigQueryでコンバージョン経路を分析するSQL,tech,2,FALSE,,
-A-09,BigQuery×GA4,BigQueryでGA4データのコスト管理・クエリ最適化入門,tech,3,FALSE,,
-A-10,BigQuery×GA4,GA4×BigQueryでデバイス別・地域別セグメント分析をする,tech,3,FALSE,,
-A-11,BigQuery×GA4,BigQueryでGA4のページ別滞在時間を正しく集計する方法,tech,2,FALSE,,
-A-12,BigQuery×GA4,GA4×BigQueryでユーザーのファーストタッチ・ラストタッチを取得する,tech,2,FALSE,,
+A-07,BigQuery×GA4,BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）,tech,2,FALSE,,ga4-bigquery-bounce-rate-calculation.md
+A-08,BigQuery×GA4,GA4×BigQueryでコンバージョン経路を分析するSQL,tech,2,FALSE,,ga4-bigquery-conversion-path-analysis.md
+A-09,BigQuery×GA4,BigQueryでGA4データのコスト管理・クエリ最適化入門,tech,3,FALSE,,bigquery-ga4-cost-query-optimization.md
+A-10,BigQuery×GA4,GA4×BigQueryでデバイス別・地域別セグメント分析をする,tech,3,FALSE,,ga4-bigquery-device-region-segment.md
+A-11,BigQuery×GA4,BigQueryでGA4のページ別滞在時間を正しく集計する方法,tech,2,FALSE,,bigquery-ga4-page-time-on-page.md
+A-12,BigQuery×GA4,GA4×BigQueryでユーザーのファーストタッチ・ラストタッチを取得する,tech,2,FALSE,,ga4-bigquery-first-touch-last-touch.md
 A-13,BigQuery×GA4,BigQueryでGA4のeコマースイベントを完全解析する【purchase/add_to_cart】,tech,1,FALSE,,ga4-bigquery-ecommerce-events-analysis.md
-A-14,BigQuery×GA4,GA4×BigQueryでリピーターと新規ユーザーを分離して分析する,tech,2,FALSE,,
-A-15,BigQuery×GA4,BigQueryのパーティション・クラスタリングでGA4クエリを高速化する,tech,3,FALSE,,
-A-16,BigQuery×GA4,GA4×BigQueryでカスタムディメンションを活用した分析,tech,3,FALSE,,
-A-17,BigQuery×GA4,BigQueryでGA4データをdbtで管理する入門,tech,3,FALSE,,
-A-18,BigQuery×GA4,GA4×BigQueryのエクスポートが止まったときのトラブルシューティング,tech,2,FALSE,,
-A-19,BigQuery×GA4,BigQueryでGA4の日次・週次・月次集計テーブルをスケジュール実行する,tech,2,FALSE,,
-A-20,BigQuery×GA4,GA4×BigQueryでSearch Consoleデータを結合してオーガニック分析する,tech,2,FALSE,,
+A-14,BigQuery×GA4,GA4×BigQueryでリピーターと新規ユーザーを分離して分析する,tech,2,FALSE,,ga4-bigquery-new-returning-users.md
+A-15,BigQuery×GA4,BigQueryのパーティション・クラスタリングでGA4クエリを高速化する,tech,3,FALSE,,bigquery-partition-clustering-ga4-optimization.md
+A-16,BigQuery×GA4,GA4×BigQueryでカスタムディメンションを活用した分析,tech,3,FALSE,,ga4-bigquery-custom-dimensions.md
+A-17,BigQuery×GA4,BigQueryでGA4データをdbtで管理する入門,tech,3,FALSE,,bigquery-ga4-dbt-management-intro.md
+A-18,BigQuery×GA4,GA4×BigQueryのエクスポートが止まったときのトラブルシューティング,tech,2,FALSE,,ga4-bigquery-export-stopped-troubleshoot.md
+A-19,BigQuery×GA4,BigQueryでGA4の日次・週次・月次集計テーブルをスケジュール実行する,tech,2,FALSE,,bigquery-ga4-scheduled-aggregation-tables.md
+A-20,BigQuery×GA4,GA4×BigQueryでSearch Consoleデータを結合してオーガニック分析する,tech,2,FALSE,,ga4-bigquery-search-console-organic.md
 B-01,ClaudeCode×自動化,Claude Code × BigQuery MCPでGA4分析を完全自動化する方法,tech,1,TRUE,2026-03-28,claude-code-bigquery-mcp-ga4.md
 B-02,ClaudeCode×自動化,Claude CodeでBigQueryのSQLを自然言語から自動生成する,tech,1,FALSE,,claude-code-bigquery-sql-auto-generate.md
 B-03,ClaudeCode×自動化,Claude Code × MCPでGA4レポートを毎朝Slack通知する仕組みを作った,tech,1,FALSE,,claude-code-mcp-ga4-slack-daily-report.md
-B-04,ClaudeCode×自動化,Claude CodeのAgentモードでEC売上データを自動分析させた結果,tech,2,FALSE,,
+B-04,ClaudeCode×自動化,Claude CodeのAgentモードでEC売上データを自動分析させた結果,tech,2,FALSE,,claude-code-agent-mode-ec-sales-analysis.md
 B-05,ClaudeCode×自動化,BigQuery × Claude Codeで異常検知アラートを作る【売上急落を即通知】,tech,1,FALSE,,bigquery-claude-code-anomaly-detection-alert.md
-B-06,ClaudeCode×自動化,Claude Codeで複数広告媒体のROASを一括比較するスクリプトを作成した,tech,2,FALSE,,
-B-07,ClaudeCode×自動化,Claude Code × Google Sheets APIでBigQueryレポートを自動更新する,tech,2,FALSE,,
-B-08,ClaudeCode×自動化,Claude Codeに週次レポートをMarkdownで生成させてそのままZennに投稿する,tech,2,FALSE,,
+B-06,ClaudeCode×自動化,Claude Codeで複数広告媒体のROASを一括比較するスクリプトを作成した,tech,2,FALSE,,claude-code-multi-ad-roas-comparison.md
+B-07,ClaudeCode×自動化,Claude Code × Google Sheets APIでBigQueryレポートを自動更新する,tech,2,FALSE,,claude-code-sheets-api-bigquery-report.md
+B-08,ClaudeCode×自動化,Claude Codeに週次レポートをMarkdownで生成させてそのままZennに投稿する,tech,2,FALSE,,claude-code-weekly-report-markdown-zenn.md
 B-09,ClaudeCode×自動化,MCP × BigQuery × Claude Codeで聞くだけで分析できる社内ツールを作った,tech,1,FALSE,,mcp-bigquery-claude-code-internal-analytics.md
-B-10,ClaudeCode×自動化,Claude CodeでEC×GA4のA/Bテスト結果をBigQueryから自動集計する,tech,2,FALSE,,
-B-11,ClaudeCode×自動化,Claude CodeでGA4のイベント設計書を自動生成する方法,tech,2,FALSE,,
-B-12,ClaudeCode×自動化,Claude Code × Python × BigQueryでLTV予測モデルを作った,tech,3,FALSE,,
-B-13,ClaudeCode×自動化,Claude Codeに競合サイトの施策をGA4データから推測させた話,tech,2,FALSE,,
-B-14,ClaudeCode×自動化,BigQuery × Claude Codeで月次事業報告書を自動作成する仕組み,tech,2,FALSE,,
+B-10,ClaudeCode×自動化,Claude CodeでEC×GA4のA/Bテスト結果をBigQueryから自動集計する,tech,2,FALSE,,claude-code-ab-test-bigquery-ga4.md
+B-11,ClaudeCode×自動化,Claude CodeでGA4のイベント設計書を自動生成する方法,tech,2,FALSE,,claude-code-ga4-event-design-doc.md
+B-12,ClaudeCode×自動化,Claude Code × Python × BigQueryでLTV予測モデルを作った,tech,3,FALSE,,claude-code-python-bigquery-ltv-prediction.md
+B-13,ClaudeCode×自動化,Claude Codeに競合サイトの施策をGA4データから推測させた話,tech,2,FALSE,,claude-code-competitor-analysis-ga4.md
+B-14,ClaudeCode×自動化,BigQuery × Claude Codeで月次事業報告書を自動作成する仕組み,tech,2,FALSE,,bigquery-claude-code-monthly-business-report.md
 B-15,ClaudeCode×自動化,Claude Codeで売上が下がった原因をBigQueryから自動で仮説生成させる,tech,1,FALSE,,claude-code-bigquery-revenue-drop-hypothesis.md
-B-16,ClaudeCode×自動化,Claude Code × Looker Studio APIでダッシュボードを自動更新する,tech,3,FALSE,,
-B-17,ClaudeCode×自動化,Claude Codeでクロスチャネルアトリビューション分析を自動化した,tech,3,FALSE,,
-B-18,ClaudeCode×自動化,非エンジニアEC経営者がClaude Code × BigQueryで自走できるようになるまで,idea,1,FALSE,,
-B-19,ClaudeCode×自動化,Claude CodeのAgents SDK × BigQueryで複数ECサイトを一括監視する,tech,3,FALSE,,
-B-20,ClaudeCode×自動化,Claude Code × BigQueryでEC広告の予算配分を自動最適化する提案ツールを作った,tech,2,FALSE,,
+B-16,ClaudeCode×自動化,Claude Code × Looker Studio APIでダッシュボードを自動更新する,tech,3,FALSE,,claude-code-looker-studio-api-auto-update.md
+B-17,ClaudeCode×自動化,Claude Codeでクロスチャネルアトリビューション分析を自動化した,tech,3,FALSE,,claude-code-cross-channel-attribution.md
+B-18,ClaudeCode×自動化,非エンジニアEC経営者がClaude Code × BigQueryで自走できるようになるまで,idea,1,FALSE,,non-engineer-ec-owner-claude-code-bigquery.md
+B-19,ClaudeCode×自動化,Claude CodeのAgents SDK × BigQueryで複数ECサイトを一括監視する,tech,3,FALSE,,claude-code-agents-sdk-bigquery-multi-ec.md
+B-20,ClaudeCode×自動化,Claude Code × BigQueryでEC広告の予算配分を自動最適化する提案ツールを作った,tech,2,FALSE,,claude-code-bigquery-ad-budget-optimization.md
 C-01,EC向けデータ分析,中小ECのLTV分析をGA4×BigQueryで無料構築する方法【SQLテンプレ付き】,tech,1,FALSE,,ec-ltv-analysis-ga4-bigquery-free.md
 C-02,EC向けデータ分析,EC売上が下がったとき最初に確認すべきBigQueryクエリ5選,tech,1,FALSE,,ec-revenue-drop-bigquery-queries-checklist.md
 C-03,EC向けデータ分析,GA4×BigQueryでカート放棄率を正確に計測・改善する方法,tech,1,FALSE,,ga4-bigquery-cart-abandonment-rate.md
 C-04,EC向けデータ分析,チャネル別ROASをBigQueryで集計してLooker Studioに可視化する,tech,1,FALSE,,bigquery-channel-roas-looker-studio.md
-C-05,EC向けデータ分析,EC商品ページの離脱率をGA4×BigQueryで分析して改善につなげた事例,idea,2,FALSE,,
+C-05,EC向けデータ分析,EC商品ページの離脱率をGA4×BigQueryで分析して改善につなげた事例,idea,2,FALSE,,ga4-bigquery-product-page-exit-rate.md
 C-06,EC向けデータ分析,GA4×BigQueryで初回購入→リピートまでのファネルを可視化する,tech,1,FALSE,,ga4-bigquery-first-purchase-repeat-funnel.md
-C-07,EC向けデータ分析,BigQueryでEC顧客をRFM分析してセグメント別メルマガ戦略を立てた,idea,2,FALSE,,
-C-08,EC向けデータ分析,GA4×BigQueryでGoogle広告のキーワード別CVRを正確に測定する,tech,2,FALSE,,
-C-09,EC向けデータ分析,Meta広告×GA4×BigQueryでクリエイティブ別ROASを深掘りする,tech,2,FALSE,,
-C-10,EC向けデータ分析,ECの季節変動をBigQueryで前年比分析して仕入れ計画に活かす方法,idea,2,FALSE,,
-C-11,EC向けデータ分析,GA4×BigQueryでモバイルとPCの購買行動の違いを分析した,idea,2,FALSE,,
-C-12,EC向けデータ分析,BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った,idea,2,FALSE,,
-C-13,EC向けデータ分析,GA4×BigQueryでSNS流入の質を測定してInstagramとTikTokを比較した,idea,2,FALSE,,
-C-14,EC向けデータ分析,ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する,tech,3,FALSE,,
-C-15,EC向けデータ分析,BigQueryで1回しか買わない顧客と2回以上買う顧客の行動差を分析した,idea,2,FALSE,,
-C-16,EC向けデータ分析,GA4×BigQueryでメルマガのROIを正確に測定する,tech,2,FALSE,,
-C-17,EC向けデータ分析,ECサイトのサイト内検索キーワードをGA4×BigQueryで分析して品揃えを改善した,idea,3,FALSE,,
-C-18,EC向けデータ分析,BigQueryでGA4の流入経路×購入金額のヒートマップを作成した,tech,3,FALSE,,
-C-19,EC向けデータ分析,GA4×BigQueryでEC新規顧客獲得コスト（CAC）を媒体別に正確計算する,tech,2,FALSE,,
-C-20,EC向けデータ分析,BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した,idea,2,FALSE,,
-C-21,EC向けデータ分析,GA4×BigQueryでEC定期購入の継続率を分析する,tech,3,FALSE,,
-C-22,EC向けデータ分析,BigQueryでGA4データからEC顧客の年齢・性別推定精度を検証した,tech,3,FALSE,,
-C-23,EC向けデータ分析,GA4×BigQueryでポイント還元施策の効果をコホート分析で検証した,idea,3,FALSE,,
-C-24,EC向けデータ分析,BigQueryでEC季節商品の売上予測モデルを作った話,tech,3,FALSE,,
-C-25,EC向けデータ分析,GA4×BigQueryでECサイトの速度改善がCVRに与えた影響を測定した,idea,3,FALSE,,
+C-07,EC向けデータ分析,BigQueryでEC顧客をRFM分析してセグメント別メルマガ戦略を立てた,idea,2,FALSE,,bigquery-ec-rfm-analysis-email-strategy.md
+C-08,EC向けデータ分析,GA4×BigQueryでGoogle広告のキーワード別CVRを正確に測定する,tech,2,FALSE,,ga4-bigquery-google-ads-keyword-cvr.md
+C-09,EC向けデータ分析,Meta広告×GA4×BigQueryでクリエイティブ別ROASを深掘りする,tech,2,FALSE,,meta-ads-ga4-bigquery-creative-roas.md
+C-10,EC向けデータ分析,ECの季節変動をBigQueryで前年比分析して仕入れ計画に活かす方法,idea,2,FALSE,,bigquery-ec-seasonal-yoy-analysis.md
+C-11,EC向けデータ分析,GA4×BigQueryでモバイルとPCの購買行動の違いを分析した,idea,2,FALSE,,ga4-bigquery-mobile-pc-purchase-behavior.md
+C-12,EC向けデータ分析,BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った,idea,2,FALSE,,bigquery-ec-product-profit-cvr-dashboard.md
+C-13,EC向けデータ分析,GA4×BigQueryでSNS流入の質を測定してInstagramとTikTokを比較した,idea,2,FALSE,,ga4-bigquery-sns-traffic-quality-comparison.md
+C-14,EC向けデータ分析,ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する,tech,3,FALSE,,bigquery-ga4-days-to-purchase-distribution.md
+C-15,EC向けデータ分析,BigQueryで1回しか買わない顧客と2回以上買う顧客の行動差を分析した,idea,2,FALSE,,bigquery-one-time-vs-repeat-buyer-analysis.md
+C-16,EC向けデータ分析,GA4×BigQueryでメルマガのROIを正確に測定する,tech,2,FALSE,,ga4-bigquery-email-marketing-roi.md
+C-17,EC向けデータ分析,ECサイトのサイト内検索キーワードをGA4×BigQueryで分析して品揃えを改善した,idea,3,FALSE,,ga4-bigquery-site-search-product-improvement.md
+C-18,EC向けデータ分析,BigQueryでGA4の流入経路×購入金額のヒートマップを作成した,tech,3,FALSE,,bigquery-ga4-traffic-revenue-heatmap.md
+C-19,EC向けデータ分析,GA4×BigQueryでEC新規顧客獲得コスト（CAC）を媒体別に正確計算する,tech,2,FALSE,,ga4-bigquery-cac-by-channel.md
+C-20,EC向けデータ分析,BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した,idea,2,FALSE,,bigquery-ec-pareto-top20-revenue.md
+C-21,EC向けデータ分析,GA4×BigQueryでEC定期購入の継続率を分析する,tech,3,FALSE,,ga4-bigquery-subscription-retention.md
+C-22,EC向けデータ分析,BigQueryでGA4データからEC顧客の年齢・性別推定精度を検証した,tech,3,FALSE,,bigquery-ga4-age-gender-estimation.md
+C-23,EC向けデータ分析,GA4×BigQueryでポイント還元施策の効果をコホート分析で検証した,idea,3,FALSE,,ga4-bigquery-point-reward-cohort.md
+C-24,EC向けデータ分析,BigQueryでEC季節商品の売上予測モデルを作った話,tech,3,FALSE,,bigquery-ec-seasonal-sales-prediction.md
+C-25,EC向けデータ分析,GA4×BigQueryでECサイトの速度改善がCVRに与えた影響を測定した,idea,3,FALSE,,ga4-bigquery-speed-improvement-cvr-impact.md
 D-01,LookerStudio,Looker Studio × BigQueryでEC売上ダッシュボードを1日で作る完全手順,tech,1,FALSE,,looker-studio-bigquery-ec-dashboard-guide.md
-D-02,LookerStudio,Looker StudioでBigQueryに接続するときの料金を最小化する設定,tech,2,FALSE,,
-D-03,LookerStudio,Looker StudioのブレンディングでGA4×広告データを結合する方法,tech,2,FALSE,,
+D-02,LookerStudio,Looker StudioでBigQueryに接続するときの料金を最小化する設定,tech,2,FALSE,,looker-studio-bigquery-cost-minimize.md
+D-03,LookerStudio,Looker StudioのブレンディングでGA4×広告データを結合する方法,tech,2,FALSE,,looker-studio-blending-ga4-ads-data.md
 D-04,LookerStudio,Looker Studioのデータポータルが重い・遅い問題をBigQuery化で解決した,idea,1,FALSE,,looker-studio-slow-fix-bigquery-migration.md
 D-05,LookerStudio,Looker Studio × BigQueryで経営者が毎朝見るダッシュボードの設計思想,idea,1,FALSE,,looker-studio-bigquery-ceo-dashboard-design.md
-D-06,LookerStudio,Looker StudioのGA4コネクタとBigQueryコネクタの違いと使い分け,tech,2,FALSE,,
-D-07,LookerStudio,Looker Studioでドリルダウン機能を使ったEC分析ダッシュボードを作る,tech,2,FALSE,,
-D-08,LookerStudio,BigQuery × Looker Studioで前年同期比グラフを作る方法,tech,2,FALSE,,
-D-09,LookerStudio,Looker Studioのカスタム指標でROAS・CPAを自動計算する設定,tech,2,FALSE,,
-D-10,LookerStudio,Looker Studio × BigQueryでスマホ最適化したダッシュボードを作る,tech,3,FALSE,,
-D-11,LookerStudio,Looker Studioのレポートを自動でPDF化してメール送信する方法,tech,2,FALSE,,
-D-12,LookerStudio,BigQuery × Looker StudioでEC事業の月次KPIレポートを自動化した,idea,2,FALSE,,
-D-13,LookerStudio,Looker Studioのテンプレートを有料販売するときの設計と注意点,idea,2,FALSE,,
-D-14,LookerStudio,Looker Studio × BigQueryでGoogle広告とMeta広告を一画面で比較する,tech,2,FALSE,,
+D-06,LookerStudio,Looker StudioのGA4コネクタとBigQueryコネクタの違いと使い分け,tech,2,FALSE,,looker-studio-ga4-vs-bigquery-connector.md
+D-07,LookerStudio,Looker Studioでドリルダウン機能を使ったEC分析ダッシュボードを作る,tech,2,FALSE,,looker-studio-drilldown-ec-dashboard.md
+D-08,LookerStudio,BigQuery × Looker Studioで前年同期比グラフを作る方法,tech,2,FALSE,,bigquery-looker-studio-yoy-comparison-chart.md
+D-09,LookerStudio,Looker Studioのカスタム指標でROAS・CPAを自動計算する設定,tech,2,FALSE,,looker-studio-custom-metrics-roas-cpa.md
+D-10,LookerStudio,Looker Studio × BigQueryでスマホ最適化したダッシュボードを作る,tech,3,FALSE,,looker-studio-bigquery-mobile-optimized.md
+D-11,LookerStudio,Looker Studioのレポートを自動でPDF化してメール送信する方法,tech,2,FALSE,,looker-studio-pdf-auto-email.md
+D-12,LookerStudio,BigQuery × Looker StudioでEC事業の月次KPIレポートを自動化した,idea,2,FALSE,,bigquery-looker-studio-monthly-kpi-auto.md
+D-13,LookerStudio,Looker Studioのテンプレートを有料販売するときの設計と注意点,idea,2,FALSE,,looker-studio-template-paid-sales.md
+D-14,LookerStudio,Looker Studio × BigQueryでGoogle広告とMeta広告を一画面で比較する,tech,2,FALSE,,looker-studio-bigquery-google-meta-ads.md
 D-15,LookerStudio,GA4 × BigQuery × Looker Studioで完全自動のEC分析基盤を0から構築する全手順,tech,1,FALSE,,ga4-bigquery-looker-studio-ec-analytics-full.md
 E-01,GTM×GA4,GTMでGA4のeコマース計測を完全設定する手順【Shopify対応】,tech,1,FALSE,,gtm-ga4-ecommerce-tracking-shopify.md
-E-02,GTM×GA4,GTMのデータレイヤーを使ったGA4カスタムイベント設計のベストプラクティス,tech,2,FALSE,,
+E-02,GTM×GA4,GTMのデータレイヤーを使ったGA4カスタムイベント設計のベストプラクティス,tech,2,FALSE,,gtm-data-layer-ga4-custom-event-design.md
 E-03,GTM×GA4,GA4×GTMでフォーム送信の計測が取れないときのデバッグ手順,tech,1,FALSE,,ga4-gtm-form-submit-tracking-debug.md
-E-04,GTM×GA4,GTMでGA4のスクロール率・動画再生をイベント計測する方法,tech,2,FALSE,,
-E-05,GTM×GA4,GA4×GTMでサイト内検索キーワードを正しく計測する設定,tech,2,FALSE,,
-E-06,GTM×GA4,GTMのサーバーサイドタギングでGA4データの精度を上げる入門,tech,3,FALSE,,
-E-07,GTM×GA4,GA4×GTMでLINE広告・TikTok広告のコンバージョン計測を設定する,tech,2,FALSE,,
-E-08,GTM×GA4,GTMのワークスペース・バージョン管理でチーム開発を効率化する,tech,3,FALSE,,
+E-04,GTM×GA4,GTMでGA4のスクロール率・動画再生をイベント計測する方法,tech,2,FALSE,,gtm-ga4-scroll-video-event-tracking.md
+E-05,GTM×GA4,GA4×GTMでサイト内検索キーワードを正しく計測する設定,tech,2,FALSE,,ga4-gtm-site-search-tracking.md
+E-06,GTM×GA4,GTMのサーバーサイドタギングでGA4データの精度を上げる入門,tech,3,FALSE,,gtm-server-side-tagging-ga4-accuracy.md
+E-07,GTM×GA4,GA4×GTMでLINE広告・TikTok広告のコンバージョン計測を設定する,tech,2,FALSE,,ga4-gtm-line-tiktok-conversion-tracking.md
+E-08,GTM×GA4,GTMのワークスペース・バージョン管理でチーム開発を効率化する,tech,3,FALSE,,gtm-workspace-version-team-management.md
 E-09,GTM×GA4,GA4移行後にデータが取れていない問題を解決するGTMデバッグ手順,tech,1,FALSE,,ga4-migration-data-missing-gtm-debug.md
-E-10,GTM×GA4,GTM × GA4でA/Bテスト結果を自動計測する仕組みを作る,tech,2,FALSE,,
-F-01,フリーランス・ビジネス,ококонаで売れるGA4×BigQuery×Claude Codeサービスを受注するためのZenn活用戦略,idea,2,FALSE,,
+E-10,GTM×GA4,GTM × GA4でA/Bテスト結果を自動計測する仕組みを作る,tech,2,FALSE,,gtm-ga4-ab-test-auto-tracking.md
+F-01,フリーランス・ビジネス,ококонаで売れるGA4×BigQuery×Claude Codeサービスを受注するためのZenn活用戦略,idea,2,FALSE,,zenn-coconala-ga4-bigquery-claude-code-strategy.md
 F-02,フリーランス・ビジネス,WEBコンサルタントがClaude CodeでSQLを書く時間をゼロにした話,idea,1,FALSE,,web-consultant-claude-code-sql-zero-time.md
-F-03,フリーランス・ビジネス,フリーランスがデータ分析スキルでококона月収を3倍にした方法,idea,2,FALSE,,
+F-03,フリーランス・ビジネス,フリーランスがデータ分析スキルでококона月収を3倍にした方法,idea,2,FALSE,,freelance-data-analyst-coconala-revenue-triple.md
 F-04,フリーランス・ビジネス,AI検索時代のGA4活用術―ChatGPT流入をBigQueryで追跡する,idea,1,TRUE,2026-03-30,ga4-bigquery-chatgpt-ai-search-tracking.md
 F-05,フリーランス・ビジネス,非エンジニアのEC経営者がClaude Codeで自走できるまで【全記録】,idea,1,FALSE,,non-engineer-ec-owner-claude-code-journey.md
-F-06,フリーランス・ビジネス,中小EC経営者がデータ分析に月1万円投資すべき理由,idea,2,FALSE,,
-F-07,フリーランス・ビジネス,GA4×BigQueryを自社導入したEC事業者が最初の1週間で気づいたこと,idea,2,FALSE,,
-F-08,フリーランス・ビジネス,Zennで技術記事を書き続けたら3ヶ月でフリーランス案件が増えた話,idea,3,FALSE,,
-F-09,フリーランス・ビジネス,WEBコンサルタントのサービス単価を5倍にしたデータ基盤提案の話し方,idea,2,FALSE,,
-F-10,フリーランス・ビジネス,Claude Codeを使ったデータ分析サービスの提案書テンプレートを公開する,idea,2,FALSE,,
+F-06,フリーランス・ビジネス,中小EC経営者がデータ分析に月1万円投資すべき理由,idea,2,FALSE,,small-ec-data-analysis-monthly-investment.md
+F-07,フリーランス・ビジネス,GA4×BigQueryを自社導入したEC事業者が最初の1週間で気づいたこと,idea,2,FALSE,,ga4-bigquery-self-implement-ec-first-week.md
+F-08,フリーランス・ビジネス,Zennで技術記事を書き続けたら3ヶ月でフリーランス案件が増えた話,idea,3,FALSE,,zenn-tech-articles-freelance-growth.md
+F-09,フリーランス・ビジネス,WEBコンサルタントのサービス単価を5倍にしたデータ基盤提案の話し方,idea,2,FALSE,,web-consultant-service-price-5x-data-proposal.md
+F-10,フリーランス・ビジネス,Claude Codeを使ったデータ分析サービスの提案書テンプレートを公開する,idea,2,FALSE,,claude-code-data-analysis-proposal-template.md
+G-01,AI×データ分析,Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】,tech,1,FALSE,,
+G-02,AI×データ分析,Claude Code × Gemini CLIをオーケストレーションしてEC分析を多角的に回す方法,tech,2,FALSE,,
+G-03,AI×データ分析,ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹底比較した,idea,1,FALSE,,
+G-04,AI×データ分析,BigQuery ML × Gemini 3.0でEC顧客の購買予測モデルを構築する,tech,2,FALSE,,
+G-05,AI×データ分析,Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計,tech,1,FALSE,,
+G-06,AI×データ分析,Gemini in BigQueryの料金体系を完全解説【思わぬ課金を防ぐ設定】,tech,1,FALSE,,
+G-07,AI×データ分析,AI.GENERATE関数でBigQueryから直接Geminiを呼び出してテキスト分析する方法,tech,2,FALSE,,
+G-08,AI×データ分析,NotebookLM × BigQueryエクスポートでGA4データを対話的に分析する,tech,2,FALSE,,
+G-09,AI×データ分析,Claude Codeで競合ECサイトのSEO戦略をGA4×Search Consoleデータから逆算する,tech,3,FALSE,,
+G-10,AI×データ分析,BigQuery × Vertex AIでEC商品レコメンドエンジンを自作した話,tech,3,FALSE,,
+G-11,AI×データ分析,AIエージェントにBigQueryのクエリレビューをさせてコスト削減した方法,tech,2,FALSE,,
+G-12,AI×データ分析,Claude CodeのAgents SDKでEC在庫アラート→発注提案→Slack通知を全自動化した,tech,2,FALSE,,
+G-13,AI×データ分析,Gemini CLIをGA4データアナリストとして使う具体的な設定と活用例,tech,2,FALSE,,
+G-14,AI×データ分析,BigQuery MLの需要予測モデルでEC仕入れ量を最適化する実装手順,tech,2,FALSE,,
+G-15,AI×データ分析,AIコーディングアシスタント3種でBigQueryのデータパイプラインを作り比べた,idea,2,FALSE,,
+G-16,AI×データ分析,Claude Code × Pythonで顧客レビューを感情分析してNPS予測に使う,tech,3,FALSE,,
+G-17,AI×データ分析,BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した,idea,1,FALSE,,
+G-18,AI×データ分析,AI×BigQueryでEC商品説明文のA/Bテスト結果を自動分析・改善提案する仕組み,tech,3,FALSE,,
+G-19,AI×データ分析,Claude Codeに月次KPIレポートの「考察」まで書かせるプロンプト設計術,tech,1,FALSE,,
+G-20,AI×データ分析,BigQuery × AI.EMBED関数でEC商品の類似度検索を実装する,tech,3,FALSE,,
+G-21,AI×データ分析,Gemini in BigQuery Studioのリソース検出機能でマルチプロジェクト分析を効率化する,tech,3,FALSE,,
+G-22,AI×データ分析,Claude Code × dbtでデータ変換パイプラインのテストコードを自動生成する,tech,3,FALSE,,
+G-23,AI×データ分析,AIが生成したSQLは本当に正しいのか？BigQueryでの検証フレームワークを作った,tech,2,FALSE,,
+G-24,AI×データ分析,Claude CodeでGA4のイベント計測漏れを自動検知・修正提案する仕組み,tech,2,FALSE,,
+G-25,AI×データ分析,BigQuery ML × 時系列モデルARIMA_PLUSでEC売上の週次予測を自動化する,tech,2,FALSE,,
+H-01,広告運用×データ基盤,Google広告データをBigQuery Data Transfer Serviceで自動連携する完全手順,tech,1,FALSE,,
+H-02,広告運用×データ基盤,BigQueryでGoogle広告×GA4データを結合してキーワード別の真のROASを計算する,tech,1,FALSE,,
+H-03,広告運用×データ基盤,Meta広告APIからBigQueryにデータを自動取得するPythonスクリプトの作り方,tech,2,FALSE,,
+H-04,広告運用×データ基盤,P-MAXキャンペーンの配信実績をBigQueryで詳細分析する方法,tech,1,FALSE,,
+H-05,広告運用×データ基盤,BigQuery × Looker Studioで広告媒体横断ROASダッシュボードを構築する全手順,tech,1,FALSE,,
+H-06,広告運用×データ基盤,LINE広告×GA4×BigQueryでCPA・ROASを正確に計測する設定と集計SQL,tech,2,FALSE,,
+H-07,広告運用×データ基盤,TikTok広告のコンバージョンAPIをサーバーサイドGTMで実装する手順,tech,2,FALSE,,
+H-08,広告運用×データ基盤,BigQueryで広告の貢献度をデータドリブンアトリビューションで再計算する,tech,3,FALSE,,
+H-09,広告運用×データ基盤,Google広告のオフラインコンバージョンインポートをBigQuery経由で自動化する,tech,2,FALSE,,
+H-10,広告運用×データ基盤,EC広告費の予算配分をBigQueryの過去データから最適化するフレームワーク,idea,2,FALSE,,
+H-11,広告運用×データ基盤,Yahoo!広告データをBigQueryに取り込んでGoogle広告と統合分析する方法,tech,2,FALSE,,
+H-12,広告運用×データ基盤,広告クリエイティブ別のLTVをBigQueryで追跡して勝ちパターンを見つける,idea,2,FALSE,,
+H-13,広告運用×データ基盤,サーバーサイドGTM × Consent Mode v2で広告計測精度を維持する2026年の最適解,tech,1,FALSE,,
+H-14,広告運用×データ基盤,BigQueryでリスティング広告の検索クエリとGA4行動データを突合分析する,tech,2,FALSE,,
+H-15,広告運用×データ基盤,Cookie規制後のEC広告効果測定をファーストパーティデータ×BigQueryで再構築する,idea,1,FALSE,,
+I-01,EC実務×データ活用,ECの在庫回転率をGA4×BigQueryで商品別に可視化して死に筋を特定する,tech,1,FALSE,,
+I-02,EC実務×データ活用,Shopify × GA4のeコマース計測でデータが合わない問題を徹底解決する,tech,1,FALSE,,
+I-03,EC実務×データ活用,物流2026年問題に備えるデータ基盤―配送コストをBigQueryで最適化する,idea,2,FALSE,,
+I-04,EC実務×データ活用,ECのCS問い合わせデータをBigQueryに集約して商品改善に活かす方法,tech,2,FALSE,,
+I-05,EC実務×データ活用,Shopify×GTM×GA4でカスタムピクセルを使った高精度eコマース計測を実装する,tech,1,FALSE,,
+I-06,EC実務×データ活用,ECの返品率をGA4×BigQueryで商品カテゴリ別に分析して原因を特定した,idea,2,FALSE,,
+I-07,EC実務×データ活用,BASE・STORES・ShopifyのGA4計測精度を比較検証した【2026年版】,tech,1,FALSE,,
+I-08,EC実務×データ活用,BigQueryでEC受注データ×GA4データを結合して正確な売上帰属分析をする,tech,2,FALSE,,
+I-09,EC実務×データ活用,ECのセール施策効果をGA4×BigQueryでbefore/after比較する分析テンプレート,tech,2,FALSE,,
+I-10,EC実務×データ活用,ECメルマガのクリック→購入をGA4×BigQueryで追跡してセグメント別効果を測定する,tech,2,FALSE,,
+I-11,EC実務×データ活用,ECの商品ページ写真枚数×CVRの相関をGA4×BigQueryで検証した,idea,3,FALSE,,
+I-12,EC実務×データ活用,定期購入ECの解約予兆をGA4行動ログから検知するBigQueryモデル,tech,2,FALSE,,
+I-13,EC実務×データ活用,楽天・Amazon・自社ECの売上データをBigQueryに集約して一元管理する方法,tech,1,FALSE,,
+I-14,EC実務×データ活用,ECの送料無料ラインをBigQueryの購買データから最適設定する分析手法,idea,2,FALSE,,
+I-15,EC実務×データ活用,GA4×BigQueryでECクーポン施策のカニバリゼーションを検証する,tech,2,FALSE,,
+I-16,EC実務×データ活用,ECの商品レビュー数×売上の関係をBigQueryで定量分析した結果,idea,3,FALSE,,
+I-17,EC実務×データ活用,Shopifyの注文Webhook × Cloud Functions × BigQueryでリアルタイム売上基盤を作る,tech,3,FALSE,,
+I-18,EC実務×データ活用,EC事業の粗利率をBigQueryで商品×チャネル別に自動計算する仕組み,tech,2,FALSE,,
+I-19,EC実務×データ活用,ECサイトのサイト速度がCVRに与える影響をBigQueryのCrUXデータで検証する,tech,2,FALSE,,
+I-20,EC実務×データ活用,越境ECのGA4多言語計測をBigQueryで国別に正確に集計する方法,tech,2,FALSE,,
+I-21,EC実務×データ活用,ECの価格変更がCVRと売上に与えた影響をGA4×BigQueryで因果推論する,tech,3,FALSE,,
+I-22,EC実務×データ活用,Amazon広告とGA4自社ECデータをBigQueryで統合してチャネルミックスを最適化する,tech,3,FALSE,,
+I-23,EC実務×データ活用,ECのギフト需要をGA4×BigQueryで時系列分析して在庫計画に反映する,idea,3,FALSE,,
+I-24,EC実務×データ活用,Shopifyのチェックアウト拡張機能のイベントをGA4×BigQueryで分析する,tech,3,FALSE,,
+I-25,EC実務×データ活用,ECの同梱チラシ施策効果をGA4のオフラインCV連携×BigQueryで測定する,idea,3,FALSE,,
+J-01,データ基盤設計・運用Tips,BigQueryのスケジュールクエリでデータマートを毎朝自動更新する設定と監視方法,tech,1,FALSE,,
+J-02,データ基盤設計・運用Tips,BigQueryのクエリコストを月1万円以下に抑える7つの実践テクニック,tech,1,FALSE,,
+J-03,データ基盤設計・運用Tips,BigQueryのINFORMATION_SCHEMAでクエリコスト・実行履歴を自動監視する,tech,2,FALSE,,
+J-04,データ基盤設計・運用Tips,BigQueryのマテリアライズドビューでGA4集計クエリを高速化した,tech,2,FALSE,,
+J-05,データ基盤設計・運用Tips,Cloud Scheduler × Cloud Functions × BigQueryで完全サーバーレスなETLを構築する,tech,2,FALSE,,
+J-06,データ基盤設計・運用Tips,BigQueryのSTRUCT・ARRAY型を活用してGA4データを効率的にモデリングする,tech,3,FALSE,,
+J-07,データ基盤設計・運用Tips,BigQueryのデータリネージ機能でデータマートの依存関係を可視化する,tech,3,FALSE,,
+J-08,データ基盤設計・運用Tips,BigQueryからGoogleスプレッドシートに自動出力して非エンジニアとデータ共有する,tech,1,FALSE,,
+J-09,データ基盤設計・運用Tips,BigQueryのタイムトラベル機能で誤削除・誤更新からデータを復旧する方法,tech,2,FALSE,,
+J-10,データ基盤設計・運用Tips,BigQueryのBI Engineを有効化してLooker Studioの表示速度を改善する,tech,2,FALSE,,
+J-11,データ基盤設計・運用Tips,GA4 BigQueryエクスポートのストリーミング vs 日次の違いと使い分け,tech,1,FALSE,,
+J-12,データ基盤設計・運用Tips,BigQueryのアクセス制御をIAMで適切に設計する【チーム運用編】,tech,3,FALSE,,
+J-13,データ基盤設計・運用Tips,BigQueryのクエリキャッシュの仕組みを理解してコスト効率を最大化する,tech,2,FALSE,,
+J-14,データ基盤設計・運用Tips,TerraformでBigQueryのデータセット・テーブル・ビューをコード管理する,tech,3,FALSE,,
+J-15,データ基盤設計・運用Tips,BigQueryのエクスポート上限に引っかかったときの回避策まとめ,tech,2,FALSE,,
+J-16,データ基盤設計・運用Tips,GA4×BigQueryのテーブル肥大化を防ぐパーティション有効期限の設定方法,tech,2,FALSE,,
+J-17,データ基盤設計・運用Tips,BigQuery Data Transfer Serviceの転送エラーを自動検知してSlack通知する,tech,2,FALSE,,
+J-18,データ基盤設計・運用Tips,BigQueryでSQLテストを書く方法―データマートの品質を担保する仕組み,tech,2,FALSE,,
+J-19,データ基盤設計・運用Tips,BigQueryのフラットレート vs オンデマンド料金を実データで比較してどちらが安いか検証した,idea,2,FALSE,,
+J-20,データ基盤設計・運用Tips,dbt × BigQueryで再現可能なデータパイプラインを構築する入門【GA4データ編】,tech,2,FALSE,,
+J-21,データ基盤設計・運用Tips,BigQueryのCOLUMN_FIELD_PATHSでGA4のネストされたスキーマを効率的に探索する,tech,3,FALSE,,
+J-22,データ基盤設計・運用Tips,GCSにバックアップしたGA4データをBigQueryに再インポートする手順,tech,3,FALSE,,
+J-23,データ基盤設計・運用Tips,BigQueryのクエリ結果をCloud Storageに自動エクスポートして外部ツール連携する,tech,2,FALSE,,
+J-24,データ基盤設計・運用Tips,BigQueryのラベル機能でプロジェクト横断のコスト配分を自動管理する,tech,3,FALSE,,
+J-25,データ基盤設計・運用Tips,小規模EC事業者がBigQueryを無料枠内で運用し続けるための設計戦略,idea,1,FALSE,,
