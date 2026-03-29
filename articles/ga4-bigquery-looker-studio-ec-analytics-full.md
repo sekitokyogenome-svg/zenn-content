@@ -196,7 +196,7 @@ martテーブルが揃ったら、Looker Studioから接続します。
 4. `mart_traffic`、`mart_funnel`、`mart_cohort` それぞれをデータソースとして追加
 
 :::message alert
-Looker Studioから直接raw層（`events_*`）に接続するのは避けてください。クエリコストが膨大になり、パフォーマンスも低下します。必ずmart層に接続しましょう。
+Looker Studioから直接raw層（`events_*`）に接続するのは避けてください。クエリコストが膨大になり、パフォーマンスも低下します。mart層に接続しましょう。
 :::
 
 ---
