@@ -3,7 +3,7 @@ title: "GA4イベントパラメータをUNNESTで展開するSQLパターン集
 emoji: "🔍"
 type: "tech"
 topics: ["bigquery", "googleanalytics", "sql"]
-published: true
+published: false
 ---
 
 ## はじめに
