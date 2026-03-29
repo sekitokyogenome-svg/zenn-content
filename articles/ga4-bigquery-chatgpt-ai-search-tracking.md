@@ -3,14 +3,14 @@ title: "AI検索時代のGA4活用術―ChatGPT流入をBigQueryで追跡する"
 emoji: "🤖"
 type: "idea"
 topics: ["googleanalytics", "bigquery", "ai"]
-published: false
+published: true
 ---
 
 ## はじめに
 
 「最近、ChatGPTやPerplexityからサイトにアクセスが来ているらしいが、GA4のレポートではどこにも出てこない」――そんな違和感を覚えたことはないでしょうか。
 
-AI検索エンジン（ChatGPT、Perplexity、Gemini など）からの流入は、GA4の標準レポートでは **「direct」や「referral」に埋もれてしまう** ことが多く、実態が見えにくい状態です。しかし、この流入は今後確実に増加していくトラフィックソースであり、早い段階で計測基盤を整えておくことが重要です。
+AI検索エンジン（ChatGPT、Perplexity、Gemini など）からの流入は、GA4の標準レポートでは **「direct」や「referral」に埋もれてしまう** ことが多く、実態が見えにくい状態です。しかし、この流入は今後さらに増加が見込まれるトラフィックソースであり、早い段階で計測基盤を整えておくことが重要です。
 
 本記事では、GA4のBigQueryエクスポートデータを使って、AI検索からの流入を特定・分析する方法を解説します。
 
