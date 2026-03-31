@@ -3,7 +3,7 @@ title: "GA4×BigQueryでセッションIDを正しく定義する方法"
 emoji: "🔗"
 type: "tech"
 topics: ["bigquery", "googleanalytics", "sql"]
-published: false
+published: true
 ---
 
 ## はじめに
