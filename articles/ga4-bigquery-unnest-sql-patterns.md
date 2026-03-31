@@ -46,7 +46,8 @@ WHERE _TABLE_SUFFIX BETWEEN '20240101' AND '20240131'
 ```
 
 :::message
-`event_params` の値は型ごとに別フィールドに格納されています。取り出したいパラメータの型に合わせて `value.string_value`、`value.int_value`、`value.double_value` を使い分けてください。
+`event_params` の値は型ごとに別フィールドに格納されています。
+取り出したいパラメータの型に合わせて `value.string_value`、`value.int_value`、`value.double_value` を使い分けてください。
 :::
 
 ---
@@ -91,7 +92,8 @@ WHERE _TABLE_SUFFIX BETWEEN '20240101' AND '20240131'
 ```
 
 :::message alert
-`ga_session_id` は `event_params` の中にネストされています。トップレベルに `session_id` というカラムは存在しないため、直接 `session_id` と書くとエラーになります。
+`ga_session_id` は `event_params` の中にネストされています。
+トップレベルに `session_id` というカラムは存在しないため、直接参照するとエラーになります。
 :::
 
 ---
@@ -156,7 +158,9 @@ WHERE _TABLE_SUFFIX BETWEEN '20240101' AND '20240131'
 ```
 
 :::message alert
-`traffic_source.medium` や `traffic_source.source` は非推奨になっています。新しいスキーマでは `collected_traffic_source.manual_medium`、`collected_traffic_source.manual_source` を使用してください。
+`traffic_source.medium` や `traffic_source.source` は非推奨になっています。
+新しいスキーマでは `collected_traffic_source.manual_medium` を使用してください。
+`collected_traffic_source.manual_source` も同様です。
 :::
 
 ---
@@ -207,7 +211,9 @@ https://zenn.dev/web_benriya/articles/ga4-bigquery-3layer-design
 
 ### 値がNULLになる
 
-パラメータの型が合っていない可能性があります。`string_value` で取得できない場合は `int_value` や `double_value` を試してください。BigQueryコンソールのスキーマタブで型を確認するのが確実です。
+パラメータの型が合っていない可能性があります。
+`string_value` で取得できない場合は `int_value` や `double_value` を試してください。
+BigQueryコンソールのスキーマタブで型を確認するのが確実です。
 
 ---
 
