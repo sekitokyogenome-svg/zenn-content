@@ -33,7 +33,7 @@ B-11,ClaudeCode×自動化,Claude CodeでGA4のイベント設計書を自動生
 B-12,ClaudeCode×自動化,Claude Code × Python × BigQueryでLTV予測モデルを作った,tech,3,FALSE,,claude-code-python-bigquery-ltv-prediction.md
 B-13,ClaudeCode×自動化,Claude Codeに競合サイトの施策をGA4データから推測させた話,tech,2,FALSE,,claude-code-competitor-analysis-ga4.md
 B-14,ClaudeCode×自動化,BigQuery × Claude Codeで月次事業報告書を自動作成する仕組み,tech,2,FALSE,,bigquery-claude-code-monthly-business-report.md
-B-15,ClaudeCode×自動化,Claude Codeで売上が下がった原因をBigQueryから自動で仮説生成させる,tech,1,FALSE,,claude-code-bigquery-revenue-drop-hypothesis.md
+B-15,ClaudeCode×自動化,Claude Codeで売上が下がった原因をBigQueryから自動で仮説生成させる,tech,1,TRUE,2026-04-09,claude-code-bigquery-revenue-drop-hypothesis.md
 B-16,ClaudeCode×自動化,Claude Code × Looker Studio APIでダッシュボードを自動更新する,tech,3,FALSE,,claude-code-looker-studio-api-auto-update.md
 B-17,ClaudeCode×自動化,Claude Codeでクロスチャネルアトリビューション分析を自動化した,tech,3,FALSE,,claude-code-cross-channel-attribution.md
 B-18,ClaudeCode×自動化,非エンジニアEC経営者がClaude Code × BigQueryで自走できるようになるまで,idea,1,FALSE,,non-engineer-ec-owner-claude-code-bigquery.md
