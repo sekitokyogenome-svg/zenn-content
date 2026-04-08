@@ -2,8 +2,8 @@
 title: "GA4イベントパラメータをUNNESTで展開するSQLパターン集"
 emoji: "🔍"
 type: "tech"
-topics: ["bigquery", "googleanalytics", "sql"]
-published: false
+topics: ["bigquery", "googleanalytics", "sql", "datamart", "ec"]
+published: true
 ---
 
 ## はじめに
@@ -70,7 +70,7 @@ FROM `project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20240101' AND '20240131'
 ```
 
-冗長に見えますが、BigQueryはこのパターンを効率的に処理します。パフォーマンスの心配は不要です。
+冗長に見えますが、BigQueryはこのパターンを効率的に処理するため、通常の分析用途ではパフォーマンスが問題になることは少ないです。
 
 ---
 
@@ -133,7 +133,7 @@ LEFT JOIN UNNEST(items) AS item
 ```sql
 SELECT
   user_pseudo_id,
-  (SELECT value.string_value FROM UNNEST(user_properties) WHERE key = 'first_open_time') AS first_open_time,
+  (SELECT value.int_value FROM UNNEST(user_properties) WHERE key = 'first_open_time') AS first_open_time,
   (SELECT value.string_value FROM UNNEST(user_properties) WHERE key = 'user_tier') AS user_tier
 FROM `project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20240101' AND '20240131'
@@ -222,7 +222,7 @@ BigQueryコンソールのスキーマタブで型を確認するのが確実で
 | パターン | 用途 | ポイント |
 |----------|------|----------|
 | サブクエリ UNNEST | 単一パラメータ取得 | 型に注意（string/int/double） |
-| 複数サブクエリ | 複数パラメータ一括取得 | パフォーマンスの心配は不要 |
+| 複数サブクエリ | 複数パラメータ一括取得 | 通常用途なら性能問題なし |
 | セッションID構築 | セッション分析 | user_pseudo_id + ga_session_id |
 | CROSS JOIN UNNEST | items展開 | 空配列は行が消える点に注意 |
 | stagingビュー化 | 再利用性向上 | UNNEST処理を一箇所に集約 |
