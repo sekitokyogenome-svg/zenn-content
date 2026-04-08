@@ -3,7 +3,7 @@ title: "中小ECのLTV分析をGA4×BigQueryで無料構築する方法【SQLテ
 emoji: "📊"
 type: "tech"
 topics: ["bigquery", "googleanalytics", "ec"]
-published: false
+published: true
 ---
 
 ## はじめに

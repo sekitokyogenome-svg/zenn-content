@@ -3,7 +3,7 @@ title: "GA4×BigQueryでカート放棄率を正確に計測・改善する方�
 emoji: "🛒"
 type: "tech"
 topics: ["bigquery", "googleanalytics", "ec"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -39,13 +39,13 @@ GA4のイベントに対応させると、`add_to_cart` イベントを発火し
 ```sql
 WITH add_to_cart_users AS (
   SELECT DISTINCT user_pseudo_id
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your_project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'add_to_cart'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 ),
 purchase_users AS (
   SELECT DISTINCT user_pseudo_id
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your_project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'purchase'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 )
@@ -73,13 +73,13 @@ WITH add_to_cart_users AS (
   SELECT DISTINCT
     user_pseudo_id,
     device.category AS device_category
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your_project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'add_to_cart'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 ),
 purchase_users AS (
   SELECT DISTINCT user_pseudo_id
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your_project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'purchase'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 )
@@ -113,13 +113,13 @@ WITH add_to_cart_users AS (
     user_pseudo_id,
     collected_traffic_source.manual_source AS traffic_source,
     collected_traffic_source.manual_medium AS traffic_medium
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your_project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'add_to_cart'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 ),
 purchase_users AS (
   SELECT DISTINCT user_pseudo_id
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your_project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'purchase'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 )
@@ -153,7 +153,7 @@ WITH cart_items AS (
     user_pseudo_id,
     item.item_id,
     item.item_name
-  FROM `beeracle.analytics_263425816.events_*`,
+  FROM `your_project.analytics_XXXXXXXXX.events_*`,
     UNNEST(items) AS item
   WHERE event_name = 'add_to_cart'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
@@ -162,7 +162,7 @@ purchased_items AS (
   SELECT
     user_pseudo_id,
     item.item_id
-  FROM `beeracle.analytics_263425816.events_*`,
+  FROM `your_project.analytics_XXXXXXXXX.events_*`,
     UNNEST(items) AS item
   WHERE event_name = 'purchase'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
@@ -219,7 +219,7 @@ WITH weekly_cart AS (
   SELECT
     DATE_TRUNC(PARSE_DATE('%Y%m%d', event_date), WEEK) AS week_start,
     user_pseudo_id
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your_project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'add_to_cart'
     AND _TABLE_SUFFIX BETWEEN '20260101' AND '20260331'
 ),
@@ -227,7 +227,7 @@ weekly_purchase AS (
   SELECT
     DATE_TRUNC(PARSE_DATE('%Y%m%d', event_date), WEEK) AS week_start,
     user_pseudo_id
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your_project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'purchase'
     AND _TABLE_SUFFIX BETWEEN '20260101' AND '20260331'
 )
