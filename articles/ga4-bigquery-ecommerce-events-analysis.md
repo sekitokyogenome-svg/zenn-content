@@ -2,7 +2,7 @@
 title: "BigQueryでGA4のeコマースイベントを完全解析する【purchase/add_to_cart】"
 emoji: "🛒"
 type: "tech"
-topics: ["bigquery", "googleanalytics", "ecommerce"]
+topics: ["bigquery", "googleanalytics", "ecommerce", "sql"]
 published: true
 ---
 
