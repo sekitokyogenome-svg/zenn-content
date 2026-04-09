@@ -3,7 +3,7 @@ title: "MCP × BigQuery × Claude Codeで聞くだけで分析できる社内ツ
 emoji: "🔍"
 type: "tech"
 topics: ["claudecode", "bigquery", "mcp"]
-published: true
+published: false
 ---
 
 ## はじめに

@@ -3,7 +3,7 @@ title: "GA4のデータをBigQueryに繋ぐと何が変わるのか【3層設計
 emoji: "📊"
 type: "tech"
 topics: ["googleanalytics", "bigquery", "lookerstudio"]
-published: true
+published: false
 ---
 
 ## はじめに
