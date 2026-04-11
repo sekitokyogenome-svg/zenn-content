@@ -67,7 +67,7 @@ C-25,EC向けデータ分析,GA4×BigQueryでECサイトの速度改善がCVRに
 D-01,LookerStudio,Looker Studio × BigQueryでEC売上ダッシュボードを1日で作る完全手順,tech,1,TRUE,2026-04-10,looker-studio-bigquery-ec-dashboard-guide.md
 D-02,LookerStudio,Looker StudioでBigQueryに接続するときの料金を最小化する設定,tech,2,FALSE,,looker-studio-bigquery-cost-minimize.md
 D-03,LookerStudio,Looker StudioのブレンディングでGA4×広告データを結合する方法,tech,2,FALSE,,looker-studio-blending-ga4-ads-data.md
-D-04,LookerStudio,Looker Studioのデータポータルが重い・遅い問題をBigQuery化で解決した,idea,1,FALSE,,looker-studio-slow-fix-bigquery-migration.md
+D-04,LookerStudio,Looker Studioのデータポータルが重い・遅い問題をBigQuery化で解決した,idea,1,TRUE,2026-04-11,looker-studio-slow-fix-bigquery-migration.md
 D-05,LookerStudio,Looker Studio × BigQueryで経営者が毎朝見るダッシュボードの設計思想,idea,1,FALSE,,looker-studio-bigquery-ceo-dashboard-design.md
 D-06,LookerStudio,Looker StudioのGA4コネクタとBigQueryコネクタの違いと使い分け,tech,2,FALSE,,looker-studio-ga4-vs-bigquery-connector.md
 D-07,LookerStudio,Looker Studioでドリルダウン機能を使ったEC分析ダッシュボードを作る,tech,2,FALSE,,looker-studio-drilldown-ec-dashboard.md
