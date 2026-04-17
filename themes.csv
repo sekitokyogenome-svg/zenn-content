@@ -90,7 +90,7 @@ E-08,GTM×GA4,GTMのワークスペース・バージョン管理でチーム開
 E-09,GTM×GA4,GA4移行後にデータが取れていない問題を解決するGTMデバッグ手順,tech,1,TRUE,2026-04-16,ga4-migration-data-missing-gtm-debug.md
 E-10,GTM×GA4,GTM × GA4でA/Bテスト結果を自動計測する仕組みを作る,tech,2,FALSE,,gtm-ga4-ab-test-auto-tracking.md
 F-01,フリーランス・ビジネス,ококонаで売れるGA4×BigQuery×Claude Codeサービスを受注するためのZenn活用戦略,idea,2,FALSE,,zenn-coconala-ga4-bigquery-claude-code-strategy.md
-F-02,フリーランス・ビジネス,WEBコンサルタントがClaude CodeでSQLを書く時間をゼロにした話,idea,1,FALSE,,web-consultant-claude-code-sql-zero-time.md
+F-02,フリーランス・ビジネス,WEBコンサルタントがClaude CodeでSQLを書く時間をゼロにした話,idea,1,TRUE,2026-04-17,web-consultant-claude-code-sql-zero-time.md
 F-03,フリーランス・ビジネス,フリーランスがデータ分析スキルでококона月収を3倍にした方法,idea,2,FALSE,,freelance-data-analyst-coconala-revenue-triple.md
 F-04,フリーランス・ビジネス,AI検索時代のGA4活用術―ChatGPT流入をBigQueryで追跡する,idea,1,TRUE,2026-03-30,ga4-bigquery-chatgpt-ai-search-tracking.md
 F-05,フリーランス・ビジネス,非エンジニアのEC経営者がClaude Codeで自走できるまで【全記録】,idea,1,FALSE,,non-engineer-ec-owner-claude-code-journey.md
