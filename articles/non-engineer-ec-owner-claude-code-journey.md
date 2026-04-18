@@ -3,7 +3,7 @@ title: "非エンジニアのEC経営者がClaude Codeで自走できるまで�
 emoji: "🚀"
 type: "idea"
 topics: ["claudecode", "bigquery", "ec"]
-published: false
+published: true
 ---
 
 ## はじめに
