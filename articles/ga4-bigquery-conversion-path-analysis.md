@@ -3,7 +3,7 @@ title: "GA4×BigQueryでコンバージョン経路を分析するSQL"
 emoji: "🛤️"
 type: "tech"
 topics: ["bigquery", "googleanalytics", "marketing"]
-published: false
+published: true
 ---
 
 ## はじめに
