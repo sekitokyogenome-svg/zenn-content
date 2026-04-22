@@ -3,7 +3,7 @@ title: "BigQueryでGA4のページ別滞在時間を正しく集計する方法"
 emoji: "⏱"
 type: "tech"
 topics: ["bigquery", "googleanalytics", "sql"]
-published: false
+published: true
 ---
 
 ## はじめに
