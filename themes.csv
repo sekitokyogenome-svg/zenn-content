@@ -10,7 +10,7 @@ A-08,BigQuery×GA4,GA4×BigQueryでコンバージョン経路を分析するSQL
 A-09,BigQuery×GA4,BigQueryでGA4データのコスト管理・クエリ最適化入門,tech,3,FALSE,,bigquery-ga4-cost-query-optimization.md
 A-10,BigQuery×GA4,GA4×BigQueryでデバイス別・地域別セグメント分析をする,tech,3,FALSE,,ga4-bigquery-device-region-segment.md
 A-11,BigQuery×GA4,BigQueryでGA4のページ別滞在時間を正しく集計する方法,tech,2,TRUE,2026-04-22,bigquery-ga4-page-time-on-page.md
-A-12,BigQuery×GA4,GA4×BigQueryでユーザーのファーストタッチ・ラストタッチを取得する,tech,2,FALSE,,ga4-bigquery-first-touch-last-touch.md
+A-12,BigQuery×GA4,GA4×BigQueryでユーザーのファーストタッチ・ラストタッチを取得する,tech,2,TRUE,2026-04-23,ga4-bigquery-first-touch-last-touch.md
 A-13,BigQuery×GA4,BigQueryでGA4のeコマースイベントを完全解析する【purchase/add_to_cart】,tech,1,TRUE,2026-04-09,ga4-bigquery-ecommerce-events-analysis.md
 A-14,BigQuery×GA4,GA4×BigQueryでリピーターと新規ユーザーを分離して分析する,tech,2,FALSE,,ga4-bigquery-new-returning-users.md
 A-15,BigQuery×GA4,BigQueryのパーティション・クラスタリングでGA4クエリを高速化する,tech,3,FALSE,,bigquery-partition-clustering-ga4-optimization.md
