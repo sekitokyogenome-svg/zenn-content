@@ -16,7 +16,7 @@ A-14,BigQuery×GA4,GA4×BigQueryでリピーターと新規ユーザーを分離
 A-15,BigQuery×GA4,BigQueryのパーティション・クラスタリングでGA4クエリを高速化する,tech,3,FALSE,,bigquery-partition-clustering-ga4-optimization.md
 A-16,BigQuery×GA4,GA4×BigQueryでカスタムディメンションを活用した分析,tech,3,FALSE,,ga4-bigquery-custom-dimensions.md
 A-17,BigQuery×GA4,BigQueryでGA4データをdbtで管理する入門,tech,3,FALSE,,bigquery-ga4-dbt-management-intro.md
-A-18,BigQuery×GA4,GA4×BigQueryのエクスポートが止まったときのトラブルシューティング,tech,2,FALSE,,ga4-bigquery-export-stopped-troubleshoot.md
+A-18,BigQuery×GA4,GA4×BigQueryのエクスポートが止まったときのトラブルシューティング,tech,2,TRUE,2026-04-25,ga4-bigquery-export-stopped-troubleshoot.md
 A-19,BigQuery×GA4,BigQueryでGA4の日次・週次・月次集計テーブルをスケジュール実行する,tech,2,FALSE,,bigquery-ga4-scheduled-aggregation-tables.md
 A-20,BigQuery×GA4,GA4×BigQueryでSearch Consoleデータを結合してオーガニック分析する,tech,2,FALSE,,ga4-bigquery-search-console-organic.md
 B-01,ClaudeCode×自動化,Claude Code × BigQuery MCPでGA4分析を完全自動化する方法,tech,1,TRUE,2026-03-28,claude-code-bigquery-mcp-ga4.md
