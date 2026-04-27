@@ -18,7 +18,7 @@ A-16,BigQuery×GA4,GA4×BigQueryでカスタムディメンションを活用し
 A-17,BigQuery×GA4,BigQueryでGA4データをdbtで管理する入門,tech,3,FALSE,,bigquery-ga4-dbt-management-intro.md
 A-18,BigQuery×GA4,GA4×BigQueryのエクスポートが止まったときのトラブルシューティング,tech,2,TRUE,2026-04-25,ga4-bigquery-export-stopped-troubleshoot.md
 A-19,BigQuery×GA4,BigQueryでGA4の日次・週次・月次集計テーブルをスケジュール実行する,tech,2,TRUE,2026-04-26,bigquery-ga4-scheduled-aggregation-tables.md
-A-20,BigQuery×GA4,GA4×BigQueryでSearch Consoleデータを結合してオーガニック分析する,tech,2,FALSE,,ga4-bigquery-search-console-organic.md
+A-20,BigQuery×GA4,GA4×BigQueryでSearch Consoleデータを結合してオーガニック分析する,tech,2,TRUE,2026-04-27,ga4-bigquery-search-console-organic.md
 B-01,ClaudeCode×自動化,Claude Code × BigQuery MCPでGA4分析を完全自動化する方法,tech,1,TRUE,2026-03-28,claude-code-bigquery-mcp-ga4.md
 B-02,ClaudeCode×自動化,Claude CodeでBigQueryのSQLを自然言語から自動生成する,tech,1,TRUE,2026-04-09,claude-code-bigquery-sql-auto-generate.md
 B-03,ClaudeCode×自動化,Claude Code × MCPでGA4レポートを毎朝Slack通知する仕組みを作った,tech,1,TRUE,2026-04-09,claude-code-mcp-ga4-slack-daily-report.md
