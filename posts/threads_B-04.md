@@ -1,0 +1,15 @@
+EC売上のデータはBigQueryに溜まっているのに、毎回SQLを手書きして整形・レポート化する作業に時間を取られていませんか。Claude CodeのAgentモードを使えば、自然言語の指示一つでその工程を自動化できます。
+
+記事で紹介している内容はこちらです。
+
+・Agentモードの仕組み：SQL生成→実行→整形→レポート出力を一気通貫で処理
+・精度を高めるプロンプト設計の3つのポイント
+・GA4のセッションIDをUNNEST経由で正しく取得するSQLの書き方
+・collected_traffic_source.manual_mediumでチャネル別売上を正確に集計する方法
+・うまくいった分析フローをPythonスクリプトとして保存し再利用する手順
+
+定型レポートの自動化によって、分析担当者はインサイトの発見と意思決定の支援に集中できます。データ活用の生産性を底上げしたい方にお読みいただきたい内容です。
+
+https://zenn.dev/web_benriya/articles/claude-code-agent-mode-ec-sales-analysis
+
+#ClaudeCode #BigQuery
