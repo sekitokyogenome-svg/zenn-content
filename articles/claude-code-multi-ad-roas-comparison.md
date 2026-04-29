@@ -3,7 +3,7 @@ title: "Claude Codeで複数広告媒体のROASを一括比較するスクリプ
 emoji: "📊"
 type: "tech"
 topics: ["claudecode","bigquery","advertising"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -16,7 +16,7 @@ published: false
 
 ## 全体アーキテクチャ
 
-```
+```text
 [Google Ads API] ──→ BigQuery (raw_google_ads)
 [Meta Marketing API] ──→ BigQuery (raw_meta_ads)     ──→ 統合ビュー ──→ ROAS比較レポート
 [LINE Ads API] ──→ BigQuery (raw_line_ads)
