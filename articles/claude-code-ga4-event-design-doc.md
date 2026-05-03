@@ -3,7 +3,7 @@ title: "Claude CodeでGA4のイベント設計書を自動生成する方法"
 emoji: "📋"
 type: "tech"
 topics: ["claudecode","googleanalytics","documentation"]
-published: false
+published: true
 ---
 
 ## はじめに
