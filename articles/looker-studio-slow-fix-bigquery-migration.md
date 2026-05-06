@@ -3,7 +3,7 @@ title: "Looker Studioのデータポータルが重い・遅い問題をBigQuery
 emoji: "⚡"
 type: "idea"
 topics: ["lookerstudio", "bigquery", "performance"]
-published: true
+published: false
 ---
 
 ## はじめに
