@@ -3,7 +3,7 @@ title: "MCP × BigQuery × Claude Codeで聞くだけで分析できる社内ツ
 emoji: "🔍"
 type: "tech"
 topics: ["claudecode", "bigquery", "mcp"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -29,7 +29,7 @@ MCPには主に2つの概念があります。
 
 MCPサーバーがこれらを公開し、Claude Code（MCPクライアント）が接続することで、AIが直接BigQueryを操作できるようになります。
 
-```
+```text
 [ユーザー] → 自然言語で質問
     ↓
 [Claude Code] → MCPプロトコルでリクエスト
@@ -90,7 +90,7 @@ pip install bigquery-mcp-server
 
 Claude Codeを起動して、以下のように話しかけます。
 
-```
+```text
 BigQueryに接続できていますか？利用可能なデータセットを教えてください。
 ```
 
