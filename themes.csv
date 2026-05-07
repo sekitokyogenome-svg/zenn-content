@@ -27,7 +27,7 @@ B-05,ClaudeCode×自動化,BigQuery × Claude Codeで異常検知アラートを
 B-06,ClaudeCode×自動化,Claude Codeで複数広告媒体のROASを一括比較するスクリプトを作成した,tech,2,FALSE,,claude-code-multi-ad-roas-comparison.md
 B-07,ClaudeCode×自動化,Claude Code × Google Sheets APIでBigQueryレポートを自動更新する,tech,2,FALSE,,claude-code-sheets-api-bigquery-report.md
 B-08,ClaudeCode×自動化,Claude Codeに週次レポートをMarkdownで生成させてそのままZennに投稿する,tech,2,FALSE,,claude-code-weekly-report-markdown-zenn.md
-B-09,ClaudeCode×自動化,MCP × BigQuery × Claude Codeで聞くだけで分析できる社内ツールを作った,tech,1,FALSE,,mcp-bigquery-claude-code-internal-analytics.md
+B-09,ClaudeCode×自動化,MCP × BigQuery × Claude Codeで聞くだけで分析できる社内ツールを作った,tech,1,TRUE,2026-05-07,mcp-bigquery-claude-code-internal-analytics.md
 B-10,ClaudeCode×自動化,Claude CodeでEC×GA4のA/Bテスト結果をBigQueryから自動集計する,tech,2,FALSE,,claude-code-ab-test-bigquery-ga4.md
 B-11,ClaudeCode×自動化,Claude CodeでGA4のイベント設計書を自動生成する方法,tech,2,FALSE,,claude-code-ga4-event-design-doc.md
 B-12,ClaudeCode×自動化,Claude Code × Python × BigQueryでLTV予測モデルを作った,tech,3,FALSE,,claude-code-python-bigquery-ltv-prediction.md
