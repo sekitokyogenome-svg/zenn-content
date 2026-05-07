@@ -190,3 +190,4 @@ J-23,データ基盤設計・運用Tips,BigQueryのクエリ結果をCloud Stora
 J-24,データ基盤設計・運用Tips,BigQueryのラベル機能でプロジェクト横断のコスト配分を自動管理する,tech,3,FALSE,,
 J-25,データ基盤設計・運用Tips,小規模EC事業者がBigQueryを無料枠内で運用し続けるための設計戦略,idea,1,FALSE,,
 F-11,フリーランス・ビジネス,"ココナラ154件、3時間で構造化した実装ログ（Playwright × 構造的ダミー化）",tech,1,TRUE,2026-05-06,coconala-154-3hours.md
+F-12,フリーランス・ビジネス,"ココナラ7年・154件のデータから見えた、コンサル仕事の構造（分析編）",tech,1,TRUE,2026-05-08,coconala-154-structure.md
