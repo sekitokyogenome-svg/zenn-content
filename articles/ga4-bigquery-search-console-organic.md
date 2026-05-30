@@ -3,7 +3,7 @@ title: "GA4×BigQueryでSearch Consoleデータを結合してオーガニック
 emoji: "🔎"
 type: "tech"
 topics: ["bigquery", "googleanalytics", "seo"]
-published: false
+published: true
 ---
 
 ## はじめに
