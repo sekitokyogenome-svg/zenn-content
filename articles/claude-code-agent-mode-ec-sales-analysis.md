@@ -3,7 +3,7 @@ title: "Claude CodeのAgentモードでEC売上データを自動分析させた
 emoji: "🤖"
 type: "tech"
 topics: ["claudecode","bigquery","ec"]
-published: false
+published: true
 ---
 
 ## はじめに
