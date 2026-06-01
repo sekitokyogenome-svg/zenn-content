@@ -358,6 +358,9 @@ BigQueryに蓄積されているGA4データを活用すれば、移動平均と
 
 ---
 
-GA4 × BigQueryの基盤構築やアラート設計について相談したい方は、以下からお気軽にどうぞ。
+:::message
+GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+:::
 
-https://coconala.com/services/554778
+ココナラからのご依頼はこちら → https://coconala.com/services/554778

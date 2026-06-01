@@ -276,6 +276,9 @@ EC売上が下がったとき、闇雲にサイトをいじる前にまずデー
 
 BigQueryとGA4のデータを活用すれば、感覚ではなくデータに基づいた意思決定ができるようになります。
 
-「GA4のデータはあるけど、BigQueryでの分析環境が整っていない」「自社でクエリを書くリソースがない」という方は、GA4×BigQuery基盤構築のサポートも行っています。お気軽にご相談ください。
+:::message
+GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+:::
 
-https://coconala.com/services/1791205
+ココナラからのご依頼はこちら → https://coconala.com/services/1791205
