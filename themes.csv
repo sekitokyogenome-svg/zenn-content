@@ -38,7 +38,7 @@ B-16,ClaudeCode×自動化,Claude Code × Looker Studio APIでダッシュボー
 B-17,ClaudeCode×自動化,Claude Codeでクロスチャネルアトリビューション分析を自動化した,tech,3,FALSE,,claude-code-cross-channel-attribution.md
 B-18,ClaudeCode×自動化,非エンジニアEC経営者がClaude Code × BigQueryで自走できるようになるまで,idea,1,TRUE,2026-05-09,non-engineer-ec-owner-claude-code-bigquery.md
 B-19,ClaudeCode×自動化,Claude CodeのAgents SDK × BigQueryで複数ECサイトを一括監視する,tech,3,FALSE,,claude-code-agents-sdk-bigquery-multi-ec.md
-B-20,ClaudeCode×自動化,Claude Code × BigQueryでEC広告の予算配分を自動最適化する提案ツールを作った,tech,2,FALSE,,claude-code-bigquery-ad-budget-optimization.md
+B-20,ClaudeCode×自動化,Claude Code × BigQueryでEC広告の予算配分を自動最適化する提案ツールを作った,tech,2,TRUE,2026-06-07,claude-code-bigquery-ad-budget-optimization.md
 C-01,EC向けデータ分析,中小ECのLTV分析をGA4×BigQueryで無料構築する方法》SQLテンプレ付き』,tech,1,TRUE,2026-05-10,ec-ltv-analysis-ga4-bigquery-free.md
 C-02,EC向けデータ分析,EC売上が下がったとき最初に確認すべきBigQueryクエリ5選,tech,1,TRUE,2026-05-11,ec-revenue-drop-bigquery-queries-checklist.md
 C-03,EC向けデータ分析,GA4×BigQueryでカート放棄率を正確に計測・改善する方法,tech,1,TRUE,2026-05-13,ga4-bigquery-cart-abandonment-rate.md
