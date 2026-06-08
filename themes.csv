@@ -43,7 +43,7 @@ C-01,EC向けデータ分析,中小ECのLTV分析をGA4×BigQueryで無料構築
 C-02,EC向けデータ分析,EC売上が下がったとき最初に確認すべきBigQueryクエリ5選,tech,1,TRUE,2026-05-11,ec-revenue-drop-bigquery-queries-checklist.md
 C-03,EC向けデータ分析,GA4×BigQueryでカート放棄率を正確に計測・改善する方法,tech,1,TRUE,2026-05-13,ga4-bigquery-cart-abandonment-rate.md
 C-04,EC向けデータ分析,チャネル別ROASをBigQueryで集計してLooker Studioに可視化する,tech,1,TRUE,2026-05-14,bigquery-channel-roas-looker-studio.md
-C-05,EC向けデータ分析,EC商品ページの離脱率をGA4×BigQueryで分析して改善につなげた事例,idea,2,FALSE,,ga4-bigquery-product-page-exit-rate.md
+C-05,EC向けデータ分析,EC商品ページの離脱率をGA4×BigQueryで分析して改善につなげた事例,idea,2,TRUE,2026-06-08,ga4-bigquery-product-page-exit-rate.md
 C-06,EC向けデータ分析,GA4×BigQueryで初回購入→リピートまでのファネルを可視化する,tech,1,TRUE,2026-05-15,ga4-bigquery-first-purchase-repeat-funnel.md
 C-07,EC向けデータ分析,BigQueryでEC顧客をRFM分析してセグメント別メルマガ戦略を立てた,idea,2,FALSE,,bigquery-ec-rfm-analysis-email-strategy.md
 C-08,EC向けデータ分析,GA4×BigQueryでGoogle広告のキーワード別CVRを正確に測定する,tech,2,FALSE,,ga4-bigquery-google-ads-keyword-cvr.md
