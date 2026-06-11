@@ -47,7 +47,7 @@ C-05,EC向けデータ分析,EC商品ページの離脱率をGA4×BigQueryで分
 C-06,EC向けデータ分析,GA4×BigQueryで初回購入→リピートまでのファネルを可視化する,tech,1,TRUE,2026-05-15,ga4-bigquery-first-purchase-repeat-funnel.md
 C-07,EC向けデータ分析,BigQueryでEC顧客をRFM分析してセグメント別メルマガ戦略を立てた,idea,2,TRUE,2026-06-09,bigquery-ec-rfm-analysis-email-strategy.md
 C-08,EC向けデータ分析,GA4×BigQueryでGoogle広告のキーワード別CVRを正確に測定する,tech,2,TRUE,2026-06-10,ga4-bigquery-google-ads-keyword-cvr.md
-C-09,EC向けデータ分析,Meta広告×GA4×BigQueryでクリエイティブ別ROASを深掘りする,tech,2,FALSE,,meta-ads-ga4-bigquery-creative-roas.md
+C-09,EC向けデータ分析,Meta広告×GA4×BigQueryでクリエイティブ別ROASを深掘りする,tech,2,TRUE,2026-06-11,meta-ads-ga4-bigquery-creative-roas.md
 C-10,EC向けデータ分析,ECの季節変動をBigQueryで前年比分析して仕入れ計画に活かす方法,idea,2,FALSE,,bigquery-ec-seasonal-yoy-analysis.md
 C-11,EC向けデータ分析,GA4×BigQueryでモバイルとPCの購買行動の違いを分析した,idea,2,FALSE,,ga4-bigquery-mobile-pc-purchase-behavior.md
 C-12,EC向けデータ分析,BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った,idea,2,FALSE,,bigquery-ec-product-profit-cvr-dashboard.md
