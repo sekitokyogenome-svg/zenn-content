@@ -1,0 +1,18 @@
+SNSを集客に使っているのに、InstagramとTikTokのどちらが売上に貢献しているか把握できていますか？
+
+GA4の標準レポートだけでは、SNSごとの流入品質を深く比較するのは難しいですが、BigQueryを使えば生データから詳細に分析できます。
+
+この記事でわかること：
+
+・collected_traffic_source フィールドでSNS流入を正確に識別する方法
+・セッションごとのエンゲージメント時間・ページビュー数・直帰率・CVRをSNS別に集計するSQL
+・同じデータで比較すると、InstagramはCVRが高くTikTokはセッション数が多い傾向が出る
+・直接CVに至らなくてもSNSが「種まき役」として機能しているケースをアシストCV分析で可視化できる
+・InstagramはCVR重視、TikTokは認知・セッション数重視と、SNSごとにKPIを分けて評価する視点が重要
+・すべてのSNSを同じ基準で評価すると認知チャネルの価値を見落とす
+
+SNSへの広告費や投稿工数が適切に使われているかどうか、データで判断できるようにしておくことが、EC経営の意思決定精度を高めます。
+
+https://zenn.dev/web_benriya/articles/ga4-bigquery-sns-traffic-quality-comparison
+
+#GA4 #BigQuery
