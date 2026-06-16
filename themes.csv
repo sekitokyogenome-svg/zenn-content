@@ -53,7 +53,7 @@ C-11,EC向けデータ分析,GA4×BigQueryでモバイルとPCの購買行動の
 C-12,EC向けデータ分析,BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った,idea,2,TRUE,2026-06-14,bigquery-ec-product-profit-cvr-dashboard.md
 C-13,EC向けデータ分析,GA4×BigQueryでSNS流入の質を測定してInstagramとTikTokを比較した,idea,2,TRUE,2026-06-15,ga4-bigquery-sns-traffic-quality-comparison.md
 C-14,EC向けデータ分析,ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する,tech,3,FALSE,,bigquery-ga4-days-to-purchase-distribution.md
-C-15,EC向けデータ分析,BigQueryで1回しか買わない顧客と２回以上買う顧客の行動差を分析した,idea,2,FALSE,,bigquery-one-time-vs-repeat-buyer-analysis.md
+C-15,EC向けデータ分析,BigQueryで1回しか買わない顧客と２回以上買う顧客の行動差を分析した,idea,2,TRUE,2026-06-16,bigquery-one-time-vs-repeat-buyer-analysis.md
 C-16,EC向けデータ分析,GA4×BigQueryでメルマガのROIを正確に測定する,tech,2,FALSE,,ga4-bigquery-email-marketing-roi.md
 C-17,EC向けデータ分析,ECサイトのサイト内検索キーワードをGA4×BigQueryで分析して品揃えを改善した,idea,3,FALSE,,ga4-bigquery-site-search-product-improvement.md
 C-18,EC向けデータ分析,BigQueryでGA4の流入経路×購入金額のヒートマップを作成した,tech,3,FALSE,,bigquery-ga4-traffic-revenue-heatmap.md
