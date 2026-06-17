@@ -3,7 +3,7 @@ title: "GA4×BigQueryでEC新規顧客獲得コスト（CAC）を媒体別に正
 emoji: "💰"
 type: "tech"
 topics: ["bigquery", "googleanalytics", "advertising"]
-published: false
+published: true
 ---
 
 ## はじめに
