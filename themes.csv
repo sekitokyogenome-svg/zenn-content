@@ -57,7 +57,7 @@ C-15,EC向けデータ分析,BigQueryで1回しか買わない顧客と２回以
 C-16,EC向けデータ分析,GA4×BigQueryでメルマガのROIを正確に測定する,tech,2,TRUE,2026-06-17,ga4-bigquery-email-marketing-roi.md
 C-17,EC向けデータ分析,ECサイトのサイト内検索キーワードをGA4×BigQueryで分析して品揃えを改善した,idea,3,FALSE,,ga4-bigquery-site-search-product-improvement.md
 C-18,EC向けデータ分析,BigQueryでGA4の流入経路×購入金額のヒートマップを作成した,tech,3,FALSE,,bigquery-ga4-traffic-revenue-heatmap.md
-C-19,EC向けデータ分析,GA4×BigQueryでEC新規顧客獲得コスト（CAC）を媒体別に正確計算する,tech,2,FALSE,,ga4-bigquery-cac-by-channel.md
+C-19,EC向けデータ分析,GA4×BigQueryでEC新規顧客獲得コスト（CAC）を媒体別に正確計算する,tech,2,TRUE,2026-06-17,ga4-bigquery-cac-by-channel.md
 C-20,EC向けデータ分析,BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した,idea,2,FALSE,,bigquery-ec-pareto-top20-revenue.md
 C-21,EC向けデータ分析,GA4×BigQueryでEC定期購入の継続率を分析する,tech,3,FALSE,,ga4-bigquery-subscription-retention.md
 C-22,EC向けデータ分析,BigQueryでGA4データからEC顧客の年齢・性別推定第度を検証した,tech,3,FALSE,,bigquery-ga4-age-gender-estimation.md
