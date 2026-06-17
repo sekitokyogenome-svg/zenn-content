@@ -3,7 +3,7 @@ title: "GA4×BigQueryでメルマガのROIを正確に測定する"
 emoji: "📧"
 type: "tech"
 topics: ["bigquery", "googleanalytics", "email"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -29,7 +29,7 @@ published: false
 GA4のBigQueryエクスポートでは、これらの値が `collected_traffic_source` フィールドに格納されます。
 
 :::message
-UTMパラメータが設定されていない場合、GA4はリファラーからメール流入を推定しますが、精度が大幅に低下します。メルマガのリンクには必ずUTMパラメータを付与してください。
+UTMパラメータが設定されていない場合、GA4はリファラーからメール流入を推定しますが、精度が大幅に低下します。メルマガのリンクにはUTMパラメータを付与してください。
 :::
 
 ---
