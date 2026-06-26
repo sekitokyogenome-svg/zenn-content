@@ -3,7 +3,7 @@ title: "BigQuery × Looker StudioでEC事業の月次KPIレポートを自動化
 emoji: "📈"
 type: "idea"
 topics: ["lookerstudio","bigquery","ec"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -30,7 +30,7 @@ published: false
 
 ## 自動化後のアーキテクチャ
 
-```
+```text
 [GA4]  → BigQueryエクスポート → [BigQuery staging] → [BigQuery mart]
 [Google Ads] → BigQuery Data Transfer ↗
 
@@ -43,7 +43,7 @@ published: false
 
 ### 3層アーキテクチャ
 
-```
+```text
 raw層:    GA4エクスポートテーブル（events_*）、Google広告テーブル
 staging層: イベントデータの正規化・セッション単位の集約
 mart層:   KPI集計（月次、日次、チャネル別）
@@ -61,8 +61,8 @@ WITH sessions AS (
       CAST((SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS STRING)
     ) AS session_id,
     user_pseudo_id,
-    traffic_source.source AS source,
-    traffic_source.medium AS medium,
+    collected_traffic_source.manual_source AS source,
+    collected_traffic_source.manual_medium AS medium,
     device.category AS device,
     MAX(CASE WHEN event_name = 'purchase' THEN 1 ELSE 0 END) AS has_purchase,
     SUM(CASE WHEN event_name = 'purchase' THEN ecommerce.purchase_revenue ELSE 0 END) AS revenue
@@ -173,7 +173,7 @@ LEFT JOIN (
 
 標準の配信メールだけでなく、GASでKPIサマリーを本文に記載するスクリプトも追加しました。メールを開いただけで先月の主要数値がわかるようにしています。
 
-```
+```text
 件名: 【EC月次レポート】2月売上 ¥2,100,000（前月比+15%）
 
 本文:
