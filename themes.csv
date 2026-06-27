@@ -76,7 +76,7 @@ D-09,LookerStudio,Looker Studioのカスタム指標でROAS・CPAを自動計算
 D-10,LookerStudio,Looker Studio × BigQueryでスマホ最適化したダッシュボードを作る,tech,3,FALSE,,looker-studio-bigquery-mobile-optimized.md
 D-11,LookerStudio,Looker Studioのレポートを自動でPDF化してメール送信する方法,tech,2,TRUE,2026-06-25,looker-studio-pdf-auto-email.md
 D-12,LookerStudio,BigQuery × Looker StudioでEC事業の月次KPIレポートを自動化した,idea,2,TRUE,2026-06-26,bigquery-looker-studio-monthly-kpi-auto.md
-D-13,LookerStudio,Looker Studioのテンプレートを有料販売するときの設計と注意点,idea,2,FALSE,,looker-studio-template-paid-sales.md
+D-13,LookerStudio,Looker Studioのテンプレートを有料販売するときの設計と注意点,idea,2,TRUE,2026-06-27,looker-studio-template-paid-sales.md
 D-14,LookerStudio,Looker Studio × BigQueryでGoogle広告とMeta広告を一画面で比較する,tech,2,FALSE,,looker-studio-bigquery-google-meta-ads.md
 D-15,LookerStudio,GA4 × BigQuery × Looker Studioで完全自動のEC分析基盤を0から構築する全手順,tech,1,TRUE,2026-04-13,ga4-bigquery-looker-studio-ec-analytics-full.md
 E-01,GTM×GA4,GTMでGA4のエコマース計測を完全設定する手順》Shopify対応』,tech,1,TRUE,2026-05-17,gtm-ga4-ecommerce-tracking-shopify.md
