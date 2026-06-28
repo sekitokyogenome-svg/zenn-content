@@ -3,7 +3,7 @@ title: "AI検索時代のGA4活用術―ChatGPT流入をBigQueryで追跡する"
 emoji: "🤖"
 type: "idea"
 topics: ["googleanalytics", "bigquery", "ai"]
-published: true
+published: false
 ---
 
 ## はじめに

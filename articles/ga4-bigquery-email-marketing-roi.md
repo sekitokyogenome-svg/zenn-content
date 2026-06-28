@@ -3,7 +3,7 @@ title: "GA4×BigQueryでメルマガのROIを正確に測定する"
 emoji: "📧"
 type: "tech"
 topics: ["bigquery", "googleanalytics", "email"]
-published: true
+published: false
 ---
 
 ## はじめに

@@ -3,7 +3,7 @@ title: "GA4×BigQueryでモバイルとPCの購買行動の違いを分析した
 emoji: "📱"
 type: "idea"
 topics: ["bigquery", "googleanalytics", "ec"]
-published: true
+published: false
 ---
 
 ## はじめに

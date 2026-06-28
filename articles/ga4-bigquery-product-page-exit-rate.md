@@ -3,7 +3,7 @@ title: "EC商品ページの離脱率をGA4×BigQueryで分析して改善につ
 emoji: "📉"
 type: "idea"
 topics: ["bigquery", "googleanalytics", "ec"]
-published: true
+published: false
 ---
 
 ## はじめに
