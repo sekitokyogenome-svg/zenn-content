@@ -3,7 +3,7 @@ title: "BigQuery × Looker Studioで前年同期比グラフを作る方法"
 emoji: "📊"
 type: "tech"
 topics: ["lookerstudio","bigquery","sql"]
-published: false
+published: true
 ---
 
 ## はじめに

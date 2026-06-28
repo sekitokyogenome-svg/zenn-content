@@ -3,7 +3,7 @@ title: "Claude CodeでBigQueryのSQLを自然言語から自動生成する"
 emoji: "💬"
 type: "tech"
 topics: ["claudecode", "bigquery", "sql", "googleanalytics"]
-published: false
+published: true
 ---
 
 ## はじめに

@@ -3,7 +3,7 @@ title: "Looker StudioのGA4コネクタとBigQueryコネクタの違いと使い
 emoji: "🔀"
 type: "tech"
 topics: ["lookerstudio","bigquery","googleanalytics"]
-published: false
+published: true
 ---
 
 ## はじめに

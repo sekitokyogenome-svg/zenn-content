@@ -3,7 +3,7 @@ title: "Looker StudioでBigQueryに接続するときの料金を最小化する
 emoji: "💰"
 type: "tech"
 topics: ["lookerstudio","bigquery","cost"]
-published: false
+published: true
 ---
 
 ## はじめに

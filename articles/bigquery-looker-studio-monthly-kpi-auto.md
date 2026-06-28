@@ -3,7 +3,7 @@ title: "BigQuery × Looker StudioでEC事業の月次KPIレポートを自動化
 emoji: "📈"
 type: "idea"
 topics: ["lookerstudio","bigquery","ec"]
-published: false
+published: true
 ---
 
 ## はじめに

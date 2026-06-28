@@ -3,7 +3,7 @@ title: "Claude Code × BigQuery MCPでGA4分析を完全自動化する方法【
 emoji: "🤖"
 type: "tech"
 topics: ["claudecode", "bigquery", "googleanalytics", "mcp", "lookerstudio"]
-published: false
+published: true
 ---
 
 ## はじめに

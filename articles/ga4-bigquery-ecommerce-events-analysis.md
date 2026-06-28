@@ -3,7 +3,7 @@ title: "BigQueryでGA4のeコマースイベントを完全解析する【purcha
 emoji: "🛒"
 type: "tech"
 topics: ["bigquery", "googleanalytics", "ecommerce", "sql"]
-published: false
+published: true
 ---
 
 ## はじめに
