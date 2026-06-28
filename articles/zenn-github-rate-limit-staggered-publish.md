@@ -4,7 +4,7 @@ emoji: "🚦"
 type: "tech"
 topics: ["zenn", "githubactions", "python", "個人開発"]
 published: false
-publish_queue: true
+publish_queue: false
 ---
 
 ## 70記事を一気にpushしたら、全部公開されなかった

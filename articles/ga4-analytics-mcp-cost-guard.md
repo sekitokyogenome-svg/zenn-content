@@ -4,7 +4,7 @@ emoji: "📊"
 type: "tech"
 topics: ["mcp", "bigquery", "googleanalytics", "python", "claude"]
 published: false
-publish_queue: true
+publish_queue: false
 ---
 
 ## 「BigQuery MCPなら公式が出たよね？」への答え

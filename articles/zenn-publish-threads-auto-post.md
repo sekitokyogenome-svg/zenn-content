@@ -4,7 +4,7 @@ emoji: "🧵"
 type: "tech"
 topics: ["threads", "googlecloud", "python", "oauth", "個人開発"]
 published: false
-publish_queue: true
+publish_queue: false
 ---
 
 ## 作ったもの

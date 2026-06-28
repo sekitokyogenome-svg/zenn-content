@@ -4,7 +4,7 @@ emoji: "⏱️"
 type: "idea"
 topics: ["claudecode", "bigquery", "freelance"]
 published: false
-publish_queue: true
+publish_queue: false
 ---
 
 ## はじめに

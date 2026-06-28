@@ -4,7 +4,7 @@ emoji: "🔗"
 type: "tech"
 topics: ["lookerstudio","bigquery","googleads"]
 published: false
-publish_queue: true
+publish_queue: false
 ---
 
 ## はじめに
