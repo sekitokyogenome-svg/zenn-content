@@ -1,0 +1,47 @@
+# Zenn 段階公開スケジューラ
+#
+# 設置先: zenn-content リポジトリの .github/workflows/zenn-staggered-publish.yml
+# スクリプト: zenn-content リポジトリの .github/scripts/zenn_publish_queue.py
+#
+# publish_queue: true かつ published: false の記事を、1 日 N 本ずつ公開する。
+# Zenn のレート制限（一定時間内の新規公開数の上限）を避けるためのもの。
+name: Zenn staggered publish
+
+on:
+  schedule:
+    # 毎日 00:00 UTC（= 09:00 JST）に実行
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+    inputs:
+      max:
+        description: "今回公開する最大本数"
+        required: false
+        default: "2"
+
+# リポジトリへ push し返すために write 権限が必要
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Publish queued articles
+        run: |
+          python3 .github/scripts/zenn_publish_queue.py \
+            --dir articles \
+            --max "${{ github.event.inputs.max || '2' }}"
+
+      - name: Commit & push if changed
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "公開対象なし。変更なしで終了します。"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: staggered publish of queued Zenn articles"
+          git push
