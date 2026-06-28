@@ -4,6 +4,7 @@ emoji: "🔍"
 type: "tech"
 topics: ["gtm", "googleanalytics", "debugging"]
 published: false
+publish_queue: true
 ---
 
 ## はじめに

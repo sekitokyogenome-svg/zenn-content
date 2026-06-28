@@ -4,6 +4,7 @@ emoji: "🎨"
 type: "tech"
 topics: ["bigquery", "googleanalytics", "metaads"]
 published: false
+publish_queue: true
 ---
 
 ## はじめに

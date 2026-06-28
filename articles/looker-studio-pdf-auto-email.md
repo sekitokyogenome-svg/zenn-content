@@ -4,6 +4,7 @@ emoji: "📧"
 type: "tech"
 topics: ["lookerstudio","automation","email"]
 published: false
+publish_queue: true
 ---
 
 ## はじめに

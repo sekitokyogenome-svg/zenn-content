@@ -4,6 +4,7 @@ emoji: "🚀"
 type: "idea"
 topics: ["claudecode", "bigquery", "ec"]
 published: false
+publish_queue: true
 ---
 
 ## はじめに

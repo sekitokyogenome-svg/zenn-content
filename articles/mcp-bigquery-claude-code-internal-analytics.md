@@ -4,6 +4,7 @@ emoji: "🔍"
 type: "tech"
 topics: ["claudecode", "bigquery", "mcp"]
 published: false
+publish_queue: true
 ---
 
 ## はじめに

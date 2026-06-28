@@ -4,6 +4,7 @@ emoji: "🏷️"
 type: "tech"
 topics: ["gtm", "googleanalytics", "shopify"]
 published: false
+publish_queue: true
 ---
 
 ## はじめに

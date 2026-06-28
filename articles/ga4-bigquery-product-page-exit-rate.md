@@ -4,6 +4,7 @@ emoji: "📉"
 type: "idea"
 topics: ["bigquery", "googleanalytics", "ec"]
 published: false
+publish_queue: true
 ---
 
 ## はじめに

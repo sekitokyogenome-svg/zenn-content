@@ -4,6 +4,7 @@ emoji: "🏪"
 type: "idea"
 topics: ["lookerstudio","business","ec"]
 published: false
+publish_queue: true
 ---
 
 ## はじめに
