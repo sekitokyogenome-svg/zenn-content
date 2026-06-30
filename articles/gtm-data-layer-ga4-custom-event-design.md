@@ -3,7 +3,7 @@ title: "GTMのデータレイヤーを使ったGA4カスタムイベント設計
 emoji: "📊"
 type: "tech"
 topics: ["gtm", "googleanalytics", "javascript"]
-published: false
+published: true
 ---
 
 ## GA4の標準イベントだけでは足りない現実
@@ -64,13 +64,13 @@ GA4カスタムイベントの命名には明確なルールがあります。
 
 ### 推奨する命名パターン
 
-```
+```text
 [動詞]_[対象]
 ```
 
 具体例を示します。
 
-```
+```text
 click_cta_button     → CTAボタンのクリック
 submit_contact_form  → お問い合わせフォーム送信
 apply_coupon         → クーポン適用
