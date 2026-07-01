@@ -3,7 +3,7 @@ title: "GTMでGA4のスクロール率・動画再生をイベント計測する
 emoji: "🎬"
 type: "tech"
 topics: ["gtm", "googleanalytics", "tracking"]
-published: false
+published: true
 ---
 
 ## GA4の標準スクロール計測では不十分な理由
@@ -163,13 +163,13 @@ GA4のレポートでは`video_status`パラメータでフィルタリングし
 
 トリガーの「このトリガーの発生場所」で「一部のページ」を選択し、条件を追加します。
 
-```
+```text
 Page Path — 正規表現に一致 — /blog/.*
 ```
 
 ### 動画計測を特定ディレクトリに限定
 
-```
+```text
 Page Path — 含む — /video-gallery/
 ```
 
