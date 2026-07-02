@@ -83,7 +83,7 @@ E-01,GTM×GA4,GTMでGA4のエコマース計測を完全設定する手順》Sho
 E-02,GTM×GA4,GTMのデータレイヤーを使ったGA4カスタムイベント設計のベストプラクティス,tech,2,TRUE,2026-06-30,gtm-data-layer-ga4-custom-event-design.md
 E-03,GTM×GA4,GA4×GTMでフォーム送信の計測が取れないときのデバッグ手順,tech,1,TRUE,2026-05-18,ga4-gtm-form-submit-tracking-debug.md
 E-04,GTM×GA4,GTMでGA4のスクロール率・動画再生をイベント計測する方法,tech,2,TRUE,2026-07-01,gtm-ga4-scroll-video-event-tracking.md
-E-05,GTM×GA4,GA4×GTMでサイト内検索キーワードを正しく計測する設定,tech,2,FALSE,,ga4-gtm-site-search-tracking.md
+E-05,GTM×GA4,GA4×GTMでサイト内検索キーワードを正しく計測する設定,tech,2,TRUE,2026-07-02,ga4-gtm-site-search-tracking.md
 E-06,GTM×GA4,GTMのサーバーサイドタギングでGA4データの精度を上げる入門,tech,3,FALSE,,gtm-server-side-tagging-ga4-accuracy.md
 E-07,GTM×GA4,GA4×GTMでLINE広告・TikTok広告のコンバージョン計測を設定する,tech,2,FALSE,,ga4-gtm-line-tiktok-conversion-tracking.md
 E-08,GTM×GA4,GTMのワークスペース・バージョン管理でチーム開発を効率化する,tech,3,FALSE,,gtm-workspace-version-team-management.md
