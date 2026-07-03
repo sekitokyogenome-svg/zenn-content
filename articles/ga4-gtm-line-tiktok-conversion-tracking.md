@@ -3,7 +3,7 @@ title: "GA4×GTMでLINE広告・TikTok広告のコンバージョン計測を設
 emoji: "📱"
 type: "tech"
 topics: ["gtm", "googleanalytics", "advertising"]
-published: false
+published: true
 ---
 
 ## 広告効果がわからないまま予算を使い続けていませんか
@@ -84,7 +84,7 @@ _lt('send','cv',{
 
 **トリガーの設定：**
 
-```
+```text
 トリガータイプ: ページビュー
 発生場所: 一部のページビュー
 条件: Page Path — 含む — /thanks または /complete
@@ -167,7 +167,7 @@ ttq.track('CompletePayment', {
 
 GA4の`purchase`イベントと同じタイミングで発火させる場合、データレイヤーのカスタムイベントトリガーを使います。
 
-```
+```text
 トリガータイプ: カスタムイベント
 イベント名: purchase
 ```
@@ -183,7 +183,7 @@ LINE Tag・TikTok Pixelを設置したら、GA4のコンバージョンイベン
 
 ### 推奨するトリガー設計
 
-```
+```text
 [ユーザーが購入完了]
   ↓
 [dataLayer.push({ event: "purchase", ... })]
