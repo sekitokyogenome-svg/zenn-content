@@ -88,7 +88,7 @@ E-06,GTM×GA4,GTMのサーバーサイドタギングでGA4データの精度を
 E-07,GTM×GA4,GA4×GTMでLINE広告・TikTok広告のコンバージョン計測を設定する,tech,2,TRUE,2026-07-03,ga4-gtm-line-tiktok-conversion-tracking.md
 E-08,GTM×GA4,GTMのワークスペース・バージョン管理でチーム開発を効率化する,tech,3,FALSE,,gtm-workspace-version-team-management.md
 E-09,GTM×GA4,GA4移行後にデータが取れていない問題を解決するGTMデバッグ手順,tech,1,TRUE,2026-05-19,ga4-migration-data-missing-gtm-debug.md
-E-10,GTM×GA4,GTM × GA4でA/Bテスト結果を自動計測する仕組みを作る,tech,2,FALSE,,gtm-ga4-ab-test-auto-tracking.md
+E-10,GTM×GA4,GTM × GA4でA/Bテスト結果を自動計測する仕組みを作る,tech,2,TRUE,2026-07-04,gtm-ga4-ab-test-auto-tracking.md
 F-01,フリーランス・ビジネス,оконаで売れるGA4×BigQuery×Claude Codeサービスを受注するためのZenn活用戦略,idea,2,FALSE,,zenn-coconala-ga4-bigquery-claude-code-strategy.md
 F-02,フリーランス・ビジネス,WEBコンサルタントがClaude CodeでSQLを書く時間をゼロにした話,idea,1,TRUE,2026-05-20,web-consultant-claude-code-sql-zero-time.md
 F-03,フリーランス・ビジネス,フリーランスがデータ分析スキルでокона月収を3倍にした方法,idea,2,FALSE,,freelance-data-analyst-coconala-revenue-triple.md
