@@ -91,7 +91,7 @@ E-09,GTM×GA4,GA4移行後にデータが取れていない問題を解決する
 E-10,GTM×GA4,GTM × GA4でA/Bテスト結果を自動計測する仕組みを作る,tech,2,TRUE,2026-07-04,gtm-ga4-ab-test-auto-tracking.md
 F-01,フリーランス・ビジネス,оконаで売れるGA4×BigQuery×Claude Codeサービスを受注するためのZenn活用戦略,idea,2,TRUE,2026-07-05,zenn-coconala-ga4-bigquery-claude-code-strategy.md
 F-02,フリーランス・ビジネス,WEBコンサルタントがClaude CodeでSQLを書く時間をゼロにした話,idea,1,TRUE,2026-05-20,web-consultant-claude-code-sql-zero-time.md
-F-03,フリーランス・ビジネス,フリーランスがデータ分析スキルでокона月収を3倍にした方法,idea,2,FALSE,,freelance-data-analyst-coconala-revenue-triple.md
+F-03,フリーランス・ビジネス,フリーランスがデータ分析スキルでокона月収を3倍にした方法,idea,2,TRUE,2026-07-06,freelance-data-analyst-coconala-revenue-triple.md
 F-04,フリーランス・ビジネス,AI検索時代のGA4活用術―ChatGPT流入をBigQueryで追跡する,idea,1,TRUE,2026-03-30,ga4-bigquery-chatgpt-ai-search-tracking.md
 F-05,フリーランス・ビジネス,非エンジニアのEC経営者がClaude Codeで自走できるまで》全記録』,idea,1,TRUE,2026-05-21,non-engineer-ec-owner-claude-code-journey.md
 F-06,フリーランス・ビジネス,中小EC経営者がデータ分析に月1万円投資すべき理由,idea,2,FALSE,,small-ec-data-analysis-monthly-investment.md
