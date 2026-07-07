@@ -3,7 +3,7 @@ title: "中小EC経営者がデータ分析に月1万円投資すべき理由"
 emoji: "💡"
 type: "idea"
 topics: ["ec", "dataanalytics", "business"]
-published: false
+published: true
 ---
 
 「データ分析が大事なのはわかっている。でも、うちの規模でそこにお金をかける余裕はない」――中小ECの経営者からよく聞く言葉です。
@@ -33,7 +33,7 @@ published: false
 
 では、「月1万円」の投資は何に使うのか。内訳の一例を示します。
 
-```
+```text
 月額コストの内訳（目安）:
 ├── BigQuery ストレージ: 0円〜数百円（無料枠内）
 ├── Cloud Scheduler: 約100円
@@ -81,7 +81,7 @@ WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 
 中小EC向けのデータ分析環境の構成例を紹介します。
 
-```
+```text
 [データ収集]
   GA4（無料）→ BigQueryエクスポート（自動）
 
