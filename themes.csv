@@ -97,7 +97,7 @@ F-05,フリーランス・ビジネス,非エンジニアのEC経営者がClaude
 F-06,フリーランス・ビジネス,中小EC経営者がデータ分析に月1万円投資すべき理由,idea,2,TRUE,2026-07-07,small-ec-data-analysis-monthly-investment.md
 F-07,フリーランス・ビジネス,GA4×BigQueryを自社導入したEC事業者が最初の1週間で気づいたこと,idea,2,TRUE,2026-07-08,ga4-bigquery-self-implement-ec-first-week.md
 F-08,フリーランス・ビジネス,Zennで技術記事を書き続けたら３ヶ月でフリーランス案件が増えた話,idea,3,FALSE,,zenn-tech-articles-freelance-growth.md
-F-09,フリーランス・ビジネス,WEBコンサルタントのサービス単価を5倍にしたデータ基盤提案の話し方,idea,2,FALSE,,web-consultant-service-price-5x-data-proposal.md
+F-09,フリーランス・ビジネス,WEBコンサルタントのサービス単価を5倍にしたデータ基盤提案の話し方,idea,2,TRUE,2026-07-09,web-consultant-service-price-5x-data-proposal.md
 F-10,フリーランス・ビジネス,Claude Codeを使ったデータ分析サービスの提案書テンプレートを公開する,idea,2,FALSE,,claude-code-data-analysis-proposal-template.md
 G-01,AI×データ分析,Gemini in BigQueryで自然言語からSQLを生成する実践ガイド　2026年版】,tech,1,FALSE,,
 G-02,AI×データ分析,Claude Code × Gemini CLIをオーケストレーションしてEC分析を多角的に回す方法,tech,2,FALSE,,
