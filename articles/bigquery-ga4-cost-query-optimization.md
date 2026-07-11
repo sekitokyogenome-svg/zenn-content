@@ -3,7 +3,7 @@ title: "BigQueryでGA4データのコスト管理・クエリ最適化入門"
 emoji: "💰"
 type: "tech"
 topics: ["bigquery", "googleanalytics", "cost"]
-published: false
+published: true
 ---
 
 ## はじめに
