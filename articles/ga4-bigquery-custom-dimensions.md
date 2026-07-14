@@ -3,7 +3,7 @@ title: "GA4×BigQueryでカスタムディメンションを活用した分析"
 emoji: "🏷"
 type: "tech"
 topics: ["bigquery", "googleanalytics", "sql"]
-published: false
+published: true
 ---
 
 ## はじめに
