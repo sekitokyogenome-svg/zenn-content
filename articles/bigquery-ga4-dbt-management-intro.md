@@ -3,7 +3,7 @@ title: "BigQueryでGA4データをdbtで管理する入門"
 emoji: "🔧"
 type: "tech"
 topics: ["bigquery", "dbt", "dataengineering"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -76,7 +76,7 @@ ga4_analytics:
 
 GA4データの3層設計に合わせたdbtのディレクトリ構成です。
 
-```
+```text
 ga4_analytics/
 ├── dbt_project.yml
 ├── models/
@@ -225,7 +225,7 @@ dbtの `ref()` 関数を使うと、以下のメリットがあります。
 2. **実行順序の自動制御**：`dbt run` で依存順にモデルが実行される
 3. **環境の切り替え**：dev / prod でデータセットを切り替えても `ref()` は追従する
 
-```
+```text
 stg_events → stg_sessions → mart_traffic
                            → mart_funnel
                            → mart_cohort
