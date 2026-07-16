@@ -3,7 +3,7 @@ title: "Claude Code × Python × BigQueryでLTV予測モデルを作った"
 emoji: "🔮"
 type: "tech"
 topics: ["claudecode","bigquery","machinelearning"]
-published: false
+published: true
 ---
 
 ## はじめに
