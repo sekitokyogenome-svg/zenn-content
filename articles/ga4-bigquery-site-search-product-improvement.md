@@ -3,7 +3,7 @@ title: "ECサイトのサイト内検索キーワードをGA4×BigQueryで分析
 emoji: "🔍"
 type: "idea"
 topics: ["bigquery", "googleanalytics", "ec"]
-published: false
+published: true
 ---
 
 ## はじめに
