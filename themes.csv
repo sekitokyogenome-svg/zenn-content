@@ -59,7 +59,7 @@ C-17,EC向けデータ分析,ECサイトのサイト内検索キーワードをG
 C-18,EC向けデータ分析,BigQueryでGA4の流入経路×購入金額のヒートマップを作成した,tech,3,TRUE,2026-07-22,bigquery-ga4-traffic-revenue-heatmap.md
 C-19,EC向けデータ分析,GA4×BigQueryでEC新規顧客獲得コスト（CAC）を媒体別に正確計算する,tech,2,TRUE,2026-06-17,ga4-bigquery-cac-by-channel.md
 C-20,EC向けデータ分析,BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した,idea,2,TRUE,2026-06-18,bigquery-ec-pareto-top20-revenue.md
-C-21,EC向けデータ分析,GA4×BigQueryでEC定期購入の継続率を分析する,tech,3,FALSE,,ga4-bigquery-subscription-retention.md
+C-21,EC向けデータ分析,GA4×BigQueryでEC定期購入の継続率を分析する,tech,3,TRUE,2026-07-23,ga4-bigquery-subscription-retention.md
 C-22,EC向けデータ分析,BigQueryでGA4データからEC顧客の年齢・性別推定第度を検証した,tech,3,FALSE,,bigquery-ga4-age-gender-estimation.md
 C-23,EC向けデータ分析,GA4×BigQueryでポイント還元施策の効果をコホート分析で検証した,idea,3,FALSE,,ga4-bigquery-point-reward-cohort.md
 C-24,EC向けデータ分析,BigQueryでEC季節商品の売上予測モデルを作った話,tech,3,FALSE,,bigquery-ec-seasonal-sales-prediction.md
