@@ -3,7 +3,7 @@ title: "GA4×BigQueryでEC定期購入の継続率を分析する"
 emoji: "🔄"
 type: "tech"
 topics: ["bigquery", "ec", "subscription"]
-published: false
+published: true
 ---
 
 ## 定期購入ECの最大の課題は「継続率」
