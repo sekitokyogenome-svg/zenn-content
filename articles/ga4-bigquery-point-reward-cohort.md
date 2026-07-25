@@ -3,7 +3,7 @@ title: "GA4×BigQueryでポイント還元施策の効果をコホート分析�
 emoji: "🎯"
 type: "idea"
 topics: ["bigquery", "ec", "marketing"]
-published: false
+published: true
 ---
 
 ## ポイント還元施策、「なんとなく効いている」で済ませていませんか
