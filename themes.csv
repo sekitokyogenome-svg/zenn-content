@@ -61,7 +61,7 @@ C-19,EC向けデータ分析,GA4×BigQueryでEC新規顧客獲得コスト（CAC
 C-20,EC向けデータ分析,BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した,idea,2,TRUE,2026-06-18,bigquery-ec-pareto-top20-revenue.md
 C-21,EC向けデータ分析,GA4×BigQueryでEC定期購入の継続率を分析する,tech,3,TRUE,2026-07-23,ga4-bigquery-subscription-retention.md
 C-22,EC向けデータ分析,BigQueryでGA4データからEC顧客の年齢・性別推定精度を検証した,tech,3,TRUE,2026-07-24,bigquery-ga4-age-gender-estimation.md
-C-23,EC向けデータ分析,GA4×BigQueryでポイント還元施策の効果をコホート分析で検証した,idea,3,FALSE,,ga4-bigquery-point-reward-cohort.md
+C-23,EC向けデータ分析,GA4×BigQueryでポイント還元施策の効果をコホート分析で検証した,idea,3,TRUE,2026-07-25,ga4-bigquery-point-reward-cohort.md
 C-24,EC向けデータ分析,BigQueryでEC季節商品の売上予測モデルを作った話,tech,3,FALSE,,bigquery-ec-seasonal-sales-prediction.md
 C-25,EC向けデータ分析,GA4×BigQueryでECサイトの速度改善がCVRに与えた影響を測定した,idea,3,FALSE,,ga4-bigquery-speed-improvement-cvr-impact.md
 D-01,LookerStudio,Looker Studio × BigQueryでEC売上ダッシュボードを1日で作る完全手順,tech,1,TRUE,2026-04-10,looker-studio-bigquery-ec-dashboard-guide.md
