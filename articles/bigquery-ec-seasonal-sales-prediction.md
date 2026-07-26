@@ -3,7 +3,7 @@ title: "BigQueryでEC季節商品の売上予測モデルを作った話"
 emoji: "📈"
 type: "tech"
 topics: ["bigquery", "ec", "machinelearning"]
-published: false
+published: true
 ---
 
 ## EC運営者の悩み: 「来月の発注量、どうする？」
