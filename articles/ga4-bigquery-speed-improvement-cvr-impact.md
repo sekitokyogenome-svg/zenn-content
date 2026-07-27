@@ -3,7 +3,7 @@ title: "GA4×BigQueryでECサイトの速度改善がCVRに与えた影響を測
 emoji: "⚡"
 type: "idea"
 topics: ["bigquery", "googleanalytics", "performance"]
-published: false
+published: true
 ---
 
 ## 「サイトが遅い」と感じたら、売上を失っているかもしれない
@@ -265,7 +265,7 @@ ORDER BY dp.device_category, dp.lcp_status
 
 CVR改善による月間売上増は以下のように計算できます。
 
-```
+```text
 50,000 × (1.5% - 1.2%) × 5,000円 = 750,000円/月
 ```
 
