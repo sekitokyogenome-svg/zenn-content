@@ -3,7 +3,7 @@ title: "Looker Studio × BigQueryでスマホ最適化したダッシュボー�
 emoji: "📱"
 type: "tech"
 topics: ["lookerstudio","bigquery","mobile"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -34,7 +34,7 @@ Looker Studioでスマホ対応する方法は主に3つあります。
 2. 「ファイル」→「レポートの設定」（またはキャンバス外をクリック）
 3. 「レイアウト」タブで以下を設定
 
-```
+```text
 キャンバスサイズ:
   幅: 414px（iPhone標準）
   高さ: 2000px〜（コンテンツに応じて調整）
@@ -48,7 +48,7 @@ Looker Studioでスマホ対応する方法は主に3つあります。
 
 スマホでは横に並べず、縦に積み上げるレイアウトが基本です。
 
-```
+```text
 ┌──────────────────┐
 │ 日付フィルタ       │
 ├──────────────────┤
@@ -90,7 +90,7 @@ Looker Studioでスマホ対応する方法は主に3つあります。
 
 Looker StudioのURLにページ番号パラメータを追加すると、特定のページを直接開けます。
 
-```
+```text
 https://lookerstudio.google.com/reporting/REPORT_ID/page/PAGE_ID
 ```
 
@@ -102,7 +102,7 @@ https://lookerstudio.google.com/reporting/REPORT_ID/page/PAGE_ID
 
 スマホではグラフの細部が見にくいため、スコアカード（数値表示）を中心に構成します。
 
-```
+```text
 ┌──────────┬──────────┐
 │ 売上      │ 注文数    │
 │ ¥1,234K  │ 156件    │
@@ -125,7 +125,7 @@ https://lookerstudio.google.com/reporting/REPORT_ID/page/PAGE_ID
 
 スマホでは横幅が狭いため、テーブルのカラム数は3〜4列に制限してください。PC用のテーブルが8列あっても、スマホ用には重要な列だけを選びます。
 
-```
+```text
 PC用テーブル:
 日付 | チャネル | セッション | ユーザー | PV | 売上 | CVR | ROAS
 
