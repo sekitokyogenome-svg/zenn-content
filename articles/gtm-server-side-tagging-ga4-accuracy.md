@@ -3,7 +3,7 @@ title: "GTMのサーバーサイドタギングでGA4データの精度を上げ
 emoji: "🖥️"
 type: "tech"
 topics: ["gtm", "googleanalytics", "serverside"]
-published: false
+published: true
 ---
 
 ## ブラウザの広告ブロッカーがGA4データを欠損させている
@@ -12,8 +12,8 @@ GA4のデータ精度に疑問を感じたことはありませんか。
 
 実際のところ、広告ブロッカーやITP（Intelligent Tracking Prevention）の影響で、クライアントサイドのGA4計測ではデータの10〜30%が欠損しているケースがあります。
 
-その原因は、従来のGTM（クライアントサイド）がブラウザ上でJavaScriptを実行し、`google-analytics.com`や`googletagmanager.com`へ直接リクエストを送る仕組みにあります。
-広告ブロッカーはこれらのドメインへのリクエストをブロックします。
+その原因は、従来のGTM（クライアントサイド）がブラウザ上でJavaScriptを実行し、計測ドメインへ直接リクエストを送る仕組みにあります。
+`google-analytics.com`や`googletagmanager.com`は広告ブロッカーのブロック対象として認識されやすく、リクエストが遮断されます。
 
 サーバーサイドタギングは、この問題を解決するアプローチです。
 ブラウザからのリクエストを自社ドメインのサーバー経由でGoogleのサーバーへ転送することで、ブロッカーの影響を受けにくくなります。
@@ -22,7 +22,7 @@ GA4のデータ精度に疑問を感じたことはありませんか。
 
 サーバーサイドGTMの構成は以下の通りです。
 
-```
+```text
 [ブラウザ]
   ↓ 自社ドメイン(sgtm.example.com)へリクエスト
 [サーバーサイドGTMコンテナ]（Cloud Run / App Engine）
@@ -99,7 +99,7 @@ Cloud Runにデプロイした後、自社サブドメインを紐づけます�
 2. `sgtm.example.com`のようなサブドメインを設定
 3. DNSレコードにCNAMEを追加
 
-```
+```text
 sgtm.example.com  CNAME  YOUR_CLOUD_RUN_URL.run.app
 ```
 
