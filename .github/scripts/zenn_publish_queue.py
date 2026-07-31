@@ -13,9 +13,15 @@ public 化することで、レート制限に引っかからずに少しずつ�
 
 書きかけの下書き（publish_queue を持たない記事）は決して触らない。
 
+公開順:
+    (publish_order, ファイル名) の昇順。
+    publish_order は任意の整数。指定した記事が、指定のない記事より先に公開される。
+    連載記事のように順序が意味を持つものに付ける。未指定なら従来どおりファイル名順。
+
 公開時の処理:
     published: false      -> published: true
     publish_queue: true   -> 行ごと削除（公開後の frontmatter を綺麗に保つ）
+    publish_order: N      -> 行ごと削除（同上）
 
 依存ライブラリなし（標準ライブラリのみ）。
 """
@@ -29,6 +35,11 @@ from pathlib import Path
 
 _PUBLISHED_RE = re.compile(r"^published:\s*(true|false)\s*$", re.MULTILINE)
 _QUEUE_RE = re.compile(r"^publish_queue:\s*(true|false)\s*$", re.MULTILINE)
+_ORDER_RE = re.compile(r"^publish_order:\s*(\d+)\s*$", re.MULTILINE)
+
+# publish_order を持たない記事に与える順序値。
+# 明示的に順序指定された記事を、従来どおりファイル名順で並ぶ記事より先に公開する。
+_NO_ORDER = 10**9
 
 
 def _split_frontmatter(text: str) -> tuple[str, str] | None:
@@ -52,8 +63,20 @@ def _flag(header: str, regex: re.Pattern) -> bool | None:
     return m.group(1) == "true"
 
 
+def _order(header: str) -> int:
+    """publish_order の値。未指定なら _NO_ORDER。"""
+    m = _ORDER_RE.search(header)
+    return int(m.group(1)) if m else _NO_ORDER
+
+
 def find_queued(articles_dir: Path) -> list[Path]:
-    """published:false かつ publish_queue:true の記事を、ファイル名昇順で返す。"""
+    """published:false かつ publish_queue:true の記事を公開順に返す。
+
+    並び順は (publish_order, ファイル名) の昇順。
+    publish_order を持つ記事が先に公開されるため、連載のように順序が意味を持つ
+    記事群を、単発記事より先に・意図した順番で公開できる。
+    publish_order を持たない記事同士は従来どおりファイル名昇順。
+    """
     queued = []
     for path in sorted(articles_dir.glob("*.md")):
         parts = _split_frontmatter(path.read_text(encoding="utf-8"))
@@ -61,8 +84,9 @@ def find_queued(articles_dir: Path) -> list[Path]:
             continue
         header, _ = parts
         if _flag(header, _PUBLISHED_RE) is False and _flag(header, _QUEUE_RE) is True:
-            queued.append(path)
-    return queued
+            queued.append((_order(header), path.name, path))
+    queued.sort(key=lambda t: (t[0], t[1]))
+    return [path for _, _, path in queued]
 
 
 def publish(path: Path) -> None:
@@ -74,6 +98,9 @@ def publish(path: Path) -> None:
     header = _PUBLISHED_RE.sub("published: true", header, count=1)
     # publish_queue 行を（前の改行ごと）削除
     header = re.sub(r"^publish_queue:\s*(?:true|false)\s*\r?\n", "", header, count=1,
+                    flags=re.MULTILINE)
+    # publish_order も公開後は不要なので削除し、frontmatter を綺麗に保つ
+    header = re.sub(r"^publish_order:\s*\d+\s*\r?\n", "", header, count=1,
                     flags=re.MULTILINE)
     path.write_text(header + rest, encoding="utf-8")
 

@@ -4,7 +4,8 @@ emoji: "🗺️"
 type: "tech"
 topics: ["bigquery", "googlecloud", "ai", "gemini", "dataengineering"]
 published: false
-publish_queue: false
+publish_queue: true
+publish_order: 1
 ---
 
 ## はじめに
