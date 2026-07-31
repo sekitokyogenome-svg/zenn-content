@@ -29,7 +29,7 @@ SELECT
   (SELECT value.int_value
    FROM UNNEST(event_params)
    WHERE key = 'ga_session_id') AS ga_session_id
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
   AND event_name = 'session_start'
 LIMIT 10
@@ -75,7 +75,7 @@ SELECT
    WHERE key = 'ga_session_id') AS ga_session_id,
   event_name,
   event_timestamp
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
 ORDER BY session_id, event_timestamp
 LIMIT 100
@@ -109,7 +109,7 @@ SELECT
          WHERE key = 'ga_session_id') AS STRING)
     )
   ) AS session_count
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
 GROUP BY event_date
 ORDER BY event_date
@@ -128,7 +128,7 @@ WITH sessions AS (
          WHERE key = 'ga_session_id') AS STRING)
     ) AS session_id,
     event_name
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
 )
 SELECT
@@ -162,7 +162,7 @@ WITH session_starts AS (
     (SELECT value.string_value
      FROM UNNEST(event_params)
      WHERE key = 'page_location') AS landing_page
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
     AND event_name = 'session_start'
 )
@@ -205,7 +205,7 @@ SELECT
     THEN 'new'
     ELSE 'returning'
   END AS user_type
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
   AND event_name = 'session_start'
 ```
@@ -219,7 +219,7 @@ WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
 毎回UNNESTを書くのは非効率です。セッションの基本情報をstagingビューとして定義しておくと、後続の分析が楽になります。
 
 ```sql
-CREATE OR REPLACE VIEW `beeracle.beeracle_staging.stg_sessions` AS
+CREATE OR REPLACE VIEW `your-project.staging.stg_sessions` AS
 SELECT
   event_date,
   CONCAT(
@@ -242,7 +242,7 @@ SELECT
    FROM UNNEST(event_params)
    WHERE key = 'page_location') AS landing_page,
   event_timestamp
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE event_name = 'session_start'
 ```
 

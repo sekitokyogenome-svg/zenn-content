@@ -42,7 +42,7 @@ SELECT
   event_name,
   (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'engagement_time_msec') AS engagement_time_msec,
   (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'page_location') AS page_location
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
   AND event_name = 'user_engagement'
 ```
@@ -62,7 +62,7 @@ WITH engagement AS (
   SELECT
     (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'page_location') AS page_location,
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'engagement_time_msec') AS engagement_time_msec
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
     AND event_name = 'user_engagement'
 )
@@ -112,7 +112,7 @@ WITH page_views AS (
         (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id')
       ORDER BY event_timestamp
     ) AS next_event_timestamp
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
     AND event_name = 'page_view'
 )
@@ -160,7 +160,7 @@ WITH session_engagement AS (
     SUM(
       (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'engagement_time_msec')
     ) AS total_engagement_msec
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
     AND event_name = 'user_engagement'
   GROUP BY user_pseudo_id, ga_session_id

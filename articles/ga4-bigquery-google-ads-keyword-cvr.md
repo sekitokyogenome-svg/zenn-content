@@ -67,7 +67,7 @@ WITH ga4_sessions AS (
     collected_traffic_source.manual_medium AS medium,
     event_name,
     event_date
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 ),
 gclid_extracted AS (
@@ -108,7 +108,7 @@ WITH ga4_gclid AS (
       r'gclid=([^&]+)'
     ) AS gclid,
     event_name
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
     AND collected_traffic_source.manual_medium = 'cpc'
     AND collected_traffic_source.manual_source = 'google'

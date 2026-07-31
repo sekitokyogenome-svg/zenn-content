@@ -55,7 +55,7 @@ SELECT
   impressions,
   clicks,
   sum_position
-FROM `beeracle.searchconsole.searchdata_url_impression`
+FROM `your-project.searchconsole.searchdata_url_impression`
 WHERE data_date BETWEEN '2025-03-01' AND '2025-03-31'
 ORDER BY clicks DESC
 LIMIT 20
@@ -85,7 +85,7 @@ SELECT
   SUM(clicks) AS total_clicks,
   ROUND(SAFE_DIVIDE(SUM(clicks), SUM(impressions)) * 100, 2) AS ctr_pct,
   ROUND(SAFE_DIVIDE(SUM(sum_position), SUM(impressions)), 1) AS avg_position
-FROM `beeracle.searchconsole.searchdata_url_impression`
+FROM `your-project.searchconsole.searchdata_url_impression`
 WHERE data_date BETWEEN '2025-03-01' AND '2025-03-31'
   AND query IS NOT NULL
 GROUP BY query
@@ -104,7 +104,7 @@ SELECT
   ROUND(SAFE_DIVIDE(SUM(clicks), SUM(impressions)) * 100, 2) AS ctr_pct,
   ROUND(SAFE_DIVIDE(SUM(sum_position), SUM(impressions)), 1) AS avg_position,
   COUNT(DISTINCT query) AS unique_queries
-FROM `beeracle.searchconsole.searchdata_url_impression`
+FROM `your-project.searchconsole.searchdata_url_impression`
 WHERE data_date BETWEEN '2025-03-01' AND '2025-03-31'
 GROUP BY page_path
 ORDER BY total_clicks DESC
@@ -132,7 +132,7 @@ WITH ga4_landing AS (
     user_pseudo_id,
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'entrances') AS is_entrance
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
     AND event_name = 'page_view'
 ),
@@ -165,7 +165,7 @@ WITH ga4_landing AS (
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'entrances') AS is_entrance,
     event_name
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
 ),
 
@@ -189,7 +189,7 @@ gsc AS (
     SUM(impressions) AS impressions,
     SUM(clicks) AS clicks,
     ROUND(SAFE_DIVIDE(SUM(sum_position), SUM(impressions)), 1) AS avg_position
-  FROM `beeracle.searchconsole.searchdata_url_impression`
+  FROM `your-project.searchconsole.searchdata_url_impression`
   WHERE data_date BETWEEN '2025-03-01' AND '2025-03-31'
   GROUP BY event_date, page_path
 )
@@ -229,7 +229,7 @@ SELECT
   SUM(clicks) AS clicks,
   ROUND(SAFE_DIVIDE(SUM(clicks), SUM(impressions)) * 100, 2) AS ctr_pct,
   ROUND(SAFE_DIVIDE(SUM(sum_position), SUM(impressions)), 1) AS avg_position
-FROM `beeracle.searchconsole.searchdata_url_impression`
+FROM `your-project.searchconsole.searchdata_url_impression`
 WHERE data_date BETWEEN '2025-03-01' AND '2025-03-31'
   AND url LIKE '%/blog/%'
   AND query IS NOT NULL

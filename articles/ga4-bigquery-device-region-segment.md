@@ -61,7 +61,7 @@ WITH sessions AS (
     ) AS session_id,
     device.category AS device_category,
     event_name
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
 ),
 session_summary AS (
@@ -112,7 +112,7 @@ WITH sessions AS (
     ) AS session_id,
     device.category AS device_category,
     collected_traffic_source.manual_medium AS medium
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
     AND event_name = 'session_start'
 )
@@ -143,7 +143,7 @@ SELECT
          WHERE key = 'ga_session_id') AS STRING)
     )
   ) AS sessions
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
   AND event_name = 'session_start'
   AND geo.country = 'Japan'
@@ -176,7 +176,7 @@ SELECT
     )
   ) AS sessions,
   COUNT(DISTINCT user_pseudo_id) AS users
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
   AND event_name = 'session_start'
 GROUP BY country, continent
@@ -204,7 +204,7 @@ WITH daily_device AS (
            WHERE key = 'ga_session_id') AS STRING)
       )
     ) AS sessions
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
     AND event_name = 'session_start'
   GROUP BY event_date, device_category
@@ -249,7 +249,7 @@ SELECT
          WHERE key = 'ga_session_id') AS STRING)
     )
   ) AS sessions
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
   AND event_name = 'session_start'
   AND geo.country = 'Japan'
@@ -284,7 +284,7 @@ SELECT
      FROM UNNEST(event_params)
      WHERE key = 'engagement_time_msec')
   ) / 1000, 1) AS avg_engagement_sec
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
   AND event_name = 'session_start'
 GROUP BY os, browser

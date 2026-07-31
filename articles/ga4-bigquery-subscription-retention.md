@@ -36,7 +36,7 @@ WITH first_purchase AS (
       DATE(TIMESTAMP_MICROS(MIN(event_timestamp)), 'Asia/Tokyo')
     ) AS cohort_month
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
     AND event_name = 'purchase'
@@ -65,7 +65,7 @@ WITH first_purchase AS (
       DATE(TIMESTAMP_MICROS(MIN(event_timestamp)), 'Asia/Tokyo')
     ) AS cohort_month
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
     AND event_name = 'purchase'
@@ -78,7 +78,7 @@ monthly_purchases AS (
       DATE(TIMESTAMP_MICROS(event_timestamp), 'Asia/Tokyo')
     ) AS purchase_month
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
     AND event_name = 'purchase'

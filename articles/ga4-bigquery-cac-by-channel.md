@@ -43,7 +43,7 @@ WITH first_purchase AS (
   SELECT
     user_pseudo_id,
     MIN(event_timestamp) AS first_purchase_timestamp
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'purchase'
   GROUP BY user_pseudo_id
@@ -64,7 +64,7 @@ first_purchase_detail AS (
     END AS channel,
     e.collected_traffic_source.manual_source AS source,
     e.ecommerce.purchase_revenue AS revenue
-  FROM `beeracle.analytics_263425816.events_*` e
+  FROM `your-project.analytics_XXXXXXXXX.events_*` e
   INNER JOIN first_purchase fp
     ON e.user_pseudo_id = fp.user_pseudo_id
     AND e.event_timestamp = fp.first_purchase_timestamp
@@ -103,7 +103,7 @@ first_purchase AS (
   SELECT
     user_pseudo_id,
     MIN(event_timestamp) AS first_purchase_timestamp
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'purchase'
   GROUP BY user_pseudo_id
@@ -118,7 +118,7 @@ first_purchase_channel AS (
       ELSE 'Other'
     END AS channel,
     e.collected_traffic_source.manual_source AS source
-  FROM `beeracle.analytics_263425816.events_*` e
+  FROM `your-project.analytics_XXXXXXXXX.events_*` e
   INNER JOIN first_purchase fp
     ON e.user_pseudo_id = fp.user_pseudo_id
     AND e.event_timestamp = fp.first_purchase_timestamp
@@ -153,7 +153,7 @@ ORDER BY cac
 
 ```sql
 -- Google Sheetsの外部テーブルを事前に作成しておく
--- CREATE EXTERNAL TABLE `beeracle.ad_costs.monthly_costs`
+-- CREATE EXTERNAL TABLE `your-project.ad_costs.monthly_costs`
 -- OPTIONS (
 --   format = 'GOOGLE_SHEETS',
 --   uris = ['https://docs.google.com/spreadsheets/d/XXXXX']
@@ -166,7 +166,7 @@ SELECT
   ac.cost AS monthly_cost,
   ROUND(ac.cost / NULLIF(nc.new_customers, 0), 0) AS cac
 FROM new_customers_by_source nc
-INNER JOIN `beeracle.ad_costs.monthly_costs` ac
+INNER JOIN `your-project.ad_costs.monthly_costs` ac
   ON nc.channel = ac.channel AND nc.source = ac.source
 ORDER BY cac
 ```
@@ -183,7 +183,7 @@ WITH customer_ltv AS (
     user_pseudo_id,
     COUNT(*) AS purchase_count,
     SUM(ecommerce.purchase_revenue) AS total_revenue
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'purchase'
   GROUP BY user_pseudo_id

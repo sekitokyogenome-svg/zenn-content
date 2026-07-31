@@ -35,7 +35,7 @@ WITH first_visits AS (
   SELECT
     user_pseudo_id,
     MIN(DATE(TIMESTAMP_MICROS(event_timestamp))) AS first_visit_date
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'first_visit'
   GROUP BY user_pseudo_id
@@ -45,7 +45,7 @@ first_purchases AS (
   SELECT
     user_pseudo_id,
     MIN(DATE(TIMESTAMP_MICROS(event_timestamp))) AS first_purchase_date
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'purchase'
   GROUP BY user_pseudo_id
@@ -75,7 +75,7 @@ WITH first_visits AS (
   SELECT
     user_pseudo_id,
     MIN(DATE(TIMESTAMP_MICROS(event_timestamp))) AS first_visit_date
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'first_visit'
   GROUP BY user_pseudo_id
@@ -85,7 +85,7 @@ first_purchases AS (
   SELECT
     user_pseudo_id,
     MIN(DATE(TIMESTAMP_MICROS(event_timestamp))) AS first_purchase_date
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'purchase'
   GROUP BY user_pseudo_id
@@ -170,7 +170,7 @@ WITH first_visits AS (
   SELECT
     user_pseudo_id,
     MIN(DATE(TIMESTAMP_MICROS(event_timestamp))) AS first_visit_date
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'first_visit'
   GROUP BY user_pseudo_id
@@ -180,7 +180,7 @@ first_purchases AS (
   SELECT
     user_pseudo_id,
     MIN(DATE(TIMESTAMP_MICROS(event_timestamp))) AS first_purchase_date
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'purchase'
   GROUP BY user_pseudo_id

@@ -41,7 +41,7 @@ SELECT
   (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'search_term') AS search_term,
   COUNT(*) AS search_count,
   COUNT(DISTINCT user_pseudo_id) AS unique_users
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
   AND event_name = 'view_search_results'
 GROUP BY search_term
@@ -64,7 +64,7 @@ WITH search_sessions AS (
     user_pseudo_id,
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS session_id,
     (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'search_term') AS search_term
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'view_search_results'
 ),
@@ -73,7 +73,7 @@ purchase_sessions AS (
   SELECT DISTINCT
     user_pseudo_id,
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS session_id
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'purchase'
 )
@@ -141,7 +141,7 @@ WITH search_events AS (
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS session_id,
     (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'search_term') AS search_term,
     event_timestamp AS search_timestamp
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'view_search_results'
 ),
@@ -152,7 +152,7 @@ post_search_actions AS (
     (SELECT value.int_value FROM UNNEST(e.event_params) WHERE key = 'ga_session_id') AS session_id,
     e.event_name,
     e.event_timestamp
-  FROM `beeracle.analytics_263425816.events_*` e
+  FROM `your-project.analytics_XXXXXXXXX.events_*` e
   WHERE e._TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND e.event_name IN ('view_item', 'add_to_cart', 'begin_checkout', 'purchase')
 )

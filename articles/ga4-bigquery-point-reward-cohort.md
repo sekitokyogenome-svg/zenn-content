@@ -45,7 +45,7 @@ WITH first_purchase AS (
       DATE(TIMESTAMP_MICROS(MIN(event_timestamp)), 'Asia/Tokyo')
     ) AS cohort_month
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250301' AND '20250430'
     AND event_name = 'purchase'
@@ -79,7 +79,7 @@ WITH first_purchase AS (
       DATE(TIMESTAMP_MICROS(MIN(event_timestamp)), 'Asia/Tokyo')
     ) AS cohort_month
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250301' AND '20250430'
     AND event_name = 'purchase'
@@ -95,7 +95,7 @@ subsequent_purchases AS (
       MONTH
     ) AS months_after
   FROM
-    `beeracle.analytics_263425816.events_*` e
+    `your-project.analytics_XXXXXXXXX.events_*` e
   INNER JOIN first_purchase fp
     ON e.user_pseudo_id = fp.user_pseudo_id
   WHERE
@@ -131,7 +131,7 @@ WITH first_purchase AS (
       DATE(TIMESTAMP_MICROS(MIN(event_timestamp)), 'Asia/Tokyo')
     ) AS cohort_month
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250301' AND '20250430'
     AND event_name = 'purchase'
@@ -144,7 +144,7 @@ user_ltv AS (
     COUNT(*) AS purchase_count,
     SUM(e.ecommerce.purchase_revenue) AS total_revenue
   FROM
-    `beeracle.analytics_263425816.events_*` e
+    `your-project.analytics_XXXXXXXXX.events_*` e
   INNER JOIN first_purchase fp
     ON e.user_pseudo_id = fp.user_pseudo_id
   WHERE

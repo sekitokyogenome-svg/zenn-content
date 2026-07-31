@@ -21,9 +21,9 @@ GA4のBigQueryエクスポートテーブルに対してクエリを実行する
 GA4からBigQueryにエクスポートされるデータは、日付別のシャードテーブルとして保存されます。
 
 ```text
-analytics_263425816.events_20250301
-analytics_263425816.events_20250302
-analytics_263425816.events_20250303
+analytics_XXXXXXXXX.events_20250301
+analytics_XXXXXXXXX.events_20250302
+analytics_XXXXXXXXX.events_20250303
 ...
 ```
 
@@ -31,7 +31,7 @@ analytics_263425816.events_20250303
 
 ```sql
 SELECT COUNT(*) AS event_count
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
 ```
 
@@ -61,7 +61,7 @@ GA4のエクスポートテーブルをそのまま使う場合は、`_TABLE_SUF
 staging層やmart層に集計テーブルを作成する場合は、パーティションを設定することでクエリ効率が大きく改善します。
 
 ```sql
-CREATE OR REPLACE TABLE `beeracle.beeracle_mart.mart_daily_sessions`
+CREATE OR REPLACE TABLE `your-project.mart.mart_daily_sessions`
 PARTITION BY event_date
 CLUSTER BY session_medium, device_category
 AS
@@ -72,7 +72,7 @@ SELECT
   IFNULL(collected_traffic_source.manual_medium, '(none)') AS session_medium,
   device.category AS device_category,
   geo.country AS country
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
   AND event_name = 'session_start'
 ```
@@ -94,7 +94,7 @@ GA4データの場合、`event_date` をパーティションキーにするの�
 クラスタリングは、パーティション内でデータをさらに物理的に整列させる仕組みです。最大4つのカラムを指定できます。
 
 ```sql
-CREATE OR REPLACE TABLE `beeracle.beeracle_mart.mart_daily_sessions`
+CREATE OR REPLACE TABLE `your-project.mart.mart_daily_sessions`
 PARTITION BY event_date
 CLUSTER BY session_medium, device_category, country
 AS
@@ -126,12 +126,12 @@ BigQueryではクエリ実行前にスキャン量の見積もりが表示され
 ```sql
 -- BigQueryコンソールで「ドライラン」を有効にして実行
 -- パーティションなしテーブル
-SELECT COUNT(*) FROM `beeracle.beeracle_mart.mart_daily_sessions_no_partition`
+SELECT COUNT(*) FROM `your-project.mart.mart_daily_sessions_no_partition`
 WHERE event_date BETWEEN '2025-03-01' AND '2025-03-07'
   AND session_medium = 'organic'
 
 -- パーティション＋クラスタリングありテーブル
-SELECT COUNT(*) FROM `beeracle.beeracle_mart.mart_daily_sessions`
+SELECT COUNT(*) FROM `your-project.mart.mart_daily_sessions`
 WHERE event_date BETWEEN '2025-03-01' AND '2025-03-07'
   AND session_medium = 'organic'
 ```
@@ -143,7 +143,7 @@ SELECT
   table_name,
   ROUND(total_logical_bytes / POW(1024, 3), 3) AS size_gb,
   ROUND(total_physical_bytes / POW(1024, 3), 3) AS physical_size_gb
-FROM `beeracle.beeracle_mart.INFORMATION_SCHEMA.TABLE_STORAGE`
+FROM `your-project.mart.INFORMATION_SCHEMA.TABLE_STORAGE`
 WHERE table_name LIKE 'mart_daily%'
 ```
 
@@ -160,7 +160,7 @@ GA4データの集計テーブルで使いやすい設計パターンをまと�
 ### パターン1：セッション集計テーブル
 
 ```sql
-CREATE OR REPLACE TABLE `beeracle.beeracle_mart.mart_sessions`
+CREATE OR REPLACE TABLE `your-project.mart.mart_sessions`
 PARTITION BY event_date
 CLUSTER BY session_medium, device_category
 AS
@@ -170,7 +170,7 @@ SELECT
   (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
   IFNULL(collected_traffic_source.manual_medium, '(none)') AS session_medium,
   device.category AS device_category
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
   AND event_name = 'session_start'
 ```
@@ -178,7 +178,7 @@ WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
 ### パターン2：ページビュー集計テーブル
 
 ```sql
-CREATE OR REPLACE TABLE `beeracle.beeracle_mart.mart_page_views`
+CREATE OR REPLACE TABLE `your-project.mart.mart_page_views`
 PARTITION BY event_date
 CLUSTER BY page_path, device_category
 AS
@@ -189,7 +189,7 @@ SELECT
     (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'page_location'),
     r'^https?://[^/]+(/.*)') AS page_path,
   device.category AS device_category
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
   AND event_name = 'page_view'
 ```

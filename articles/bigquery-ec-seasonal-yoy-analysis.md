@@ -39,7 +39,7 @@ WITH monthly_revenue AS (
     EXTRACT(MONTH FROM PARSE_DATE('%Y%m%d', event_date)) AS month,
     SUM(ecommerce.purchase_revenue) AS revenue,
     COUNT(DISTINCT user_pseudo_id) AS purchasers
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'purchase'
     AND ecommerce.purchase_revenue > 0
     AND _TABLE_SUFFIX BETWEEN '20250101' AND '20260331'
@@ -82,7 +82,7 @@ WITH weekly_revenue AS (
         CAST((SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS STRING)
       )
     ) AS purchase_sessions
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'purchase'
     AND ecommerce.purchase_revenue > 0
     AND _TABLE_SUFFIX BETWEEN '20250101' AND '20260331'
@@ -125,7 +125,7 @@ WITH category_monthly AS (
     SUM(
       (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'quantity')
     ) AS quantity
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'purchase'
     AND ecommerce.purchase_revenue > 0
     AND _TABLE_SUFFIX BETWEEN '20250101' AND '20260331'

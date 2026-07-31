@@ -41,7 +41,7 @@ WITH user_type AS (
   SELECT
     user_pseudo_id,
     MAX(CASE WHEN event_name = 'first_visit' THEN 1 ELSE 0 END) AS is_new_user
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
   GROUP BY user_pseudo_id
 )
@@ -67,7 +67,7 @@ WITH first_visit_date AS (
   SELECT
     user_pseudo_id,
     MIN(PARSE_DATE('%Y%m%d', event_date)) AS first_visit_date
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20240101' AND '20250331'
     AND event_name = 'first_visit'
   GROUP BY user_pseudo_id
@@ -76,7 +76,7 @@ WITH first_visit_date AS (
 target_users AS (
   SELECT DISTINCT
     user_pseudo_id
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
 )
 
@@ -105,7 +105,7 @@ WITH first_visit_date AS (
   SELECT
     user_pseudo_id,
     MIN(PARSE_DATE('%Y%m%d', event_date)) AS first_visit_date
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20240101' AND '20250331'
     AND event_name = 'first_visit'
   GROUP BY user_pseudo_id
@@ -121,7 +121,7 @@ sessions AS (
       ELSE 'リピーター'
     END AS user_type,
     e.event_name
-  FROM `beeracle.analytics_263425816.events_*` e
+  FROM `your-project.analytics_XXXXXXXXX.events_*` e
   LEFT JOIN first_visit_date f ON e.user_pseudo_id = f.user_pseudo_id
   WHERE e._TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
 )
@@ -166,7 +166,7 @@ WITH first_visit_date AS (
   SELECT
     user_pseudo_id,
     MIN(PARSE_DATE('%Y%m%d', event_date)) AS first_visit_date
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20240101' AND '20250331'
     AND event_name = 'first_visit'
   GROUP BY user_pseudo_id
@@ -184,7 +184,7 @@ SELECT
     CONCAT(e.user_pseudo_id, '-',
     CAST((SELECT value.int_value FROM UNNEST(e.event_params) WHERE key = 'ga_session_id') AS STRING))
   ) AS sessions
-FROM `beeracle.analytics_263425816.events_*` e
+FROM `your-project.analytics_XXXXXXXXX.events_*` e
 LEFT JOIN first_visit_date f ON e.user_pseudo_id = f.user_pseudo_id
 WHERE e._TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
   AND e.event_name = 'session_start'

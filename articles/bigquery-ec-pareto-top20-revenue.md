@@ -35,7 +35,7 @@ WITH item_revenue AS (
     SUM(items.item_revenue) AS total_revenue,
     COUNT(DISTINCT event_bundle_sequence_id) AS purchase_count
   FROM
-    `beeracle.analytics_263425816.events_*`,
+    `your-project.analytics_XXXXXXXXX.events_*`,
     UNNEST(items) AS items
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
@@ -67,7 +67,7 @@ WITH item_revenue AS (
     items.item_id,
     SUM(items.item_revenue) AS total_revenue
   FROM
-    `beeracle.analytics_263425816.events_*`,
+    `your-project.analytics_XXXXXXXXX.events_*`,
     UNNEST(items) AS items
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
@@ -125,7 +125,7 @@ WITH item_revenue AS (
     items.item_name,
     SUM(items.item_revenue) AS total_revenue
   FROM
-    `beeracle.analytics_263425816.events_*`,
+    `your-project.analytics_XXXXXXXXX.events_*`,
     UNNEST(items) AS items
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'

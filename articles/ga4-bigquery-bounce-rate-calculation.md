@@ -77,7 +77,7 @@ SELECT
   (SELECT value.int_value
    FROM UNNEST(event_params)
    WHERE key = 'engagement_time_msec') AS engagement_time_msec
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
   AND event_name = 'session_start'
 LIMIT 20
@@ -106,7 +106,7 @@ WITH session_engagement AS (
        FROM UNNEST(event_params)
        WHERE key = 'session_engaged')
     ) AS session_engaged
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
   GROUP BY session_id
 )
@@ -141,7 +141,7 @@ WITH session_metrics AS (
          WHERE key = 'engagement_time_msec'), 0)
     ) AS total_engagement_time_msec,
     COUNTIF(event_name = 'page_view') AS page_views
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
   GROUP BY session_id
 )
@@ -188,7 +188,7 @@ WITH session_landing AS (
        FROM UNNEST(event_params)
        WHERE key = 'session_engaged')
     ) AS session_engaged
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
     AND event_name = 'session_start'
   GROUP BY session_id, landing_page
@@ -232,7 +232,7 @@ WITH session_channel AS (
        FROM UNNEST(event_params)
        WHERE key = 'session_engaged')
     ) AS session_engaged
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
     AND event_name = 'session_start'
   GROUP BY session_id, medium
@@ -266,7 +266,7 @@ WITH session_pages AS (
          WHERE key = 'ga_session_id') AS STRING)
     ) AS session_id,
     COUNTIF(event_name = 'page_view') AS page_views
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
   GROUP BY session_id
 )

@@ -60,7 +60,7 @@ WITH sessions AS (
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
     collected_traffic_source.manual_source AS session_source,
     collected_traffic_source.manual_medium AS session_medium
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'session_start'
 ),
@@ -112,7 +112,7 @@ WITH sessions AS (
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
     collected_traffic_source.manual_source AS session_source,
     collected_traffic_source.manual_medium AS session_medium
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'session_start'
     AND collected_traffic_source.manual_source IS NOT NULL
@@ -121,7 +121,7 @@ WITH sessions AS (
 converters AS (
   SELECT DISTINCT
     user_pseudo_id
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'purchase'
 ),
@@ -171,7 +171,7 @@ WITH sessions AS (
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
     collected_traffic_source.manual_source AS session_source,
     collected_traffic_source.manual_medium AS session_medium
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'session_start'
     AND collected_traffic_source.manual_source IS NOT NULL
@@ -179,7 +179,7 @@ WITH sessions AS (
 
 converters AS (
   SELECT DISTINCT user_pseudo_id
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'purchase'
 ),

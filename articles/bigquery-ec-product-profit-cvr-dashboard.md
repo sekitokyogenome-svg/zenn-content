@@ -41,7 +41,7 @@ WITH product_views AS (
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
     (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'item_id') AS item_id,
     (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'item_name') AS item_name
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'view_item'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 ),
@@ -51,7 +51,7 @@ product_purchases AS (
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
     (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'item_id') AS item_id,
     ecommerce.purchase_revenue AS revenue
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'purchase'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
     AND ecommerce.purchase_revenue > 0

@@ -37,7 +37,7 @@ GA4からBigQueryへのエクスポートが停止するトラブルは、運用
 SELECT
   table_id,
   TIMESTAMP_MILLIS(last_modified_time) AS last_modified
-FROM `beeracle.analytics_263425816.__TABLES__`
+FROM `your-project.analytics_XXXXXXXXX.__TABLES__`
 WHERE table_id LIKE 'events_%'
 ORDER BY table_id DESC
 LIMIT 10
@@ -59,7 +59,7 @@ SELECT
   creation_time,
   ROUND(total_rows / 1000, 1) AS rows_k,
   ROUND(total_logical_bytes / POW(1024, 2), 1) AS size_mb
-FROM `beeracle.analytics_263425816.INFORMATION_SCHEMA.TABLE_STORAGE`
+FROM `your-project.analytics_XXXXXXXXX.INFORMATION_SCHEMA.TABLE_STORAGE`
 WHERE table_name LIKE 'events_%'
 ORDER BY table_name DESC
 LIMIT 10
@@ -72,7 +72,7 @@ SELECT
   table_name,
   creation_time,
   TIMESTAMP_DIFF(CURRENT_TIMESTAMP(), creation_time, HOUR) AS hours_ago
-FROM `beeracle.analytics_263425816.INFORMATION_SCHEMA.TABLES`
+FROM `your-project.analytics_XXXXXXXXX.INFORMATION_SCHEMA.TABLES`
 WHERE table_name LIKE 'events_%'
 ORDER BY creation_time DESC
 LIMIT 5
@@ -106,19 +106,19 @@ BigQuery側に問題がなければ、GA4側の設定を確認します。
 ### BigQuery APIの有効化確認
 
 ```bash
-gcloud services list --enabled --project=beeracle | grep bigquery
+gcloud services list --enabled --project=your-project | grep bigquery
 ```
 
 `bigquery.googleapis.com` が表示されなければ、APIが無効化されています。
 
 ```bash
-gcloud services enable bigquery.googleapis.com --project=beeracle
+gcloud services enable bigquery.googleapis.com --project=your-project
 ```
 
 ### 課金アカウントの確認
 
 ```bash
-gcloud billing projects describe beeracle
+gcloud billing projects describe your-project
 ```
 
 `billingEnabled: true` であることを確認します。課金が無効だとエクスポートが停止します。
@@ -128,7 +128,7 @@ gcloud billing projects describe beeracle
 GA4からBigQueryへのエクスポートには、Firebase用のサービスアカウントに `BigQuery データ編集者` ロールが必要です。
 
 ```bash
-gcloud projects get-iam-policy beeracle \
+gcloud projects get-iam-policy your-project \
   --flatten="bindings[].members" \
   --format="table(bindings.role, bindings.members)" \
   --filter="bindings.role:bigquery"
@@ -182,7 +182,7 @@ SELECT
     WHEN COUNT(*) = 0
     THEN ERROR(CONCAT('GA4エクスポートテーブルが見つかりません: events_', yesterday))
   END
-FROM `beeracle.analytics_263425816.__TABLES__`
+FROM `your-project.analytics_XXXXXXXXX.__TABLES__`
 WHERE table_id = CONCAT('events_', yesterday)
 ```
 
