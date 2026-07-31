@@ -44,7 +44,7 @@ WITH session_base AS (
     event_name,
     event_timestamp,
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'engagement_time_msec') AS engagement_time_msec
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND collected_traffic_source.manual_medium = 'social'
 ),
@@ -112,7 +112,7 @@ Instagramからの流入はセッション数こそ少ないものの、エン�
 WITH sns_users AS (
   -- SNS経由で訪問したことがあるユーザー
   SELECT DISTINCT user_pseudo_id, collected_traffic_source.manual_source AS first_sns
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND collected_traffic_source.manual_medium = 'social'
     AND event_name = 'session_start'
@@ -121,7 +121,7 @@ WITH sns_users AS (
 purchasers AS (
   -- 購入したユーザー
   SELECT DISTINCT user_pseudo_id
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'purchase'
 )

@@ -60,7 +60,7 @@ WITH ad_sessions AS (
     (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'content') AS content,
     event_name,
     event_date
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
     AND collected_traffic_source.manual_source = 'facebook'
     AND collected_traffic_source.manual_medium = 'paid_social'
@@ -92,7 +92,7 @@ WITH meta_sessions AS (
     (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'content') AS creative_name,
     event_name,
     ecommerce.purchase_revenue AS revenue
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
     AND collected_traffic_source.manual_source = 'facebook'
     AND collected_traffic_source.manual_medium = 'paid_social'

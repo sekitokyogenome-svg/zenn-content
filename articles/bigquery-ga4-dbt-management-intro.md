@@ -60,8 +60,8 @@ ga4_analytics:
     dev:
       type: bigquery
       method: oauth
-      project: beeracle
-      dataset: beeracle_staging
+      project: your-project
+      dataset: staging
       location: asia-northeast1
       threads: 4
 ```
@@ -107,8 +107,8 @@ version: 2
 
 sources:
   - name: ga4_raw
-    database: beeracle
-    schema: analytics_263425816
+    database: your-project
+    schema: analytics_XXXXXXXXX
     tables:
       - name: events
         identifier: "events_*"

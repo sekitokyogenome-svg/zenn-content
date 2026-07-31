@@ -30,7 +30,7 @@ WITH session_data AS (
     device.category AS device_category,
     event_name,
     ecommerce.purchase_revenue AS revenue
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
 ),
 
@@ -101,7 +101,7 @@ WITH session_data AS (
     geo.region AS region,
     event_name,
     ecommerce.purchase_revenue AS revenue
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND geo.country = 'Japan'
 ),
@@ -153,7 +153,7 @@ WITH session_data AS (
     EXTRACT(DAYOFWEEK FROM TIMESTAMP_ADD(TIMESTAMP_MICROS(event_timestamp), INTERVAL 9 HOUR)) AS dow,
     event_name,
     ecommerce.purchase_revenue AS revenue
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
 ),
 

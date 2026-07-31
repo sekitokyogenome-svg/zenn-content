@@ -48,7 +48,7 @@ WITH session_pages AS (
        FROM UNNEST(event_params)
        WHERE key = 'page_location'),
       r'https?://[^/]+(/.*)') AS page_path
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
     AND event_name = 'page_view'
 )
@@ -98,7 +98,7 @@ WITH all_events AS (
        FROM UNNEST(event_params)
        WHERE key = 'page_location'),
       r'https?://[^/]+(/.*)') AS page_path
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
 ),
 cv_sessions AS (
@@ -146,7 +146,7 @@ WITH all_events AS (
        FROM UNNEST(event_params)
        WHERE key = 'page_location'),
       r'https?://[^/]+(/.*)') AS page_path
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
 ),
 cv_sessions AS (
@@ -206,7 +206,7 @@ WITH session_first_page AS (
              WHERE key = 'ga_session_id') AS STRING))
       ORDER BY event_timestamp
     ) AS rn
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
     AND event_name = 'page_view'
 ),
@@ -219,7 +219,7 @@ cv_sessions AS (
          FROM UNNEST(event_params)
          WHERE key = 'ga_session_id') AS STRING)
     ) AS session_id
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
     AND event_name = 'purchase'
 )
@@ -266,7 +266,7 @@ WITH session_last_page AS (
              WHERE key = 'ga_session_id') AS STRING))
       ORDER BY event_timestamp DESC
     ) AS rn
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
     AND event_name = 'page_view'
 ),
@@ -279,7 +279,7 @@ cv_sessions AS (
          FROM UNNEST(event_params)
          WHERE key = 'ga_session_id') AS STRING)
     ) AS session_id
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
     AND event_name = 'purchase'
 )

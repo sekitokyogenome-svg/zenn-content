@@ -41,7 +41,7 @@ SELECT
   event_timestamp,
   (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'button_variant') AS button_variant,
   (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'form_step') AS form_step
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
   AND event_name = 'click'
 ```
@@ -77,7 +77,7 @@ SELECT
   user_pseudo_id,
   (SELECT value.string_value FROM UNNEST(user_properties) WHERE key = 'membership_tier') AS membership_tier,
   (SELECT value.string_value FROM UNNEST(user_properties) WHERE key = 'signup_method') AS signup_method
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
   AND event_name = 'session_start'
 ```
@@ -98,7 +98,7 @@ WITH latest_properties AS (
       PARTITION BY user_pseudo_id, prop.key
       ORDER BY prop.value.set_timestamp_micros DESC
     ) AS rn
-  FROM `beeracle.analytics_263425816.events_*`,
+  FROM `your-project.analytics_XXXXXXXXX.events_*`,
     UNNEST(user_properties) AS prop
   WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
     AND prop.key = 'membership_tier'
@@ -123,7 +123,7 @@ WITH ab_sessions AS (
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
     (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'ab_variant') AS ab_variant,
     event_name
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
 )
 
@@ -154,7 +154,7 @@ WITH user_tier AS (
   SELECT
     user_pseudo_id,
     (SELECT value.string_value FROM UNNEST(user_properties) WHERE key = 'membership_tier') AS membership_tier
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
     AND event_name = 'session_start'
     AND (SELECT value.string_value FROM UNNEST(user_properties) WHERE key = 'membership_tier') IS NOT NULL
@@ -166,7 +166,7 @@ user_events AS (
     t.membership_tier,
     e.event_name,
     (SELECT value.int_value FROM UNNEST(e.event_params) WHERE key = 'ga_session_id') AS ga_session_id
-  FROM `beeracle.analytics_263425816.events_*` e
+  FROM `your-project.analytics_XXXXXXXXX.events_*` e
   INNER JOIN user_tier t ON e.user_pseudo_id = t.user_pseudo_id
   WHERE e._TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
 )
@@ -198,7 +198,7 @@ SELECT
   COUNTIF(ep.value.string_value IS NOT NULL) AS has_string,
   COUNTIF(ep.value.int_value IS NOT NULL) AS has_int,
   COUNTIF(ep.value.float_value IS NOT NULL) AS has_float
-FROM `beeracle.analytics_263425816.events_*`,
+FROM `your-project.analytics_XXXXXXXXX.events_*`,
   UNNEST(event_params) AS ep
 WHERE _TABLE_SUFFIX = '20250330'
 GROUP BY ep.key
@@ -213,7 +213,7 @@ SELECT
   COUNT(*) AS occurrences,
   COUNTIF(prop.value.string_value IS NOT NULL) AS has_string,
   COUNTIF(prop.value.int_value IS NOT NULL) AS has_int
-FROM `beeracle.analytics_263425816.events_*`,
+FROM `your-project.analytics_XXXXXXXXX.events_*`,
   UNNEST(user_properties) AS prop
 WHERE _TABLE_SUFFIX = '20250330'
 GROUP BY prop.key

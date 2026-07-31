@@ -34,7 +34,7 @@ WITH user_demographics AS (
     MAX((SELECT value.string_value FROM UNNEST(user_properties) WHERE key = 'age')) AS age_bracket,
     MAX((SELECT value.string_value FROM UNNEST(user_properties) WHERE key = 'gender')) AS gender
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
   GROUP BY user_pseudo_id
@@ -61,7 +61,7 @@ WITH user_demo AS (
     MAX((SELECT value.string_value FROM UNNEST(user_properties) WHERE key = 'age')) AS age_bracket,
     MAX((SELECT value.string_value FROM UNNEST(user_properties) WHERE key = 'gender')) AS gender
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
   GROUP BY user_pseudo_id
@@ -89,7 +89,7 @@ WITH user_demo AS (
     MAX((SELECT value.string_value FROM UNNEST(user_properties) WHERE key = 'age')) AS age_bracket,
     MAX((SELECT value.string_value FROM UNNEST(user_properties) WHERE key = 'gender')) AS gender
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
   GROUP BY user_pseudo_id
@@ -100,7 +100,7 @@ user_purchases AS (
     COUNT(*) AS purchase_count,
     SUM(ecommerce.purchase_revenue) AS total_revenue
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
     AND event_name = 'purchase'
@@ -132,7 +132,7 @@ WITH user_demo AS (
     user_pseudo_id,
     MAX((SELECT value.string_value FROM UNNEST(user_properties) WHERE key = 'age')) AS age_bracket
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
   GROUP BY user_pseudo_id
@@ -143,7 +143,7 @@ user_purchases AS (
     COUNT(*) AS purchase_count,
     SUM(ecommerce.purchase_revenue) AS total_revenue
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
     AND event_name = 'purchase'
@@ -205,9 +205,9 @@ SELECT
   COUNT(DISTINCT CASE WHEN ga.event_name = 'purchase' THEN ga.event_bundle_sequence_id END) AS purchases,
   SUM(CASE WHEN ga.event_name = 'purchase' THEN ga.ecommerce.purchase_revenue END) AS total_revenue
 FROM
-  `beeracle.analytics_263425816.events_*` ga
+  `your-project.analytics_XXXXXXXXX.events_*` ga
 INNER JOIN
-  `beeracle.crm.members` crm
+  `your-project.crm.members` crm
   ON ga.user_id = crm.user_id
 WHERE
   ga._TABLE_SUFFIX BETWEEN '20250101' AND '20251231'

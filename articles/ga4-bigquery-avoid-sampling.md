@@ -73,7 +73,7 @@ SELECT
          WHERE key = 'ga_session_id') AS STRING)
     )
   ) AS sessions
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
   AND event_name = 'session_start'
 GROUP BY event_date, medium
@@ -104,7 +104,7 @@ SELECT
     DATE(TIMESTAMP_MICROS(event_timestamp), 'Asia/Tokyo')
   ) AS event_date_jst,
   COUNT(*) AS event_count
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
 GROUP BY event_date_jst
 ORDER BY event_date_jst
@@ -124,11 +124,11 @@ BigQueryは従量課金なので、100%データで分析できる一方、コ�
 
 ```sql
 -- 良い例：必要な期間だけスキャン
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
 
 -- 悪い例：全期間スキャン（コスト大）
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 ```
 
 ### 必要なカラムだけSELECTする
@@ -136,12 +136,12 @@ FROM `beeracle.analytics_263425816.events_*`
 ```sql
 -- 良い例：必要なカラムだけ取得
 SELECT event_date, event_name, user_pseudo_id
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX = '20260330'
 
 -- 悪い例：全カラム取得（コスト大）
 SELECT *
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX = '20260330'
 ```
 

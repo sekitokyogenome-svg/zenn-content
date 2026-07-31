@@ -43,7 +43,7 @@ Scheduled Queriesを使うには、BigQuery Data Transfer APIの有効化が必�
 -- 日次実行：前日分のセッション集計をmart_daily_sessionsに追記
 DECLARE target_date STRING DEFAULT FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY));
 
-CREATE TABLE IF NOT EXISTS `beeracle.beeracle_mart.mart_daily_sessions` (
+CREATE TABLE IF NOT EXISTS `your-project.mart.mart_daily_sessions` (
   event_date DATE,
   medium STRING,
   device_category STRING,
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `beeracle.beeracle_mart.mart_daily_sessions` (
 PARTITION BY event_date
 CLUSTER BY medium, device_category;
 
-MERGE `beeracle.beeracle_mart.mart_daily_sessions` AS target
+MERGE `your-project.mart.mart_daily_sessions` AS target
 USING (
   SELECT
     PARSE_DATE('%Y%m%d', event_date) AS event_date,
@@ -78,7 +78,7 @@ USING (
         )
       ) * 100, 2
     ) AS cvr_pct
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX = target_date
     AND event_name IN ('session_start', 'page_view', 'purchase')
   GROUP BY event_date, medium, device_category
@@ -115,7 +115,7 @@ WHEN NOT MATCHED THEN
 DECLARE week_start DATE DEFAULT DATE_TRUNC(DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY), WEEK(MONDAY));
 DECLARE week_end DATE DEFAULT DATE_ADD(week_start, INTERVAL 6 DAY);
 
-CREATE TABLE IF NOT EXISTS `beeracle.beeracle_mart.mart_weekly_summary` (
+CREATE TABLE IF NOT EXISTS `your-project.mart.mart_weekly_summary` (
   week_start_date DATE,
   medium STRING,
   sessions INT64,
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `beeracle.beeracle_mart.mart_weekly_summary` (
 PARTITION BY week_start_date
 CLUSTER BY medium;
 
-MERGE `beeracle.beeracle_mart.mart_weekly_summary` AS target
+MERGE `your-project.mart.mart_weekly_summary` AS target
 USING (
   SELECT
     week_start AS week_start_date,
@@ -146,7 +146,7 @@ USING (
         )
       ) * 100, 2
     ) AS cvr_pct
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN FORMAT_DATE('%Y%m%d', week_start) AND FORMAT_DATE('%Y%m%d', week_end)
     AND event_name IN ('session_start', 'page_view', 'purchase')
   GROUP BY medium
@@ -175,7 +175,7 @@ WHEN NOT MATCHED THEN
 DECLARE month_start DATE DEFAULT DATE_TRUNC(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH), MONTH);
 DECLARE month_end DATE DEFAULT LAST_DAY(month_start);
 
-CREATE TABLE IF NOT EXISTS `beeracle.beeracle_mart.mart_monthly_summary` (
+CREATE TABLE IF NOT EXISTS `your-project.mart.mart_monthly_summary` (
   month_start_date DATE,
   medium STRING,
   sessions INT64,
@@ -187,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `beeracle.beeracle_mart.mart_monthly_summary` (
 PARTITION BY month_start_date
 CLUSTER BY medium;
 
-MERGE `beeracle.beeracle_mart.mart_monthly_summary` AS target
+MERGE `your-project.mart.mart_monthly_summary` AS target
 USING (
   SELECT
     month_start AS month_start_date,
@@ -208,7 +208,7 @@ USING (
         )
       ) * 100, 2
     ) AS cvr_pct
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN FORMAT_DATE('%Y%m%d', month_start) AND FORMAT_DATE('%Y%m%d', month_end)
     AND event_name IN ('session_start', 'page_view', 'purchase', 'first_visit')
   GROUP BY medium
@@ -246,9 +246,9 @@ WHEN NOT MATCHED THEN
 
 ```bash
 bq mk --transfer_config \
-  --project_id=beeracle \
+  --project_id=your-project \
   --data_source=scheduled_query \
-  --target_dataset=beeracle_mart \
+  --target_dataset=mart \
   --display_name="日次セッション集計" \
   --schedule="every day 21:00" \
   --params='{"query":"<SQL文>","write_disposition":"WRITE_APPEND"}'
@@ -271,7 +271,7 @@ GA4の日次エクスポートが遅延すると、スケジュールクエリ�
 DECLARE target_date STRING DEFAULT FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY));
 
 -- テーブルが存在するか確認
-IF (SELECT COUNT(*) FROM `beeracle.analytics_263425816.__TABLES__` WHERE table_id = CONCAT('events_', target_date)) = 0 THEN
+IF (SELECT COUNT(*) FROM `your-project.analytics_XXXXXXXXX.__TABLES__` WHERE table_id = CONCAT('events_', target_date)) = 0 THEN
   SELECT ERROR(CONCAT('テーブル events_', target_date, ' が存在しません'));
 END IF;
 

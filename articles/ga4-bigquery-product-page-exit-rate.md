@@ -40,7 +40,7 @@ WITH session_pages AS (
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
     (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'page_location') AS page_location,
     event_timestamp
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'page_view'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 ),
@@ -90,7 +90,7 @@ WITH session_source AS (
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
     collected_traffic_source.manual_source AS source,
     collected_traffic_source.manual_medium AS medium
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'session_start'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 ),

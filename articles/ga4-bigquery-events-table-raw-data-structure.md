@@ -21,9 +21,9 @@ GA4のBigQueryエクスポートは、1イベント1行のフラットなCSVで�
 GA4のBigQueryエクスポートでは、`analytics_XXXXXXXXX` データセットの中に日付別のテーブルが自動生成されます。
 
 ```text
-analytics_263425816.events_20260101
-analytics_263425816.events_20260102
-analytics_263425816.events_20260103
+analytics_XXXXXXXXX.events_20260101
+analytics_XXXXXXXXX.events_20260102
+analytics_XXXXXXXXX.events_20260103
 ...
 ```
 
@@ -103,7 +103,7 @@ SELECT
   (SELECT value.int_value
    FROM UNNEST(event_params)
    WHERE key = 'engagement_time_msec') AS engagement_time_msec
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
   AND event_name = 'page_view'
 LIMIT 100
@@ -129,7 +129,7 @@ SELECT
   (SELECT value.string_value
    FROM UNNEST(user_properties)
    WHERE key = 'membership_level') AS membership_level
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
   AND event_name = 'session_start'
 ```
@@ -153,7 +153,7 @@ SELECT
   items.item_category,
   items.price,
   items.quantity
-FROM `beeracle.analytics_263425816.events_*`,
+FROM `your-project.analytics_XXXXXXXXX.events_*`,
   UNNEST(items) AS items
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
   AND event_name = 'purchase'
@@ -186,7 +186,7 @@ GA4が自動で収集するパラメータのうち、分析で特に重要な�
 
 ```sql
 -- 2026年3月のデータだけをスキャン
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 ```
 

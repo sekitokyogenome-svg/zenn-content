@@ -45,7 +45,7 @@ WITH purchases AS (
     PARSE_DATE('%Y%m%d', event_date) AS purchase_date,
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
     ecommerce.purchase_revenue AS revenue
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'purchase'
     AND _TABLE_SUFFIX BETWEEN '20250401' AND '20260331'
     AND ecommerce.purchase_revenue > 0

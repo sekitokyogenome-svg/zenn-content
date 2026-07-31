@@ -35,7 +35,7 @@ WITH purchase_counts AS (
   SELECT
     user_pseudo_id,
     COUNT(*) AS purchase_count
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'purchase'
   GROUP BY user_pseudo_id
@@ -67,7 +67,7 @@ WITH purchase_counts AS (
   SELECT
     user_pseudo_id,
     COUNT(*) AS purchase_count
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'purchase'
   GROUP BY user_pseudo_id
@@ -90,7 +90,7 @@ first_sessions AS (
       PARTITION BY e.user_pseudo_id
       ORDER BY e.event_timestamp
     ) AS event_seq
-  FROM `beeracle.analytics_263425816.events_*` e
+  FROM `your-project.analytics_XXXXXXXXX.events_*` e
   INNER JOIN buyer_type bt ON e.user_pseudo_id = bt.user_pseudo_id
   WHERE e._TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
 ),
@@ -158,7 +158,7 @@ WITH purchase_counts AS (
   SELECT
     user_pseudo_id,
     COUNT(*) AS purchase_count
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'purchase'
   GROUP BY user_pseudo_id
@@ -177,7 +177,7 @@ first_touch AS (
     collected_traffic_source.manual_source AS source,
     collected_traffic_source.manual_medium AS medium,
     ROW_NUMBER() OVER(PARTITION BY e.user_pseudo_id ORDER BY e.event_timestamp) AS rn
-  FROM `beeracle.analytics_263425816.events_*` e
+  FROM `your-project.analytics_XXXXXXXXX.events_*` e
   INNER JOIN buyer_type bt ON e.user_pseudo_id = bt.user_pseudo_id
   WHERE e._TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND e.event_name = 'session_start'

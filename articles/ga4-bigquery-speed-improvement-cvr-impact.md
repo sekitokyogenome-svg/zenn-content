@@ -62,7 +62,7 @@ WITH web_vitals AS (
     DATE(TIMESTAMP_MICROS(event_timestamp), 'Asia/Tokyo') AS event_date,
     device.category AS device_category
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
     AND event_name = 'web_vitals'
@@ -95,7 +95,7 @@ WITH user_lcp AS (
       100
     )[OFFSET(50)] AS median_lcp
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
     AND event_name = 'web_vitals'
@@ -107,7 +107,7 @@ user_conversions AS (
     user_pseudo_id,
     COUNTIF(event_name = 'purchase') AS purchases
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
   GROUP BY user_pseudo_id
@@ -157,7 +157,7 @@ WITH period_metrics AS (
     (SELECT value.double_value FROM UNNEST(event_params) WHERE key = 'metric_value') AS lcp_value,
     (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'metric_name') AS metric_name
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250601' AND '20250831'
     AND (
@@ -220,7 +220,7 @@ WITH device_performance AS (
     END AS lcp_status,
     user_pseudo_id
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
     AND event_name = 'web_vitals'
@@ -231,7 +231,7 @@ device_conversions AS (
     user_pseudo_id,
     1 AS converted
   FROM
-    `beeracle.analytics_263425816.events_*`
+    `your-project.analytics_XXXXXXXXX.events_*`
   WHERE
     _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
     AND event_name = 'purchase'

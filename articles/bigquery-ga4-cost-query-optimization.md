@@ -40,7 +40,7 @@ BigQueryには毎月1TBの無料クエリ枠があります。個人サイトや
 ```sql
 -- 悪い例：全期間のテーブルをスキャン
 SELECT event_date, COUNT(*) AS events
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 GROUP BY event_date
 ORDER BY event_date
 ```
@@ -50,7 +50,7 @@ ORDER BY event_date
 ```sql
 -- 良い例：必要な期間だけスキャン
 SELECT event_date, COUNT(*) AS events
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
 GROUP BY event_date
 ORDER BY event_date
@@ -61,7 +61,7 @@ ORDER BY event_date
 ```sql
 -- 悪い例：全カラムをスキャン
 SELECT *
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX = '20260330'
 LIMIT 100
 ```
@@ -71,7 +71,7 @@ BigQueryはカラム指向ストレージです。`SELECT *` は使わないカ�
 ```sql
 -- 良い例：必要なカラムだけ指定
 SELECT event_date, event_name, user_pseudo_id
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX = '20260330'
 LIMIT 100
 ```
@@ -90,7 +90,7 @@ LIMIT 100
 
 ```sql
 -- 直近7日間だけスキャン
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN
   FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE('Asia/Tokyo'), INTERVAL 7 DAY))
   AND FORMAT_DATE('%Y%m%d', CURRENT_DATE('Asia/Tokyo'))
@@ -108,7 +108,7 @@ SELECT
   (SELECT value.int_value
    FROM UNNEST(event_params)
    WHERE key = 'ga_session_id') AS ga_session_id
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX = '20260330'
 ```
 
@@ -118,7 +118,7 @@ WHERE _TABLE_SUFFIX = '20260330'
 
 ```sql
 -- 中間テーブルとして保存
-CREATE OR REPLACE TABLE `beeracle.beeracle_staging.sessions_202603` AS
+CREATE OR REPLACE TABLE `your-project.staging.sessions_202603` AS
 SELECT
   event_date,
   CONCAT(
@@ -131,7 +131,7 @@ SELECT
   user_pseudo_id,
   collected_traffic_source.manual_source AS source,
   collected_traffic_source.manual_medium AS medium
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
   AND event_name = 'session_start'
 ```
@@ -164,7 +164,7 @@ GA4のエクスポートテーブルは日付別テーブル（シャーディ�
 テーブルを特定のカラム（通常は日付）で物理的に分割します。クエリ時にパーティションフィルタを使えば、該当パーティションだけがスキャンされます。
 
 ```sql
-CREATE OR REPLACE TABLE `beeracle.beeracle_staging.sessions_partitioned`
+CREATE OR REPLACE TABLE `your-project.staging.sessions_partitioned`
 PARTITION BY event_date_parsed
 CLUSTER BY medium
 AS
@@ -179,7 +179,7 @@ SELECT
   ) AS session_id,
   collected_traffic_source.manual_medium AS medium,
   user_pseudo_id
-FROM `beeracle.analytics_263425816.events_*`
+FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260101' AND '20260330'
   AND event_name = 'session_start'
 ```
@@ -203,7 +203,7 @@ SELECT
   _TABLE_SUFFIX AS table_date,
   COUNT(*) AS row_count,
   SUM(OCTET_LENGTH(TO_JSON_STRING(t))) / 1024 / 1024 AS approx_mb
-FROM `beeracle.analytics_263425816.events_*` t
+FROM `your-project.analytics_XXXXXXXXX.events_*` t
 WHERE _TABLE_SUFFIX = '20260330'
 GROUP BY table_date
 ```

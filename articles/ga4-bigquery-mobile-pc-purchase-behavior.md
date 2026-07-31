@@ -26,7 +26,7 @@ WITH sessions AS (
     user_pseudo_id,
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
     device.category AS device_category
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'session_start'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 ),
@@ -34,7 +34,7 @@ purchases AS (
   SELECT DISTINCT
     user_pseudo_id,
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'purchase'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 )
@@ -79,7 +79,7 @@ WITH funnel_events AS (
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
     device.category AS device_category,
     event_name
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE event_name IN ('view_item', 'add_to_cart', 'begin_checkout', 'purchase')
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 )
@@ -131,7 +131,7 @@ WITH cart_users AS (
   SELECT
     user_pseudo_id,
     MIN(event_timestamp) AS cart_time
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'add_to_cart'
     AND device.category = 'mobile'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
@@ -141,7 +141,7 @@ purchase_users AS (
   SELECT
     user_pseudo_id,
     MIN(event_timestamp) AS purchase_time
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE event_name = 'purchase'
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
   GROUP BY user_pseudo_id
@@ -208,7 +208,7 @@ WITH cross_device AS (
     user_id,
     device.category AS device_category,
     event_name
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE event_name IN ('add_to_cart', 'purchase')
     AND user_id IS NOT NULL
     AND _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'

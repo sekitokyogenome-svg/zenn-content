@@ -78,7 +78,7 @@ Claude Codeには以下のように伝えるだけです。
 ```text
 BigQueryのGA4データから、先月の広告チャネル別（google/cpc, yahoo/cpc, meta/cpcなど）の
 セッション数、コンバージョン数、売上合計を集計してください。
-テーブルはbeeracle.beeracle_mart.mart_channel_performanceを使ってください。
+テーブルはyour-project.mart.mart_channel_performanceを使ってください。
 ```
 
 約30秒でSQLが生成され、実行結果まで返ってきました。あとはこの数字に広告費データを合わせてROASを計算するだけです。

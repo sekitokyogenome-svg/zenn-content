@@ -34,14 +34,14 @@ BigQuery ML（BQML）は、BigQuery上でSQLを使って機械学習モデルを
 まず、予測モデルのインプットとなる日別売上データを用意します。
 
 ```sql
-CREATE OR REPLACE TABLE `beeracle.beeracle_mart.daily_sales` AS
+CREATE OR REPLACE TABLE `your-project.mart.daily_sales` AS
 SELECT
   DATE(TIMESTAMP_MICROS(event_timestamp), 'Asia/Tokyo') AS sale_date,
   SUM(ecommerce.purchase_revenue) AS daily_revenue,
   COUNT(DISTINCT user_pseudo_id) AS unique_buyers,
   COUNT(*) AS transaction_count
 FROM
-  `beeracle.analytics_263425816.events_*`
+  `your-project.analytics_XXXXXXXXX.events_*`
 WHERE
   _TABLE_SUFFIX BETWEEN '20240101' AND '20251231'
   AND event_name = 'purchase'
@@ -57,7 +57,7 @@ ORDER BY sale_date
 ARIMA_PLUSは、BigQuery MLが提供する時系列予測モデルです。トレンド・季節性・祝日効果を自動的に検出してモデルに組み込みます。
 
 ```sql
-CREATE OR REPLACE MODEL `beeracle.beeracle_mart.sales_forecast_model`
+CREATE OR REPLACE MODEL `your-project.mart.sales_forecast_model`
 OPTIONS (
   model_type = 'ARIMA_PLUS',
   time_series_timestamp_col = 'sale_date',
@@ -70,7 +70,7 @@ SELECT
   sale_date,
   daily_revenue
 FROM
-  `beeracle.beeracle_mart.daily_sales`
+  `your-project.mart.daily_sales`
 WHERE
   sale_date BETWEEN '2024-01-01' AND '2025-12-31'
 ```
@@ -89,7 +89,7 @@ WHERE
 SELECT
   *
 FROM
-  ML.ARIMA_EVALUATE(MODEL `beeracle.beeracle_mart.sales_forecast_model`)
+  ML.ARIMA_EVALUATE(MODEL `your-project.mart.sales_forecast_model`)
 ```
 
 主要な評価指標の意味は以下の通りです。
@@ -113,7 +113,7 @@ SELECT
   prediction_interval_upper_bound AS upper_bound
 FROM
   ML.FORECAST(
-    MODEL `beeracle.beeracle_mart.sales_forecast_model`,
+    MODEL `your-project.mart.sales_forecast_model`,
     STRUCT(90 AS horizon, 0.95 AS confidence_level)
   )
 ORDER BY forecast_timestamp
@@ -127,7 +127,7 @@ ORDER BY forecast_timestamp
 
 ```sql
 -- 学習用モデル（バックテスト用）
-CREATE OR REPLACE MODEL `beeracle.beeracle_mart.sales_forecast_backtest`
+CREATE OR REPLACE MODEL `your-project.mart.sales_forecast_backtest`
 OPTIONS (
   model_type = 'ARIMA_PLUS',
   time_series_timestamp_col = 'sale_date',
@@ -137,7 +137,7 @@ OPTIONS (
   holiday_region = 'JP'
 ) AS
 SELECT sale_date, daily_revenue
-FROM `beeracle.beeracle_mart.daily_sales`
+FROM `your-project.mart.daily_sales`
 WHERE sale_date BETWEEN '2024-01-01' AND '2025-09-30';
 
 -- 予測と実績の比較
@@ -146,7 +146,7 @@ WITH forecast AS (
     forecast_timestamp AS predicted_date,
     forecast_value AS predicted_revenue
   FROM ML.FORECAST(
-    MODEL `beeracle.beeracle_mart.sales_forecast_backtest`,
+    MODEL `your-project.mart.sales_forecast_backtest`,
     STRUCT(92 AS horizon, 0.95 AS confidence_level)
   )
 ),
@@ -154,7 +154,7 @@ actual AS (
   SELECT
     sale_date,
     daily_revenue AS actual_revenue
-  FROM `beeracle.beeracle_mart.daily_sales`
+  FROM `your-project.mart.daily_sales`
   WHERE sale_date BETWEEN '2025-10-01' AND '2025-12-31'
 )
 SELECT
@@ -173,7 +173,7 @@ ORDER BY a.sale_date
 季節性に加えて、曜日や広告出稿量などの外部要因を考慮したい場合は、線形回帰モデルも選択肢になります。
 
 ```sql
-CREATE OR REPLACE MODEL `beeracle.beeracle_mart.sales_linear_model`
+CREATE OR REPLACE MODEL `your-project.mart.sales_linear_model`
 OPTIONS (
   model_type = 'LINEAR_REG',
   input_label_cols = ['daily_revenue']
@@ -188,7 +188,7 @@ SELECT
   END AS is_peak_season,
   unique_buyers,
   transaction_count
-FROM `beeracle.beeracle_mart.daily_sales`
+FROM `your-project.mart.daily_sales`
 WHERE sale_date BETWEEN '2024-01-01' AND '2025-12-31'
 ```
 

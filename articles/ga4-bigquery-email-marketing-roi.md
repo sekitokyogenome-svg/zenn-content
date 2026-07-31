@@ -48,7 +48,7 @@ WITH email_sessions AS (
     event_name,
     event_timestamp,
     ecommerce.purchase_revenue AS revenue
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND collected_traffic_source.manual_medium = 'email'
 )
@@ -83,7 +83,7 @@ WITH email_clicks AS (
     user_pseudo_id,
     collected_traffic_source.manual_campaign AS campaign,
     MIN(TIMESTAMP_MICROS(event_timestamp)) AS email_click_time
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND collected_traffic_source.manual_medium = 'email'
     AND event_name = 'session_start'
@@ -95,7 +95,7 @@ purchases AS (
     user_pseudo_id,
     TIMESTAMP_MICROS(event_timestamp) AS purchase_time,
     ecommerce.purchase_revenue AS revenue
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND event_name = 'purchase'
 )
@@ -146,7 +146,7 @@ email_revenue AS (
   SELECT
     collected_traffic_source.manual_campaign AS campaign,
     SUM(ecommerce.purchase_revenue) AS revenue
-  FROM `beeracle.analytics_263425816.events_*`
+  FROM `your-project.analytics_XXXXXXXXX.events_*`
   WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
     AND collected_traffic_source.manual_medium = 'email'
     AND event_name = 'purchase'
