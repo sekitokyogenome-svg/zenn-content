@@ -149,22 +149,72 @@ PROJECT_ID=your-project
 gcloud services enable dataplex.googleapis.com --project="$PROJECT_ID"
 ```
 
-そのうえで、テーブルやカラムに説明を付けていきます。既存のテーブルに対しては、BigQuery の description から着手するのが現実的です。
+そのうえで、テーブルやカラムに説明を付けていきます。既存のオブジェクトに対しては、BigQuery の description から着手するのが現実的です。
+
+:::message alert
+**ここで最初に確認すべきは「対象がテーブルかビューか」です。** DDL が変わるうえ、ビューには列 description を `ALTER` で付けられません。raw → staging → mart の3層設計を採っていると、mart 層は**ビュー**であることが多いので、ここを踏まないと最初のクエリで詰まります。
+:::
+
+まず対象の種別を確認します。
 
 ```sql
--- テーブルの説明
+SELECT table_name, table_type
+FROM `your-project.mart.INFORMATION_SCHEMA.TABLES`
+ORDER BY table_name;
+```
+
+`BASE TABLE` か `VIEW` かで、以下のように分岐します。
+
+| 対象 | 表の description | 列の description |
+|---|---|---|
+| テーブル（`BASE TABLE`） | `ALTER TABLE ... SET OPTIONS` | `ALTER TABLE ... ALTER COLUMN ... SET OPTIONS` |
+| ビュー（`VIEW`） | `ALTER VIEW ... SET OPTIONS` | **`ALTER` では設定できない**。ビュー再作成が必要 |
+
+### テーブルの場合
+
+```sql
+-- 表の説明
 ALTER TABLE `your-project.mart.mart_daily_sales`
 SET OPTIONS (
   description = '日次の確定売上。税抜き・送料除く。キャンセルは当月発生分のみ控除。毎朝5時に前日分が確定する。速報値が必要な場合も stg_orders は使わないこと。'
 );
 
--- カラムの説明
+-- 列の説明
 ALTER TABLE `your-project.mart.mart_daily_sales`
 ALTER COLUMN channel
 SET OPTIONS (
   description = '流入チャネル。organic=自然検索(指名検索含む), paid=運用型広告, direct=参照元なし(アプリ内ブラウザ経由を含むため過大評価傾向), referral=外部サイト'
 );
 ```
+
+### ビューの場合
+
+表の description は `ALTER VIEW` で付きます。ここは1文で済みます。
+
+```sql
+ALTER VIEW `your-project.mart.mart_daily_sales`
+SET OPTIONS (
+  description = '1行=1日の確定売上。税抜き・送料除く。キャンセルは当月発生分のみ控除。毎朝5時に前日分が確定する。速報値が必要な場合も stg_orders は使わないこと。'
+);
+```
+
+列の description は `ALTER` では付けられません。**ビュー定義の列リストに `OPTIONS` を書いて作り直す**必要があります。
+
+```sql
+CREATE OR REPLACE VIEW `your-project.mart.mart_daily_sales`
+(
+  dt      OPTIONS (description = '集計日（JST）'),
+  channel OPTIONS (description = '流入チャネル。organic=自然検索(指名検索含む), paid=運用型広告, direct=参照元なし(アプリ内ブラウザ経由を含むため過大評価傾向), referral=外部サイト'),
+  revenue OPTIONS (description = '売上。税抜き・送料除く。キャンセル控除後')
+)
+AS
+SELECT dt, channel, revenue
+FROM `your-project.staging.stg_orders`;
+```
+
+:::message
+ビューの列 description を付ける作業は**ビューの再作成**を伴います。表 description（`ALTER VIEW` の1文）と違い、定義そのものを触るので影響範囲が別物です。まず表 description だけ先に付けて、列は後日まとめて対応する、という二段構えが安全です。表 description だけでもエージェントは参照します。
+:::
 
 現在の説明を棚卸しするクエリです。
 
@@ -241,6 +291,8 @@ Knowledge Catalog はエージェントにとっての「正解」になりま�
 
 - エージェントの回答精度の問題は、**モデルではなく文脈不足**であることが多い
 - Knowledge Catalog は**エージェントに業務文脈を供給する仕組み**。MCP 経由で参照される
+- **着手前に対象がテーブルかビューかを確認する**。3層設計の mart 層はビューであることが多く、`ALTER TABLE` で書き始めると詰まる
+- **ビューの列 description は `ALTER` では付かない**。ビュー再作成が要るので、表 description を先に付ける二段構えが安全
 - 書くべきは**指標の定義 → テーブルの使い分け → 値の意味 → 既知の落とし穴**の順
 - **「一般的な定義とどう違うか」「使ってはいけないもの」**を明記するのが効く
 - **全部書こうとしない**。間違えた回答を起点に、効く箇所から埋める
