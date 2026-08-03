@@ -99,7 +99,7 @@ F-07,フリーランス・ビジネス,GA4×BigQueryを自社導入したEC事�
 F-08,フリーランス・ビジネス,Zennで技術記事を書き続けたら３ヶ月でフリーランス案件が増えた話,idea,3,TRUE,2026-07-31,zenn-tech-articles-freelance-growth.md
 F-09,フリーランス・ビジネス,WEBコンサルタントのサービス単価を5倍にしたデータ基盤提案の話し方,idea,2,TRUE,2026-07-09,web-consultant-service-price-5x-data-proposal.md
 F-10,フリーランス・ビジネス,Claude Codeを使ったデータ分析サービスの提案書テンプレートを公開する,idea,2,TRUE,2026-07-10,claude-code-data-analysis-proposal-template.md
-G-01,AI×データ分析,Gemini in BigQueryで自然言語からSQLを生成する実践ガイド　2026年版】,tech,1,FALSE,,gemini-bigquery-nl-sql-guide-2026.md
+G-01,AI×データ分析,Gemini in BigQueryで自然言語からSQLを生成する実践ガイド　2026年版】,tech,1,TRUE,2026-08-03,gemini-bigquery-nl-sql-guide-2026.md
 G-02,AI×データ分析,Claude Code × Gemini CLIをオーケストレーションしてEC分析を多角的に回す方法,tech,2,FALSE,,claude-code-gemini-cli-orchestration-ec.md
 G-03,AI×データ分析,ChatGPT・Claude・Geminiのデータ AI分析能力を実データで徹底比較した,idea,1,FALSE,,chatgpt-claude-gemini-data-analysis-comparison.md
 G-04,AI×データ分析,BigQuery ML × Gemini 3.0でEC顧客の購買予測モデルを構築する,tech,2,FALSE,,bigquery-ml-gemini-ec-purchase-prediction.md
