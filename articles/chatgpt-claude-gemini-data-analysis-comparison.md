@@ -3,7 +3,7 @@ title: "ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹
 emoji: "⚖️"
 type: "idea"
 topics: ["ai","bigquery","googleanalytics","claude","gemini"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -34,7 +34,7 @@ published: false
 
 ChatGPT（GPT-4o）は全般的な説明力が高く、初心者にも理解しやすい丁寧な文章で回答してくれます。一方で、GA4のBigQuery独自仕様への対応に弱さが見られました。
 
-たとえば、`ga_session_id`を`event_params`からUNNESTして取得する書き方や、流入元を`collected_traffic_source`から参照する点は、明示的に指示しないと一般的なSQLを返してしまうケースがありました。
+たとえば、`ga_session_id`を`event_params`からUNNESTして取得する書き方には注意が必要です。また、流入元を`collected_traffic_source`から参照する点も、明示的に指示しないと一般的なSQLを返してしまうケースがありました。
 
 以下は、正しいGA4 BigQuery向けSQLの例です（流入元別セッション数の集計）。
 
@@ -57,7 +57,7 @@ ORDER BY
   sessions DESC
 ```
 
-ChatGPTへの指示文に「GA4 BigQueryのUNNEST構文を使うこと」「流入元はcollected_traffic_sourceを使うこと」と明記したところ、正確なSQLを出力できるようになりました。プロンプト次第で品質が大きく変わる点は、使う側のスキルが問われます。
+ChatGPTへの指示文には、GA4固有の仕様を明示する必要があります。「UNNEST構文を使うこと」「流入元はcollected_traffic_sourceを使うこと」と指定したところ、正確なSQLを出力できるようになりました。プロンプト次第で品質が大きく変わる点は、使う側のスキルが問われます。
 
 ---
 
@@ -113,7 +113,7 @@ Gemini（Gemini 1.5 Pro以降）は、Google製品であるGA4やBigQueryとの�
 
 一方で、日本語での説明の細かさはClaudeに比べるとやや簡潔な印象でした。分析結果の解釈よりも、クエリ生成や手順の案内に強みがある印象です。
 
-また、Google AI StudioやVertex AI上でBigQueryのデータに直接アクセスできる機能が整いつつあるため、「GCPを中心にデータ基盤を構築している」という方には、Geminiを中心としたワークフローが今後さらに使いやすくなると考えられます。
+また、Google AI StudioやVertex AI上でBigQueryのデータに直接アクセスできる機能も整いつつあります。GCPを中心にデータ基盤を構築している方には、Geminiを軸としたワークフローが今後さらに使いやすくなるでしょう。
 
 ---
 
