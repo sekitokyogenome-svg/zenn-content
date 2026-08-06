@@ -104,7 +104,7 @@ G-02,AI×データ分析,Claude Code × Gemini CLIをオーケストレーショ
 G-03,AI×データ分析,ChatGPT・Claude・Geminiのデータ AI分析能力を実データで徹底比較した,idea,1,TRUE,2026-08-04,chatgpt-claude-gemini-data-analysis-comparison.md
 G-04,AI×データ分析,BigQuery ML × Gemini 3.0でEC顧客の購買予測モデルを構築する,tech,2,FALSE,,bigquery-ml-gemini-ec-purchase-prediction.md
 G-05,AI×データ分析,Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計,tech,1,TRUE,2026-08-05,claude-code-ga4-anomaly-detection-prompt.md
-G-06,AI×データ分析,Gemini in BigQueryの料金体系を完全解説》思わぬ課金を防ぐ設定』,tech,1,FALSE,,gemini-bigquery-pricing-complete-guide.md
+G-06,AI×データ分析,Gemini in BigQueryの料金体系を完全解説》思わぬ課金を防ぐ設定』,tech,1,TRUE,2026-08-06,gemini-bigquery-pricing-complete-guide.md
 G-07,AI×データ分析,AI.GENERATE関数でBigQueryから直接Geminiを呼び出してテキスト分析する方法,tech,2,FALSE,,bigquery-ai-generate-gemini-text-analysis.md
 G-08,AI×データ分析,NotebookLM × BigQueryエクスポートでGA4データを対話的に分析する,tech,2,FALSE,,notebooklm-bigquery-ga4-interactive-analysis.md
 G-09,AI×データ分析,Claude Codeで競合ECサイトのSEO戦略をGA4×Search Consoleデータから逆算する,tech,3,FALSE,,claude-code-ec-seo-ga4-search-console-reverse.md
