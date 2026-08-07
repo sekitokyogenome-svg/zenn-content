@@ -3,7 +3,7 @@ title: "BigQueryのGeminiアシスタントで非エンジニアが自力でSQL�
 emoji: "👤"
 type: "idea"
 topics: ["bigquery","gemini","sql","googlecloud","ai"]
-published: false
+published: true
 ---
 
 ## はじめに
