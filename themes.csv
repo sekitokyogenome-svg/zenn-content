@@ -115,7 +115,7 @@ G-13,AI×データ分析,Gemini CLIをGA4データアナリストとして使う
 G-14,AI×データ分析,BigQuery MLの需要予測モデルでEC仕入れ量を最適化する実装手順,tech,2,FALSE,,bigquery-ml-demand-forecast-ec-inventory.md
 G-15,AI×データ分析,AIコーディングアシスタン3种でBigQueryのデータパイプラインを作り比べた,idea,2,FALSE,,ai-coding-assistant-bigquery-pipeline-comparison.md
 G-16,AI×データ分析,Claude Code × Pythonで顧客レビューを感情分析してNPS予測に使う,tech,3,FALSE,,claude-code-python-review-sentiment-nps.md
-G-17,AI×データ分析,BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した,idea,1,FALSE,,bigquery-gemini-assistant-noneng-sql-validation.md
+G-17,AI×データ分析,BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した,idea,1,TRUE,2026-08-07,bigquery-gemini-assistant-noneng-sql-validation.md
 G-18,AI×データ分析,AI×BigQueryでEC商品説明文のA/Bテスト結果を自動分析・改善提案する仕組み,tech,3,FALSE,,ai-bigquery-ec-product-desc-ab-test-auto.md
 G-19,AI×データ分析,Claude Codeに月次KPIレポートの「考察」まで書かせるプロンプト設計術,tech,1,FALSE,,claude-code-monthly-kpi-insight-prompt-design.md
 G-20,AI×データ分析,BigQuery × AI.EMBED関数でEC商品の類似度検索を実装する,tech,3,FALSE,,bigquery-ai-embed-ec-product-similarity.md
