@@ -3,7 +3,7 @@ title: "Claude Codeに月次KPIレポートの「考察」まで書かせるプ�
 emoji: "📋"
 type: "tech"
 topics: ["claude","bigquery","ai","ec","datanalysis"]
-published: false
+published: true
 ---
 
 ## はじめに
