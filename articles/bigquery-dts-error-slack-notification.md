@@ -212,6 +212,13 @@ Cloud Functionsのログは `gcloud functions logs read notify-dts-error --gen2 
 
 この仕組みを導入すると、転送エラーに気づかずレポートが止まったままになるリスクを大幅に低減できます。次のステップとして、エラーの種類に応じて通知チャンネルを分ける・エラーが続く場合はPagerDutyと連携するといった発展的な構成も検討してみてください。
 
+## 関連記事
+
+- [BigQueryでGA4データをdbtで管理する入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-dbt-management-intro)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Claude Code × MCPでGA4レポートを毎朝Slack通知する仕組みを作った](https://zenn.dev/web_benriya/articles/claude-code-mcp-ga4-slack-daily-report)
+- [GA4のBigQueryエクスポート完全設定ガイド【2026年版】](https://zenn.dev/web_benriya/articles/ga4-bigquery-export-setup-guide-2026)
+
 ---
 
 :::message

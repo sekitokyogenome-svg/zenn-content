@@ -240,6 +240,13 @@ ORDER BY recommend_ctr DESC
 
 本格的な本番運用に向けては、モデルの定期再学習スケジュールの設定や、A/Bテストによるレコメンド有無の効果比較なども検討すると、継続的な改善サイクルを回していけるでしょう。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+- [Claude Codeに月次KPIレポートの「考察」まで書かせるプロンプト設計術](https://zenn.dev/web_benriya/articles/claude-code-monthly-kpi-insight-prompt-design)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+
 ---
 
 :::message

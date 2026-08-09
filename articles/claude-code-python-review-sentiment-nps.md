@@ -220,6 +220,13 @@ print(nps_distribution)
 
 次のアクションとして、まずは直近3ヶ月分のレビューデータを抽出し、感情スコアの分布を可視化してみてください。「どの流入経路の顧客が最も不満を持っているか」が見えてくると、改善施策の優先度が立てやすくなります。BigQuery上の結果をLooker Studioに接続すれば、ダッシュボードとして定点観測する仕組みも構築できます。
 
+## 関連記事
+
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+- [Claude Codeに月次KPIレポートの「考察」まで書かせるプロンプト設計術](https://zenn.dev/web_benriya/articles/claude-code-monthly-kpi-insight-prompt-design)
+- [ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹底比較した](https://zenn.dev/web_benriya/articles/chatgpt-claude-gemini-data-analysis-comparison)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+
 ---
 
 :::message

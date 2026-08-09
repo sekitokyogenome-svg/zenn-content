@@ -125,6 +125,13 @@ BI Engineは予約したメモリ分だけ常に課金されます。1GBの予�
 
 まずは1GBの予約を作成し、既存のLooker Studioダッシュボードで速度の変化を確認してみてください。その結果を見ながら、予約サイズやビューの設計を調整していくアプローチが現実的です。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [BigQuery × Looker Studioで前年同期比グラフを作る方法](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-yoy-comparison-chart)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+
 ---
 
 :::message

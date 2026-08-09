@@ -209,6 +209,13 @@ GA4移行後のデータ欠損は、単一の原因ではなく複数の設定�
 4. DebugView・DevToolsでデータ送信の確認
 5. BigQueryで実データの存在を確認
 
+## 関連記事
+
+- [GA4×GTMでフォーム送信の計測が取れないときのデバッグ手順](https://zenn.dev/web_benriya/articles/ga4-gtm-form-submit-tracking-debug)
+- [GA4×GTMでLINE広告・TikTok広告のコンバージョン計測を設定する](https://zenn.dev/web_benriya/articles/ga4-gtm-line-tiktok-conversion-tracking)
+- [GA4×GTMでサイト内検索キーワードを正しく計測する設定](https://zenn.dev/web_benriya/articles/ga4-gtm-site-search-tracking)
+- [GTMのデータレイヤーを使ったGA4カスタムイベント設計のベストプラクティス](https://zenn.dev/web_benriya/articles/gtm-data-layer-ga4-custom-event-design)
+
 ---
 
 :::message

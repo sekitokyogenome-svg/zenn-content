@@ -242,6 +242,13 @@ ROASは万能な指標ではありません。アトリビューションモデ�
 
 GA4の管理画面だけでは見えなかった「どのチャネルに予算を寄せるべきか」という判断が、データに基づいてできるようになります。
 
+## 関連記事
+
+- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
+- [BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した](https://zenn.dev/web_benriya/articles/bigquery-ec-pareto-top20-revenue)
+- [BigQueryでEC顧客をRFM分析してセグメント別メルマガ戦略を立てた](https://zenn.dev/web_benriya/articles/bigquery-ec-rfm-analysis-email-strategy)
+- [BigQueryでEC季節商品の売上予測モデルを作った話](https://zenn.dev/web_benriya/articles/bigquery-ec-seasonal-sales-prediction)
+
 ---
 
 :::message

@@ -356,6 +356,13 @@ BigQueryに蓄積されているGA4データを活用すれば、移動平均と
 
 「気づいたら手遅れだった」を防ぐための仕組みとして、ぜひ導入を検討してみてください。
 
+## 関連記事
+
+- [BigQuery × Claude Codeで月次事業報告書を自動作成する仕組み](https://zenn.dev/web_benriya/articles/bigquery-claude-code-monthly-business-report)
+- [Claude CodeでEC×GA4のA/Bテスト結果をBigQueryから自動集計する](https://zenn.dev/web_benriya/articles/claude-code-ab-test-bigquery-ga4)
+- [Claude CodeのAgentモードでEC売上データを自動分析させた結果](https://zenn.dev/web_benriya/articles/claude-code-agent-mode-ec-sales-analysis)
+- [Claude CodeのAgents SDK × BigQueryで複数ECサイトを一括監視する](https://zenn.dev/web_benriya/articles/claude-code-agents-sdk-bigquery-multi-ec)
+
 ---
 
 :::message

@@ -155,6 +155,13 @@ BigQueryのオンデマンドとフラットレートは、どちらが絶対的
 
 料金プランの選択よりも先に、まずは現状の月間処理量を把握することをお勧めします。BigQueryのコンソールから「情報パネル」→「ジョブ履歴」や、Cloud Monitoringのメトリクスを使えば、過去の処理量を簡単に確認できます。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [Gemini in BigQueryの料金体系を完全解説【思わぬ課金を防ぐ設定】](https://zenn.dev/web_benriya/articles/gemini-bigquery-pricing-complete-guide)
+- [BigQueryでGA4データのコスト管理・クエリ最適化入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-cost-query-optimization)
+
 ---
 
 :::message

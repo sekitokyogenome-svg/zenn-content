@@ -234,6 +234,13 @@ BigQueryの無料枠は毎月1TBのクエリ処理です。GA4のデータ量に
 
 「データを活用したいけど、何から始めればいいかわからない」という方は、まずClaude Codeに一つ質問を投げかけてみてください。
 
+## 関連記事
+
+- [Claude CodeのAgentモードでEC売上データを自動分析させた結果](https://zenn.dev/web_benriya/articles/claude-code-agent-mode-ec-sales-analysis)
+- [Claude Codeで売上が下がった原因をBigQueryから自動で仮説生成させる](https://zenn.dev/web_benriya/articles/claude-code-bigquery-revenue-drop-hypothesis)
+- [BigQuery × Claude Codeで異常検知アラートを作る【売上急落を即通知】](https://zenn.dev/web_benriya/articles/bigquery-claude-code-anomaly-detection-alert)
+- [BigQuery × Claude Codeで月次事業報告書を自動作成する仕組み](https://zenn.dev/web_benriya/articles/bigquery-claude-code-monthly-business-report)
+
 ---
 
 :::message

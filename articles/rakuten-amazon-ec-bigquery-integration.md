@@ -209,6 +209,13 @@ BigQueryにデータが集まったら、Looker Studioと接続してダッシ�
 
 **次のアクション**として、まずはGoogleアカウントでBigQueryを有効化し、テスト用のプロジェクトを作成してみましょう。Google Cloud Platformの新規登録時には無料クレジットが付与されており、試験的に動かすコストはほとんどかかりません。小さく始めて、効果を確認しながら段階的に拡張していくアプローチが、運用負担を抑えながら仕組みを整えるうえで有効です。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+
 ---
 
 :::message

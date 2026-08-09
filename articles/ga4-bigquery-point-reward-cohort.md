@@ -232,6 +232,13 @@ FROM cohort_metrics
 
 次回施策を企画する前に、過去の施策のコホートデータを振り返ることをおすすめします。
 
+## 関連記事
+
+- [BigQueryでEC顧客をRFM分析してセグメント別メルマガ戦略を立てた](https://zenn.dev/web_benriya/articles/bigquery-ec-rfm-analysis-email-strategy)
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+- [BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した](https://zenn.dev/web_benriya/articles/bigquery-ec-pareto-top20-revenue)
+- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
+
 ---
 
 :::message

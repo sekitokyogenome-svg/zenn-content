@@ -294,6 +294,13 @@ BigQueryの無料枠（ストレージ10GB・クエリ1TB/月）の範囲内で�
 
 3層設計の詳細は[こちら](https://zenn.dev/web_benriya/articles/ga4-bigquery-3layer-design)、UNNESTパターンの詳細は[こちら](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)も合わせてご覧ください。
 
+## 関連記事
+
+- [BigQuery × Looker StudioでEC事業の月次KPIレポートを自動化した](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-monthly-kpi-auto)
+- [BigQuery × Looker Studioで前年同期比グラフを作る方法](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-yoy-comparison-chart)
+- [Looker Studio × BigQueryで経営者が毎朝見るダッシュボードの設計思想](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-ceo-dashboard-design)
+- [Looker Studio × BigQueryでEC売上ダッシュボードを1日で作る完全手順](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-ec-dashboard-guide)
+
 ---
 
 :::message

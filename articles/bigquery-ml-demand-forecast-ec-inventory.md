@@ -176,6 +176,13 @@ gcloud scheduler jobs create http demand-forecast-retrain \
 
 次のアクションとしては、まず自社の日次販売データを整理してBigQueryに格納し、小規模な期間でテスト的にモデルを構築してみることをおすすめします。精度を確認しながら段階的に本番運用へ移行していくアプローチが現実的です。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+- [Claude Codeに月次KPIレポートの「考察」まで書かせるプロンプト設計術](https://zenn.dev/web_benriya/articles/claude-code-monthly-kpi-insight-prompt-design)
+
 ---
 
 :::message

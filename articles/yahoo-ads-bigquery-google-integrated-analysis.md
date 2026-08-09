@@ -197,6 +197,13 @@ GA4のBigQueryエクスポートでは `ga_session_id` はイベントのトッ�
 
 まず取り組みやすいのは、既存のGA4 BigQueryエクスポートと手動でアップロードしたYahoo!広告CSVを統合ビューで結合するところからです。小さくスタートして、慣れてきたら自動化を検討するという順序が現実的です。データが1か所に集まると、広告運用の判断スピードが変わります。ぜひ一歩踏み出してみてください。
 
+## 関連記事
+
+- [BigQueryでGA4データをdbtで管理する入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-dbt-management-intro)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [BigQuery × Looker Studioで前年同期比グラフを作る方法](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-yoy-comparison-chart)
+
 ---
 
 :::message

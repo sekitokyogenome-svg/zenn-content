@@ -323,6 +323,13 @@ LIMIT 20
 
 BigQueryを使えば、GA4のコンバージョン経路をSQLで自由に分析できます。STRING_AGGでページ遷移パスを可視化し、ファーストタッチ・ラストタッチの比較でページの役割を特定することで、サイト改善のヒントが得られます。
 
+## 関連記事
+
+- [GA4×BigQueryでユーザーのファーストタッチ・ラストタッチを取得する](https://zenn.dev/web_benriya/articles/ga4-bigquery-first-touch-last-touch)
+- [BigQueryでGA4データのコスト管理・クエリ最適化入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-cost-query-optimization)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryでGA4の日次・週次・月次集計テーブルをスケジュール実行する](https://zenn.dev/web_benriya/articles/bigquery-ga4-scheduled-aggregation-tables)
+
 ---
 
 :::message

@@ -232,6 +232,13 @@ GA4の「管理」→「カスタム定義」→「カスタムディメンシ�
 
 正しく設計すれば、GA4のレポートやBigQueryエクスポートで自由に分析できるデータ基盤が完成します。
 
+## 関連記事
+
+- [GA4×GTMでフォーム送信の計測が取れないときのデバッグ手順](https://zenn.dev/web_benriya/articles/ga4-gtm-form-submit-tracking-debug)
+- [GA4×GTMでLINE広告・TikTok広告のコンバージョン計測を設定する](https://zenn.dev/web_benriya/articles/ga4-gtm-line-tiktok-conversion-tracking)
+- [GA4×GTMでサイト内検索キーワードを正しく計測する設定](https://zenn.dev/web_benriya/articles/ga4-gtm-site-search-tracking)
+- [GTM × GA4でA/Bテスト結果を自動計測する仕組みを作る](https://zenn.dev/web_benriya/articles/gtm-ga4-ab-test-auto-tracking)
+
 ---
 
 :::message

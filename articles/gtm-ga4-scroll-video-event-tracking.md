@@ -221,6 +221,13 @@ GTMを活用したスクロール深度と動画再生の計測ポイントを�
 
 これらのデータがあると、「どのコンテンツが読まれているか」「動画がどこまで見られているか」を定量的に把握でき、改善施策の精度が上がります。
 
+## 関連記事
+
+- [GA4×GTMでフォーム送信の計測が取れないときのデバッグ手順](https://zenn.dev/web_benriya/articles/ga4-gtm-form-submit-tracking-debug)
+- [GA4×GTMでLINE広告・TikTok広告のコンバージョン計測を設定する](https://zenn.dev/web_benriya/articles/ga4-gtm-line-tiktok-conversion-tracking)
+- [GA4×GTMでサイト内検索キーワードを正しく計測する設定](https://zenn.dev/web_benriya/articles/ga4-gtm-site-search-tracking)
+- [GTMのデータレイヤーを使ったGA4カスタムイベント設計のベストプラクティス](https://zenn.dev/web_benriya/articles/gtm-data-layer-ga4-custom-event-design)
+
 ---
 
 :::message

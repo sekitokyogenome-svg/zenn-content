@@ -183,6 +183,13 @@ BigQueryのマテリアライズドビューは、GA4のような大規模イベ
 
 次のステップとしては、作成したマテリアライズドビューをLooker Studioのデータソースとして設定し、ダッシュボードの表示速度を実際に比較してみることをお勧めします。体感できる変化として現れやすい改善のひとつです。
 
+## 関連記事
+
+- [BigQueryでGA4データのコスト管理・クエリ最適化入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-cost-query-optimization)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
+
 ---
 
 :::message

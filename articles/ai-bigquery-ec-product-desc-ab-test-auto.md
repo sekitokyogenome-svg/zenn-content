@@ -216,6 +216,13 @@ AIが生成する改善提案は、あくまで「仮説の出発点」として
 
 データに基づいた説明文の改善サイクルを回し続けることが、中長期的なコンバージョン率の向上につながります。ぜひ自社のECサイトに合った形でカスタマイズしてみてください。
 
+## 関連記事
+
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+- [ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹底比較した](https://zenn.dev/web_benriya/articles/chatgpt-claude-gemini-data-analysis-comparison)
+- [Claude Codeに月次KPIレポートの「考察」まで書かせるプロンプト設計術](https://zenn.dev/web_benriya/articles/claude-code-monthly-kpi-insight-prompt-design)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+
 ---
 
 :::message

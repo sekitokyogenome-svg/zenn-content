@@ -146,6 +146,13 @@ Googleグループに対してIAMロールを付与しておくと、メンバ�
 
 次のアクションとして、まず自社のBigQueryプロジェクトで現在付与されているIAM権限を一覧で確認してみましょう。Google Cloud Consoleの「IAMと管理」→「IAM」から、プロジェクトに紐づくすべての権限を確認できます。想定外のメンバーに広い権限が付与されていないかどうかをチェックするところから始めると、実践的なアクセス制御設計の第一歩になります。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [BigQueryでGA4データをdbtで管理する入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-dbt-management-intro)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+
 ---
 
 :::message

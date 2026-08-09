@@ -221,6 +221,13 @@ AIが完全な回答を出すわけではありませんが、「何を確認す
 
 GA4の計測データは正確であって初めて意思決定に使えます。AIを活用した自動検知の仕組みを取り入れることで、データ品質の維持に割くコストを削減しながら、精度の高い分析基盤を維持していただければ幸いです。
 
+## 関連記事
+
+- [ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹底比較した](https://zenn.dev/web_benriya/articles/chatgpt-claude-gemini-data-analysis-comparison)
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+- [Claude Codeに月次KPIレポートの「考察」まで書かせるプロンプト設計術](https://zenn.dev/web_benriya/articles/claude-code-monthly-kpi-insight-prompt-design)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+
 ---
 
 :::message

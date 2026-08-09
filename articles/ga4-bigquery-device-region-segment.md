@@ -301,6 +301,13 @@ LIMIT 20
 
 GA4のBigQueryデータでは、`device.category` や `geo.region` を使ってデバイス別・地域別のセグメント分析をSQLで自由に構築できます。PIVOT的な横持ち集計やクロス分析を組み合わせることで、GA4 UIでは難しい多次元の分析が可能になります。特にモバイルとデスクトップのCVR差や地域別のアクセス傾向は、サイト改善の具体的なアクションにつながりやすい指標です。
 
+## 関連記事
+
+- [BigQueryでGA4のサンプリングを回避して正確な数値を出す](https://zenn.dev/web_benriya/articles/ga4-bigquery-avoid-sampling)
+- [GA4×BigQueryでリピーターと新規ユーザーを分離して分析する](https://zenn.dev/web_benriya/articles/ga4-bigquery-new-returning-users)
+- [BigQueryでGA4データのコスト管理・クエリ最適化入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-cost-query-optimization)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+
 ---
 
 :::message

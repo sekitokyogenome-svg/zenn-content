@@ -230,6 +230,13 @@ publish_queue: true
 ちなみにこの記事自体も、`publish_queue: true` を付けて、ここで紹介したスケジューラに公開してもらっています。
 :::
 
+## 関連記事
+
+- [高単価アンケートを見逃さない：Gmailの案件メールを正規表現でパースしてLINE通知する](https://zenn.dev/web_benriya/articles/survey-catcher-gmail-line)
+- [Claude Codeに週次レポートをMarkdownで生成させてそのままZennに投稿する](https://zenn.dev/web_benriya/articles/claude-code-weekly-report-markdown-zenn)
+- [ココナラで売れるGA4×BigQuery×Claude Codeサービスを受注するためのZenn活用戦略](https://zenn.dev/web_benriya/articles/zenn-coconala-ga4-bigquery-claude-code-strategy)
+- [Zennで技術記事を書き続けたら3ヶ月でフリーランス案件が増えた話](https://zenn.dev/web_benriya/articles/zenn-tech-articles-freelance-growth)
+
 ---
 
 :::message

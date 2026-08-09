@@ -214,6 +214,13 @@ GCSに保存されたCSVは、Google スプレッドシートの `IMPORTDATA` �
 
 まずはコンソールからの手動エクスポートを試し、仕組みを理解してから自動化へステップアップするのがおすすめです。データを「集めるだけ」ではなく「届ける仕組み」まで整えることで、分析結果がビジネスの意思決定に活かされやすくなります。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [BigQueryでGA4データをdbtで管理する入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-dbt-management-intro)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+
 ---
 
 :::message

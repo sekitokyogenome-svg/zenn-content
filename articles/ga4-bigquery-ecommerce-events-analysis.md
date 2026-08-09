@@ -325,6 +325,13 @@ ORDER BY
 
 GA4のeコマースデータは、BigQueryで適切にUNNESTして扱えば、GA4の管理画面では得られない柔軟な分析が可能になります。商品単位・カテゴリ単位・チャネル単位を自在に組み合わせて、ECサイトの改善に活かしてみてください。
 
+## 関連記事
+
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）](https://zenn.dev/web_benriya/articles/ga4-bigquery-bounce-rate-calculation)
+- [GA4×BigQueryでカスタムディメンションを活用した分析](https://zenn.dev/web_benriya/articles/ga4-bigquery-custom-dimensions)
+- [BigQueryでGA4の生データ構造を理解する【eventsテーブル解説】](https://zenn.dev/web_benriya/articles/ga4-bigquery-events-table-raw-data-structure)
+
 ---
 
 :::message

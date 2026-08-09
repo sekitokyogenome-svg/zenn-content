@@ -222,6 +222,13 @@ Claude CodeのAgentモードを活用すると、EC売上データの分析が�
 
 日次・週次の定型レポートは自動化し、分析者は意思決定に直結するインサイトの発見に集中する。そんな運用体制を構築してみてはいかがでしょうか。
 
+## 関連記事
+
+- [Claude Codeで売上が下がった原因をBigQueryから自動で仮説生成させる](https://zenn.dev/web_benriya/articles/claude-code-bigquery-revenue-drop-hypothesis)
+- [BigQuery × Claude Codeで異常検知アラートを作る【売上急落を即通知】](https://zenn.dev/web_benriya/articles/bigquery-claude-code-anomaly-detection-alert)
+- [BigQuery × Claude Codeで月次事業報告書を自動作成する仕組み](https://zenn.dev/web_benriya/articles/bigquery-claude-code-monthly-business-report)
+- [Claude CodeでEC×GA4のA/Bテスト結果をBigQueryから自動集計する](https://zenn.dev/web_benriya/articles/claude-code-ab-test-bigquery-ga4)
+
 ---
 
 :::message

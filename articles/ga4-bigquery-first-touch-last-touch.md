@@ -239,6 +239,13 @@ LIMIT 30
 
 GA4のアトリビューション分析、皆さんはどのモデルを使っていますか？コメントで共有いただけると参考になります。
 
+## 関連記事
+
+- [GA4×BigQueryでコンバージョン経路を分析するSQL](https://zenn.dev/web_benriya/articles/ga4-bigquery-conversion-path-analysis)
+- [BigQueryでGA4データのコスト管理・クエリ最適化入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-cost-query-optimization)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryでGA4の日次・週次・月次集計テーブルをスケジュール実行する](https://zenn.dev/web_benriya/articles/bigquery-ga4-scheduled-aggregation-tables)
+
 ---
 
 :::message

@@ -322,6 +322,13 @@ LTVの数値が見えるようになると、「なんとなく広告を出し�
 
 GA4やBigQueryの初期設定、LTV分析の構築でお困りの方は、以下のサービスで個別にサポートしています。
 
+## 関連記事
+
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [EC売上が下がったとき最初に確認すべきBigQueryクエリ5選](https://zenn.dev/web_benriya/articles/ec-revenue-drop-bigquery-queries-checklist)
+- [GA4×BigQueryでカート放棄率を正確に計測・改善する方法](https://zenn.dev/web_benriya/articles/ga4-bigquery-cart-abandonment-rate)
+- [GA4×BigQueryで初回購入→リピートまでのファネルを可視化する](https://zenn.dev/web_benriya/articles/ga4-bigquery-first-purchase-repeat-funnel)
+
 ---
 
 :::message

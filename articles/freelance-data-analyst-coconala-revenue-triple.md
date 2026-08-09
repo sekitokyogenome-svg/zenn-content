@@ -120,6 +120,13 @@ BigQueryのSQL作成やLooker Studioの設計ドキュメント作成を、Claud
 
 完璧な状態でスタートする必要はありません。サービス設計は走りながら改善していけば大丈夫です。
 
+## 関連記事
+
+- [ココナラで売れるGA4×BigQuery×Claude Codeサービスを受注するためのZenn活用戦略](https://zenn.dev/web_benriya/articles/zenn-coconala-ga4-bigquery-claude-code-strategy)
+- [ココナラ7年・154件のデータから見えた、コンサル仕事の構造（分析編）](https://zenn.dev/web_benriya/articles/coconala-154-structure)
+- [中小EC経営者がデータ分析に月1万円投資すべき理由](https://zenn.dev/web_benriya/articles/small-ec-data-analysis-monthly-investment)
+- [WEBコンサルタントのサービス単価を5倍にしたデータ基盤提案の話し方](https://zenn.dev/web_benriya/articles/web-consultant-service-price-5x-data-proposal)
+
 ---
 
 :::message

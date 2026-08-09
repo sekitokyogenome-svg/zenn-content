@@ -211,6 +211,13 @@ TikTok Events APIをサーバーサイドGTMで実装する主なステップを
 
 実装には一定の技術的なハードルがありますが、GTMの操作に慣れている方であればステップごとに進めていくことができます。設定の際に不明な点があれば、TikTok for Business公式のヘルプページや本記事のようなガイドを参照しながら進めてみてください。
 
+## 関連記事
+
+- [GA4×GTMでLINE広告・TikTok広告のコンバージョン計測を設定する](https://zenn.dev/web_benriya/articles/ga4-gtm-line-tiktok-conversion-tracking)
+- [GA4×GTMでサイト内検索キーワードを正しく計測する設定](https://zenn.dev/web_benriya/articles/ga4-gtm-site-search-tracking)
+- [GTMのデータレイヤーを使ったGA4カスタムイベント設計のベストプラクティス](https://zenn.dev/web_benriya/articles/gtm-data-layer-ga4-custom-event-design)
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+
 ---
 
 :::message

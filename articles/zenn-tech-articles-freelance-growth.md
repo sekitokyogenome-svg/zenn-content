@@ -110,6 +110,13 @@ SEO以外にも、技術記事にはブランディング効果があります�
 
 フリーランスの集客に悩んでいる方は、まずは自分の専門分野で3本の記事を書いてみてください。最初は反応がなくても、記事が蓄積されるにつれて、検索流入という形で効果が見えてくるはずです。
 
+## 関連記事
+
+- [ココナラで売れるGA4×BigQuery×Claude Codeサービスを受注するためのZenn活用戦略](https://zenn.dev/web_benriya/articles/zenn-coconala-ga4-bigquery-claude-code-strategy)
+- [ココナラ7年・154件のデータから見えた、コンサル仕事の構造（分析編）](https://zenn.dev/web_benriya/articles/coconala-154-structure)
+- [フリーランスがデータ分析スキルでココナラ月収を3倍にした方法](https://zenn.dev/web_benriya/articles/freelance-data-analyst-coconala-revenue-triple)
+- [Claude Codeを使ったデータ分析サービスの提案書テンプレートを公開する](https://zenn.dev/web_benriya/articles/claude-code-data-analysis-proposal-template)
+
 ---
 
 :::message

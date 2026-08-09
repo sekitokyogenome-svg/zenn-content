@@ -289,6 +289,13 @@ ROASだけで判断すると見誤るケースがあるため、CPAやCVRなど�
 
 媒体ごとの管理画面を行き来する時間を削減し、データに基づいた広告予算の配分判断に集中できる環境を構築してみてください。
 
+## 関連記事
+
+- [Claude Code × BigQueryでEC広告の予算配分を自動最適化する提案ツールを作った](https://zenn.dev/web_benriya/articles/claude-code-bigquery-ad-budget-optimization)
+- [BigQuery × Claude Codeで異常検知アラートを作る【売上急落を即通知】](https://zenn.dev/web_benriya/articles/bigquery-claude-code-anomaly-detection-alert)
+- [BigQuery × Claude Codeで月次事業報告書を自動作成する仕組み](https://zenn.dev/web_benriya/articles/bigquery-claude-code-monthly-business-report)
+- [Claude CodeでEC×GA4のA/Bテスト結果をBigQueryから自動集計する](https://zenn.dev/web_benriya/articles/claude-code-ab-test-bigquery-ga4)
+
 ---
 
 :::message

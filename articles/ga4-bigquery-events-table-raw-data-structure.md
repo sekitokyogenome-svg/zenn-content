@@ -198,6 +198,13 @@ WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260331'
 
 GA4のBigQueryエクスポートデータは、ネスト構造を理解すれば柔軟な分析が可能になります。まずは `event_params` のUNNEST展開に慣れることが第一歩です。主要カラムの構造を把握しておけば、セッション分析・ファネル分析・eコマース分析へとスムーズに進められます。
 
+## 関連記事
+
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）](https://zenn.dev/web_benriya/articles/ga4-bigquery-bounce-rate-calculation)
+- [GA4×BigQueryでカスタムディメンションを活用した分析](https://zenn.dev/web_benriya/articles/ga4-bigquery-custom-dimensions)
+- [BigQueryでGA4のeコマースイベントを完全解析する【purchase/add_to_cart】](https://zenn.dev/web_benriya/articles/ga4-bigquery-ecommerce-events-analysis)
+
 ---
 
 :::message

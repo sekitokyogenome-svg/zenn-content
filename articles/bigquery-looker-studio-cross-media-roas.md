@@ -189,6 +189,13 @@ Looker Studioの「フィルタコントロール」を追加し、`medium` や 
 
 次のアクションとして、GA4のBigQueryエクスポートがまだ有効になっていない場合は、GA4管理画面の「管理 → BigQueryのリンク」から設定をはじめてみてください。
 
+## 関連記事
+
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
+- [BigQuery × Looker StudioでEC事業の月次KPIレポートを自動化した](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-monthly-kpi-auto)
+- [Looker Studio × BigQueryで経営者が毎朝見るダッシュボードの設計思想](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-ceo-dashboard-design)
+
 ---
 
 :::message

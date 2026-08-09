@@ -237,6 +237,13 @@ LTVが高くてもユーザー数（サンプル数）が少ない場合は、�
 
 次のアクションとしては、まず自社のGA4データがBigQueryにエクスポートされているかを確認し、UTMパラメータの命名規則を整備することから始めてみてください。データの蓄積と分析の仕組みを整えることで、広告運用の意思決定をより客観的なデータに基づいて行えるようになります。
 
+## 関連記事
+
+- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
+
 ---
 
 :::message

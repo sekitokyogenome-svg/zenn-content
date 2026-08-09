@@ -150,6 +150,13 @@ Cookie規制によって広告計測の環境は大きく変化しています�
 
 はじめから完璧な基盤を目指す必要はありません。まずはGA4のBigQueryエクスポートを有効にし、購入イベントが正しく計測されているかを確認するところから始めてみてください。データが蓄積されれば、分析の幅は自然と広がっていきます。
 
+## 関連記事
+
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+- [中小ECのLTV分析をGA4×BigQueryで無料構築する方法【SQLテンプレ付き】](https://zenn.dev/web_benriya/articles/ec-ltv-analysis-ga4-bigquery-free)
+- [EC売上が下がったとき最初に確認すべきBigQueryクエリ5選](https://zenn.dev/web_benriya/articles/ec-revenue-drop-bigquery-queries-checklist)
+
 ---
 
 :::message

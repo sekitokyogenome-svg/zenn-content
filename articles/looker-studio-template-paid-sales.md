@@ -195,6 +195,13 @@ Looker Studioのテンプレート販売は、低コストで始められるデ�
 
 1つのテンプレートが月に10件売れれば、¥50,000〜¥100,000の月次収益になります。ダッシュボード構築のスキルを、サービス提供（受託）とプロダクト販売（テンプレート）の両輪で収益化してみてください。
 
+## 関連記事
+
+- [BigQuery × Looker StudioでEC事業の月次KPIレポートを自動化した](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-monthly-kpi-auto)
+- [Looker Studio × BigQueryで経営者が毎朝見るダッシュボードの設計思想](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-ceo-dashboard-design)
+- [Looker Studio × BigQueryでEC売上ダッシュボードを1日で作る完全手順](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-ec-dashboard-guide)
+- [BigQuery × Looker Studioで前年同期比グラフを作る方法](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-yoy-comparison-chart)
+
 ---
 
 :::message

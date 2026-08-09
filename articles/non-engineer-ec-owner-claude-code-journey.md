@@ -203,6 +203,13 @@ Claude Codeで自走できるようになったとはいえ、すべてを一人
 
 「データは溜まっているのに活用できていない」という状態は、もったいないだけでなく、経営判断の機会損失でもあります。
 
+## 関連記事
+
+- [ココナラ7年・154件のデータから見えた、コンサル仕事の構造（分析編）](https://zenn.dev/web_benriya/articles/coconala-154-structure)
+- [GA4×BigQueryを自社導入したEC事業者が最初の1週間で気づいたこと](https://zenn.dev/web_benriya/articles/ga4-bigquery-self-implement-ec-first-week)
+- [Claude Codeを使ったデータ分析サービスの提案書テンプレートを公開する](https://zenn.dev/web_benriya/articles/claude-code-data-analysis-proposal-template)
+- [ココナラ154件、3時間で構造化した実装ログ（Playwright × 構造的ダミー化）](https://zenn.dev/web_benriya/articles/coconala-154-3hours)
+
 ---
 
 :::message

@@ -123,6 +123,13 @@ BigQueryのGeminiアシスタントは、非エンジニアがSQL分析に踏み
 
 まずはシンプルな集計（日別セッション数・流入元別集計など）からGeminiと一緒に試してみることをおすすめします。小さな成功体験を積み重ねることで、自社データの分析を自走できる環境が整っていきます。
 
+## 関連記事
+
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [Gemini in BigQueryの料金体系を完全解説【思わぬ課金を防ぐ設定】](https://zenn.dev/web_benriya/articles/gemini-bigquery-pricing-complete-guide)
+- [ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹底比較した](https://zenn.dev/web_benriya/articles/chatgpt-claude-gemini-data-analysis-comparison)
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+
 ---
 
 :::message

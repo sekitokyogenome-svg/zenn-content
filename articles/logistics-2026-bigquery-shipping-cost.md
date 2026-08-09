@@ -187,6 +187,13 @@ SQLでの分析結果は、Google LookerStudio（旧データポータル）と�
 
 最初の一歩として、GA4のBigQueryエクスポートを有効化するだけでも、将来のデータ活用の幅が大きく広がります。まだ設定されていない場合は、GA4管理画面の「BigQueryのリンク」から今日にでも試してみることをお勧めします。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+
 ---
 
 :::message

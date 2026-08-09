@@ -152,6 +152,13 @@ WEBコンサルタントの単価を引き上げるポイントは、「作業�
 
 大事なのは、技術の話をするのではなく、クライアントのビジネス課題を解決する話し方をすることです。「BigQueryでSQLを書いてデータマートを構築します」ではなく、「毎朝ダッシュボードを開くだけで、経営に必要な数字が揃っている状態を作ります」と伝えてみてください。
 
+## 関連記事
+
+- [中小EC経営者がデータ分析に月1万円投資すべき理由](https://zenn.dev/web_benriya/articles/small-ec-data-analysis-monthly-investment)
+- [Claude Codeを使ったデータ分析サービスの提案書テンプレートを公開する](https://zenn.dev/web_benriya/articles/claude-code-data-analysis-proposal-template)
+- [フリーランスがデータ分析スキルでココナラ月収を3倍にした方法](https://zenn.dev/web_benriya/articles/freelance-data-analyst-coconala-revenue-triple)
+- [ココナラ154件、3時間で構造化した実装ログ（Playwright × 構造的ダミー化）](https://zenn.dev/web_benriya/articles/coconala-154-3hours)
+
 ---
 
 :::message

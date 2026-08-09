@@ -181,6 +181,13 @@ mart_traffic, mart_channel_performance, mart_funnel を使用してください�
 
 「データはあるのに活用できていない」という状態から一歩進みたい方は、まずBigQueryのデータマート構築から始めてみてください。
 
+## 関連記事
+
+- [Claude CodeのAgentモードでEC売上データを自動分析させた結果](https://zenn.dev/web_benriya/articles/claude-code-agent-mode-ec-sales-analysis)
+- [BigQuery × Claude Codeで異常検知アラートを作る【売上急落を即通知】](https://zenn.dev/web_benriya/articles/bigquery-claude-code-anomaly-detection-alert)
+- [BigQuery × Claude Codeで月次事業報告書を自動作成する仕組み](https://zenn.dev/web_benriya/articles/bigquery-claude-code-monthly-business-report)
+- [Claude CodeでEC×GA4のA/Bテスト結果をBigQueryから自動集計する](https://zenn.dev/web_benriya/articles/claude-code-ab-test-bigquery-ga4)
+
 ---
 
 :::message

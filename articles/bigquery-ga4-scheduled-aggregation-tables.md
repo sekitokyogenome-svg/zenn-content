@@ -296,6 +296,13 @@ Scheduled Queriesで集計テーブルを自動生成する仕組みを作ると
 
 皆さんはBigQueryのスケジュール実行、どのような頻度・構成で運用していますか？コメントで教えていただけると嬉しいです。
 
+## 関連記事
+
+- [BigQueryでGA4データのコスト管理・クエリ最適化入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-cost-query-optimization)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryのパーティション・クラスタリングでGA4クエリを高速化する](https://zenn.dev/web_benriya/articles/bigquery-partition-clustering-ga4-optimization)
+- [GA4のデータをBigQueryに繋ぐと何が変わるのか【3層設計まで解説】](https://zenn.dev/web_benriya/articles/ga4-bigquery-3layer-design)
+
 ---
 
 :::message

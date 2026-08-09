@@ -168,6 +168,13 @@ Gemini in BigQuery Studio のリソース検出機能は、マルチプロジェ
 
 データ分析の民主化が進む中、AIアシスタントによるリソース検出機能はその入り口を広げるものです。まずは手元のプロジェクトでGemini in BigQuery Studioを試してみることから始めてみてください。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [Gemini in BigQueryの料金体系を完全解説【思わぬ課金を防ぐ設定】](https://zenn.dev/web_benriya/articles/gemini-bigquery-pricing-complete-guide)
+- [ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹底比較した](https://zenn.dev/web_benriya/articles/chatgpt-claude-gemini-data-analysis-comparison)
+
 ---
 
 :::message

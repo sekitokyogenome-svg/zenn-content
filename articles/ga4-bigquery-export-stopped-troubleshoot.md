@@ -217,6 +217,13 @@ GA4のBigQueryエクスポートは一度設定すれば安定して動きます
 
 皆さんはエクスポートの監視、どのように対応していますか？コメントで共有いただけると参考になります。
 
+## 関連記事
+
+- [BigQueryでGA4データのコスト管理・クエリ最適化入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-cost-query-optimization)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryでGA4の日次・週次・月次集計テーブルをスケジュール実行する](https://zenn.dev/web_benriya/articles/bigquery-ga4-scheduled-aggregation-tables)
+- [BigQueryのパーティション・クラスタリングでGA4クエリを高速化する](https://zenn.dev/web_benriya/articles/bigquery-partition-clustering-ga4-optimization)
+
 ---
 
 :::message

@@ -93,6 +93,13 @@ Zenn記事は「技術力の証明」と「潜在顧客へのリーチ」を同�
 
 大切なのは、読者に価値を提供する記事を継続的に書くことです。その積み重ねが、信頼となり、受注につながります。
 
+## 関連記事
+
+- [フリーランスがデータ分析スキルでココナラ月収を3倍にした方法](https://zenn.dev/web_benriya/articles/freelance-data-analyst-coconala-revenue-triple)
+- [Zennで技術記事を書き続けたら3ヶ月でフリーランス案件が増えた話](https://zenn.dev/web_benriya/articles/zenn-tech-articles-freelance-growth)
+- [ココナラ7年・154件のデータから見えた、コンサル仕事の構造（分析編）](https://zenn.dev/web_benriya/articles/coconala-154-structure)
+- [Claude Codeを使ったデータ分析サービスの提案書テンプレートを公開する](https://zenn.dev/web_benriya/articles/claude-code-data-analysis-proposal-template)
+
 ---
 
 :::message

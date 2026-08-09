@@ -182,6 +182,13 @@ Looker Studioが遅い原因の多くは、GA4ネイティブコネクタの構�
 
 「ダッシュボードが遅い」は設定の問題ではなくアーキテクチャの問題です。データソースの構成を見直すだけで、Looker Studioは快適に使えるツールに変わります。
 
+## 関連記事
+
+- [BigQuery × Looker StudioでEC事業の月次KPIレポートを自動化した](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-monthly-kpi-auto)
+- [BigQuery × Looker Studioで前年同期比グラフを作る方法](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-yoy-comparison-chart)
+- [GA4 × BigQuery × Looker Studioで完全自動のEC分析基盤を0から構築する全手順](https://zenn.dev/web_benriya/articles/ga4-bigquery-looker-studio-ec-analytics-full)
+- [Looker Studio × BigQueryで経営者が毎朝見るダッシュボードの設計思想](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-ceo-dashboard-design)
+
 ---
 
 :::message

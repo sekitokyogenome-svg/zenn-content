@@ -223,6 +223,13 @@ COALESCE(p.revenue_ly, 0) AS revenue_previous
 
 一度ビューを作成してしまえば、毎月の定例レポートで前年比の確認が自動化されます。
 
+## 関連記事
+
+- [BigQuery × Looker StudioでEC事業の月次KPIレポートを自動化した](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-monthly-kpi-auto)
+- [GA4 × BigQuery × Looker Studioで完全自動のEC分析基盤を0から構築する全手順](https://zenn.dev/web_benriya/articles/ga4-bigquery-looker-studio-ec-analytics-full)
+- [Looker Studio × BigQueryで経営者が毎朝見るダッシュボードの設計思想](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-ceo-dashboard-design)
+- [Looker Studio × BigQueryでEC売上ダッシュボードを1日で作る完全手順](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-ec-dashboard-guide)
+
 ---
 
 :::message

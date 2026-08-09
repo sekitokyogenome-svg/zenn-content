@@ -168,6 +168,13 @@ BigQueryで取得したデータをもとに、各チャネルをスコアリン
 
 次のアクションとしては、まずBigQueryでチャネル別パフォーマンスを集計するクエリを実行し、現状のデータを可視化することから始めてみてください。データの全体像が見えてくると、どこに改善余地があるかが具体的に見えてきます。
 
+## 関連記事
+
+- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+- [BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した](https://zenn.dev/web_benriya/articles/bigquery-ec-pareto-top20-revenue)
+- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
+
 ---
 
 :::message

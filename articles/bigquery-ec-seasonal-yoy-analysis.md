@@ -210,6 +210,13 @@ ECの季節変動を前年比で分析することは、仕入れ判断の精度
 
 皆さんのECでは、仕入れ判断にどの程度データを活用できていますか？
 
+## 関連記事
+
+- [BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した](https://zenn.dev/web_benriya/articles/bigquery-ec-pareto-top20-revenue)
+- [BigQueryで1回しか買わない顧客と2回以上買う顧客の行動差を分析した](https://zenn.dev/web_benriya/articles/bigquery-one-time-vs-repeat-buyer-analysis)
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
+
 ---
 
 :::message

@@ -124,6 +124,13 @@ GA4 の計測整備で終わらせず、「次は BigQuery 連携で◯◯が見
 
 ### 関連サービス
 
+## 関連記事
+
+- [非エンジニアのEC経営者がClaude Codeで自走できるまで【全記録】](https://zenn.dev/web_benriya/articles/non-engineer-ec-owner-claude-code-journey)
+- [Claude Codeを使ったデータ分析サービスの提案書テンプレートを公開する](https://zenn.dev/web_benriya/articles/claude-code-data-analysis-proposal-template)
+- [ココナラ154件、3時間で構造化した実装ログ（Playwright × 構造的ダミー化）](https://zenn.dev/web_benriya/articles/coconala-154-3hours)
+- [フリーランスがデータ分析スキルでココナラ月収を3倍にした方法](https://zenn.dev/web_benriya/articles/freelance-data-analyst-coconala-revenue-triple)
+
 ---
 
 :::message

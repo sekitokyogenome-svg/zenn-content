@@ -207,6 +207,13 @@ Looker Studioは複数のデータソースを1つのレポートに統合でき
 
 次のアクションとしては、まず直近1〜3ヶ月分のデータで回転率を算出し、下位10〜20商品をリストアップすることをお勧めします。そのうえで、在庫処分・値引きプロモーション・仕入れ抑制のどれが適切かを個別に検討していくと、キャッシュフローの改善につながります。
 
+## 関連記事
+
+- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+
 ---
 
 :::message

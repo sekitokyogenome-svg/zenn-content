@@ -244,6 +244,13 @@ Looker Studioの計算フィールドを活用すれば、ROAS・CPA・CTR・CVR
 
 手動レポート作成の工数を削減しつつ、リアルタイムで広告パフォーマンスを監視できる環境を構築してみてください。
 
+## 関連記事
+
+- [BigQuery × Looker StudioでEC事業の月次KPIレポートを自動化した](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-monthly-kpi-auto)
+- [Looker Studio × BigQueryで経営者が毎朝見るダッシュボードの設計思想](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-ceo-dashboard-design)
+- [Looker Studio × BigQueryでEC売上ダッシュボードを1日で作る完全手順](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-ec-dashboard-guide)
+- [Looker Studio × BigQueryでGoogle広告とMeta広告を一画面で比較する](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-google-meta-ads)
+
 ---
 
 :::message

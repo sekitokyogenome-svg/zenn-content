@@ -162,6 +162,13 @@ GTMのカスタムHTMLタグが実際にページ上で実行されているか�
 
 次のステップとしては、`product_viewed`や`cart_updated`など他のShopifyイベントも購読し、ファネル全体の可視化に取り組んでみてください。Looker Studioと組み合わせることで、チャネル別・商品別のコンバージョン分析ダッシュボードの構築も可能です。
 
+## 関連記事
+
+- [GA4×GTMでサイト内検索キーワードを正しく計測する設定](https://zenn.dev/web_benriya/articles/ga4-gtm-site-search-tracking)
+- [GTMのデータレイヤーを使ったGA4カスタムイベント設計のベストプラクティス](https://zenn.dev/web_benriya/articles/gtm-data-layer-ga4-custom-event-design)
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+
 ---
 
 :::message

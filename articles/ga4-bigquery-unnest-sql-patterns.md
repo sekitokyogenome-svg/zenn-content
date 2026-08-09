@@ -229,6 +229,13 @@ BigQueryコンソールのスキーマタブで型を確認するのが確実で
 
 `UNNEST` はGA4×BigQueryの最初の壁ですが、パターンを覚えてしまえば怖くありません。staging層にまとめておくことで、分析SQLがすっきりします。
 
+## 関連記事
+
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）](https://zenn.dev/web_benriya/articles/ga4-bigquery-bounce-rate-calculation)
+- [GA4×BigQueryでカスタムディメンションを活用した分析](https://zenn.dev/web_benriya/articles/ga4-bigquery-custom-dimensions)
+- [BigQueryでGA4のeコマースイベントを完全解析する【purchase/add_to_cart】](https://zenn.dev/web_benriya/articles/ga4-bigquery-ecommerce-events-analysis)
+
 ---
 
 :::message

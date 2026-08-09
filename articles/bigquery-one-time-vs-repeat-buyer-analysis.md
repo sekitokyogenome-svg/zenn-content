@@ -218,6 +218,13 @@ ORDER BY bt.buyer_type, users DESC
 - リピーターは初回訪問時からページ閲覧数やエンゲージメント時間が長い傾向がある
 - 流入元の違いも合わせて分析すれば、リピーターを生みやすいチャネルが特定できる
 
+## 関連記事
+
+- [BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した](https://zenn.dev/web_benriya/articles/bigquery-ec-pareto-top20-revenue)
+- [ECの季節変動をBigQueryで前年比分析して仕入れ計画に活かす方法](https://zenn.dev/web_benriya/articles/bigquery-ec-seasonal-yoy-analysis)
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
+
 ---
 
 :::message

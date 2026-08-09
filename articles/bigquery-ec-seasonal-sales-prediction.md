@@ -225,6 +225,13 @@ BigQuery MLを使えば、SQLの知識だけでEC売上の予測モデルを構�
 
 まずは自社の日別売上データでモデルを作成し、バックテストで精度を確認するところから始めてみてください。予測精度が十分でない場合は、データ期間を延ばす、外部データ（天候・イベント情報）を追加するなどの改善策を検討できます。
 
+## 関連記事
+
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+- [BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した](https://zenn.dev/web_benriya/articles/bigquery-ec-pareto-top20-revenue)
+- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
+- [BigQueryでEC顧客をRFM分析してセグメント別メルマガ戦略を立てた](https://zenn.dev/web_benriya/articles/bigquery-ec-rfm-analysis-email-strategy)
+
 ---
 
 :::message

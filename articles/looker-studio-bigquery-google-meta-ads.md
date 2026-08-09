@@ -327,6 +327,13 @@ Google広告とMeta広告を一画面で比較するダッシュボードは、�
 
 広告費の最適化は、EC事業の利益率に直結します。感覚ではなくデータに基づいた意思決定ができる環境を構築してみてください。
 
+## 関連記事
+
+- [BigQuery × Looker StudioでEC事業の月次KPIレポートを自動化した](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-monthly-kpi-auto)
+- [BigQuery × Looker Studioで前年同期比グラフを作る方法](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-yoy-comparison-chart)
+- [GA4 × BigQuery × Looker Studioで完全自動のEC分析基盤を0から構築する全手順](https://zenn.dev/web_benriya/articles/ga4-bigquery-looker-studio-ec-analytics-full)
+- [Looker Studio × BigQueryで経営者が毎朝見るダッシュボードの設計思想](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-ceo-dashboard-design)
+
 ---
 
 :::message

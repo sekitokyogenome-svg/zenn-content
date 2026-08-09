@@ -305,6 +305,13 @@ BigQueryのGA4データで複数のアトリビューションモデルを実装
 
 ラストクリックだけの評価に不安を感じている方は、まず線形モデルとの比較から始めてみてください。
 
+## 関連記事
+
+- [BigQuery × Claude Codeで異常検知アラートを作る【売上急落を即通知】](https://zenn.dev/web_benriya/articles/bigquery-claude-code-anomaly-detection-alert)
+- [BigQuery × Claude Codeで月次事業報告書を自動作成する仕組み](https://zenn.dev/web_benriya/articles/bigquery-claude-code-monthly-business-report)
+- [Claude CodeでEC×GA4のA/Bテスト結果をBigQueryから自動集計する](https://zenn.dev/web_benriya/articles/claude-code-ab-test-bigquery-ga4)
+- [Claude CodeのAgentモードでEC売上データを自動分析させた結果](https://zenn.dev/web_benriya/articles/claude-code-agent-mode-ec-sales-analysis)
+
 ---
 
 :::message

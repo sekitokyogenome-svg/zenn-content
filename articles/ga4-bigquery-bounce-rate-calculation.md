@@ -289,6 +289,13 @@ GA4の直帰率はUAとは定義が異なり、「エンゲージメントのな
 BigQueryでは `session_engaged` パラメータを使えば、GA4の公式定義に沿った直帰率を計算できます。
 ページ別・チャネル別に分析することで、改善対象の特定に活用してください。
 
+## 関連記事
+
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [GA4×BigQueryでカスタムディメンションを活用した分析](https://zenn.dev/web_benriya/articles/ga4-bigquery-custom-dimensions)
+- [BigQueryでGA4のeコマースイベントを完全解析する【purchase/add_to_cart】](https://zenn.dev/web_benriya/articles/ga4-bigquery-ecommerce-events-analysis)
+- [BigQueryでGA4の生データ構造を理解する【eventsテーブル解説】](https://zenn.dev/web_benriya/articles/ga4-bigquery-events-table-raw-data-structure)
+
 ---
 
 :::message

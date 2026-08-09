@@ -204,6 +204,13 @@ Looker StudioからBigQueryへのクエリは実行のたびにコストが発�
 
 チェックアウトフローの離脱率改善は、広告費を増やさずに売上を伸ばすための重要な取り組みです。まずはBigQueryへのエクスポート設定から着手し、データを蓄積しながら分析の精度を高めていくことをお勧めします。
 
+## 関連記事
+
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+- [中小ECのLTV分析をGA4×BigQueryで無料構築する方法【SQLテンプレ付き】](https://zenn.dev/web_benriya/articles/ec-ltv-analysis-ga4-bigquery-free)
+- [EC売上が下がったとき最初に確認すべきBigQueryクエリ5選](https://zenn.dev/web_benriya/articles/ec-revenue-drop-bigquery-queries-checklist)
+
 ---
 
 :::message

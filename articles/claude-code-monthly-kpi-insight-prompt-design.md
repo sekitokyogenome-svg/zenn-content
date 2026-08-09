@@ -162,6 +162,13 @@ Claude Codeの出力はあくまで「たたき台」として活用し、実際
 
 月次レポートの「数字を並べるだけ」から脱却し、考察まで含めた意思決定に役立つレポートへと進化させるための一助となれば幸いです。まずは1チャネルのデータだけに絞って試してみるところから始めてみてください。
 
+## 関連記事
+
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+- [ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹底比較した](https://zenn.dev/web_benriya/articles/chatgpt-claude-gemini-data-analysis-comparison)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+
 ---
 
 :::message

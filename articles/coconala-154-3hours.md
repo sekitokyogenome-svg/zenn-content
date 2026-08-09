@@ -227,6 +227,13 @@ npm run normalize
 
 似たような「自分のプラットフォームデータを取り出して構造化したい」「ダミー化を機械的に詰めたい」というご相談は、ココナラのスポットプランでも承っています。
 
+## 関連記事
+
+- [Claude Codeを使ったデータ分析サービスの提案書テンプレートを公開する](https://zenn.dev/web_benriya/articles/claude-code-data-analysis-proposal-template)
+- [ココナラ7年・154件のデータから見えた、コンサル仕事の構造（分析編）](https://zenn.dev/web_benriya/articles/coconala-154-structure)
+- [非エンジニアのEC経営者がClaude Codeで自走できるまで【全記録】](https://zenn.dev/web_benriya/articles/non-engineer-ec-owner-claude-code-journey)
+- [フリーランスがデータ分析スキルでココナラ月収を3倍にした方法](https://zenn.dev/web_benriya/articles/freelance-data-analyst-coconala-revenue-triple)
+
 ---
 
 :::message

@@ -232,6 +232,13 @@ Looker Studioを使えばノーコードでグラフを作成でき、チーム�
 
 次のアクションとして、まずは直近1〜2ヶ月分のデータでキャンペーン別CVRを比較してみてください。数値を見ることで、どのセグメントへの配信を強化すべきかの仮説が立てやすくなります。
 
+## 関連記事
+
+- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
+
 ---
 
 :::message

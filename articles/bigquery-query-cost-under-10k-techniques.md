@@ -180,6 +180,13 @@ BigQueryのクエリコストを月1万円以下に抑えるための7つのテ�
 
 BigQueryは使いこなせば強力なデータ基盤になりますが、設計の段階でコスト意識を持つことが長期的な運用の鍵です。GA4との連携や自社データ分析にお悩みの際は、ぜひ以下のご相談窓口もご活用ください。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [Gemini in BigQueryの料金体系を完全解説【思わぬ課金を防ぐ設定】](https://zenn.dev/web_benriya/articles/gemini-bigquery-pricing-complete-guide)
+- [BigQueryでGA4データのコスト管理・クエリ最適化入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-cost-query-optimization)
+
 ---
 
 :::message

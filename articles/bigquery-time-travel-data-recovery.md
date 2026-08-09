@@ -187,6 +187,13 @@ ORDER BY
 
 次のアクションとして、まず自社のBigQueryプロジェクトで `FOR SYSTEM_TIME AS OF` を使ったテストクエリを実行してみてください。本番環境を触る前に動作を確認しておくと、いざというときに慌てずに済みます。
 
+## 関連記事
+
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
+- [BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）](https://zenn.dev/web_benriya/articles/ga4-bigquery-bounce-rate-calculation)
+
 ---
 
 :::message

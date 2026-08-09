@@ -188,6 +188,13 @@ ORDER BY
 
 次のアクションとして、まずはGA4とBigQueryの連携設定を確認し、`events_*` テーブルへのアクセス権限を整備してください。連携後は本記事のクエリを自社のプロジェクトID・プロパティIDに置き換えて実行してみることをお勧めします。クエリ結果はLooker Studioと接続することで、国別ダッシュボードとして定期的なモニタリングにも活用できます。
 
+## 関連記事
+
+- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+
 ---
 
 :::message

@@ -238,6 +238,13 @@ AI検索エンジンからのトラフィックは、GA4の標準レポートで
 
 早い段階でカスタムチャネルグループを定義し、週次のトレンド監視を始めておくことで、今後のSEO・コンテンツ戦略に活かせるデータが蓄積されていきます。
 
+## 関連記事
+
+- [GA4×BigQueryを自社導入したEC事業者が最初の1週間で気づいたこと](https://zenn.dev/web_benriya/articles/ga4-bigquery-self-implement-ec-first-week)
+- [ココナラ7年・154件のデータから見えた、コンサル仕事の構造（分析編）](https://zenn.dev/web_benriya/articles/coconala-154-structure)
+- [非エンジニアのEC経営者がClaude Codeで自走できるまで【全記録】](https://zenn.dev/web_benriya/articles/non-engineer-ec-owner-claude-code-journey)
+- [Claude Codeを使ったデータ分析サービスの提案書テンプレートを公開する](https://zenn.dev/web_benriya/articles/claude-code-data-analysis-proposal-template)
+
 ---
 
 :::message

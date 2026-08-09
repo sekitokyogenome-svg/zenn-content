@@ -213,6 +213,13 @@ Cloud Functionsを使う場合、実行時間の上限（デフォルト60秒）
 
 BigQueryにデータが蓄積されると、Looker Studioでのダッシュボード作成や、GA4のデータと結合した費用対効果の分析など、さらに幅広い活用が可能になります。まずは小さな広告アカウントで動作確認しながら、自社の運用に合った形に調整してみてください。
 
+## 関連記事
+
+- [BigQueryでGA4データをdbtで管理する入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-dbt-management-intro)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Claude Code × BigQueryでEC広告の予算配分を自動最適化する提案ツールを作った](https://zenn.dev/web_benriya/articles/claude-code-bigquery-ad-budget-optimization)
+- [Claude Codeで複数広告媒体のROASを一括比較するスクリプトを作成した](https://zenn.dev/web_benriya/articles/claude-code-multi-ad-roas-comparison)
+
 ---
 
 :::message

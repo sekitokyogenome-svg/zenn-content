@@ -200,6 +200,13 @@ PageSpeed Insightsのフィールドデータ（CrUXベース）とラボデー�
 
 サイト速度の改善は一度対応すれば終わりではなく、商品追加やテーマ変更のたびに再劣化するリスクがあります。BigQueryとLooker Studioを組み合わせたモニタリング基盤を整備しておくと、変化に気づくタイミングを早めることができます。まずはCrUXデータで現状のLCP水準を把握するところから始めてみてください。
 
+## 関連記事
+
+- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+
 ---
 
 :::message

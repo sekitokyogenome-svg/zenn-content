@@ -234,6 +234,13 @@ ORDER BY occurrences DESC
 
 皆さんはどのようなカスタムディメンションを設定していますか？コメントで教えていただけると嬉しいです。
 
+## 関連記事
+
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）](https://zenn.dev/web_benriya/articles/ga4-bigquery-bounce-rate-calculation)
+- [BigQueryでGA4のeコマースイベントを完全解析する【purchase/add_to_cart】](https://zenn.dev/web_benriya/articles/ga4-bigquery-ecommerce-events-analysis)
+- [BigQueryでGA4の生データ構造を理解する【eventsテーブル解説】](https://zenn.dev/web_benriya/articles/ga4-bigquery-events-table-raw-data-structure)
+
 ---
 
 :::message

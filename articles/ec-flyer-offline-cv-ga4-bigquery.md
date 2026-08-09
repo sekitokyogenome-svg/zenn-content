@@ -181,6 +181,13 @@ AppleのITP（Intelligent Tracking Prevention）により、SafariではCookie�
 
 最初の一歩として、次回のチラシ同梱前にQRコードのUTMパラメータを設定するだけでも、計測の精度は大きく変わります。段階的に仕組みを整えながら、データに基づいたチラシ施策の最適化を進めていただければと思います。
 
+## 関連記事
+
+- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
+
 ---
 
 :::message

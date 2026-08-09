@@ -197,6 +197,13 @@ P-MAXキャンペーンは強力な自動最適化機能を備えている一方
 
 一度データパイプラインを整えてしまえば、毎週・毎月のレポーティングも大幅に効率化できます。P-MAXの「ブラックボックス」感を少しずつ解消しながら、費用対効果の高い広告運用に役立てていただけますと幸いです。
 
+## 関連記事
+
+- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+- [BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した](https://zenn.dev/web_benriya/articles/bigquery-ec-pareto-top20-revenue)
+- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
+
 ---
 
 :::message

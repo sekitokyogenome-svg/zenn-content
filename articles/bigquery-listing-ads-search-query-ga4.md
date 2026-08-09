@@ -222,6 +222,13 @@ Looker Studio上でフィルタを設定することで、期間や特定のキ�
 
 広告費の最適化は、広告管理画面だけを見ていては限界があります。サイト内のユーザー行動と組み合わせることで、より実態に近い判断ができるようになります。まずは1ヶ月分のデータで試してみることをお勧めします。
 
+## 関連記事
+
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
+- [BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）](https://zenn.dev/web_benriya/articles/ga4-bigquery-bounce-rate-calculation)
+- [GA4×BigQueryでEC新規顧客獲得コスト（CAC）を媒体別に正確計算する](https://zenn.dev/web_benriya/articles/ga4-bigquery-cac-by-channel)
+
 ---
 
 :::message

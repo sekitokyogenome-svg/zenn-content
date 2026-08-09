@@ -171,6 +171,13 @@ SQLの構造は正しく、`UNNEST(event_params)` も適切に使用されてい
 
 まずは小さなSQLから試し、AIとの対話を重ねながら自社のパイプラインを育てていくアプローチが、非エンジニアにとって現実的な一歩となるでしょう。
 
+## 関連記事
+
+- [ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹底比較した](https://zenn.dev/web_benriya/articles/chatgpt-claude-gemini-data-analysis-comparison)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+- [Claude Codeに月次KPIレポートの「考察」まで書かせるプロンプト設計術](https://zenn.dev/web_benriya/articles/claude-code-monthly-kpi-insight-prompt-design)
+
 ---
 
 :::message

@@ -190,6 +190,13 @@ curl -s "https://graph.threads.net/v1.0/access_token?grant_type=th_exchange_toke
 この記事自身も、自作の段階公開スケジューラで公開され、公開と同時にこの仕組みで Threads に告知されています。
 :::
 
+## 関連記事
+
+- [高単価アンケートを見逃さない：Gmailの案件メールを正規表現でパースしてLINE通知する](https://zenn.dev/web_benriya/articles/survey-catcher-gmail-line)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [GA4のBigQueryエクスポート完全設定ガイド【2026年版】](https://zenn.dev/web_benriya/articles/ga4-bigquery-export-setup-guide-2026)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+
 ---
 
 :::message

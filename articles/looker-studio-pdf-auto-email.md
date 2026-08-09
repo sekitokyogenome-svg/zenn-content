@@ -270,6 +270,13 @@ Looker Studioのレポート自動配信は、3つのレベルで実装できま
 
 レポート配信の自動化は、ダッシュボード運用の定着率を大きく向上させます。「見に行く」から「届く」に変えることで、データ活用の習慣が組織に根付きます。
 
+## 関連記事
+
+- [BigQuery × Looker StudioでEC事業の月次KPIレポートを自動化した](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-monthly-kpi-auto)
+- [BigQuery × Looker Studioで前年同期比グラフを作る方法](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-yoy-comparison-chart)
+- [GA4 × BigQuery × Looker Studioで完全自動のEC分析基盤を0から構築する全手順](https://zenn.dev/web_benriya/articles/ga4-bigquery-looker-studio-ec-analytics-full)
+- [Looker Studio × BigQueryで経営者が毎朝見るダッシュボードの設計思想](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-ceo-dashboard-design)
+
 ---
 
 :::message

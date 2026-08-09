@@ -276,6 +276,13 @@ EC売上が下がったとき、闇雲にサイトをいじる前にまずデー
 
 BigQueryとGA4のデータを活用すれば、感覚ではなくデータに基づいた意思決定ができるようになります。
 
+## 関連記事
+
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [中小ECのLTV分析をGA4×BigQueryで無料構築する方法【SQLテンプレ付き】](https://zenn.dev/web_benriya/articles/ec-ltv-analysis-ga4-bigquery-free)
+- [GA4×BigQueryでカート放棄率を正確に計測・改善する方法](https://zenn.dev/web_benriya/articles/ga4-bigquery-cart-abandonment-rate)
+- [GA4×BigQueryで初回購入→リピートまでのファネルを可視化する](https://zenn.dev/web_benriya/articles/ga4-bigquery-first-purchase-repeat-funnel)
+
 ---
 
 :::message

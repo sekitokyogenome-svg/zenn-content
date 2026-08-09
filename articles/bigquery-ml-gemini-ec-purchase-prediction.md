@@ -208,6 +208,13 @@ Geminiからの出力例（実際の結果はデータにより異なります�
 
 次のアクションとして、まずはGA4とBigQueryのリンク設定を完了させ、`events_*`テーブルにデータが蓄積されていることを確認することをお勧めします。データが1ヶ月以上蓄積されてから特徴量を作成すると、より安定した予測精度が期待できます。構築に際してご不明な点があれば、お気軽にご相談ください。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [Gemini in BigQueryの料金体系を完全解説【思わぬ課金を防ぐ設定】](https://zenn.dev/web_benriya/articles/gemini-bigquery-pricing-complete-guide)
+- [ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹底比較した](https://zenn.dev/web_benriya/articles/chatgpt-claude-gemini-data-analysis-comparison)
+
 ---
 
 :::message

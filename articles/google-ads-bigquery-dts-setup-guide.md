@@ -218,6 +218,13 @@ Google広告データをBigQuery Data Transfer Serviceで自動連携する手�
 
 一度設定してしまえばデータ収集は全自動で動き続けるため、毎朝の手動ダウンロード作業から解放されます。蓄積したデータをLooker Studioでダッシュボード化すると、経営会議やクライアントへの報告資料として活用しやすくなります。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [BigQueryでGA4データをdbtで管理する入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-dbt-management-intro)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+
 ---
 
 :::message

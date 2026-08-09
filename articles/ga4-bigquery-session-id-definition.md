@@ -254,6 +254,13 @@ WHERE event_name = 'session_start'
 
 GA4のBigQueryデータでセッションを扱うには、`event_params` から `ga_session_id` をUNNESTで取り出し、`user_pseudo_id` と結合して一意なIDを作ることが基本です。このパターンを覚えておけば、セッション数・PV数・流入元分析・新規リピート判定など、多くの分析に応用できます。
 
+## 関連記事
+
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）](https://zenn.dev/web_benriya/articles/ga4-bigquery-bounce-rate-calculation)
+- [GA4×BigQueryでカスタムディメンションを活用した分析](https://zenn.dev/web_benriya/articles/ga4-bigquery-custom-dimensions)
+- [BigQueryでGA4のeコマースイベントを完全解析する【purchase/add_to_cart】](https://zenn.dev/web_benriya/articles/ga4-bigquery-ecommerce-events-analysis)
+
 ---
 
 :::message

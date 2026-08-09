@@ -176,6 +176,13 @@ claude mcp add ga4 -- env BQ_PROJECT=your-proj GA4_DATASET=analytics_XXXXXXXXX \
 この記事のコードは、自分の運用しているサイトのGA4エクスポートで検証済みです（数値・サイト情報は伏せています）。
 :::
 
+## 関連記事
+
+- [ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹底比較した](https://zenn.dev/web_benriya/articles/chatgpt-claude-gemini-data-analysis-comparison)
+- [Claude Code × BigQuery MCPでGA4分析を完全自動化する方法【EC事業者向け実践ガイド】](https://zenn.dev/web_benriya/articles/claude-code-bigquery-mcp-ga4)
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+- [BigQueryでGA4データからEC顧客の年齢・性別推定精度を検証した](https://zenn.dev/web_benriya/articles/bigquery-ga4-age-gender-estimation)
+
 ---
 
 :::message

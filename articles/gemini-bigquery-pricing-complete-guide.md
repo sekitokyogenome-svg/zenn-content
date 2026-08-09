@@ -177,6 +177,13 @@ Gemini in BigQueryの料金は、UIの補助機能（サブスクリプション
 
 コストをコントロールしながらGeminiを活用できれば、GA4データの分析深度を高め、マーケティングや購買導線の改善に役立てる余地が大きく広がります。まずは予算アラートの設定から始め、小さな実験を積み重ねていくことをお勧めします。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹底比較した](https://zenn.dev/web_benriya/articles/chatgpt-claude-gemini-data-analysis-comparison)
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+
 ---
 
 :::message

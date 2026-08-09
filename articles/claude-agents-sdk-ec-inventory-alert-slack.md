@@ -303,6 +303,13 @@ Claude が生成する Slack メッセージは、単なるデータの羅列で
 
 導入の第一歩としては、まず BigQuery に在庫スナップショットを取り込む仕組みを作ることをお勧めします。データ基盤が整えば、今回のような AI エージェント活用の幅が一気に広がります。自社の EC システムとの接続方法や、GA4 のイベント設計についてご不明な点があれば、下記よりお気軽にご相談ください。
 
+## 関連記事
+
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+- [Claude Codeに月次KPIレポートの「考察」まで書かせるプロンプト設計術](https://zenn.dev/web_benriya/articles/claude-code-monthly-kpi-insight-prompt-design)
+- [ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹底比較した](https://zenn.dev/web_benriya/articles/chatgpt-claude-gemini-data-analysis-comparison)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+
 ---
 
 :::message

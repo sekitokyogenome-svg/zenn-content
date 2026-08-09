@@ -213,6 +213,13 @@ WHERE
 
 次のアクションとしては、まずは自社の商品データと写真枚数の対応表を整備することから始めてみてください。データが揃えば、本記事のSQLをそのまま活用して分析を進めることができます。データドリブンな商品ページ改善の第一歩として、ぜひ取り組んでみてください。
 
+## 関連記事
+
+- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
+
 ---
 
 :::message

@@ -230,6 +230,13 @@ BigQueryのクエリ結果をLookerStudioに接続してダッシュボードを
 
 皆さんのECでは、商品別の利益をどの程度可視化できていますか？
 
+## 関連記事
+
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+- [BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した](https://zenn.dev/web_benriya/articles/bigquery-ec-pareto-top20-revenue)
+- [BigQueryでEC顧客をRFM分析してセグメント別メルマガ戦略を立てた](https://zenn.dev/web_benriya/articles/bigquery-ec-rfm-analysis-email-strategy)
+- [BigQueryでEC季節商品の売上予測モデルを作った話](https://zenn.dev/web_benriya/articles/bigquery-ec-seasonal-sales-prediction)
+
 ---
 
 :::message

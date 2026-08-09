@@ -279,6 +279,13 @@ GTMを使ったLINE広告・TikTok広告のコンバージョン計測のポイ�
 広告ROASを正しく把握するには、計測基盤の整備が前提です。
 GTMでの一元管理は、その第一歩として有効な手段です。
 
+## 関連記事
+
+- [GA4×GTMでフォーム送信の計測が取れないときのデバッグ手順](https://zenn.dev/web_benriya/articles/ga4-gtm-form-submit-tracking-debug)
+- [GA4×GTMでサイト内検索キーワードを正しく計測する設定](https://zenn.dev/web_benriya/articles/ga4-gtm-site-search-tracking)
+- [GTMのデータレイヤーを使ったGA4カスタムイベント設計のベストプラクティス](https://zenn.dev/web_benriya/articles/gtm-data-layer-ga4-custom-event-design)
+- [GTM × GA4でA/Bテスト結果を自動計測する仕組みを作る](https://zenn.dev/web_benriya/articles/gtm-ga4-ab-test-auto-tracking)
+
 ---
 
 :::message

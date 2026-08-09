@@ -202,6 +202,13 @@ Looker Studioのデータソース接続はBigQueryの課金（スキャン量�
 
 次のアクションとしては、まず自社のGA4にeコマース計測が正しく設定されているかを確認し、BigQueryエクスポートを有効化することから始めてみてください。その後、社内の受注・原価データをBigQueryに取り込む方法を検討するとスムーズです。
 
+## 関連記事
+
+- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+
 ---
 
 :::message

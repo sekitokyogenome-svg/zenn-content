@@ -214,6 +214,13 @@ Claude Codeに業種を伝えると、テンプレートの「期待される効
 
 今回公開したテンプレートは、自分の業務で実際に使っているものをベースにしています。ぜひカスタマイズして、自分のサービスに合った形で活用してみてください。
 
+## 関連記事
+
+- [ココナラ154件、3時間で構造化した実装ログ（Playwright × 構造的ダミー化）](https://zenn.dev/web_benriya/articles/coconala-154-3hours)
+- [ココナラ7年・154件のデータから見えた、コンサル仕事の構造（分析編）](https://zenn.dev/web_benriya/articles/coconala-154-structure)
+- [非エンジニアのEC経営者がClaude Codeで自走できるまで【全記録】](https://zenn.dev/web_benriya/articles/non-engineer-ec-owner-claude-code-journey)
+- [中小EC経営者がデータ分析に月1万円投資すべき理由](https://zenn.dev/web_benriya/articles/small-ec-data-analysis-monthly-investment)
+
 ---
 
 :::message

@@ -131,6 +131,13 @@ A: Claude Codeなどの生成AIを活用すれば、自然言語でSQLを生成�
 
 月1万円という投資は、広告費の最適化、離脱率の改善、リピート率の向上を通じて、回収できる可能性が高い投資です。まずはGA4→BigQueryのエクスポート設定から始めてみてください。データが蓄積されるだけでも、将来の選択肢が広がります。
 
+## 関連記事
+
+- [WEBコンサルタントのサービス単価を5倍にしたデータ基盤提案の話し方](https://zenn.dev/web_benriya/articles/web-consultant-service-price-5x-data-proposal)
+- [Claude Codeを使ったデータ分析サービスの提案書テンプレートを公開する](https://zenn.dev/web_benriya/articles/claude-code-data-analysis-proposal-template)
+- [フリーランスがデータ分析スキルでココナラ月収を3倍にした方法](https://zenn.dev/web_benriya/articles/freelance-data-analyst-coconala-revenue-triple)
+- [GA4×BigQueryを自社導入したEC事業者が最初の1週間で気づいたこと](https://zenn.dev/web_benriya/articles/ga4-bigquery-self-implement-ec-first-week)
+
 ---
 
 :::message

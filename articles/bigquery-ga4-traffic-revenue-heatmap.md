@@ -235,6 +235,13 @@ Looker Studioで新しいレポートを作成し、BigQueryをデータソー�
 - BigQueryでクロス集計を行い、Looker Studioのピボットテーブルでヒートマップ化する
 - 売上の集中ポイントに対して広告予算やコンテンツを最適化することで、効率的な投資が可能になる
 
+## 関連記事
+
+- [BigQueryでGA4データからEC顧客の年齢・性別推定精度を検証した](https://zenn.dev/web_benriya/articles/bigquery-ga4-age-gender-estimation)
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [中小ECのLTV分析をGA4×BigQueryで無料構築する方法【SQLテンプレ付き】](https://zenn.dev/web_benriya/articles/ec-ltv-analysis-ga4-bigquery-free)
+- [EC売上が下がったとき最初に確認すべきBigQueryクエリ5選](https://zenn.dev/web_benriya/articles/ec-revenue-drop-bigquery-queries-checklist)
+
 ---
 
 :::message

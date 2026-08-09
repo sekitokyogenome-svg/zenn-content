@@ -117,6 +117,13 @@ NotebookLMでの分析は、あくまでアップロードしたCSVの範囲内�
 
 SQLに不慣れな方でも、まずBigQueryのサンプルクエリを参考にCSVを取り出すところから始めることで、NotebookLMによる対話分析を体験できます。データに触れる機会を増やすことで、徐々に自社に合ったKPIやレポートの形が見えてくるはずです。ぜひ一歩ずつ試してみてください。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹底比較した](https://zenn.dev/web_benriya/articles/chatgpt-claude-gemini-data-analysis-comparison)
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+- [Claude Codeに月次KPIレポートの「考察」まで書かせるプロンプト設計術](https://zenn.dev/web_benriya/articles/claude-code-monthly-kpi-insight-prompt-design)
+
 ---
 
 :::message

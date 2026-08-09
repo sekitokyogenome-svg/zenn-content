@@ -151,6 +151,13 @@ Claude Code × BigQuery MCPを導入したことで、SQL作成にかかる時�
 
 技術的なハードルは思ったより低く、BigQueryのMCPセットアップさえ済めばすぐに使い始められます。データ分析に時間を取られているフリーランスの方には、一度試してみることをおすすめします。
 
+## 関連記事
+
+- [ココナラ7年・154件のデータから見えた、コンサル仕事の構造（分析編）](https://zenn.dev/web_benriya/articles/coconala-154-structure)
+- [非エンジニアのEC経営者がClaude Codeで自走できるまで【全記録】](https://zenn.dev/web_benriya/articles/non-engineer-ec-owner-claude-code-journey)
+- [Claude Codeを使ったデータ分析サービスの提案書テンプレートを公開する](https://zenn.dev/web_benriya/articles/claude-code-data-analysis-proposal-template)
+- [ココナラ154件、3時間で構造化した実装ログ（Playwright × 構造的ダミー化）](https://zenn.dev/web_benriya/articles/coconala-154-3hours)
+
 ---
 
 :::message

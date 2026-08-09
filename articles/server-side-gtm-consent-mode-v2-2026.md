@@ -188,6 +188,13 @@ Google広告のコンバージョンレポートに表示される数値は、�
 
 次のアクションとして、まず自社サイトで「Consent Modeのデフォルト値が設定されているか」「CMPが正しくdataLayerに同意状態を送出しているか」を確認してみてください。Google Tag Assistantの「Consent」タブでリアルタイムに検証できます。
 
+## 関連記事
+
+- [GA4×GTMでLINE広告・TikTok広告のコンバージョン計測を設定する](https://zenn.dev/web_benriya/articles/ga4-gtm-line-tiktok-conversion-tracking)
+- [GTMのデータレイヤーを使ったGA4カスタムイベント設計のベストプラクティス](https://zenn.dev/web_benriya/articles/gtm-data-layer-ga4-custom-event-design)
+- [GA4×BigQueryでEC新規顧客獲得コスト（CAC）を媒体別に正確計算する](https://zenn.dev/web_benriya/articles/ga4-bigquery-cac-by-channel)
+- [GA4のBigQueryエクスポート完全設定ガイド【2026年版】](https://zenn.dev/web_benriya/articles/ga4-bigquery-export-setup-guide-2026)
+
 ---
 
 :::message

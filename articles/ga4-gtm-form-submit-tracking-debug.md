@@ -207,6 +207,13 @@ GA4のリアルタイムレポートにデータが反映されるまで数分�
 
 この3層を順番に切り分ければ、原因の特定にかかる時間を大幅に短縮できます。
 
+## 関連記事
+
+- [GA4×GTMでLINE広告・TikTok広告のコンバージョン計測を設定する](https://zenn.dev/web_benriya/articles/ga4-gtm-line-tiktok-conversion-tracking)
+- [GA4×GTMでサイト内検索キーワードを正しく計測する設定](https://zenn.dev/web_benriya/articles/ga4-gtm-site-search-tracking)
+- [GTMのデータレイヤーを使ったGA4カスタムイベント設計のベストプラクティス](https://zenn.dev/web_benriya/articles/gtm-data-layer-ga4-custom-event-design)
+- [GTM × GA4でA/Bテスト結果を自動計測する仕組みを作る](https://zenn.dev/web_benriya/articles/gtm-ga4-ab-test-auto-tracking)
+
 ---
 
 :::message

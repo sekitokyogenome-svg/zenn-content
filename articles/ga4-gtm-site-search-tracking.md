@@ -272,6 +272,13 @@ LEFT JOIN purchase_users p ON s.user_pseudo_id = p.user_pseudo_id
 
 ユーザーの検索行動を把握することは、商品開発やコンテンツ改善の起点になります。
 
+## 関連記事
+
+- [GA4×GTMでフォーム送信の計測が取れないときのデバッグ手順](https://zenn.dev/web_benriya/articles/ga4-gtm-form-submit-tracking-debug)
+- [GA4×GTMでLINE広告・TikTok広告のコンバージョン計測を設定する](https://zenn.dev/web_benriya/articles/ga4-gtm-line-tiktok-conversion-tracking)
+- [GTMのデータレイヤーを使ったGA4カスタムイベント設計のベストプラクティス](https://zenn.dev/web_benriya/articles/gtm-data-layer-ga4-custom-event-design)
+- [GTM × GA4でA/Bテスト結果を自動計測する仕組みを作る](https://zenn.dev/web_benriya/articles/gtm-ga4-ab-test-auto-tracking)
+
 ---
 
 :::message

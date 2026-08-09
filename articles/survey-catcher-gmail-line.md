@@ -208,6 +208,13 @@ def _urgency(deadline_at, is_first_come, now, cfg):
 
 最後に逆に聞きたい。**表記ゆれに強いテキスト抽出、みなさんはどうしていますか？** 正規表現を泥臭く育てる派か、最初からLLMに投げる派か、ハイブリッドか。「メールで届く何か」を自動処理している人の工夫を、コメントで教えてもらえると嬉しいです。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [GA4のBigQueryエクスポート完全設定ガイド【2026年版】](https://zenn.dev/web_benriya/articles/ga4-bigquery-export-setup-guide-2026)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [Gemini in BigQueryの料金体系を完全解説【思わぬ課金を防ぐ設定】](https://zenn.dev/web_benriya/articles/gemini-bigquery-pricing-complete-guide)
+
 ---
 
 :::message

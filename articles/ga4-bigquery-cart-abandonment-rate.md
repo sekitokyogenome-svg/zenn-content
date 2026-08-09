@@ -263,6 +263,13 @@ ORDER BY c.week_start;
 - 商品別のカゴ落ち分析で、改善インパクトの大きい商品を特定できる
 - 施策実施後は週次で推移を追跡し、効果を検証する
 
+## 関連記事
+
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [中小ECのLTV分析をGA4×BigQueryで無料構築する方法【SQLテンプレ付き】](https://zenn.dev/web_benriya/articles/ec-ltv-analysis-ga4-bigquery-free)
+- [EC売上が下がったとき最初に確認すべきBigQueryクエリ5選](https://zenn.dev/web_benriya/articles/ec-revenue-drop-bigquery-queries-checklist)
+- [GA4×BigQueryで初回購入→リピートまでのファネルを可視化する](https://zenn.dev/web_benriya/articles/ga4-bigquery-first-purchase-repeat-funnel)
+
 ---
 
 :::message

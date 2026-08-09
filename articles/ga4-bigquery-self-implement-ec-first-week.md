@@ -144,6 +144,13 @@ GA4×BigQueryの導入は、設定自体は簡単です。しかし、データ�
 
 大事なのは、データの蓄積を早く始めることです。BigQueryに蓄積されたデータは、時間が経つほど価値が増します。
 
+## 関連記事
+
+- [AI検索時代のGA4活用術―ChatGPT流入をBigQueryで追跡する](https://zenn.dev/web_benriya/articles/ga4-bigquery-chatgpt-ai-search-tracking)
+- [非エンジニアのEC経営者がClaude Codeで自走できるまで【全記録】](https://zenn.dev/web_benriya/articles/non-engineer-ec-owner-claude-code-journey)
+- [ココナラ7年・154件のデータから見えた、コンサル仕事の構造（分析編）](https://zenn.dev/web_benriya/articles/coconala-154-structure)
+- [中小EC経営者がデータ分析に月1万円投資すべき理由](https://zenn.dev/web_benriya/articles/small-ec-data-analysis-monthly-investment)
+
 ---
 
 :::message

@@ -193,6 +193,13 @@ GA4のpurchaseイベントベースの分析には、以下の限界がありま
 
 定期購入ECの成長には、新規獲得と同等以上に継続率の改善が重要です。BigQueryとGA4を使ったコホート分析で、まずは自社の継続率カーブを可視化するところから始めてみてください。データが見えるようになると、「どこに手を打つべきか」が具体的になります。
 
+## 関連記事
+
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+- [BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した](https://zenn.dev/web_benriya/articles/bigquery-ec-pareto-top20-revenue)
+- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
+- [BigQueryでEC顧客をRFM分析してセグメント別メルマガ戦略を立てた](https://zenn.dev/web_benriya/articles/bigquery-ec-rfm-analysis-email-strategy)
+
 ---
 
 :::message

@@ -166,6 +166,13 @@ def classify_inquiry(inquiry_text: str) -> str:
 
 データ基盤の構築は「一度整えれば、あとは継続的に活用できる」ものです。最初の設計と設定に少し時間をかけることで、日々の判断をデータに基づいて行えるようになります。ぜひ自社のCS問い合わせデータを見直すきっかけにしてみてください。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
+- [Claude Codeに月次KPIレポートの「考察」まで書かせるプロンプト設計術](https://zenn.dev/web_benriya/articles/claude-code-monthly-kpi-insight-prompt-design)
+
 ---
 
 :::message

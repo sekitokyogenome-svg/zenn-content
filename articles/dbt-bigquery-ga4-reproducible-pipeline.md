@@ -169,6 +169,13 @@ dbtのテストはCIパイプライン（GitHub ActionsやCloud Buildなど）�
 
 次のステップとしては、セッションデータと購入イベントデータを結合した「コンバージョン分析モデル」を作成したり、dbt Cloudを使ってスケジュール実行の仕組みを整えたりすることが考えられます。段階的にモデルを追加していくことで、組織のデータ活用レベルを着実に高めていくことができます。
 
+## 関連記事
+
+- [BigQueryでGA4データをdbtで管理する入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-dbt-management-intro)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
+- [BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）](https://zenn.dev/web_benriya/articles/ga4-bigquery-bounce-rate-calculation)
+
 ---
 
 :::message

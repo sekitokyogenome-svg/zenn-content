@@ -187,6 +187,13 @@ MailApp.sendEmail({
 
 GA4のBigQueryエクスポートデータと組み合わせることで、流入チャネル別のセッション数や購入数を毎朝自動で可視化する体制が構築できます。まずはコネクテッドシートで手軽に試してみて、定期配信が必要になったらGASへステップアップするのがおすすめです。
 
+## 関連記事
+
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
+- [BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）](https://zenn.dev/web_benriya/articles/ga4-bigquery-bounce-rate-calculation)
+
 ---
 
 :::message

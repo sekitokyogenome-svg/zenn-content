@@ -235,6 +235,13 @@ GROUP BY table_date
 
 BigQuery×GA4のコスト管理は、`_TABLE_SUFFIX` による期間絞り込みと `SELECT *` の回避が基本です。中間テーブルの活用やパーティション設定を組み合わせることで、分析の自由度を保ちながらコストを抑えられます。月1TBの無料枠を意識すれば、中小規模のサイトであれば実質無料で運用できるケースも多いです。
 
+## 関連記事
+
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryでGA4の日次・週次・月次集計テーブルをスケジュール実行する](https://zenn.dev/web_benriya/articles/bigquery-ga4-scheduled-aggregation-tables)
+- [BigQueryのパーティション・クラスタリングでGA4クエリを高速化する](https://zenn.dev/web_benriya/articles/bigquery-partition-clustering-ga4-optimization)
+- [GA4のデータをBigQueryに繋ぐと何が変わるのか【3層設計まで解説】](https://zenn.dev/web_benriya/articles/ga4-bigquery-3layer-design)
+
 ---
 
 :::message

@@ -227,6 +227,13 @@ GA4→BigQueryのエクスポートは「毎日」設定の場合、前日分が
 
 GA4 × BigQuery × Looker Studioの組み合わせは、無料（BigQueryの従量課金を除く）でありながら高い柔軟性を持つダッシュボード環境です。一度構築すれば、毎朝ダッシュボードを開くだけでECの健康状態を把握できるようになります。
 
+## 関連記事
+
+- [BigQuery × Looker StudioでEC事業の月次KPIレポートを自動化した](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-monthly-kpi-auto)
+- [Looker Studio × BigQueryで経営者が毎朝見るダッシュボードの設計思想](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-ceo-dashboard-design)
+- [BigQuery × Looker Studioで前年同期比グラフを作る方法](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-yoy-comparison-chart)
+- [GA4 × BigQuery × Looker Studioで完全自動のEC分析基盤を0から構築する全手順](https://zenn.dev/web_benriya/articles/ga4-bigquery-looker-studio-ec-analytics-full)
+
 ---
 
 :::message

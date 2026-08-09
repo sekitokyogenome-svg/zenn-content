@@ -221,6 +221,13 @@ GA4のデモグラフィックデータは手軽に確認できる反面、カ�
 
 正確な顧客理解には、GA4だけに依存せず、CRMデータやアンケートデータとの統合が有効です。まずはBigQueryで自社データのデモグラフィックカバレッジを確認するところから始めてみてください。
 
+## 関連記事
+
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [BigQueryでGA4の流入経路×購入金額のヒートマップを作成した](https://zenn.dev/web_benriya/articles/bigquery-ga4-traffic-revenue-heatmap)
+- [中小ECのLTV分析をGA4×BigQueryで無料構築する方法【SQLテンプレ付き】](https://zenn.dev/web_benriya/articles/ec-ltv-analysis-ga4-bigquery-free)
+- [EC売上が下がったとき最初に確認すべきBigQueryクエリ5選](https://zenn.dev/web_benriya/articles/ec-revenue-drop-bigquery-queries-checklist)
+
 ---
 
 :::message

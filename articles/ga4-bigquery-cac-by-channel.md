@@ -229,6 +229,13 @@ CACは単月の数値だけでなく、トレンドの変化を追うことが�
 - 広告費データ（手動CTE、Google Sheets外部テーブルなど）と結合してCACを算出する
 - CACはLTVとの比率で評価し、チャネルごとの投資判断に活用する
 
+## 関連記事
+
+- [BigQueryでGA4データからEC顧客の年齢・性別推定精度を検証した](https://zenn.dev/web_benriya/articles/bigquery-ga4-age-gender-estimation)
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [BigQueryでGA4の流入経路×購入金額のヒートマップを作成した](https://zenn.dev/web_benriya/articles/bigquery-ga4-traffic-revenue-heatmap)
+- [中小ECのLTV分析をGA4×BigQueryで無料構築する方法【SQLテンプレ付き】](https://zenn.dev/web_benriya/articles/ec-ltv-analysis-ga4-bigquery-free)
+
 ---
 
 :::message

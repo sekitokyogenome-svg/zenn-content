@@ -190,6 +190,13 @@ BigQueryでSQLテストを導入することで、データマートの品質崩
 
 「まず1本だけテストを書く」ことから始めてみてください。NULLチェックや一意性チェックといったシンプルなテストでも、データマートへの信頼度が大きく高まります。テストが積み重なるにつれて、数字を安心して意思決定に使える基盤が育っていきます。
 
+## 関連記事
+
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
+- [BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）](https://zenn.dev/web_benriya/articles/ga4-bigquery-bounce-rate-calculation)
+
 ---
 
 :::message

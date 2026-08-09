@@ -216,6 +216,13 @@ BigQueryでの新規/リピーター分類は `user_pseudo_id`（Cookieベース
 
 皆さんのサイトでは、新規とリピーターの行動差はどれくらいありますか？コメントで共有いただけると参考になります。
 
+## 関連記事
+
+- [BigQueryでGA4のサンプリングを回避して正確な数値を出す](https://zenn.dev/web_benriya/articles/ga4-bigquery-avoid-sampling)
+- [GA4×BigQueryでデバイス別・地域別セグメント分析をする](https://zenn.dev/web_benriya/articles/ga4-bigquery-device-region-segment)
+- [BigQueryでGA4データのコスト管理・クエリ最適化入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-cost-query-optimization)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+
 ---
 
 :::message

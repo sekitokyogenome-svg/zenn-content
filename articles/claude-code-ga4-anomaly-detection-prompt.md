@@ -192,6 +192,13 @@ Claude Codeへのプロンプト設計で、実際の運用でよく見られる
 
 まずは手元のGA4データで30日分のCSVを取得し、本記事のプロンプトテンプレートをそのまま試してみることをお勧めします。データと向き合う時間が大幅に短縮され、「異常を発見して終わり」から「原因を仮説立てて次の一手を打つ」サイクルへと移行していただけるはずです。
 
+## 関連記事
+
+- [ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹底比較した](https://zenn.dev/web_benriya/articles/chatgpt-claude-gemini-data-analysis-comparison)
+- [Claude Codeに月次KPIレポートの「考察」まで書かせるプロンプト設計術](https://zenn.dev/web_benriya/articles/claude-code-monthly-kpi-insight-prompt-design)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+
 ---
 
 :::message

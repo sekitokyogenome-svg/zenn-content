@@ -163,6 +163,13 @@ BigQueryのデータリネージ機能は、データ基盤が複雑化した際
 
 次のアクションとして、まずはGoogle Cloud ConsoleでDataplex APIを有効化し、既存のビューやテーブルのリネージタブを確認してみてください。依存関係が自動的に記録・表示される様子を体験するだけでも、データ基盤の運用に対する視点が変わるはずです。
 
+## 関連記事
+
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
+- [BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）](https://zenn.dev/web_benriya/articles/ga4-bigquery-bounce-rate-calculation)
+
 ---
 
 :::message

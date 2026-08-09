@@ -227,6 +227,13 @@ BigQueryのスケジュールクエリ機能を使えば、このスコアリン
 
 次のアクションとしては、まず自社のGA4データをBigQueryにエクスポートした上で、解約ページのURLパターンを確認し、上記のSQLをカスタマイズして試してみることをお勧めします。小規模なテスト分析から始めることで、自社データにフィットした予兆モデルに育てていけます。
 
+## 関連記事
+
+- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
+- [BigQueryでEC季節商品の売上予測モデルを作った話](https://zenn.dev/web_benriya/articles/bigquery-ec-seasonal-sales-prediction)
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+
 ---
 
 :::message

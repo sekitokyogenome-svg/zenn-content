@@ -153,6 +153,13 @@ BigQueryのクエリキャッシュは、正しく理解して活用すること
 
 クエリを少し書き方に気をつけるだけで、毎月のBigQuery利用料を抑えられる可能性があります。まずは自社でよく実行するクエリのキャッシュヒット状況を確認するところから始めてみてはいかがでしょうか。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [Gemini in BigQueryの料金体系を完全解説【思わぬ課金を防ぐ設定】](https://zenn.dev/web_benriya/articles/gemini-bigquery-pricing-complete-guide)
+- [BigQueryでGA4データのコスト管理・クエリ最適化入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-cost-query-optimization)
+
 ---
 
 :::message

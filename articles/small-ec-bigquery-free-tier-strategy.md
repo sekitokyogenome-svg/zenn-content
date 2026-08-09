@@ -147,6 +147,13 @@ Looker Studio（旧データポータル）からBigQueryにクエリを発行�
 
 BigQueryは正しく設計することで、小規模ECサイトの分析基盤として低コストで安定運用できるサービスです。まずは分析頻度の高いレポートから設計を見直し、スキャン量の可視化を習慣づけることから始めてみてください。データ活用が進むにつれて、次のステップとして有料機能の検討も自然と見えてくるでしょう。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [Gemini in BigQueryの料金体系を完全解説【思わぬ課金を防ぐ設定】](https://zenn.dev/web_benriya/articles/gemini-bigquery-pricing-complete-guide)
+
 ---
 
 :::message

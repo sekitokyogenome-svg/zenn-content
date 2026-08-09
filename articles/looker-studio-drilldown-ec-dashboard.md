@@ -198,6 +198,13 @@ IFNULL(items.item_brand, 'ノーブランド') AS brand
 
 1つのダッシュボードで全体像から個別商品まで深掘りできる環境は、EC運営の意思決定スピードを大幅に改善します。
 
+## 関連記事
+
+- [BigQuery × Looker StudioでEC事業の月次KPIレポートを自動化した](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-monthly-kpi-auto)
+- [Looker Studio × BigQueryで経営者が毎朝見るダッシュボードの設計思想](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-ceo-dashboard-design)
+- [Looker Studio × BigQueryでEC売上ダッシュボードを1日で作る完全手順](https://zenn.dev/web_benriya/articles/looker-studio-bigquery-ec-dashboard-guide)
+- [BigQuery × Looker Studioで前年同期比グラフを作る方法](https://zenn.dev/web_benriya/articles/bigquery-looker-studio-yoy-comparison-chart)
+
 ---
 
 :::message

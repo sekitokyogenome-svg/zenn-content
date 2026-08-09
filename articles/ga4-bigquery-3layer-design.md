@@ -136,6 +136,13 @@ mart層が正しく設計されていれば、Looker Studio側での計算フィ
 
 この3層構造を最初に作っておくと、データが増えても壊れず、メンバーが増えても管理しやすい基盤になります。
 
+## 関連記事
+
+- [BigQueryでGA4データのコスト管理・クエリ最適化入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-cost-query-optimization)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryでGA4の日次・週次・月次集計テーブルをスケジュール実行する](https://zenn.dev/web_benriya/articles/bigquery-ga4-scheduled-aggregation-tables)
+- [BigQueryのパーティション・クラスタリングでGA4クエリを高速化する](https://zenn.dev/web_benriya/articles/bigquery-partition-clustering-ga4-optimization)
+
 ---
 
 :::message

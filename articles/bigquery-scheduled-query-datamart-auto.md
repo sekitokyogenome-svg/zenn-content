@@ -168,6 +168,13 @@ BigQueryのスケジュールクエリを活用することで、GA4データの
 
 次のステップとしては、スケジュールクエリで更新されたデータマートをLooker Studioに接続して自動更新ダッシュボードを構築することをおすすめします。データの収集から可視化までのパイプラインが整うと、日々の分析業務がぐっとスムーズになります。また、複数のデータマートテーブルを用途別に作成しておくと、売上分析・広告効果測定・顧客行動分析など、目的に応じた切り口でデータを参照しやすくなります。
 
+## 関連記事
+
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
+- [BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）](https://zenn.dev/web_benriya/articles/ga4-bigquery-bounce-rate-calculation)
+
 ---
 
 :::message

@@ -202,6 +202,13 @@ GROUP BY
 
 次のアクションとして、まずはShopify開発ストアとGoogle Cloudの無料枠を活用して小規模なプロトタイプを作ってみることをお勧めします。データが蓄積されてきたら、Looker Studioでダッシュボードを構築すると、経営判断に活かせるリアルタイム可視化環境が整います。
 
+## 関連記事
+
+- [BigQueryでGA4データをdbtで管理する入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-dbt-management-intro)
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [GA4のBigQueryエクスポート完全設定ガイド【2026年版】](https://zenn.dev/web_benriya/articles/ga4-bigquery-export-setup-guide-2026)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+
 ---
 
 :::message

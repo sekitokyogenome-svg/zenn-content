@@ -318,6 +318,13 @@ Looker Studio API × Claude Codeで、データソースの更新を自動化す
 
 ダッシュボードの運用保守にかかる手間を減らし、分析に集中できる環境を作りましょう。
 
+## 関連記事
+
+- [BigQuery × Claude Codeで月次事業報告書を自動作成する仕組み](https://zenn.dev/web_benriya/articles/bigquery-claude-code-monthly-business-report)
+- [Claude Code × BigQuery MCPでGA4分析を完全自動化する方法【EC事業者向け実践ガイド】](https://zenn.dev/web_benriya/articles/claude-code-bigquery-mcp-ga4)
+- [BigQuery × Claude Codeで異常検知アラートを作る【売上急落を即通知】](https://zenn.dev/web_benriya/articles/bigquery-claude-code-anomaly-detection-alert)
+- [Claude CodeでEC×GA4のA/Bテスト結果をBigQueryから自動集計する](https://zenn.dev/web_benriya/articles/claude-code-ab-test-bigquery-ga4)
+
 ---
 
 :::message

@@ -293,6 +293,13 @@ GTMでカスタム送信している場合、JavaScript実行後にしかデー�
 
 まずはStep 1のWeb Vitalsデータ集計から始めて、自社サイトの現状を把握するところからスタートしてみてください。
 
+## 関連記事
+
+- [BigQueryでGA4データからEC顧客の年齢・性別推定精度を検証した](https://zenn.dev/web_benriya/articles/bigquery-ga4-age-gender-estimation)
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+- [BigQueryでGA4の流入経路×購入金額のヒートマップを作成した](https://zenn.dev/web_benriya/articles/bigquery-ga4-traffic-revenue-heatmap)
+- [中小ECのLTV分析をGA4×BigQueryで無料構築する方法【SQLテンプレ付き】](https://zenn.dev/web_benriya/articles/ec-ltv-analysis-ga4-bigquery-free)
+
 ---
 
 :::message

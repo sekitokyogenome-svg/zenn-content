@@ -200,6 +200,13 @@ GROUP BY
 
 次のアクションとしては、まず自社のGA4に返品イベントが正しく設定されているかを確認することをお勧めします。BigQueryエクスポートが有効であれば、本記事のSQLをベースに集計を試してみてください。データを見ることで、感覚だけに頼らない返品対策の議論が社内でできるようになります。
 
+## 関連記事
+
+- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
+- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
+
 ---
 
 :::message

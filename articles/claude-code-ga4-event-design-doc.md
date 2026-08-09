@@ -378,6 +378,13 @@ GA4のイベント設計書を自動生成する手順は以下のとおりで�
 
 イベント設計書を整備することで、チーム内のGA4運用の属人化を防ぎ、分析の効率を向上させることができます。
 
+## 関連記事
+
+- [Claude Code × BigQuery MCPでGA4分析を完全自動化する方法【EC事業者向け実践ガイド】](https://zenn.dev/web_benriya/articles/claude-code-bigquery-mcp-ga4)
+- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
+- [BigQuery × Claude Codeで異常検知アラートを作る【売上急落を即通知】](https://zenn.dev/web_benriya/articles/bigquery-claude-code-anomaly-detection-alert)
+- [BigQuery × Claude Codeで月次事業報告書を自動作成する仕組み](https://zenn.dev/web_benriya/articles/bigquery-claude-code-monthly-business-report)
+
 ---
 
 :::message

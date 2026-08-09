@@ -167,6 +167,13 @@ Cloud Functionsの処理内でセッション数が前日比で大きく減少�
 
 次のステップとしては、エラー発生時のリトライ設定（Cloud Schedulerのリトライポリシー）や、Cloud Monitoringを用いたジョブ失敗アラートの整備が考えられます。まずは本記事の構成で動かしてみて、実運用の中でニーズに合わせて拡張していくとよいでしょう。
 
+## 関連記事
+
+- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
+- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
+- [BigQueryでGA4データをdbtで管理する入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-dbt-management-intro)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+
 ---
 
 :::message

@@ -222,6 +222,13 @@ BigQueryの集計結果をLooker Studioに接続すれば、ヒストグラム�
 - 日数分布をヒストグラム化することで、ユーザーの購買行動パターンが見える
 - リマーケティング広告の配信期間やメルマガのタイミングを、データに基づいて設定できる
 
+## 関連記事
+
+- [中小ECのLTV分析をGA4×BigQueryで無料構築する方法【SQLテンプレ付き】](https://zenn.dev/web_benriya/articles/ec-ltv-analysis-ga4-bigquery-free)
+- [EC売上が下がったとき最初に確認すべきBigQueryクエリ5選](https://zenn.dev/web_benriya/articles/ec-revenue-drop-bigquery-queries-checklist)
+- [GA4×BigQueryでカート放棄率を正確に計測・改善する方法](https://zenn.dev/web_benriya/articles/ga4-bigquery-cart-abandonment-rate)
+- [GA4×BigQueryで初回購入→リピートまでのファネルを可視化する](https://zenn.dev/web_benriya/articles/ga4-bigquery-first-purchase-repeat-funnel)
+
 ---
 
 :::message

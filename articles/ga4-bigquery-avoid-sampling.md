@@ -170,6 +170,13 @@ GA4 UIは「ざっくり把握」、BigQueryは「正確に深掘り」と覚え
 
 GA4のUIではデータ量が増えるとサンプリングが避けられず、セグメント別の分析で誤差が拡大します。BigQueryエクスポートを使えば100%のデータで分析でき、サンプリングの影響を受けません。正確なデータに基づいた意思決定のためには、BigQueryへの連携が有効な選択肢です。
 
+## 関連記事
+
+- [GA4×BigQueryでデバイス別・地域別セグメント分析をする](https://zenn.dev/web_benriya/articles/ga4-bigquery-device-region-segment)
+- [GA4×BigQueryでリピーターと新規ユーザーを分離して分析する](https://zenn.dev/web_benriya/articles/ga4-bigquery-new-returning-users)
+- [BigQueryでGA4データのコスト管理・クエリ最適化入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-cost-query-optimization)
+- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
+
 ---
 
 :::message

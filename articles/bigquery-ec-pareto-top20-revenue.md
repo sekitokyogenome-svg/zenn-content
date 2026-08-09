@@ -196,6 +196,13 @@ BigQueryの結果をLooker Studioに接続すれば、パレート曲線をグ�
 
 パレート分析は古典的な手法ですが、BigQueryとGA4を組み合わせることで、リアルタイムに近いデータで繰り返し検証できるようになります。感覚に頼った商品管理から、データに基づいた意思決定へ移行する第一歩として、まず自社データでのパレート分析を試してみてください。
 
+## 関連記事
+
+- [ECの季節変動をBigQueryで前年比分析して仕入れ計画に活かす方法](https://zenn.dev/web_benriya/articles/bigquery-ec-seasonal-yoy-analysis)
+- [BigQueryで1回しか買わない顧客と2回以上買う顧客の行動差を分析した](https://zenn.dev/web_benriya/articles/bigquery-one-time-vs-repeat-buyer-analysis)
+- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
+- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
+
 ---
 
 :::message
