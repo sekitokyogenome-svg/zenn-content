@@ -3,7 +3,7 @@ title: "Google広告データをBigQuery Data Transfer Serviceで自動連携す
 emoji: "📡"
 type: "tech"
 topics: ["bigquery","googleads","googlecloud","sql","dataengineering"]
-published: false
+published: true
 ---
 
 ## はじめに
