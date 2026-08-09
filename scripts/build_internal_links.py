@@ -27,13 +27,17 @@
 from __future__ import annotations
 
 import argparse
-import csv
 import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from bulk_cta import CTA_BLOCK, split_frontmatter  # noqa: E402
+from bulk_cta import (  # noqa: E402
+    cta_block,
+    load_categories,
+    split_frontmatter,
+    strip_existing_cta,
+)
 
 ZENN_USER = "web_benriya"
 ARTICLE_URL = "https://zenn.dev/{user}/articles/{slug}"
@@ -81,20 +85,6 @@ class Article:
         return ARTICLE_URL.format(user=ZENN_USER, slug=self.slug)
 
 
-def load_categories(csv_path: Path) -> dict[str, str]:
-    """filename(拡張子なし) -> category の対応を返す。"""
-    mapping: dict[str, str] = {}
-    if not csv_path.exists():
-        return mapping
-    with csv_path.open(encoding="utf-8") as fh:
-        for row in csv.DictReader(fh):
-            filename = (row.get("filename") or "").strip()
-            category = (row.get("category") or "").strip()
-            if filename and category:
-                mapping[filename.removesuffix(".md")] = category
-    return mapping
-
-
 def score(source: Article, target: Article) -> int:
     """source から見た target の関連度。"""
     points = 0
@@ -126,10 +116,14 @@ def render_section(related: list[Article]) -> str:
 
 
 def strip_generated(body: str) -> str:
-    """CTA と生成済み関連記事セクションを取り除いた本文を返す。"""
-    idx = body.find(CTA_BLOCK)
-    if idx != -1:
-        body = body[:idx]
+    """CTA と生成済み関連記事セクションを取り除いた本文を返す。
+
+    CTA の除去は bulk_cta.strip_existing_cta() に委譲する。
+    以前は CTA_BLOCK 定数との完全一致で切っていたが、CTA がカテゴリ別になると
+    一致しなくなり、EC 系記事の CTA を切り落とせずに二重付与になっていた。
+    マーカー判定なら文言が変わっても効く。
+    """
+    body = strip_existing_cta(body)
     body = _SECTION_RE.sub("", body)
     return body.rstrip()
 
@@ -167,7 +161,9 @@ def main() -> int:
         parts = [core]
         if related:
             parts.append(render_section(related))
-        parts.append(CTA_BLOCK)
+        # カテゴリ別の CTA を付け直す。汎用版を固定で付けると
+        # bulk_cta.py が付けた note 導線をここで消してしまう。
+        parts.append(cta_block(a.category))
         updated = a.header + "\n\n".join(parts)
 
         original = a.header + a.body

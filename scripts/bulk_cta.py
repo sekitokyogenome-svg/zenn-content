@@ -18,6 +18,9 @@
 from __future__ import annotations
 
 import argparse
+import csv
+import functools
+import json
 import re
 import sys
 from pathlib import Path
@@ -44,15 +47,64 @@ OFFER_TEXT = (
     "「自社の場合はどうすれば？」のご相談も歓迎です。"
 )
 
-CTA_BLOCK = f"""---
+# note 有料マガジンへの導線を出すカテゴリ。
+# 読者の関心が最も近い「EC向けデータ分析」だけに絞る。
+# 他カテゴリ（Looker Studio・フリーランス等）に出すと文脈が合わず広告色が強く出る。
+NOTE_BRIDGE_CATEGORY = "EC向けデータ分析"
+NOTE_MAGAZINE_TITLE = "EC データ分析 実務ガイド"
+NOTE_URLS_PATH = Path("assets/products/ec-note-magazine/urls.json")
 
-:::message
-{OFFER_TEXT}
-👉 [{OWNED_LABEL}]({OWNED_URL})
-:::
 
-ココナラからのご依頼はこちら → [{COCONALA_LABEL}]({COCONALA_URL})
-"""
+@functools.lru_cache(maxsize=1)
+def magazine_url() -> str:
+    """note マガシンの URL。まだ投稿していなければ空文字。
+
+    空のときは導線を出さない。未確定の URL を公開記事に埋めると 404 を配ることになる。
+    """
+    try:
+        data = json.loads(NOTE_URLS_PATH.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return ""
+    return str(data.get("magazine") or "").strip()
+
+
+def cta_block(category: str | None = None) -> str:
+    """記事末尾に付ける CTA。カテゴリによって note 導線の有無が変わる。
+
+    定数ではなく関数なのは、カテゴリ別の CTA を「汎用版で上書きしてしまう」事故を
+    構造的に防ぐため（以前は CTA_BLOCK 定数を build_internal_links.py が
+    そのまま付け直しており、カテゴリ別にすると内部リンクの再生成で消えていた）。
+    """
+    lines = [OFFER_TEXT, f"👉 [{OWNED_LABEL}]({OWNED_URL})"]
+
+    url = magazine_url() if category == NOTE_BRIDGE_CATEGORY else ""
+    if url:
+        # 「有料」と明記して誤クリックを防ぐ。Zenn 規約（広告目的の記事）への配慮でもある。
+        lines.append(
+            f"EC 実務での使い方は有料マガジン"
+            f"「{NOTE_MAGAZINE_TITLE}」（note）にまとめています → {url}"
+        )
+
+    body = "\n".join(lines)
+    return (
+        "---\n\n"
+        f":::message\n{body}\n:::\n\n"
+        f"ココナラからのご依頼はこちら → [{COCONALA_LABEL}]({COCONALA_URL})\n"
+    )
+
+
+def load_categories(csv_path: Path = Path("themes.csv")) -> dict[str, str]:
+    """filename(拡張子なし) -> category の対応を返す。"""
+    mapping: dict[str, str] = {}
+    if not csv_path.exists():
+        return mapping
+    with csv_path.open(encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            filename = (row.get("filename") or "").strip()
+            category = (row.get("category") or "").strip()
+            if filename and category:
+                mapping[filename.removesuffix(".md")] = category
+    return mapping
 
 # ---------------------------------------------------------------------------
 # 既存 CTA の除去パターン
@@ -104,14 +156,14 @@ def strip_existing_cta(body: str) -> str:
     return body.rstrip()
 
 
-def apply(path: Path) -> tuple[bool, str, str]:
+def apply(path: Path, category: str | None = None) -> tuple[bool, str, str]:
     """1 記事に CTA を適用する。(変更されたか, 状態ラベル, 適用後の全文) を返す。"""
     original = path.read_text(encoding="utf-8")
     header, body = split_frontmatter(original)
 
     had_cta = any(marker in body for marker in _CTA_MARKERS)
     cleaned = strip_existing_cta(body)
-    updated = f"{header}{cleaned}\n\n{CTA_BLOCK}"
+    updated = f"{header}{cleaned}\n\n{cta_block(category)}"
 
     if updated == original:
         return False, "unchanged", original
@@ -121,6 +173,7 @@ def apply(path: Path) -> tuple[bool, str, str]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dir", default="articles", help="記事ディレクトリ")
+    parser.add_argument("--themes", default="themes.csv")
     parser.add_argument(
         "--dry-run", action="store_true", help="書き換えずに件数だけ表示する"
     )
@@ -132,10 +185,15 @@ def main() -> int:
         return 1
 
     stats = {"added": 0, "normalized": 0, "unchanged": 0}
+    categories = load_categories(Path(args.themes))
+    bridged = 0
 
     for path in sorted(articles_dir.glob("*.md")):
-        changed, label, updated = apply(path)
+        category = categories.get(path.stem)
+        changed, label, updated = apply(path, category)
         stats[label] += 1
+        if category == NOTE_BRIDGE_CATEGORY and magazine_url():
+            bridged += 1
         if changed and not args.dry_run:
             path.write_text(updated, encoding="utf-8")
 
@@ -145,6 +203,15 @@ def main() -> int:
     print(f"  CTA を新規追加      : {stats['added']}")
     print(f"  既存 CTA を正準化   : {stats['normalized']}")
     print(f"  変更なし            : {stats['unchanged']}")
+
+    if magazine_url():
+        print(f"  note 導線を付与     : {bridged}（カテゴリ『{NOTE_BRIDGE_CATEGORY}』のみ）")
+    else:
+        n = sum(1 for c in categories.values() if c == NOTE_BRIDGE_CATEGORY)
+        print(
+            f"  note 導線            : 付けていません"
+            f"（{NOTE_URLS_PATH} の magazine が空。埋めると {n} 記事に付きます）"
+        )
     return 0
 
 

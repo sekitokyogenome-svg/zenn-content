@@ -31,12 +31,25 @@ python3 scripts/bulk_cta.py --dry-run
 python3 scripts/bulk_cta.py
 ```
 
+**CTA は定数ではなく `cta_block(category)` 関数。** カテゴリ
+`EC向けデータ分析`（25本）にだけ note 有料マガジンへの1行が入る。
+
+定数にしてはいけない理由: 以前 `CTA_BLOCK` 定数を `build_internal_links.py` が
+そのまま付け直しており、**内部リンクを張り直すたびにカテゴリ別CTAが汎用版で上書き**
+されていた。関数にして呼び出し側にカテゴリを渡すことで、この事故を構造的に防いでいる。
+
+note 導線は `assets/products/ec-note-magazine/urls.json` の `magazine` が
+**空なら出ない**。未確定のURLを公開記事に埋めると404を配ることになるため。
+
 ### build_internal_links.py — 内部リンクのクラスタ化
 
 themes.csv の同カテゴリ（+10点）と frontmatter の topics の重なり（+1点/件）で
 関連度を採点し、上位4件を「## 関連記事」として生成する。
 
 リンク先は `published: true` の記事のみ。下書きへのリンクは Zenn 上で 404 になるため。
+
+CTA の除去は `bulk_cta.strip_existing_cta()` に委譲している（マーカー判定）。
+文字列の完全一致で切っていた頃は、CTA の文言が変わると切り落とせず二重付与になった。
 
 ### extract_sql.py — SQLの抽出とカタログ化
 
@@ -196,12 +209,47 @@ frontmatter除去とH1化、CTAのnote差し替え（`utm_source=note`）を行�
 `README.md` / `magazine-description.md` は書き下ろしのため再実行しても上書きされない。
 `INDEX.md` は自動生成なので手で編集しない。
 
+### build_note_promo.py — note告知文の生成
+
+I系列25本の告知文を `posts/note_I-NN.md` に生成する。既存 `posts/threads_*.md` と同じ体裁。
+
+```bash
+python3 scripts/build_note_promo.py --dry-run
+python3 scripts/build_note_promo.py
+```
+
+**なぜ要るか**: note は記事単位のSEOが弱く、告知しなければ人目に触れない。
+既存の告知文100本は全てZenn記事向けで、note用は1本も無かった。
+
+フックは「はじめに」冒頭の1文、箇条書きは `## ` 見出しから機械抽出する
+（25本中22本が「〜」の症状引用で始まり、見出しは1本あたり4〜5個あるため成立する）。
+**書き出しが重複した記事は実行時に報告される**ので、`HOOK_OVERRIDES` で差し替える。
+現在は「ECサイトを運営していると」で始まる3本（I-06/I-14/I-25）を差し替え済み。
+
+## note に投稿したあとの手順
+
+URLは投稿しないと決まらないので、レジストリに追記して再生成する。
+
+1. note に記事／マガジンを投稿する
+2. `assets/products/ec-note-magazine/urls.json` にURLを書く
+   （`magazine` とその記事の `I-NN`。雛形は `build_note_promo.py` が生成済み）
+3. 再生成する
+
+```bash
+python3 scripts/build_note_promo.py   # 告知文のURLが埋まる
+python3 scripts/bulk_cta.py           # Zenn の EC系25本に note 導線が付く
+```
+
+**URLを入れるまでリンクは出ない。** 告知文にはプレースホルダが残り、
+Zenn 側には導線が付かない（404を配らないため）。未入力の本数は実行時に表示される。
+
 ## 現状（最終実行時）
 
 | 指標 | 着手前 | 現在 |
 |---|---|---|
 | 記事 | 197本（公開93 / 下書き104） | 同左 |
-| 内部リンク | 9本 | **793本** |
+| 内部リンク | 9本 | **784本** |
+| note告知文 | 0本 | **25本**（既存のZenn向け100本とは別） |
 | CTA設置 | 132本・ココナラ導線4分散 | **197本すべて・導線1本** |
 | 抽出SQL | — | 503本 |
 | 構文検証通過 | — | **479本（95.2%）** |
