@@ -43,7 +43,12 @@ from build_note_magazine import (  # noqa: E402
     PRICE_SINGLE,
     load_series,
 )
-from bulk_cta import NOTE_URLS_PATH, split_frontmatter  # noqa: E402
+from bulk_cta import (  # noqa: E402
+    NOTE_URLS_PATH,
+    NOTE_USER,
+    normalize_note_url,
+    split_frontmatter,
+)
 
 OUT_DIR = Path("posts")
 URL_PLACEHOLDER = "【note に投稿したら urls.json に URL を追記して再実行】"
@@ -192,11 +197,17 @@ def main() -> int:
 
     urls = load_urls(urls_path)
     registry = urls["articles"]
+    try:
+        magazine = normalize_note_url(str(urls.get("magazine") or ""), "m")
+    except ValueError as exc:
+        print(f"[警告] magazine: {exc}", file=sys.stderr)
+        magazine = ""
 
     written = 0
     missing_url = 0
     hooks: dict[str, str] = {}
     short_bullets: list[str] = []
+    bad_url: list[str] = []
 
     for order, row in enumerate(rows, start=1):
         slug = row["filename"].removesuffix(".md")
@@ -214,12 +225,17 @@ def main() -> int:
             short_bullets.append(row["id"])
 
         registry.setdefault(row["id"], "")
-        url = str(registry.get(row["id"]) or "").strip()
+        try:
+            url = normalize_note_url(str(registry.get(row["id"]) or ""), "n")
+        except ValueError as exc:
+            print(f"[警告] {row['id']}: {exc}", file=sys.stderr)
+            bad_url.append(row["id"])
+            url = ""
         if not url:
             url = URL_PLACEHOLDER
             missing_url += 1
 
-        text = render(hook, points, url, hashtags(header), urls["magazine"])
+        text = render(hook, points, url, hashtags(header), magazine)
         if not args.dry_run:
             out_dir.mkdir(parents=True, exist_ok=True)
             (out_dir / f"note_{row['id']}.md").write_text(text, encoding="utf-8")
@@ -245,7 +261,12 @@ def main() -> int:
     print(f"  URL 未入力      : {missing_url} 本"
           f"{'（プレースホルダを入れています）' if missing_url else ''}")
     print(f"  レジストリ      : {urls_path}"
-          f"{'（マガジンURL未入力）' if not urls['magazine'] else ''}")
+          f"{'（マガジンURL未入力）' if not magazine else ''}")
+    print(f"  note アカウント : https://note.com/{NOTE_USER}"
+          f"（URL は ID だけ書けば組み立てます）")
+
+    if bad_url:
+        print(f"\n解釈できない URL: {bad_url}（上の警告を参照）")
 
     if dupes:
         print("\n書き出しが重複しています（HOOK_OVERRIDES で差し替える）:")

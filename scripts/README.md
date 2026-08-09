@@ -230,9 +230,12 @@ python3 scripts/build_note_promo.py
 
 URLは投稿しないと決まらないので、レジストリに追記して再生成する。
 
-1. note に記事／マガジンを投稿する
+1. note（https://note.com/engawakun）に記事／マガジンを投稿する
 2. `assets/products/ec-note-magazine/urls.json` にURLを書く
    （`magazine` とその記事の `I-NN`。雛形は `build_note_promo.py` が生成済み）
+   **IDだけでよい**（`mXXXX` / `nXXXX`）。アカウント名は `bulk_cta.NOTE_USER` が持っている。
+   完全URLでも可（`?from=share` 等のクエリは自動で落ちる）。
+   **別アカウントのURLは拒否される** — 公開済み22記事に他人のリンクを撒く方が害が大きいため
 3. 再生成する
 
 ```bash

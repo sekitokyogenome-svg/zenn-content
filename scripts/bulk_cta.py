@@ -54,18 +54,66 @@ NOTE_BRIDGE_CATEGORY = "EC向けデータ分析"
 NOTE_MAGAZINE_TITLE = "EC データ分析 実務ガイド"
 NOTE_URLS_PATH = Path("assets/products/ec-note-magazine/urls.json")
 
+# note のアカウント。urls.json には ID だけ書けばよく、ここから URL を組み立てる。
+NOTE_USER = "engawakun"
+
+_NOTE_URL_RE = re.compile(
+    r"^https?://note\.com/(?P<user>[^/]+)/(?P<kind>[nm])/(?P<ident>[0-9A-Za-z_-]+)"
+)
+_NOTE_ID_RE = re.compile(r"^[0-9A-Za-z_-]+$")
+
+
+def normalize_note_url(value: str, kind: str) -> str:
+    """urls.json の値を完全な note URL にする。
+
+    受け付ける形は次の 2 つ。どちらで書いても同じ結果になる。
+        - 完全な URL  https://note.com/engawakun/m/mxxxx
+        - ID だけ      mxxxx
+
+    別アカウントの URL を渡された場合は例外にする。
+    公開済み記事 22 本に他人のリンクを撒くのは、リンク切れより害が大きい。
+
+    kind: "m"（マガジン）/ "n"（記事）
+    """
+    v = (value or "").strip()
+    if not v:
+        return ""
+
+    if v.startswith(("http://", "https://")):
+        m = _NOTE_URL_RE.match(v)
+        if not m:
+            raise ValueError(f"note の URL として解釈できません: {v}")
+        if m.group("user") != NOTE_USER:
+            raise ValueError(
+                f"別アカウントの URL です（{m.group('user')} ≠ {NOTE_USER}）: {v}"
+            )
+        if m.group("kind") != kind:
+            expected = "マガジン(/m/)" if kind == "m" else "記事(/n/)"
+            raise ValueError(f"{expected} の URL を入れてください: {v}")
+        return f"https://note.com/{NOTE_USER}/{kind}/{m.group('ident')}"
+
+    if _NOTE_ID_RE.match(v):
+        return f"https://note.com/{NOTE_USER}/{kind}/{v}"
+
+    raise ValueError(f"note の URL / ID として解釈できません: {v}")
+
 
 @functools.lru_cache(maxsize=1)
 def magazine_url() -> str:
-    """note マガシンの URL。まだ投稿していなければ空文字。
+    """note マガジンの URL。まだ投稿していなければ空文字。
 
     空のときは導線を出さない。未確定の URL を公開記事に埋めると 404 を配ることになる。
+    値が壊れているときも空を返す（誤ったリンクを配るより、出さない方がまし）。
     """
     try:
         data = json.loads(NOTE_URLS_PATH.read_text(encoding="utf-8"))
     except (OSError, ValueError):
         return ""
-    return str(data.get("magazine") or "").strip()
+    try:
+        return normalize_note_url(str(data.get("magazine") or ""), "m")
+    except ValueError as exc:
+        print(f"[警告] {NOTE_URLS_PATH} の magazine を無視します: {exc}", file=sys.stderr)
+        return ""
 
 
 def cta_block(category: str | None = None) -> str:
