@@ -1,0 +1,13 @@
+-- 出典: BigQueryでGoogle広告×GA4データを結合してキーワード別の真のROASを計算する
+-- 記事: articles/bigquery-google-ads-ga4-keyword-roas.md（Google広告データをBigQueryにエクスポートする）
+-- ${PROJECT} / ${DATASET} は実行前に実値へ置換すること
+
+-- テーブル: your_project.ads_data.keyword_stats
+-- カラム例
+-- date DATE
+-- campaign_name STRING
+-- ad_group_name STRING
+-- keyword_text STRING
+-- cost FLOAT64          -- 広告費（円）
+-- clicks INT64
+-- impressions INT64

@@ -1,0 +1,46 @@
+-- 出典: BigQuery × Looker Studioで広告媒体横断ROASダッシュボードを構築する全手順
+-- 記事: articles/bigquery-looker-studio-cross-media-roas.md（4. BigQueryで統合ビューを作成する）
+-- ${PROJECT} / ${DATASET} は実行前に実値へ置換すること
+
+CREATE OR REPLACE VIEW `${PROJECT}.${DATASET}.v_roas_summary` AS
+
+WITH ga4_revenue AS (
+  SELECT
+    PARSE_DATE('%Y%m%d', event_date) AS date,
+    collected_traffic_source.manual_medium AS medium,
+    collected_traffic_source.manual_source AS source,
+    SUM(ecommerce.purchase_revenue) AS revenue
+  FROM
+    `${PROJECT}.${DATASET}.events_*`
+  WHERE
+    event_name = 'purchase'
+  GROUP BY
+    1, 2, 3
+),
+
+ad_cost AS (
+  SELECT
+    date,
+    medium,
+    source,
+    SUM(cost) AS cost
+  FROM
+    `${PROJECT}.${DATASET}.ad_cost`
+  GROUP BY
+    1, 2, 3
+)
+
+SELECT
+  COALESCE(r.date, c.date) AS date,
+  COALESCE(r.medium, c.medium) AS medium,
+  COALESCE(r.source, c.source) AS source,
+  COALESCE(r.revenue, 0) AS revenue,
+  COALESCE(c.cost, 0) AS cost,
+  SAFE_DIVIDE(COALESCE(r.revenue, 0), COALESCE(c.cost, 0)) AS roas
+FROM
+  ga4_revenue r
+FULL OUTER JOIN
+  ad_cost c
+  ON r.date = c.date
+  AND r.medium = c.medium
+  AND r.source = c.source
