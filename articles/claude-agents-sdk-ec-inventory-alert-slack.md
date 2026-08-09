@@ -303,6 +303,8 @@ Claude が生成する Slack メッセージは、単なるデータの羅列で
 
 導入の第一歩としては、まず BigQuery に在庫スナップショットを取り込む仕組みを作ることをお勧めします。データ基盤が整えば、今回のような AI エージェント活用の幅が一気に広がります。自社の EC システムとの接続方法や、GA4 のイベント設計についてご不明な点があれば、下記よりお気軽にご相談ください。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)

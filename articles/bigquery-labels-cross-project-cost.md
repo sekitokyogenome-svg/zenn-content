@@ -179,6 +179,8 @@ BigQueryのラベル機能は、設定方法がシンプルでありながら、
 
 次のアクションとして、まず1つのチームや1つの用途に絞ってラベルを試験的に付与し、Cloud BillingエクスポートのSQLでコストが正しく集計されることを確認してみてください。小さな範囲での検証が、組織全体への展開への最短の近道です。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)

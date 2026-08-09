@@ -155,6 +155,8 @@ BigQueryのオンデマンドとフラットレートは、どちらが絶対的
 
 料金プランの選択よりも先に、まずは現状の月間処理量を把握することをお勧めします。BigQueryのコンソールから「情報パネル」→「ジョブ履歴」や、Cloud Monitoringのメトリクスを使えば、過去の処理量を簡単に確認できます。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)

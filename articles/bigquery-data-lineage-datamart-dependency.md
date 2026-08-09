@@ -163,6 +163,8 @@ BigQueryのデータリネージ機能は、データ基盤が複雑化した際
 
 次のアクションとして、まずはGoogle Cloud ConsoleでDataplex APIを有効化し、既存のビューやテーブルのリネージタブを確認してみてください。依存関係が自動的に記録・表示される様子を体験するだけでも、データ基盤の運用に対する視点が変わるはずです。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)

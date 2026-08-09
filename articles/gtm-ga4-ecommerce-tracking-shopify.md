@@ -319,4 +319,4 @@ GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承って�
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
-ココナラからのご依頼はこちら → https://coconala.com/services/3332133
+ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)

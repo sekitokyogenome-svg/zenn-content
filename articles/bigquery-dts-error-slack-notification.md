@@ -212,6 +212,8 @@ Cloud Functionsのログは `gcloud functions logs read notify-dts-error --gen2 
 
 この仕組みを導入すると、転送エラーに気づかずレポートが止まったままになるリスクを大幅に低減できます。次のステップとして、エラーの種類に応じて通知チャンネルを分ける・エラーが続く場合はPagerDutyと連携するといった発展的な構成も検討してみてください。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)

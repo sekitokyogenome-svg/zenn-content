@@ -336,6 +336,8 @@ Looker Studioでは「キーワード別ROASの棒グラフ」「費用対売上
 
 次のアクションとしては、このクエリを自社のプロジェクトIDに合わせて修正し、まず1ヶ月分のデータで動作確認することをおすすめします。データが蓄積されてきたら、キャンペーン単位・広告グループ単位での分析にも応用できます。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)

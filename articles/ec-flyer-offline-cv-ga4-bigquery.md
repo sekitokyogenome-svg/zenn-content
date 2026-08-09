@@ -181,6 +181,8 @@ AppleのITP（Intelligent Tracking Prevention）により、SafariではCookie�
 
 最初の一歩として、次回のチラシ同梱前にQRコードのUTMパラメータを設定するだけでも、計測の精度は大きく変わります。段階的に仕組みを整えながら、データに基づいたチラシ施策の最適化を進めていただければと思います。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)

@@ -195,7 +195,11 @@ Looker Studioのテンプレート販売は、低コストで始められるデ�
 
 1つのテンプレートが月に10件売れれば、¥50,000〜¥100,000の月次収益になります。ダッシュボード構築のスキルを、サービス提供（受託）とプロダクト販売（テンプレート）の両輪で収益化してみてください。
 
+---
+
 :::message
-「Looker Studioのダッシュボード構築を依頼したい」という方は、お気軽にご相談ください。
-👉 [Looker Studioダッシュボード作成サービス](https://coconala.com/services/419062)
+GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
+
+ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)

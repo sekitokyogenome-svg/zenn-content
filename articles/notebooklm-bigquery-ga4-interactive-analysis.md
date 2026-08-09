@@ -117,6 +117,8 @@ NotebookLMでの分析は、あくまでアップロードしたCSVの範囲内�
 
 SQLに不慣れな方でも、まずBigQueryのサンプルクエリを参考にCSVを取り出すところから始めることで、NotebookLMによる対話分析を体験できます。データに触れる機会を増やすことで、徐々に自社に合ったKPIやレポートの形が見えてくるはずです。ぜひ一歩ずつ試してみてください。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)

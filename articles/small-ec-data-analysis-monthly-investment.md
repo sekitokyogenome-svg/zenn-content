@@ -131,7 +131,11 @@ A: Claude Codeなどの生成AIを活用すれば、自然言語でSQLを生成�
 
 月1万円という投資は、広告費の最適化、離脱率の改善、リピート率の向上を通じて、回収できる可能性が高い投資です。まずはGA4→BigQueryのエクスポート設定から始めてみてください。データが蓄積されるだけでも、将来の選択肢が広がります。
 
+---
+
 :::message
-「データ分析サービスの立ち上げや改善に興味がある」という方は、お気軽にご相談ください。
-👉 [データ分析スポットプラン](https://coconala.com/services/554778)
+GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
+
+ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)

@@ -296,9 +296,11 @@ BigQuery × Claude Codeで月次報告書を自動化する仕組みを紹介し
 
 毎月の報告書作成に数時間かけている方は、この仕組みで作業時間を大幅に削減できるはずです。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
-ココナラからのご依頼はこちら → [データ分析スポットプラン](https://coconala.com/services/554778)
+ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)

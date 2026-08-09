@@ -213,6 +213,8 @@ Cloud Functionsを使う場合、実行時間の上限（デフォルト60秒）
 
 BigQueryにデータが蓄積されると、Looker Studioでのダッシュボード作成や、GA4のデータと結合した費用対効果の分析など、さらに幅広い活用が可能になります。まずは小さな広告アカウントで動作確認しながら、自社の運用に合った形に調整してみてください。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)

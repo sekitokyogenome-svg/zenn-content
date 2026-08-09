@@ -235,9 +235,11 @@ MCP × BigQuery × Claude Codeの組み合わせで、非エンジニアでも�
 
 「GA4のデータがBigQueryにあるけど活用できていない」「データチームへの依頼が多すぎて回らない」といった課題をお持ちの方は、ぜひ試してみてください。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
-ココナラからのご依頼はこちら → https://coconala.com/services/554778
+ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)

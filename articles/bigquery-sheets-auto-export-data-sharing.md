@@ -187,6 +187,8 @@ MailApp.sendEmail({
 
 GA4のBigQueryエクスポートデータと組み合わせることで、流入チャネル別のセッション数や購入数を毎朝自動で可視化する体制が構築できます。まずはコネクテッドシートで手軽に試してみて、定期配信が必要になったらGASへステップアップするのがおすすめです。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)

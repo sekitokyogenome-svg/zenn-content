@@ -150,6 +150,8 @@ Cookie規制によって広告計測の環境は大きく変化しています�
 
 はじめから完璧な基盤を目指す必要はありません。まずはGA4のBigQueryエクスポートを有効にし、購入イベントが正しく計測されているかを確認するところから始めてみてください。データが蓄積されれば、分析の幅は自然と広がっていきます。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)

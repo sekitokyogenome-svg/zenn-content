@@ -224,6 +224,8 @@ Looker Studioでは「データソースを追加」からBigQueryを選択し�
 
 ラストクリックだけで広告予算を判断していた場合、実際には複数のチャネルが連携してコンバージョンを支えていることに気づくケースも少なくありません。まずはBigQueryでコンバージョン経路を可視化することから始めてみてください。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)

@@ -196,7 +196,11 @@ BigQueryの結果をLooker Studioに接続すれば、パレート曲線をグ�
 
 パレート分析は古典的な手法ですが、BigQueryとGA4を組み合わせることで、リアルタイムに近いデータで繰り返し検証できるようになります。感覚に頼った商品管理から、データに基づいた意思決定へ移行する第一歩として、まず自社データでのパレート分析を試してみてください。
 
+---
+
 :::message
-「ECサイトのデータ分析基盤を構築したい」という方は、お気軽にご相談ください。
-👉 [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
+
+ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)

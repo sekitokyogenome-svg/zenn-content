@@ -125,6 +125,8 @@ BI Engineは予約したメモリ分だけ常に課金されます。1GBの予�
 
 まずは1GBの予約を作成し、既存のLooker Studioダッシュボードで速度の変化を確認してみてください。その結果を見ながら、予約サイズやビューの設計を調整していくアプローチが現実的です。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)

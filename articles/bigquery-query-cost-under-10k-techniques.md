@@ -180,6 +180,8 @@ BigQueryのクエリコストを月1万円以下に抑えるための7つのテ�
 
 BigQueryは使いこなせば強力なデータ基盤になりますが、設計の段階でコスト意識を持つことが長期的な運用の鍵です。GA4との連携や自社データ分析にお悩みの際は、ぜひ以下のご相談窓口もご活用ください。
 
+---
+
 :::message
 GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
 👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
