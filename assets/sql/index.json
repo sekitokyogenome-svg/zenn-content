@@ -1,7 +1,7 @@
 {
   "project_token": "${PROJECT}",
   "dataset_token": "${DATASET}",
-  "count": 504,
+  "count": 503,
   "entries": [
     {
       "file": "ad-creative-ltv-bigquery-winning-pattern__01.sql",
@@ -336,7 +336,7 @@
       "category": "EC向けデータ分析",
       "published": true,
       "index": 4,
-      "lines": 27,
+      "lines": 41,
       "has_placeholder": true
     },
     {
@@ -980,34 +980,22 @@
       "article": "bigquery-ga4-cost-query-optimization.md",
       "slug": "bigquery-ga4-cost-query-optimization",
       "title": "BigQueryでGA4データのコスト管理・クエリ最適化入門",
-      "heading": "テクニック4：ドライランで事前にスキャン量を確認する",
+      "heading": "パーティション",
       "category": "BigQuery×GA4",
       "published": true,
       "index": 8,
-      "lines": 2,
-      "has_placeholder": false
+      "lines": 18,
+      "has_placeholder": true
     },
     {
       "file": "bigquery-ga4-cost-query-optimization__09.sql",
       "article": "bigquery-ga4-cost-query-optimization.md",
       "slug": "bigquery-ga4-cost-query-optimization",
       "title": "BigQueryでGA4データのコスト管理・クエリ最適化入門",
-      "heading": "パーティション",
-      "category": "BigQuery×GA4",
-      "published": true,
-      "index": 9,
-      "lines": 18,
-      "has_placeholder": true
-    },
-    {
-      "file": "bigquery-ga4-cost-query-optimization__10.sql",
-      "article": "bigquery-ga4-cost-query-optimization.md",
-      "slug": "bigquery-ga4-cost-query-optimization",
-      "title": "BigQueryでGA4データのコスト管理・クエリ最適化入門",
       "heading": "月額コストの見積もり方",
       "category": "BigQuery×GA4",
       "published": true,
-      "index": 10,
+      "index": 9,
       "lines": 7,
       "has_placeholder": true
     },
@@ -1244,23 +1232,23 @@
       "article": "bigquery-google-ads-ga4-keyword-roas.md",
       "slug": "bigquery-google-ads-ga4-keyword-roas",
       "title": "BigQueryでGoogle広告×GA4データを結合してキーワード別の真のROASを計算する",
-      "heading": "Google広告データをBigQueryにエクスポートする",
+      "heading": "GA4のBigQueryエクスポートを理解する",
       "category": "広告運用×データ基盤",
       "published": false,
       "index": 1,
-      "lines": 9,
-      "has_placeholder": false
+      "lines": 21,
+      "has_placeholder": true
     },
     {
       "file": "bigquery-google-ads-ga4-keyword-roas__02.sql",
       "article": "bigquery-google-ads-ga4-keyword-roas.md",
       "slug": "bigquery-google-ads-ga4-keyword-roas",
       "title": "BigQueryでGoogle広告×GA4データを結合してキーワード別の真のROASを計算する",
-      "heading": "GA4のBigQueryエクスポートを理解する",
+      "heading": "GA4側でキーワード別売上を集計するSQL",
       "category": "広告運用×データ基盤",
       "published": false,
       "index": 2,
-      "lines": 21,
+      "lines": 66,
       "has_placeholder": true
     },
     {
@@ -1268,11 +1256,11 @@
       "article": "bigquery-google-ads-ga4-keyword-roas.md",
       "slug": "bigquery-google-ads-ga4-keyword-roas",
       "title": "BigQueryでGoogle広告×GA4データを結合してキーワード別の真のROASを計算する",
-      "heading": "GA4側でキーワード別売上を集計するSQL",
+      "heading": "Google広告データと結合してキーワード別ROASを算出するSQL",
       "category": "広告運用×データ基盤",
       "published": false,
       "index": 3,
-      "lines": 66,
+      "lines": 91,
       "has_placeholder": true
     },
     {
@@ -1280,22 +1268,10 @@
       "article": "bigquery-google-ads-ga4-keyword-roas.md",
       "slug": "bigquery-google-ads-ga4-keyword-roas",
       "title": "BigQueryでGoogle広告×GA4データを結合してキーワード別の真のROASを計算する",
-      "heading": "Google広告データと結合してキーワード別ROASを算出するSQL",
-      "category": "広告運用×データ基盤",
-      "published": false,
-      "index": 4,
-      "lines": 91,
-      "has_placeholder": true
-    },
-    {
-      "file": "bigquery-google-ads-ga4-keyword-roas__05.sql",
-      "article": "bigquery-google-ads-ga4-keyword-roas.md",
-      "slug": "bigquery-google-ads-ga4-keyword-roas",
-      "title": "BigQueryでGoogle広告×GA4データを結合してキーワード別の真のROASを計算する",
       "heading": "結果をLooker Studioで可視化するヒント",
       "category": "広告運用×データ基盤",
       "published": false,
-      "index": 5,
+      "index": 4,
       "lines": 4,
       "has_placeholder": false
     },
@@ -2400,8 +2376,8 @@
       "category": "ClaudeCode×自動化",
       "published": true,
       "index": 3,
-      "lines": 4,
-      "has_placeholder": false
+      "lines": 8,
+      "has_placeholder": true
     },
     {
       "file": "claude-code-competitor-analysis-ga4__01.sql",
@@ -2448,8 +2424,8 @@
       "category": "ClaudeCode×自動化",
       "published": true,
       "index": 2,
-      "lines": 26,
-      "has_placeholder": false
+      "lines": 75,
+      "has_placeholder": true
     },
     {
       "file": "claude-code-cross-channel-attribution__03.sql",
@@ -2460,8 +2436,8 @@
       "category": "ClaudeCode×自動化",
       "published": true,
       "index": 3,
-      "lines": 38,
-      "has_placeholder": false
+      "lines": 87,
+      "has_placeholder": true
     },
     {
       "file": "claude-code-dbt-pipeline-test-generation__01.sql",
@@ -3120,7 +3096,7 @@
       "category": "EC実務×データ活用",
       "published": false,
       "index": 2,
-      "lines": 38,
+      "lines": 89,
       "has_placeholder": true
     },
     {
@@ -3432,7 +3408,7 @@
       "category": "BigQuery×GA4",
       "published": true,
       "index": 3,
-      "lines": 6,
+      "lines": 3,
       "has_placeholder": true
     },
     {
@@ -3440,10 +3416,22 @@
       "article": "ga4-bigquery-avoid-sampling.md",
       "slug": "ga4-bigquery-avoid-sampling",
       "title": "BigQueryでGA4のサンプリングを回避して正確な数値を出す",
-      "heading": "必要なカラムだけSELECTする",
+      "heading": "_TABLE_SUFFIXで期間を絞る",
       "category": "BigQuery×GA4",
       "published": true,
       "index": 4,
+      "lines": 2,
+      "has_placeholder": true
+    },
+    {
+      "file": "ga4-bigquery-avoid-sampling__05.sql",
+      "article": "ga4-bigquery-avoid-sampling.md",
+      "slug": "ga4-bigquery-avoid-sampling",
+      "title": "BigQueryでGA4のサンプリングを回避して正確な数値を出す",
+      "heading": "必要なカラムだけSELECTする",
+      "category": "BigQuery×GA4",
+      "published": true,
+      "index": 5,
       "lines": 9,
       "has_placeholder": true
     },
@@ -4656,7 +4644,7 @@
       "category": "BigQuery×GA4",
       "published": false,
       "index": 7,
-      "lines": 5,
+      "lines": 9,
       "has_placeholder": false
     },
     {
@@ -5580,8 +5568,8 @@
       "category": "LookerStudio",
       "published": false,
       "index": 2,
-      "lines": 2,
-      "has_placeholder": false
+      "lines": 17,
+      "has_placeholder": true
     },
     {
       "file": "looker-studio-ga4-vs-bigquery-connector__01.sql",

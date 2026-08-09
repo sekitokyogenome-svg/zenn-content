@@ -1,9 +1,9 @@
 {
   "mode": "syntax",
-  "total": 504,
-  "passed": 470,
-  "failed": 34,
-  "pass_rate": 93.3,
+  "total": 503,
+  "passed": 479,
+  "failed": 24,
+  "pass_rate": 95.2,
   "articles": {
     "ad-creative-ltv-bigquery-winning-pattern": {
       "slug": "ad-creative-ltv-bigquery-winning-pattern",
@@ -89,9 +89,9 @@
       "slug": "bigquery-channel-roas-looker-studio",
       "article": "bigquery-channel-roas-looker-studio.md",
       "total": 4,
-      "failed": 1,
-      "actionable": 1,
-      "ok": false
+      "failed": 0,
+      "actionable": 0,
+      "ok": true
     },
     "bigquery-claude-code-anomaly-detection-alert": {
       "slug": "bigquery-claude-code-anomaly-detection-alert",
@@ -208,10 +208,10 @@
     "bigquery-ga4-cost-query-optimization": {
       "slug": "bigquery-ga4-cost-query-optimization",
       "article": "bigquery-ga4-cost-query-optimization.md",
-      "total": 10,
-      "failed": 1,
-      "actionable": 1,
-      "ok": false
+      "total": 9,
+      "failed": 0,
+      "actionable": 0,
+      "ok": true
     },
     "bigquery-ga4-days-to-purchase-distribution": {
       "slug": "bigquery-ga4-days-to-purchase-distribution",
@@ -264,10 +264,10 @@
     "bigquery-google-ads-ga4-keyword-roas": {
       "slug": "bigquery-google-ads-ga4-keyword-roas",
       "article": "bigquery-google-ads-ga4-keyword-roas.md",
-      "total": 5,
-      "failed": 2,
-      "actionable": 1,
-      "ok": false
+      "total": 4,
+      "failed": 1,
+      "actionable": 0,
+      "ok": true
     },
     "bigquery-iam-access-control-team": {
       "slug": "bigquery-iam-access-control-team",
@@ -505,9 +505,9 @@
       "slug": "claude-code-bigquery-sql-auto-generate",
       "article": "claude-code-bigquery-sql-auto-generate.md",
       "total": 3,
-      "failed": 1,
-      "actionable": 1,
-      "ok": false
+      "failed": 0,
+      "actionable": 0,
+      "ok": true
     },
     "claude-code-competitor-analysis-ga4": {
       "slug": "claude-code-competitor-analysis-ga4",
@@ -521,9 +521,9 @@
       "slug": "claude-code-cross-channel-attribution",
       "article": "claude-code-cross-channel-attribution.md",
       "total": 3,
-      "failed": 2,
-      "actionable": 2,
-      "ok": false
+      "failed": 0,
+      "actionable": 0,
+      "ok": true
     },
     "claude-code-dbt-pipeline-test-generation": {
       "slug": "claude-code-dbt-pipeline-test-generation",
@@ -737,9 +737,9 @@
       "slug": "ec-product-photo-cvr-ga4-bigquery-correlation",
       "article": "ec-product-photo-cvr-ga4-bigquery-correlation.md",
       "total": 3,
-      "failed": 1,
-      "actionable": 1,
-      "ok": false
+      "failed": 0,
+      "actionable": 0,
+      "ok": true
     },
     "ec-product-review-sales-bigquery-analysis": {
       "slug": "ec-product-review-sales-bigquery-analysis",
@@ -792,10 +792,10 @@
     "ga4-bigquery-avoid-sampling": {
       "slug": "ga4-bigquery-avoid-sampling",
       "article": "ga4-bigquery-avoid-sampling.md",
-      "total": 4,
-      "failed": 2,
-      "actionable": 1,
-      "ok": false
+      "total": 5,
+      "failed": 1,
+      "actionable": 0,
+      "ok": true
     },
     "ga4-bigquery-bounce-rate-calculation": {
       "slug": "ga4-bigquery-bounce-rate-calculation",
@@ -969,9 +969,9 @@
       "slug": "ga4-bigquery-search-console-organic",
       "article": "ga4-bigquery-search-console-organic.md",
       "total": 7,
-      "failed": 1,
-      "actionable": 1,
-      "ok": false
+      "failed": 0,
+      "actionable": 0,
+      "ok": true
     },
     "ga4-bigquery-self-implement-ec-first-week": {
       "slug": "ga4-bigquery-self-implement-ec-first-week",
@@ -1201,9 +1201,9 @@
       "slug": "looker-studio-drilldown-ec-dashboard",
       "article": "looker-studio-drilldown-ec-dashboard.md",
       "total": 2,
-      "failed": 1,
-      "actionable": 1,
-      "ok": false
+      "failed": 0,
+      "actionable": 0,
+      "ok": true
     },
     "looker-studio-ga4-vs-bigquery-connector": {
       "slug": "looker-studio-ga4-vs-bigquery-connector",
@@ -1673,11 +1673,11 @@
       "article": "bigquery-channel-roas-looker-studio.md",
       "category": "EC向けデータ分析",
       "published": true,
-      "ok": false,
-      "error": "ParseError: Expecting ). Line 4, Col: 3.",
-      "kind": "incomplete",
-      "actionable": true,
-      "product_ready": false
+      "ok": true,
+      "error": "",
+      "kind": "",
+      "actionable": false,
+      "product_ready": true
     },
     {
       "file": "bigquery-claude-code-anomaly-detection-alert__01.sql",
@@ -2321,18 +2321,6 @@
       "article": "bigquery-ga4-cost-query-optimization.md",
       "category": "BigQuery×GA4",
       "published": true,
-      "ok": false,
-      "error": "パース結果が空",
-      "kind": "not_sql",
-      "actionable": true,
-      "product_ready": false
-    },
-    {
-      "file": "bigquery-ga4-cost-query-optimization__09.sql",
-      "slug": "bigquery-ga4-cost-query-optimization",
-      "article": "bigquery-ga4-cost-query-optimization.md",
-      "category": "BigQuery×GA4",
-      "published": true,
       "ok": true,
       "error": "",
       "kind": "",
@@ -2340,7 +2328,7 @@
       "product_ready": true
     },
     {
-      "file": "bigquery-ga4-cost-query-optimization__10.sql",
+      "file": "bigquery-ga4-cost-query-optimization__09.sql",
       "slug": "bigquery-ga4-cost-query-optimization",
       "article": "bigquery-ga4-cost-query-optimization.md",
       "category": "BigQuery×GA4",
@@ -2586,9 +2574,9 @@
       "category": "広告運用×データ基盤",
       "published": false,
       "ok": false,
-      "error": "パース結果が空",
-      "kind": "not_sql",
-      "actionable": true,
+      "error": "ParseError: Failed to parse any statement following CTE. Line 20, Col: 1.",
+      "kind": "multi_statement",
+      "actionable": false,
       "product_ready": false
     },
     {
@@ -2597,11 +2585,11 @@
       "article": "bigquery-google-ads-ga4-keyword-roas.md",
       "category": "広告運用×データ基盤",
       "published": false,
-      "ok": false,
-      "error": "ParseError: Failed to parse any statement following CTE. Line 20, Col: 1.",
-      "kind": "multi_statement",
+      "ok": true,
+      "error": "",
+      "kind": "",
       "actionable": false,
-      "product_ready": false
+      "product_ready": true
     },
     {
       "file": "bigquery-google-ads-ga4-keyword-roas__03.sql",
@@ -2617,18 +2605,6 @@
     },
     {
       "file": "bigquery-google-ads-ga4-keyword-roas__04.sql",
-      "slug": "bigquery-google-ads-ga4-keyword-roas",
-      "article": "bigquery-google-ads-ga4-keyword-roas.md",
-      "category": "広告運用×データ基盤",
-      "published": false,
-      "ok": true,
-      "error": "",
-      "kind": "",
-      "actionable": false,
-      "product_ready": true
-    },
-    {
-      "file": "bigquery-google-ads-ga4-keyword-roas__05.sql",
       "slug": "bigquery-google-ads-ga4-keyword-roas",
       "article": "bigquery-google-ads-ga4-keyword-roas.md",
       "category": "広告運用×データ基盤",
@@ -3737,11 +3713,11 @@
       "article": "claude-code-bigquery-sql-auto-generate.md",
       "category": "ClaudeCode×自動化",
       "published": true,
-      "ok": false,
-      "error": "ParseError: Invalid expression / Unexpected token. Line 1, Col: 8.",
-      "kind": "incomplete",
-      "actionable": true,
-      "product_ready": false
+      "ok": true,
+      "error": "",
+      "kind": "",
+      "actionable": false,
+      "product_ready": true
     },
     {
       "file": "claude-code-competitor-analysis-ga4__01.sql",
@@ -3785,11 +3761,11 @@
       "article": "claude-code-cross-channel-attribution.md",
       "category": "ClaudeCode×自動化",
       "published": true,
-      "ok": false,
-      "error": "ParseError: Required keyword: 'this' missing for <class 'sqlglot.expressions.query.CTE'>. Line 3, Col: 2.",
-      "kind": "incomplete",
-      "actionable": true,
-      "product_ready": false
+      "ok": true,
+      "error": "",
+      "kind": "",
+      "actionable": false,
+      "product_ready": true
     },
     {
       "file": "claude-code-cross-channel-attribution__03.sql",
@@ -3797,11 +3773,11 @@
       "article": "claude-code-cross-channel-attribution.md",
       "category": "ClaudeCode×自動化",
       "published": true,
-      "ok": false,
-      "error": "ParseError: Required keyword: 'this' missing for <class 'sqlglot.expressions.query.CTE'>. Line 3, Col: 2.",
-      "kind": "incomplete",
-      "actionable": true,
-      "product_ready": false
+      "ok": true,
+      "error": "",
+      "kind": "",
+      "actionable": false,
+      "product_ready": true
     },
     {
       "file": "claude-code-dbt-pipeline-test-generation__01.sql",
@@ -4457,11 +4433,11 @@
       "article": "ec-product-photo-cvr-ga4-bigquery-correlation.md",
       "category": "EC実務×データ活用",
       "published": false,
-      "ok": false,
-      "error": "ParseError: Expected table name but got <Token token_type: TokenType.R_PAREN, text: ), line: 18, col: 1, start: 274, end: 274, comments: []>. Line 18, Col: 1.",
-      "kind": "incomplete",
-      "actionable": true,
-      "product_ready": false
+      "ok": true,
+      "error": "",
+      "kind": "",
+      "actionable": false,
+      "product_ready": true
     },
     {
       "file": "ec-product-photo-cvr-ga4-bigquery-correlation__03.sql",
@@ -4769,14 +4745,26 @@
       "article": "ga4-bigquery-avoid-sampling.md",
       "category": "BigQuery×GA4",
       "published": true,
-      "ok": false,
-      "error": "ParseError: Invalid expression / Unexpected token. Line 5, Col: 4.",
-      "kind": "not_sql",
-      "actionable": true,
-      "product_ready": false
+      "ok": true,
+      "error": "",
+      "kind": "",
+      "actionable": false,
+      "product_ready": true
     },
     {
       "file": "ga4-bigquery-avoid-sampling__04.sql",
+      "slug": "ga4-bigquery-avoid-sampling",
+      "article": "ga4-bigquery-avoid-sampling.md",
+      "category": "BigQuery×GA4",
+      "published": true,
+      "ok": true,
+      "error": "",
+      "kind": "",
+      "actionable": false,
+      "product_ready": true
+    },
+    {
+      "file": "ga4-bigquery-avoid-sampling__05.sql",
       "slug": "ga4-bigquery-avoid-sampling",
       "article": "ga4-bigquery-avoid-sampling.md",
       "category": "BigQuery×GA4",
@@ -5993,11 +5981,11 @@
       "article": "ga4-bigquery-search-console-organic.md",
       "category": "BigQuery×GA4",
       "published": false,
-      "ok": false,
-      "error": "ParseError: Invalid expression / Unexpected token. Line 4, Col: 14.",
-      "kind": "not_sql",
-      "actionable": true,
-      "product_ready": false
+      "ok": true,
+      "error": "",
+      "kind": "",
+      "actionable": false,
+      "product_ready": true
     },
     {
       "file": "ga4-bigquery-self-implement-ec-first-week__01.sql",
@@ -6917,11 +6905,11 @@
       "article": "looker-studio-drilldown-ec-dashboard.md",
       "category": "LookerStudio",
       "published": false,
-      "ok": false,
-      "error": "ParseError: Invalid expression / Unexpected token. Line 1, Col: 47.",
-      "kind": "not_sql",
-      "actionable": true,
-      "product_ready": false
+      "ok": true,
+      "error": "",
+      "kind": "",
+      "actionable": false,
+      "product_ready": true
     },
     {
       "file": "looker-studio-ga4-vs-bigquery-connector__01.sql",

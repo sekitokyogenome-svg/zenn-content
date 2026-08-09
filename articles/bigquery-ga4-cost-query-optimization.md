@@ -146,9 +146,11 @@ WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
 
 BigQueryコンソールでは、クエリを実行する前にスキャン量の見積もりが右上に表示されます。API経由の場合は `--dry_run` フラグを使います。
 
-```sql
--- bqコマンドでドライラン
--- bq query --dry_run --use_legacy_sql=false 'SELECT ...'
+```bash
+# bqコマンドでドライラン（実行されないので課金されない）
+bq query --dry_run --use_legacy_sql=false \
+  'SELECT event_name FROM `your-project.analytics_XXXXXXXXX.events_*`
+   WHERE _TABLE_SUFFIX BETWEEN "20260301" AND "20260331"'
 ```
 
 実行前にスキャン量を確認する習慣をつけると、想定外の課金を防げます。

@@ -60,16 +60,16 @@ Fivetran・Airbyte・Google Ads Data Transferなどのデータ統合ツール�
 
 本記事では、以下のようなスキーマのテーブルがBigQueryに存在することを前提に話を進めます。
 
-```sql
--- テーブル: your_project.ads_data.keyword_stats
--- カラム例
--- date DATE
--- campaign_name STRING
--- ad_group_name STRING
--- keyword_text STRING
--- cost FLOAT64          -- 広告費（円）
--- clicks INT64
--- impressions INT64
+```text
+テーブル: your_project.ads_data.keyword_stats
+
+date            DATE
+campaign_name   STRING
+ad_group_name   STRING
+keyword_text    STRING
+cost            FLOAT64   -- 広告費（円）
+clicks          INT64
+impressions     INT64
 ```
 
 ---

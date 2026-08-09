@@ -155,8 +155,22 @@ Looker Studioから参照するために、上記のクエリ結果をマート�
 -- マートビューとして作成
 CREATE OR REPLACE VIEW `project.dataset_mart.mart_channel_roas` AS
 WITH channel_revenue AS (
-  -- （上記のchannel_revenue CTEと同じ内容）
-  ...
+  SELECT
+    FORMAT_DATE('%Y-%m', PARSE_DATE('%Y%m%d', event_date)) AS month,
+    collected_traffic_source.manual_medium AS medium,
+    collected_traffic_source.manual_source AS source,
+    COUNT(DISTINCT user_pseudo_id) AS users,
+    COUNTIF(event_name = 'purchase') AS purchases,
+    SUM(
+      IF(event_name = 'purchase', ecommerce.purchase_revenue, 0)
+    ) AS revenue
+  FROM
+    `project.analytics_XXXXXXXXX.events_*`
+  WHERE
+    _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
+    AND collected_traffic_source.manual_medium IS NOT NULL
+  GROUP BY
+    month, medium, source
 ),
 channel_spend AS (
   SELECT month, medium, source, spend

@@ -254,13 +254,22 @@ GA4とSearch Consoleでは、同じページでもURLの形式が異なること
 
 結合前にクエリパラメータを除去する処理が必要です。
 
-```sql
--- GA4側のURL正規化
-REGEXP_EXTRACT(page_location, r'^(https?://[^?#]+)') AS clean_url
+GA4 側の `page_location`、Search Console 側の `url` の双方に同じ正規表現を当てて揃えます。
+実際に何が落ちるかは、次のクエリをそのまま実行すると確認できます。
 
--- Search Console側のURL正規化
-REGEXP_EXTRACT(url, r'^(https?://[^?#]+)') AS clean_url
+```sql
+SELECT
+  REGEXP_EXTRACT(
+    'https://example.com/blog/post-1?utm_source=twitter',
+    r'^(https?://[^?#]+)'
+  ) AS ga4_clean_url,
+  REGEXP_EXTRACT(
+    'https://example.com/blog/post-1',
+    r'^(https?://[^?#]+)'
+  ) AS search_console_clean_url
 ```
+
+どちらも `https://example.com/blog/post-1` に揃うため、この式を JOIN キーに使えます。
 
 ### 日付のずれ
 

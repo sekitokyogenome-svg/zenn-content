@@ -122,12 +122,18 @@ BigQueryは従量課金なので、100%データで分析できる一方、コ�
 
 ### _TABLE_SUFFIXで期間を絞る
 
+良い例：`_TABLE_SUFFIX` で必要な期間だけスキャンする。
+
 ```sql
--- 良い例：必要な期間だけスキャン
+SELECT COUNT(*) AS events
 FROM `your-project.analytics_XXXXXXXXX.events_*`
 WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
+```
 
--- 悪い例：全期間スキャン（コスト大）
+悪い例：条件を付けないと全期間をスキャンしてしまい、コストが跳ね上がる。
+
+```sql
+SELECT COUNT(*) AS events
 FROM `your-project.analytics_XXXXXXXXX.events_*`
 ```
 

@@ -145,10 +145,16 @@ Claude Codeが生成したSQLは、そのまま本番実行する前に検証し
 
 ### LIMIT句で結果を確認
 
+生成されたクエリの末尾に `LIMIT` を付け、まず少量の結果で中身を確かめます。
+
 ```sql
--- 末尾にLIMITを付けて少量で確認
-SELECT ...
-FROM ...
+-- 生成されたクエリの末尾に LIMIT を足して少量で確認する
+SELECT
+  event_date,
+  event_name,
+  user_pseudo_id
+FROM `your-project.analytics_XXXXXXXXX.events_*`
+WHERE _TABLE_SUFFIX = '20260301'
 LIMIT 10
 ```
 

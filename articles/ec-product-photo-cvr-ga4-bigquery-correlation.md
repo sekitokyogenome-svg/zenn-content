@@ -111,6 +111,8 @@ ORDER BY
 
 商品URLと写真枚数の対応表を別途用意し（スプレッドシートからBigQueryの外部テーブル、またはインポートで対応可能）、先ほどのCVR集計結果と結合します。
 
+先ほどのCVR集計をそのまま `cvr_base` として取り込んでいるので、以下はコピーすればそのまま実行できます。
+
 ```sql
 -- 写真枚数マスタ（別テーブルやサブクエリとして用意）
 WITH photo_master AS (
@@ -121,15 +123,66 @@ WITH photo_master AS (
     `your_project.your_dataset.photo_master`
 ),
 
--- （前のSQLのCVR集計部分をcvr_baseとして定義）
-cvr_base AS (
-  -- 上記のCVR集計SQLをここに入れる
+-- ここから cvr_base：前セクションのCVR集計をそのまま取り込む
+product_sessions AS (
   SELECT
-    page_location,
-    total_sessions,
-    purchase_sessions,
-    cvr_pct
-  FROM ... -- 省略
+    user_pseudo_id,
+    (SELECT value.int_value
+     FROM UNNEST(event_params)
+     WHERE key = 'ga_session_id') AS session_id,
+    (SELECT value.string_value
+     FROM UNNEST(event_params)
+     WHERE key = 'page_location') AS page_location
+  FROM
+    `your_project.analytics_XXXXXXX.events_*`
+  WHERE
+    _TABLE_SUFFIX BETWEEN '20250101' AND '20250630'
+    AND event_name = 'page_view'
+    AND (SELECT value.string_value
+         FROM UNNEST(event_params)
+         WHERE key = 'page_location') LIKE '%/products/%'
+),
+
+purchase_sessions AS (
+  SELECT
+    user_pseudo_id,
+    (SELECT value.int_value
+     FROM UNNEST(event_params)
+     WHERE key = 'ga_session_id') AS session_id
+  FROM
+    `your_project.analytics_XXXXXXX.events_*`
+  WHERE
+    _TABLE_SUFFIX BETWEEN '20250101' AND '20250630'
+    AND event_name = 'purchase'
+),
+
+cvr_base AS (
+  SELECT
+    ps.page_location,
+    COUNT(DISTINCT CONCAT(ps.user_pseudo_id, CAST(ps.session_id AS STRING))) AS total_sessions,
+    COUNT(DISTINCT
+      CASE WHEN pur.session_id IS NOT NULL
+      THEN CONCAT(ps.user_pseudo_id, CAST(ps.session_id AS STRING))
+      END
+    ) AS purchase_sessions,
+    ROUND(
+      SAFE_DIVIDE(
+        COUNT(DISTINCT
+          CASE WHEN pur.session_id IS NOT NULL
+          THEN CONCAT(ps.user_pseudo_id, CAST(ps.session_id AS STRING))
+          END
+        ),
+        COUNT(DISTINCT CONCAT(ps.user_pseudo_id, CAST(ps.session_id AS STRING)))
+      ) * 100, 2
+    ) AS cvr_pct
+  FROM
+    product_sessions ps
+  LEFT JOIN
+    purchase_sessions pur
+    ON ps.user_pseudo_id = pur.user_pseudo_id
+    AND ps.session_id = pur.session_id
+  GROUP BY
+    ps.page_location
 )
 
 SELECT
