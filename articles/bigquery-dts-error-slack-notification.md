@@ -4,6 +4,7 @@ emoji: "🔔"
 type: "tech"
 topics: ["bigquery","googlecloud","dataengineering","python","slack"]
 published: false
+book_only: true
 ---
 
 ## はじめに

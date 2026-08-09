@@ -1,0 +1,32 @@
+title: "GA4×BigQuery データ基盤 運用ガイド"
+summary: "GA4 の BigQuery エクスポートを「動かし続ける」ための運用ガイドです。スケジュールクエリの監視、クエリコストの制御、パーティション設計、IAM でのアクセス制御、dbt と Terraform でのコード管理まで、分析基盤を壊さず・安く・再現可能に保つ実務を 25 章にまとめました。"
+topics: ["bigquery", "googleanalytics", "googlecloud", "dataengineering", "sql"]
+published: false
+price: 3900
+chapters:
+  - preface
+  - ga4-bigquery-streaming-vs-daily-export
+  - bigquery-struct-array-ga4-modeling
+  - bigquery-column-field-paths-ga4-schema
+  - bigquery-query-cost-under-10k-techniques
+  - bigquery-query-cache-cost-efficiency
+  - bigquery-flat-rate-vs-on-demand-comparison
+  - bigquery-information-schema-cost-monitoring
+  - bigquery-labels-cross-project-cost
+  - small-ec-bigquery-free-tier-strategy
+  - bigquery-scheduled-query-datamart-auto
+  - cloud-scheduler-functions-bigquery-etl
+  - dbt-bigquery-ga4-reproducible-pipeline
+  - bigquery-dts-error-slack-notification
+  - bigquery-materialized-view-ga4-speedup
+  - bigquery-bi-engine-looker-studio-speedup
+  - ga4-bigquery-table-partition-expiry
+  - bigquery-sql-testing-datamart-quality
+  - bigquery-data-lineage-datamart-dependency
+  - bigquery-time-travel-data-recovery
+  - gcs-ga4-bigquery-reimport
+  - bigquery-iam-access-control-team
+  - terraform-bigquery-code-management
+  - bigquery-export-limit-workarounds
+  - bigquery-sheets-auto-export-data-sharing
+  - bigquery-query-export-cloud-storage

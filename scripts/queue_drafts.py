@@ -13,8 +13,10 @@
 
 ゲートの条件:
     1. published: false であること（公開済みは触らない）
-    2. assets/sql/validation.json で「要修正(actionable)な失敗が無い」こと
-    3. SQL を含まない散文のみの記事は、既定では対象外
+    2. book_only: true でないこと
+       （書籍として有料販売する記事。無料公開すると商品が売れなくなる）
+    3. assets/sql/validation.json で「要修正(actionable)な失敗が無い」こと
+    4. SQL を含まない散文のみの記事は、既定では対象外
        （検証で品質を示せないため、Zenn のスパム判定リスクが最も高い）
        --include-prose を明示したときだけ対象にする
 
@@ -40,6 +42,7 @@ from bulk_cta import split_frontmatter  # noqa: E402
 
 _PUBLISHED_RE = re.compile(r"^published:\s*(true|false)\s*$", re.MULTILINE)
 _QUEUE_RE = re.compile(r"^publish_queue:\s*(true|false)\s*$", re.MULTILINE)
+_BOOK_ONLY_RE = re.compile(r"^book_only:\s*true\s*$", re.MULTILINE)
 
 
 def set_queue_flag(header: str) -> str:
@@ -78,13 +81,18 @@ def main() -> int:
     report = json.loads(report_path.read_text(encoding="utf-8"))
     verdicts = report["articles"]
 
-    eligible, blocked, prose, already = [], [], [], []
+    eligible, blocked, prose, already, book_only = [], [], [], [], []
 
     for path in sorted(articles_dir.glob("*.md")):
         header, _ = split_frontmatter(path.read_text(encoding="utf-8"))
         m = _PUBLISHED_RE.search(header)
         if not m or m.group(1) != "false":
             continue  # 公開済み or frontmatter 無しは触らない
+
+        if _BOOK_ONLY_RE.search(header):
+            # 有料書籍として販売する記事。無料公開すると商品が売れなくなる。
+            book_only.append(path)
+            continue
 
         q = _QUEUE_RE.search(header)
         if q and q.group(1) == "true":
@@ -121,6 +129,7 @@ def main() -> int:
     print(f"  ゲート不通過（要修正あり）: {len(blocked)}")
     print(f"  SQLなし・散文のみ         : {len(prose)}"
           f"{'（--include-prose で対象）' if args.include_prose else '（既定では対象外）'}")
+    print(f"  書籍専用(book_only)       : {len(book_only)}（有料販売するため公開しない）")
     print(f"  すでにキュー投入済み      : {len(already)}")
     print(f"\n  今回キューに入れた本数    : {changed}")
 

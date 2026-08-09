@@ -7,8 +7,8 @@ GA4 の BigQuery スキーマは、実際に叩くと細部で動きません。
 
 ## 収録内容
 
+- BigQuery×GA4: 25 本
 - EC向けデータ分析: 25 本
-- データ基盤設計・運用Tips: 25 本
 
 ## 使い方
 
@@ -23,7 +23,1042 @@ bq query --dry_run --use_legacy_sql=false '<SQLをここに貼る>'
 
 ## サンプル（3本を無料公開）
 
-### 01. ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する（リマーケティング期間の設定根拠）
+### 01. GA4×BigQueryでコンバージョン経路を分析するSQL（ファーストタッチ分析：最初に見たページ）
+
+**用途**: ファーストタッチ分析：最初に見たページ
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH session_first_page AS (
+  SELECT
+    CONCAT(
+      user_pseudo_id, '.',
+      CAST(
+        (SELECT value.int_value
+         FROM UNNEST(event_params)
+         WHERE key = 'ga_session_id') AS STRING)
+    ) AS session_id,
+    event_name,
+    REGEXP_EXTRACT(
+      (SELECT value.string_value
+       FROM UNNEST(event_params)
+       WHERE key = 'page_location'),
+      r'https?://[^/]+(/.*)') AS page_path,
+    ROW_NUMBER() OVER (
+      PARTITION BY
+        CONCAT(
+          user_pseudo_id, '.',
+          CAST(
+            (SELECT value.int_value
+             FROM UNNEST(event_params)
+             WHERE key = 'ga_session_id') AS STRING))
+      ORDER BY event_timestamp
+    ) AS rn
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
+    AND event_name = 'page_view'
+),
+cv_sessions AS (
+  SELECT DISTINCT
+    CONCAT(
+      user_pseudo_id, '.',
+      CAST(
+        (SELECT value.int_value
+         FROM UNNEST(event_params)
+         WHERE key = 'ga_session_id') AS STRING)
+    ) AS session_id
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
+    AND event_name = 'purchase'
+)
+SELECT
+  f.page_path AS first_touch_page,
+  COUNT(*) AS cv_sessions
+FROM session_first_page f
+INNER JOIN cv_sessions c ON f.session_id = c.session_id
+WHERE f.rn = 1
+GROUP BY first_touch_page
+ORDER BY cv_sessions DESC
+LIMIT 20
+```
+
+### 02. GA4×BigQueryでコンバージョン経路を分析するSQL（ラストタッチ分析：コンバージョン直前のページ）
+
+**用途**: ラストタッチ分析：コンバージョン直前のページ
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH session_last_page AS (
+  SELECT
+    CONCAT(
+      user_pseudo_id, '.',
+      CAST(
+        (SELECT value.int_value
+         FROM UNNEST(event_params)
+         WHERE key = 'ga_session_id') AS STRING)
+    ) AS session_id,
+    event_name,
+    REGEXP_EXTRACT(
+      (SELECT value.string_value
+       FROM UNNEST(event_params)
+       WHERE key = 'page_location'),
+      r'https?://[^/]+(/.*)') AS page_path,
+    ROW_NUMBER() OVER (
+      PARTITION BY
+        CONCAT(
+          user_pseudo_id, '.',
+          CAST(
+            (SELECT value.int_value
+             FROM UNNEST(event_params)
+             WHERE key = 'ga_session_id') AS STRING))
+      ORDER BY event_timestamp DESC
+    ) AS rn
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
+    AND event_name = 'page_view'
+),
+cv_sessions AS (
+  SELECT DISTINCT
+    CONCAT(
+      user_pseudo_id, '.',
+      CAST(
+        (SELECT value.int_value
+         FROM UNNEST(event_params)
+         WHERE key = 'ga_session_id') AS STRING)
+    ) AS session_id
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
+    AND event_name = 'purchase'
+)
+SELECT
+  l.page_path AS last_touch_page,
+  COUNT(*) AS cv_sessions
+FROM session_last_page l
+INNER JOIN cv_sessions c ON l.session_id = c.session_id
+WHERE l.rn = 1
+GROUP BY last_touch_page
+ORDER BY cv_sessions DESC
+LIMIT 20
+```
+
+### 03. GA4×BigQueryでユーザーのファーストタッチ・ラストタッチを取得する（ラストタッチを取得するSQL）
+
+**用途**: ラストタッチを取得するSQL
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH sessions AS (
+  SELECT
+    user_pseudo_id,
+    event_timestamp,
+    (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
+    collected_traffic_source.manual_source AS session_source,
+    collected_traffic_source.manual_medium AS session_medium
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
+    AND event_name = 'session_start'
+    AND collected_traffic_source.manual_source IS NOT NULL
+),
+
+converters AS (
+  SELECT DISTINCT
+    user_pseudo_id
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
+    AND event_name = 'purchase'
+),
+
+last_touch AS (
+  SELECT DISTINCT
+    s.user_pseudo_id,
+    LAST_VALUE(s.session_source) OVER (
+      PARTITION BY s.user_pseudo_id
+      ORDER BY s.event_timestamp
+      ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+    ) AS last_touch_source,
+    LAST_VALUE(s.session_medium) OVER (
+      PARTITION BY s.user_pseudo_id
+      ORDER BY s.event_timestamp
+      ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+    ) AS last_touch_medium
+  FROM sessions s
+  INNER JOIN converters c ON s.user_pseudo_id = c.user_pseudo_id
+)
+
+SELECT
+  last_touch_source,
+  last_touch_medium,
+  COUNT(DISTINCT user_pseudo_id) AS converting_users
+FROM last_touch
+GROUP BY last_touch_source, last_touch_medium
+ORDER BY converting_users DESC
+LIMIT 20
+```
+
+---
+
+## ここから先は購入者限定
+
+### 04. BigQueryでGA4のeコマースイベントを完全解析する【purchase/add_to_cart】（ファネル分析：view_item → add_to_cart → purchase の転換率）
+
+**用途**: ファネル分析：view_item → add_to_cart → purchase の転換率
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH funnel AS (
+  SELECT
+    event_name,
+    COUNT(DISTINCT CONCAT(
+      user_pseudo_id,
+      (SELECT CAST(value.int_value AS STRING) FROM UNNEST(event_params) WHERE key = 'ga_session_id')
+    )) AS unique_sessions
+  FROM
+    `${PROJECT}.${DATASET}.events_*`
+  WHERE
+    _TABLE_SUFFIX BETWEEN '20260101' AND '20260331'
+    AND event_name IN ('view_item', 'add_to_cart', 'begin_checkout', 'purchase')
+  GROUP BY
+    event_name
+)
+
+SELECT
+  event_name,
+  unique_sessions,
+  ROUND(
+    SAFE_DIVIDE(
+      unique_sessions,
+      MAX(unique_sessions) OVER ()
+    ) * 100, 1
+  ) AS rate_from_top
+FROM funnel
+ORDER BY
+  CASE event_name
+    WHEN 'view_item' THEN 1
+    WHEN 'add_to_cart' THEN 2
+    WHEN 'begin_checkout' THEN 3
+    WHEN 'purchase' THEN 4
+  END
+```
+
+### 05. GA4×BigQueryでリピーターと新規ユーザーを分離して分析する（新規/リピーター別のセッション指標を比較する）
+
+**用途**: 新規/リピーター別のセッション指標を比較する
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH first_visit_date AS (
+  SELECT
+    user_pseudo_id,
+    MIN(PARSE_DATE('%Y%m%d', event_date)) AS first_visit_date
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20240101' AND '20250331'
+    AND event_name = 'first_visit'
+  GROUP BY user_pseudo_id
+),
+
+sessions AS (
+  SELECT
+    e.user_pseudo_id,
+    (SELECT value.int_value FROM UNNEST(e.event_params) WHERE key = 'ga_session_id') AS ga_session_id,
+    CASE
+      WHEN f.first_visit_date BETWEEN '2025-03-01' AND '2025-03-31'
+      THEN '新規'
+      ELSE 'リピーター'
+    END AS user_type,
+    e.event_name
+  FROM `${PROJECT}.${DATASET}.events_*` e
+  LEFT JOIN first_visit_date f ON e.user_pseudo_id = f.user_pseudo_id
+  WHERE e._TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
+)
+
+SELECT
+  user_type,
+  COUNT(DISTINCT user_pseudo_id) AS users,
+  COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING))) AS sessions,
+  ROUND(
+    COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING)))
+    / COUNT(DISTINCT user_pseudo_id), 2
+  ) AS sessions_per_user,
+  COUNTIF(event_name = 'purchase') AS purchases,
+  ROUND(
+    SAFE_DIVIDE(
+      COUNTIF(event_name = 'purchase'),
+      COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING)))
+    ) * 100, 2
+  ) AS purchase_rate_pct
+FROM sessions
+GROUP BY user_type
+ORDER BY user_type
+```
+
+### 06. GA4×BigQueryでSearch Consoleデータを結合してオーガニック分析する（GA4 × Search Console結合クエリ）
+
+**用途**: GA4 × Search Console結合クエリ
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH ga4_landing AS (
+  SELECT
+    PARSE_DATE('%Y%m%d', event_date) AS event_date,
+    REGEXP_EXTRACT(
+      (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'page_location'),
+      r'^https?://[^/]+(/.*)$'
+    ) AS page_path,
+    user_pseudo_id,
+    (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
+    (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'entrances') AS is_entrance,
+    event_name
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
+),
+
+ga4_by_page AS (
+  SELECT
+    event_date,
+    page_path,
+    COUNT(DISTINCT CASE WHEN is_entrance = 1
+      THEN CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING))
+    END) AS organic_sessions,
+    COUNT(DISTINCT user_pseudo_id) AS users,
+    COUNTIF(event_name = 'purchase') AS purchases
+  FROM ga4_landing
+  GROUP BY event_date, page_path
+),
+
+gsc AS (
+  SELECT
+    data_date AS event_date,
+    REGEXP_EXTRACT(url, r'^https?://[^/]+(/.*)') AS page_path,
+    SUM(impressions) AS impressions,
+    SUM(clicks) AS clicks,
+    ROUND(SAFE_DIVIDE(SUM(sum_position), SUM(impressions)), 1) AS avg_position
+  FROM `your-project.searchconsole.searchdata_url_impression`
+  WHERE data_date BETWEEN '2025-03-01' AND '2025-03-31'
+  GROUP BY event_date, page_path
+)
+
+SELECT
+  COALESCE(ga.page_path, gsc.page_path) AS page_path,
+  SUM(gsc.impressions) AS search_impressions,
+  SUM(gsc.clicks) AS search_clicks,
+  ROUND(SAFE_DIVIDE(SUM(gsc.clicks), SUM(gsc.impressions)) * 100, 2) AS ctr_pct,
+  ROUND(AVG(gsc.avg_position), 1) AS avg_position,
+  SUM(ga.organic_sessions) AS site_sessions,
+  SUM(ga.purchases) AS purchases,
+  ROUND(SAFE_DIVIDE(SUM(ga.purchases), SUM(ga.organic_sessions)) * 100, 2) AS cvr_pct
+FROM gsc
+LEFT JOIN ga4_by_page ga
+  ON gsc.event_date = ga.event_date
+  AND gsc.page_path = ga.page_path
+GROUP BY page_path
+HAVING search_clicks >= 5
+ORDER BY search_clicks DESC
+LIMIT 30
+```
+
+### 07. BigQueryでGA4のページ別滞在時間を正しく集計する方法（最後のページ問題への対処）
+
+**用途**: 最後のページ問題への対処
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH page_views AS (
+  SELECT
+    user_pseudo_id,
+    event_timestamp,
+    (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'page_location') AS page_location,
+    (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
+    LEAD(event_timestamp) OVER (
+      PARTITION BY user_pseudo_id,
+        (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id')
+      ORDER BY event_timestamp
+    ) AS next_event_timestamp
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
+    AND event_name = 'page_view'
+)
+SELECT
+  REGEXP_EXTRACT(page_location, r'^https?://[^/]+(/.*)') AS page_path,
+  COUNT(*) AS page_views,
+  ROUND(AVG(
+    CASE
+      WHEN next_event_timestamp IS NOT NULL
+      THEN (next_event_timestamp - event_timestamp) / 1000000
+    END
+  ), 1) AS avg_time_on_page_sec
+FROM page_views
+GROUP BY page_path
+ORDER BY page_views DESC
+LIMIT 50
+```
+
+### 08. GA4×BigQueryでカスタムディメンションを活用した分析（実践例2：会員ランク別の行動分析）
+
+**用途**: 実践例2：会員ランク別の行動分析
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH user_tier AS (
+  SELECT
+    user_pseudo_id,
+    (SELECT value.string_value FROM UNNEST(user_properties) WHERE key = 'membership_tier') AS membership_tier
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
+    AND event_name = 'session_start'
+    AND (SELECT value.string_value FROM UNNEST(user_properties) WHERE key = 'membership_tier') IS NOT NULL
+),
+
+user_events AS (
+  SELECT
+    e.user_pseudo_id,
+    t.membership_tier,
+    e.event_name,
+    (SELECT value.int_value FROM UNNEST(e.event_params) WHERE key = 'ga_session_id') AS ga_session_id
+  FROM `${PROJECT}.${DATASET}.events_*` e
+  INNER JOIN user_tier t ON e.user_pseudo_id = t.user_pseudo_id
+  WHERE e._TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
+)
+
+SELECT
+  membership_tier,
+  COUNT(DISTINCT user_pseudo_id) AS users,
+  COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING))) AS sessions,
+  COUNTIF(event_name = 'page_view') AS page_views,
+  COUNTIF(event_name = 'add_to_cart') AS add_to_carts,
+  COUNTIF(event_name = 'purchase') AS purchases
+FROM user_events
+GROUP BY membership_tier
+ORDER BY users DESC
+```
+
+### 09. GA4×BigQueryでユーザーのファーストタッチ・ラストタッチを取得する（ファーストタッチを取得するSQL）
+
+**用途**: ファーストタッチを取得するSQL
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH sessions AS (
+  SELECT
+    user_pseudo_id,
+    event_timestamp,
+    (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
+    collected_traffic_source.manual_source AS session_source,
+    collected_traffic_source.manual_medium AS session_medium
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20250101' AND '20250331'
+    AND event_name = 'session_start'
+),
+
+first_touch AS (
+  SELECT DISTINCT
+    user_pseudo_id,
+    FIRST_VALUE(session_source) OVER (
+      PARTITION BY user_pseudo_id
+      ORDER BY event_timestamp
+      ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+    ) AS first_touch_source,
+    FIRST_VALUE(session_medium) OVER (
+      PARTITION BY user_pseudo_id
+      ORDER BY event_timestamp
+      ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+    ) AS first_touch_medium
+  FROM sessions
+  WHERE session_source IS NOT NULL
+)
+
+SELECT
+  IFNULL(first_touch_source, '(direct)') AS first_touch_source,
+  IFNULL(first_touch_medium, '(none)') AS first_touch_medium,
+  COUNT(DISTINCT user_pseudo_id) AS users
+FROM first_touch
+GROUP BY first_touch_source, first_touch_medium
+ORDER BY users DESC
+LIMIT 20
+```
+
+### 10. GA4×BigQueryでリピーターと新規ユーザーを分離して分析する（応用パターン：初回訪問日を特定して分類する）
+
+**用途**: 応用パターン：初回訪問日を特定して分類する
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH first_visit_date AS (
+  SELECT
+    user_pseudo_id,
+    MIN(PARSE_DATE('%Y%m%d', event_date)) AS first_visit_date
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20240101' AND '20250331'
+    AND event_name = 'first_visit'
+  GROUP BY user_pseudo_id
+),
+
+target_users AS (
+  SELECT DISTINCT
+    user_pseudo_id
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
+)
+
+SELECT
+  CASE
+    WHEN f.first_visit_date BETWEEN '2025-03-01' AND '2025-03-31'
+    THEN '新規'
+    ELSE 'リピーター'
+  END AS user_type,
+  COUNT(DISTINCT t.user_pseudo_id) AS users
+FROM target_users t
+LEFT JOIN first_visit_date f ON t.user_pseudo_id = f.user_pseudo_id
+GROUP BY user_type
+```
+
+### 11. GA4×BigQueryでカスタムディメンションを活用した分析（実践例1：ABテストのバリアント別コンバージョン分析）
+
+**用途**: 実践例1：ABテストのバリアント別コンバージョン分析
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH ab_sessions AS (
+  SELECT
+    user_pseudo_id,
+    (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
+    (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'ab_variant') AS ab_variant,
+    event_name
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
+)
+
+SELECT
+  ab_variant,
+  COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING))) AS sessions,
+  COUNTIF(event_name = 'purchase') AS purchases,
+  ROUND(
+    SAFE_DIVIDE(
+      COUNTIF(event_name = 'purchase'),
+      COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING)))
+    ) * 100, 2
+  ) AS cvr_pct
+FROM ab_sessions
+WHERE ab_variant IS NOT NULL
+GROUP BY ab_variant
+ORDER BY cvr_pct DESC
+```
+
+### 12. BigQueryでGA4のeコマースイベントを完全解析する【purchase/add_to_cart】（add_to_cart分析：カートに入れたが購入されなかった商品）
+
+**用途**: add_to_cart分析：カートに入れたが購入されなかった商品
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH cart_items AS (
+  SELECT
+    user_pseudo_id,
+    (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
+    item.item_id,
+    item.item_name
+  FROM
+    `${PROJECT}.${DATASET}.events_*`,
+    UNNEST(items) AS item
+  WHERE
+    _TABLE_SUFFIX BETWEEN '20260101' AND '20260331'
+    AND event_name = 'add_to_cart'
+),
+
+purchased_items AS (
+  SELECT
+    user_pseudo_id,
+    (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
+    item.item_id
+  FROM
+    `${PROJECT}.${DATASET}.events_*`,
+    UNNEST(items) AS item
+  WHERE
+    _TABLE_SUFFIX BETWEEN '20260101' AND '20260331'
+    AND event_name = 'purchase'
+)
+
+SELECT
+  c.item_id,
+  c.item_name,
+  COUNT(*) AS cart_add_count,
+  COUNTIF(p.item_id IS NOT NULL) AS purchase_count,
+  COUNTIF(p.item_id IS NULL) AS abandoned_count,
+  ROUND(
+    SAFE_DIVIDE(COUNTIF(p.item_id IS NULL), COUNT(*)) * 100, 1
+  ) AS abandonment_rate
+FROM
+  cart_items c
+LEFT JOIN
+  purchased_items p
+  ON c.user_pseudo_id = p.user_pseudo_id
+  AND c.ga_session_id = p.ga_session_id
+  AND c.item_id = p.item_id
+GROUP BY
+  c.item_id, c.item_name
+ORDER BY
+  abandoned_count DESC
+```
+
+### 13. BigQueryでGA4のページ別滞在時間を正しく集計する方法（ページ別の平均滞在時間を集計するSQL）
+
+**用途**: ページ別の平均滞在時間を集計するSQL
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH engagement AS (
+  SELECT
+    (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'page_location') AS page_location,
+    (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'engagement_time_msec') AS engagement_time_msec
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
+    AND event_name = 'user_engagement'
+)
+SELECT
+  NET.REG_DOMAIN(page_location) AS domain,
+  REGEXP_EXTRACT(page_location, r'^https?://[^/]+(/.*)') AS page_path,
+  COUNT(*) AS engagement_events,
+  ROUND(AVG(engagement_time_msec) / 1000, 1) AS avg_engagement_sec,
+  ROUND(SUM(engagement_time_msec) / 1000, 1) AS total_engagement_sec
+FROM engagement
+WHERE engagement_time_msec IS NOT NULL
+  AND engagement_time_msec > 0
+GROUP BY domain, page_path
+ORDER BY engagement_events DESC
+LIMIT 50
+```
+
+### 14. BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）（方法1：session_engagedを使う（推奨））
+
+**用途**: 方法1：session_engagedを使う（推奨）
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH session_engagement AS (
+  SELECT
+    CONCAT(
+      user_pseudo_id, '.',
+      CAST(
+        (SELECT value.int_value
+         FROM UNNEST(event_params)
+         WHERE key = 'ga_session_id') AS STRING)
+    ) AS session_id,
+    MAX(
+      (SELECT value.string_value
+       FROM UNNEST(event_params)
+       WHERE key = 'session_engaged')
+    ) AS session_engaged
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
+  GROUP BY session_id
+)
+SELECT
+  COUNT(*) AS total_sessions,
+  COUNTIF(session_engaged != '1' OR session_engaged IS NULL) AS bounced_sessions,
+  ROUND(
+    COUNTIF(session_engaged != '1' OR session_engaged IS NULL)
+    / COUNT(*) * 100, 2
+  ) AS bounce_rate_percent
+FROM session_engagement
+```
+
+### 15. BigQueryでGA4の直帰率を正確に計算する方法（GA4に直帰率はない問題）（方法2：engagement_time_msecを使う）
+
+**用途**: 方法2：engagement_time_msecを使う
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH session_metrics AS (
+  SELECT
+    CONCAT(
+      user_pseudo_id, '.',
+      CAST(
+        (SELECT value.int_value
+         FROM UNNEST(event_params)
+         WHERE key = 'ga_session_id') AS STRING)
+    ) AS session_id,
+    SUM(
+      IFNULL(
+        (SELECT value.int_value
+         FROM UNNEST(event_params)
+         WHERE key = 'engagement_time_msec'), 0)
+    ) AS total_engagement_time_msec,
+    COUNTIF(event_name = 'page_view') AS page_views
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
+  GROUP BY session_id
+)
+SELECT
+  COUNT(*) AS total_sessions,
+  COUNTIF(
+    total_engagement_time_msec < 10000
+    AND page_views <= 1
+  ) AS bounced_sessions,
+  ROUND(
+    COUNTIF(
+      total_engagement_time_msec < 10000
+      AND page_views <= 1
+    ) / COUNT(*) * 100, 2
+  ) AS bounce_rate_percent
+FROM session_metrics
+```
+
+### 16. GA4×BigQueryでデバイス別・地域別セグメント分析をする（デバイス別セッション数・コンバージョン率）
+
+**用途**: デバイス別セッション数・コンバージョン率
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH sessions AS (
+  SELECT
+    CONCAT(
+      user_pseudo_id, '.',
+      CAST(
+        (SELECT value.int_value
+         FROM UNNEST(event_params)
+         WHERE key = 'ga_session_id') AS STRING)
+    ) AS session_id,
+    device.category AS device_category,
+    event_name
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
+),
+session_summary AS (
+  SELECT
+    session_id,
+    device_category,
+    MAX(CASE WHEN event_name = 'purchase' THEN 1 ELSE 0 END) AS has_purchase
+  FROM sessions
+  GROUP BY session_id, device_category
+)
+SELECT
+  device_category,
+  COUNT(*) AS sessions,
+  SUM(has_purchase) AS cv_sessions,
+  ROUND(SUM(has_purchase) / COUNT(*) * 100, 2) AS cv_rate_percent
+FROM session_summary
+GROUP BY device_category
+ORDER BY sessions DESC
+```
+
+### 17. GA4×BigQueryでデバイス別・地域別セグメント分析をする（デバイス別×チャネル別のクロス集計）
+
+**用途**: デバイス別×チャネル別のクロス集計
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH sessions AS (
+  SELECT
+    CONCAT(
+      user_pseudo_id, '.',
+      CAST(
+        (SELECT value.int_value
+         FROM UNNEST(event_params)
+         WHERE key = 'ga_session_id') AS STRING)
+    ) AS session_id,
+    device.category AS device_category,
+    collected_traffic_source.manual_medium AS medium
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
+    AND event_name = 'session_start'
+)
+SELECT
+  device_category,
+  IFNULL(medium, '(none)') AS medium,
+  COUNT(DISTINCT session_id) AS sessions
+FROM sessions
+GROUP BY device_category, medium
+ORDER BY device_category, sessions DESC
+```
+
+### 18. GA4×BigQueryでSearch Consoleデータを結合してオーガニック分析する（結合のためのGA4側の準備）
+
+**用途**: 結合のためのGA4側の準備
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です / `SELECT *` を含みます。必要な列だけに絞るとコストが下がります
+
+```sql
+WITH ga4_landing AS (
+  SELECT
+    PARSE_DATE('%Y%m%d', event_date) AS event_date,
+    REGEXP_EXTRACT(
+      (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'page_location'),
+      r'^https?://[^/]+(/.*)$'
+    ) AS page_path,
+    user_pseudo_id,
+    (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
+    (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'entrances') AS is_entrance
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20250301' AND '20250331'
+    AND event_name = 'page_view'
+),
+
+ga4_sessions AS (
+  SELECT
+    event_date,
+    page_path,
+    COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING))) AS sessions,
+    COUNT(DISTINCT user_pseudo_id) AS users
+  FROM ga4_landing
+  WHERE is_entrance = 1
+  GROUP BY event_date, page_path
+)
+
+SELECT * FROM ga4_sessions
+```
+
+### 19. GA4×BigQueryでセッションIDを正しく定義する方法（セッションごとのPV数）
+
+**用途**: セッションごとのPV数
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH sessions AS (
+  SELECT
+    CONCAT(
+      user_pseudo_id, '.',
+      CAST(
+        (SELECT value.int_value
+         FROM UNNEST(event_params)
+         WHERE key = 'ga_session_id') AS STRING)
+    ) AS session_id,
+    event_name
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
+)
+SELECT
+  session_id,
+  COUNTIF(event_name = 'page_view') AS page_views
+FROM sessions
+GROUP BY session_id
+ORDER BY page_views DESC
+LIMIT 20
+```
+
+### 20. GA4×BigQueryでセッションIDを正しく定義する方法（セッション開始時刻と流入元を紐づける）
+
+**用途**: セッション開始時刻と流入元を紐づける
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+WITH session_starts AS (
+  SELECT
+    CONCAT(
+      user_pseudo_id, '.',
+      CAST(
+        (SELECT value.int_value
+         FROM UNNEST(event_params)
+         WHERE key = 'ga_session_id') AS STRING)
+    ) AS session_id,
+    event_timestamp,
+    collected_traffic_source.manual_source AS source,
+    collected_traffic_source.manual_medium AS medium,
+    (SELECT value.string_value
+     FROM UNNEST(event_params)
+     WHERE key = 'page_location') AS landing_page
+  FROM `${PROJECT}.${DATASET}.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
+    AND event_name = 'session_start'
+)
+SELECT
+  source,
+  medium,
+  COUNT(*) AS sessions,
+  COUNT(DISTINCT session_id) AS unique_sessions
+FROM session_starts
+GROUP BY source, medium
+ORDER BY sessions DESC
+```
+
+### 21. GA4のデータをBigQueryに繋ぐと何が変わるのか【3層設計まで解説】
+
+**用途**: mart層
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+CREATE OR REPLACE TABLE `project.mart.channel_summary` AS
+SELECT
+  event_date,
+  collected_traffic_source.manual_medium AS medium,
+  collected_traffic_source.manual_source AS source,
+  COUNT(DISTINCT
+    CONCAT(user_pseudo_id, CAST(
+      (SELECT value.int_value FROM UNNEST(event_params)
+       WHERE key = 'ga_session_id') AS STRING))
+  ) AS sessions,
+  COUNTIF(event_name = 'purchase') AS conversions
+FROM `${PROJECT}.${DATASET}.events_*`
+WHERE _TABLE_SUFFIX BETWEEN
+  FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY))
+  AND FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY))
+GROUP BY 1, 2, 3
+```
+
+### 22. BigQueryでGA4のサンプリングを回避して正確な数値を出す（BigQueryなら100%のデータで分析できる）
+
+**用途**: BigQueryなら100%のデータで分析できる
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+SELECT
+  event_date,
+  collected_traffic_source.manual_medium AS medium,
+  COUNT(DISTINCT
+    CONCAT(
+      user_pseudo_id, '.',
+      CAST(
+        (SELECT value.int_value
+         FROM UNNEST(event_params)
+         WHERE key = 'ga_session_id') AS STRING)
+    )
+  ) AS sessions
+FROM `${PROJECT}.${DATASET}.events_*`
+WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
+  AND event_name = 'session_start'
+GROUP BY event_date, medium
+ORDER BY event_date, sessions DESC
+```
+
+### 23. BigQueryでGA4のサンプリングを回避して正確な数値を出す（GA4 UIとBigQueryの数値を比較してみる）
+
+**用途**: GA4 UIとBigQueryの数値を比較してみる
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+SELECT
+  FORMAT_DATE('%Y%m%d',
+    DATE(TIMESTAMP_MICROS(event_timestamp), 'Asia/Tokyo')
+  ) AS event_date_jst,
+  COUNT(*) AS event_count
+FROM `${PROJECT}.${DATASET}.events_*`
+WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
+GROUP BY event_date_jst
+ORDER BY event_date_jst
+```
+
+### 24. BigQueryでGA4データのコスト管理・クエリ最適化入門（テクニック3：中間テーブルやビューを活用する）
+
+**用途**: テクニック3：中間テーブルやビューを活用する
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+CREATE OR REPLACE TABLE `your-project.staging.sessions_202603` AS
+SELECT
+  event_date,
+  CONCAT(
+    user_pseudo_id, '.',
+    CAST(
+      (SELECT value.int_value
+       FROM UNNEST(event_params)
+       WHERE key = 'ga_session_id') AS STRING)
+  ) AS session_id,
+  user_pseudo_id,
+  collected_traffic_source.manual_source AS source,
+  collected_traffic_source.manual_medium AS medium
+FROM `${PROJECT}.${DATASET}.events_*`
+WHERE _TABLE_SUFFIX BETWEEN '20260301' AND '20260330'
+  AND event_name = 'session_start'
+```
+
+### 25. BigQueryでGA4データのコスト管理・クエリ最適化入門（パーティション）
+
+**用途**: パーティション
+
+**必要なテーブル**: `${DATASET}.events_*`
+
+**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
+
+```sql
+CREATE OR REPLACE TABLE `your-project.staging.sessions_partitioned`
+PARTITION BY event_date_parsed
+CLUSTER BY medium
+AS
+SELECT
+  PARSE_DATE('%Y%m%d', event_date) AS event_date_parsed,
+  CONCAT(
+    user_pseudo_id, '.',
+    CAST(
+      (SELECT value.int_value
+       FROM UNNEST(event_params)
+       WHERE key = 'ga_session_id') AS STRING)
+  ) AS session_id,
+  collected_traffic_source.manual_medium AS medium,
+  user_pseudo_id
+FROM `${PROJECT}.${DATASET}.events_*`
+WHERE _TABLE_SUFFIX BETWEEN '20260101' AND '20260330'
+  AND event_name = 'session_start'
+```
+
+### 26. ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する（リマーケティング期間の設定根拠）
 
 **用途**: リマーケティング期間の設定根拠
 
@@ -70,7 +1105,7 @@ GROUP BY days_to_purchase
 ORDER BY days_to_purchase
 ```
 
-### 02. BigQueryで1回しか買わない顧客と2回以上買う顧客の行動差を分析した（流入元の違いを確認する）
+### 27. BigQueryで1回しか買わない顧客と2回以上買う顧客の行動差を分析した（流入元の違いを確認する）
 
 **用途**: 流入元の違いを確認する
 
@@ -120,7 +1155,7 @@ GROUP BY bt.buyer_type, ft.source, ft.medium
 ORDER BY bt.buyer_type, users DESC
 ```
 
-### 03. BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った
+### 28. BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った
 
 **用途**: 商品別の流入数とCVRを算出するSQL
 
@@ -172,11 +1207,7 @@ HAVING view_sessions >= 10
 ORDER BY total_revenue DESC;
 ```
 
----
-
-## ここから先は購入者限定
-
-### 04. ECの季節変動をBigQueryで前年比分析して仕入れ計画に活かす方法（月別売上の前年比SQL）
+### 29. ECの季節変動をBigQueryで前年比分析して仕入れ計画に活かす方法（月別売上の前年比SQL）
 
 **用途**: 月別売上の前年比SQL
 
@@ -215,7 +1246,7 @@ WHERE curr.year = 2026
 ORDER BY curr.month;
 ```
 
-### 05. ECの季節変動をBigQueryで前年比分析して仕入れ計画に活かす方法（週別売上の前年比SQL）
+### 30. ECの季節変動をBigQueryで前年比分析して仕入れ計画に活かす方法（週別売上の前年比SQL）
 
 **用途**: 週別売上の前年比SQL
 
@@ -256,7 +1287,7 @@ WHERE curr.iso_year = 2026
 ORDER BY curr.iso_week;
 ```
 
-### 06. GA4×BigQueryでモバイルとPCの購買行動の違いを分析した（デバイス別の基本指標を比較する）
+### 31. GA4×BigQueryでモバイルとPCの購買行動の違いを分析した（デバイス別の基本指標を比較する）
 
 **用途**: デバイス別の基本指標を比較する
 
@@ -300,7 +1331,7 @@ GROUP BY s.device_category
 ORDER BY sessions DESC;
 ```
 
-### 07. BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した（Step 1: 商品別売上集計SQL）
+### 32. BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した（Step 1: 商品別売上集計SQL）
 
 **用途**: Step 1: 商品別売上集計SQL
 
@@ -335,7 +1366,7 @@ FROM item_revenue
 ORDER BY total_revenue DESC
 ```
 
-### 08. BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した（Step 2: 累積比率を算出してパレート曲線を描く）
+### 33. BigQueryで売上上位20%の商品が生み出す収益構造をパレート分析した（Step 2: 累積比率を算出してパレート曲線を描く）
 
 **用途**: Step 2: 累積比率を算出してパレート曲線を描く
 
@@ -392,7 +1423,7 @@ FROM cumulative
 ORDER BY rank
 ```
 
-### 09. BigQueryでEC顧客をRFM分析してセグメント別メルマガ戦略を立てた
+### 34. BigQueryでEC顧客をRFM分析してセグメント別メルマガ戦略を立てた
 
 **用途**: RFMスコアを算出するSQL
 
@@ -432,7 +1463,7 @@ SELECT
 FROM user_rfm;
 ```
 
-### 10. BigQueryでGA4データからEC顧客の年齢・性別推定精度を検証した（Step 2: デモグラフィック別のセグメント分析）
+### 35. BigQueryでGA4データからEC顧客の年齢・性別推定精度を検証した（Step 2: デモグラフィック別のセグメント分析）
 
 **用途**: Step 2: デモグラフィック別のセグメント分析
 
@@ -464,7 +1495,7 @@ GROUP BY age_bracket, gender
 ORDER BY user_count DESC
 ```
 
-### 11. BigQueryでGA4データからEC顧客の年齢・性別推定精度を検証した（Step 3: デモグラフィック別の購買行動比較）
+### 36. BigQueryでGA4データからEC顧客の年齢・性別推定精度を検証した（Step 3: デモグラフィック別の購買行動比較）
 
 **用途**: Step 3: デモグラフィック別の購買行動比較
 
@@ -510,7 +1541,7 @@ LEFT JOIN user_demo ud
 GROUP BY demo_status
 ```
 
-### 12. ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する（初回訪問日と初回購入日を取得するSQL）
+### 37. ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する（初回訪問日と初回購入日を取得するSQL）
 
 **用途**: 初回訪問日と初回購入日を取得するSQL
 
@@ -548,7 +1579,7 @@ FROM first_visits fv
 INNER JOIN first_purchases fp ON fv.user_pseudo_id = fp.user_pseudo_id
 ```
 
-### 13. BigQueryで1回しか買わない顧客と2回以上買う顧客の行動差を分析した（初回セッションの行動指標を比較する）
+### 38. BigQueryで1回しか買わない顧客と2回以上買う顧客の行動差を分析した（初回セッションの行動指標を比較する）
 
 **用途**: 初回セッションの行動指標を比較する
 
@@ -622,7 +1653,7 @@ INNER JOIN buyer_type bt ON fsm.user_pseudo_id = bt.user_pseudo_id
 GROUP BY bt.buyer_type
 ```
 
-### 14. GA4×BigQueryでEC新規顧客獲得コスト（CAC）を媒体別に正確計算する（チャネル別の新規購入者数を算出するSQL）
+### 39. GA4×BigQueryでEC新規顧客獲得コスト（CAC）を媒体別に正確計算する（チャネル別の新規購入者数を算出するSQL）
 
 **用途**: チャネル別の新規購入者数を算出するSQL
 
@@ -675,7 +1706,7 @@ GROUP BY channel, source
 ORDER BY new_customers DESC
 ```
 
-### 15. GA4×BigQueryでEC新規顧客獲得コスト（CAC）を媒体別に正確計算する（方法1: 手動でCTEに記述する）
+### 40. GA4×BigQueryでEC新規顧客獲得コスト（CAC）を媒体別に正確計算する（方法1: 手動でCTEに記述する）
 
 **用途**: 方法1: 手動でCTEに記述する
 
@@ -739,7 +1770,7 @@ INNER JOIN ad_costs ac ON nc.channel = ac.channel AND nc.source = ac.source
 ORDER BY cac
 ```
 
-### 16. GA4×BigQueryでカート放棄率を正確に計測・改善する方法（デバイス別のカート放棄率）
+### 41. GA4×BigQueryでカート放棄率を正確に計測・改善する方法（デバイス別のカート放棄率）
 
 **用途**: デバイス別のカート放棄率
 
@@ -776,7 +1807,7 @@ GROUP BY a.device_category
 ORDER BY cart_abandonment_rate DESC;
 ```
 
-### 17. GA4×BigQueryでカート放棄率を正確に計測・改善する方法（流入元別のカート放棄率）
+### 42. GA4×BigQueryでカート放棄率を正確に計測・改善する方法（流入元別のカート放棄率）
 
 **用途**: 流入元別のカート放棄率
 
@@ -816,7 +1847,7 @@ HAVING COUNT(*) >= 10
 ORDER BY cart_abandonment_rate DESC;
 ```
 
-### 18. GA4×BigQueryでメルマガのROIを正確に測定する（セッションをまたいだアトリビューション）
+### 43. GA4×BigQueryでメルマガのROIを正確に測定する（セッションをまたいだアトリビューション）
 
 **用途**: セッションをまたいだアトリビューション
 
@@ -873,7 +1904,7 @@ GROUP BY ec.campaign
 ORDER BY revenue_within_7d DESC
 ```
 
-### 19. GA4×BigQueryでメルマガのROIを正確に測定する（ROIを算出する）
+### 44. GA4×BigQueryでメルマガのROIを正確に測定する（ROIを算出する）
 
 **用途**: ROIを算出する
 
@@ -910,7 +1941,7 @@ INNER JOIN campaign_costs cc ON er.campaign = cc.campaign
 ORDER BY roi_pct DESC
 ```
 
-### 20. GA4×BigQueryでGoogle広告のキーワード別CVRを正確に測定する
+### 45. GA4×BigQueryでGoogle広告のキーワード別CVRを正確に測定する
 
 **用途**: キーワード別CVRを算出するSQL
 
@@ -976,7 +2007,7 @@ HAVING sessions >= 5
 ORDER BY sessions DESC;
 ```
 
-### 21. GA4×BigQueryでモバイルとPCの購買行動の違いを分析した（モバイルの離脱ポイントを深掘りする）
+### 46. GA4×BigQueryでモバイルとPCの購買行動の違いを分析した（モバイルの離脱ポイントを深掘りする）
 
 **用途**: モバイルの離脱ポイントを深掘りする
 
@@ -1039,7 +2070,7 @@ ORDER BY
   END;
 ```
 
-### 22. GA4×BigQueryでポイント還元施策の効果をコホート分析で検証した（Step 2: コホート別の月次購入回数）
+### 47. GA4×BigQueryでポイント還元施策の効果をコホート分析で検証した（Step 2: コホート別の月次購入回数）
 
 **用途**: Step 2: コホート別の月次購入回数
 
@@ -1095,7 +2126,7 @@ GROUP BY cohort_month, cohort_label, months_after
 ORDER BY cohort_month, months_after
 ```
 
-### 23. GA4×BigQueryでポイント還元施策の効果をコホート分析で検証した（Step 3: コホート別LTVの比較）
+### 48. GA4×BigQueryでポイント還元施策の効果をコホート分析で検証した（Step 3: コホート別LTVの比較）
 
 **用途**: Step 3: コホート別LTVの比較
 
@@ -1154,7 +2185,7 @@ GROUP BY cohort_month, cohort_label
 ORDER BY cohort_month
 ```
 
-### 24. EC商品ページの離脱率をGA4×BigQueryで分析して改善につなげた事例
+### 49. EC商品ページの離脱率をGA4×BigQueryで分析して改善につなげた事例
 
 **用途**: 基本SQL：商品ページ別の離脱率を算出する
 
@@ -1204,7 +2235,7 @@ HAVING total_sessions >= 10
 ORDER BY exit_rate DESC;
 ```
 
-### 25. ECサイトのサイト内検索キーワードをGA4×BigQueryで分析して品揃えを改善した
+### 50. ECサイトのサイト内検索キーワードをGA4×BigQueryで分析して品揃えを改善した
 
 **用途**: 検索キーワードごとの購入転換率を算出する
 
@@ -1249,772 +2280,4 @@ WHERE ss.search_term IS NOT NULL
 GROUP BY ss.search_term
 HAVING search_sessions >= 5
 ORDER BY search_sessions DESC
-```
-
-### 26. BigQueryのSTRUCT・ARRAY型を活用してGA4データを効率的にモデリングする（セッションテーブルをデータマートとして整形する）
-
-**用途**: セッションテーブルをデータマートとして整形する
-
-**必要なテーブル**: `${DATASET}.events_*`, `${DATASET}.session_mart`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-CREATE OR REPLACE TABLE `${PROJECT}.${DATASET}.session_mart` AS
-
-WITH base AS (
-  SELECT
-    event_date,
-    user_pseudo_id,
-    (
-      SELECT ep.value.int_value
-      FROM UNNEST(event_params) AS ep
-      WHERE ep.key = 'ga_session_id'
-    ) AS ga_session_id,
-    event_name,
-    collected_traffic_source.manual_source AS source,
-    collected_traffic_source.manual_medium AS medium,
-    device.category AS device_category,
-    geo.country AS country
-  FROM
-    `${PROJECT}.${DATASET}.events_*`
-  WHERE
-    _TABLE_SUFFIX BETWEEN '20240801' AND '20240831'
-)
-
-SELECT
-  event_date,
-  user_pseudo_id,
-  ga_session_id,
-  MAX(source) AS source,
-  MAX(medium) AS medium,
-  MAX(device_category) AS device_category,
-  MAX(country) AS country,
-  COUNTIF(event_name = 'page_view') AS page_view_count,
-  COUNTIF(event_name = 'purchase') AS purchase_count
-FROM
-  base
-WHERE
-  ga_session_id IS NOT NULL
-GROUP BY
-  event_date,
-  user_pseudo_id,
-  ga_session_id
-```
-
-### 27. dbt × BigQueryで再現可能なデータパイプラインを構築する入門【GA4データ編】
-
-**用途**: GA4イベントデータからセッション・流入元を抽出するモデルを作る
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です / `SELECT *` を含みます。必要な列だけに絞るとコストが下がります
-
-```sql
-WITH raw_events AS (
-  SELECT
-    user_pseudo_id,
-    event_date,
-    event_timestamp,
-    event_name,
-    -- ga_session_idはevent_paramsをUNNESTして取得する
-    (
-      SELECT value.int_value
-      FROM UNNEST(event_params) AS ep
-      WHERE ep.key = 'ga_session_id'
-    ) AS ga_session_id,
-    -- 流入元はcollected_traffic_sourceから取得する
-    collected_traffic_source.manual_medium AS medium,
-    collected_traffic_source.manual_source AS source
-  FROM
-    `your-gcp-project-id.analytics_XXXXXXX.events_*`
-  WHERE
-    _TABLE_SUFFIX BETWEEN '20240101' AND '20241231'
-    AND event_name = 'session_start'
-),
-
-sessions AS (
-  SELECT
-    user_pseudo_id,
-    ga_session_id,
-    MIN(event_date) AS session_date,
-    MIN(event_timestamp) AS session_start_ts,
-    MAX(medium) AS medium,
-    MAX(source) AS source
-  FROM raw_events
-  WHERE ga_session_id IS NOT NULL
-  GROUP BY
-    user_pseudo_id,
-    ga_session_id
-)
-
-SELECT * FROM sessions
-```
-
-### 28. BigQueryのデータリネージ機能でデータマートの依存関係を可視化する
-
-**用途**: GA4データを使ったビューの依存関係を実際に確認する
-
-**必要なテーブル**: `${DATASET}.events_*`, `${DATASET}.stg_sessions`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-CREATE OR REPLACE VIEW `${PROJECT}.${DATASET}.stg_sessions` AS
-SELECT
-  user_pseudo_id,
-  (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
-  collected_traffic_source.manual_medium AS medium,
-  collected_traffic_source.manual_source AS source,
-  SUM(ecommerce.purchase_revenue) AS revenue
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  _TABLE_SUFFIX BETWEEN '20250101' AND '20251231'
-  AND event_name = 'purchase'
-GROUP BY
-  user_pseudo_id,
-  ga_session_id,
-  medium,
-  source
-;
-```
-
-### 29. BigQueryのエクスポート上限に引っかかったときの回避策まとめ
-
-**用途**: 回避策②：日付パーティションを活用してクエリ・エクスポート対象を絞り込む
-
-**必要なテーブル**: `${DATASET}.events_*`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-SELECT
-  user_pseudo_id,
-  (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
-  collected_traffic_source.manual_medium AS medium,
-  collected_traffic_source.manual_source AS source,
-  COUNT(*) AS event_count
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  _TABLE_SUFFIX BETWEEN '20250601' AND '20250630'
-  AND event_name = 'purchase'
-GROUP BY
-  1, 2, 3, 4
-ORDER BY
-  event_count DESC
-```
-
-### 30. BigQueryのアクセス制御をIAMで適切に設計する【チーム運用編】
-
-**用途**: GA4データへの閲覧権限を安全に設計する
-
-**必要なテーブル**: `${DATASET}.events_*`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-SELECT
-  collected_traffic_source.manual_medium AS medium,
-  collected_traffic_source.manual_source AS source,
-  COUNT(DISTINCT
-    CONCAT(
-      user_pseudo_id,
-      CAST(
-        (SELECT value.int_value
-         FROM UNNEST(event_params)
-         WHERE key = 'ga_session_id') AS STRING
-      )
-    )
-  ) AS session_count
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  _TABLE_SUFFIX BETWEEN '20250601' AND '20250630'
-  AND event_name = 'session_start'
-GROUP BY
-  medium, source
-ORDER BY
-  session_count DESC
-LIMIT 20;
-```
-
-### 31. BigQueryのラベル機能でプロジェクト横断のコスト配分を自動管理する（クエリジョブへのラベル付与方法）
-
-**用途**: クエリジョブへのラベル付与方法
-
-**必要なテーブル**: `${DATASET}.events_*`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-SELECT
-  collected_traffic_source.manual_medium AS medium,
-  collected_traffic_source.manual_source AS source,
-  COUNT(DISTINCT
-    (SELECT value.int_value
-     FROM UNNEST(event_params)
-     WHERE key = 'ga_session_id')
-  ) AS sessions
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  _TABLE_SUFFIX BETWEEN '20240601' AND '20240630'
-  AND event_name = 'session_start'
-GROUP BY
-  medium, source
-ORDER BY
-  sessions DESC
-```
-
-### 32. BigQueryのマテリアライズドビューでGA4集計クエリを高速化した（マテリアライズドビューの作成手順） その1
-
-**用途**: マテリアライズドビューの作成手順
-
-**必要なテーブル**: `${DATASET}.events_*`, `${DATASET}.mv_ga4_session_summary`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-CREATE MATERIALIZED VIEW `${PROJECT}.${DATASET}.mv_ga4_session_summary`
-OPTIONS (
-  enable_refresh = true,
-  refresh_interval_minutes = 60
-)
-AS
-SELECT
-  event_date,
-  collected_traffic_source.manual_source AS source,
-  collected_traffic_source.manual_medium AS medium,
-  user_pseudo_id,
-  (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
-  COUNTIF(event_name = 'purchase') AS purchase_count,
-  SUM(
-    CASE
-      WHEN event_name = 'purchase'
-      THEN (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'value')
-      ELSE 0
-    END
-  ) AS total_revenue
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  _TABLE_SUFFIX >= FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 90 DAY))
-GROUP BY
-  event_date,
-  source,
-  medium,
-  user_pseudo_id,
-  ga_session_id
-```
-
-### 33. BigQueryのクエリキャッシュの仕組みを理解してコスト効率を最大化する
-
-**用途**: GA4データを活用するクエリでのキャッシュ設計
-
-**必要なテーブル**: `${DATASET}.events_*`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-SELECT
-  event_date,
-  collected_traffic_source.manual_medium AS medium,
-  collected_traffic_source.manual_source AS source,
-  COUNT(DISTINCT
-    (SELECT value.int_value
-     FROM UNNEST(event_params)
-     WHERE key = 'ga_session_id')
-  ) AS sessions
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  _TABLE_SUFFIX BETWEEN '20250701' AND '20250731'
-  AND event_name = 'session_start'
-GROUP BY
-  event_date, medium, source
-ORDER BY
-  event_date
-```
-
-### 34. BigQueryのクエリコストを月1万円以下に抑える7つの実践テクニック（テクニック7：不要なテーブルと期限切れポリシーを活用する）
-
-**用途**: テクニック7：不要なテーブルと期限切れポリシーを活用する
-
-**必要なテーブル**: `${DATASET}.events_*`, `${DATASET}.temp_session_summary`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-CREATE TABLE `${PROJECT}.${DATASET}.temp_session_summary`
-OPTIONS (
-  expiration_timestamp = TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL 7 DAY)
-)
-AS
-SELECT
-  user_pseudo_id,
-  (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
-  MIN(event_timestamp) AS session_start_ts
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  _TABLE_SUFFIX = FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY))
-GROUP BY
-  user_pseudo_id, ga_session_id
-```
-
-### 35. BigQueryのクエリ結果をCloud Storageに自動エクスポートして外部ツール連携する
-
-**用途**: GA4データをBigQueryで集計するSQLの書き方
-
-**必要なテーブル**: `${DATASET}.events_*`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-SELECT
-  collected_traffic_source.manual_medium AS medium,
-  collected_traffic_source.manual_source AS source,
-  COUNT(DISTINCT
-    (SELECT ep.value.int_value
-     FROM UNNEST(event_params) AS ep
-     WHERE ep.key = 'ga_session_id')
-  ) AS sessions,
-  COUNTIF(event_name = 'purchase') AS purchases
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  _TABLE_SUFFIX BETWEEN '20250601' AND '20250630'
-GROUP BY
-  medium,
-  source
-ORDER BY
-  sessions DESC
-;
-```
-
-### 36. BigQueryのスケジュールクエリでデータマートを毎朝自動更新する設定と監視方法
-
-**用途**: データマート用SQLの書き方（GA4エクスポートテーブル使用）
-
-**必要なテーブル**: `${DATASET}.events_*`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-SELECT
-  PARSE_DATE('%Y%m%d', event_date) AS date,
-  collected_traffic_source.manual_medium AS medium,
-  collected_traffic_source.manual_source AS source,
-  COUNT(DISTINCT
-    CONCAT(
-      user_pseudo_id,
-      CAST(
-        (SELECT value.int_value
-         FROM UNNEST(event_params)
-         WHERE key = 'ga_session_id') AS STRING
-      )
-    )
-  ) AS sessions,
-  COUNTIF(event_name = 'purchase') AS purchases
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  _TABLE_SUFFIX BETWEEN
-    FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE('Asia/Tokyo'), INTERVAL 7 DAY))
-    AND FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE('Asia/Tokyo'), INTERVAL 1 DAY))
-GROUP BY
-  date, medium, source
-ORDER BY
-  date DESC, sessions DESC
-```
-
-### 37. BigQueryからGoogleスプレッドシートに自動出力して非エンジニアとデータ共有する
-
-**用途**: GA4データをコネクテッドシートで参照するカスタムクエリ例
-
-**必要なテーブル**: `${DATASET}.events_*`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-SELECT
-  collected_traffic_source.manual_medium AS medium,
-  collected_traffic_source.manual_source AS source,
-  COUNT(DISTINCT
-    (SELECT value.string_value
-     FROM UNNEST(event_params) AS ep
-     WHERE ep.key = 'ga_session_id')
-  ) AS sessions,
-  COUNTIF(event_name = 'purchase') AS purchases
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  _TABLE_SUFFIX BETWEEN
-    FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY))
-    AND FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY))
-GROUP BY
-  1, 2
-ORDER BY
-  sessions DESC
-LIMIT 100
-```
-
-### 38. BigQueryのSTRUCT・ARRAY型を活用してGA4データを効率的にモデリングする（流入元データをcollected_traffic_sourceから取得する）
-
-**用途**: 流入元データをcollected_traffic_sourceから取得する
-
-**必要なテーブル**: `${DATASET}.events_*`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-SELECT
-  event_date,
-  collected_traffic_source.manual_source AS source,
-  collected_traffic_source.manual_medium AS medium,
-  COUNT(*) AS page_view_count
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  _TABLE_SUFFIX BETWEEN '20240801' AND '20240831'
-  AND event_name = 'page_view'
-GROUP BY
-  event_date,
-  source,
-  medium
-ORDER BY
-  event_date,
-  page_view_count DESC
-```
-
-### 39. BigQueryのタイムトラベル機能で誤削除・誤更新からデータを復旧する方法（過去時点のデータをSELECTで確認する）
-
-**用途**: 過去時点のデータをSELECTで確認する
-
-**必要なテーブル**: `${DATASET}.events_*`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-SELECT
-  event_date,
-  event_name,
-  (
-    SELECT value.int_value
-    FROM UNNEST(event_params)
-    WHERE key = 'ga_session_id'
-  ) AS ga_session_id,
-  collected_traffic_source.manual_medium AS medium,
-  collected_traffic_source.manual_source AS source,
-  COUNT(*) AS event_count
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-  FOR SYSTEM_TIME AS OF TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 24 HOUR)
-WHERE
-  _TABLE_SUFFIX BETWEEN '20250101' AND '20250131'
-GROUP BY
-  event_date, event_name, ga_session_id, medium, source
-ORDER BY
-  event_date DESC
-LIMIT 100;
-```
-
-### 40. BigQueryのタイムトラベル機能で誤削除・誤更新からデータを復旧する方法（GA4集計テーブルの復旧シナリオ例）
-
-**用途**: GA4集計テーブルの復旧シナリオ例
-
-**必要なテーブル**: `${DATASET}.events_*`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-SELECT
-  event_date,
-  collected_traffic_source.manual_medium AS medium,
-  collected_traffic_source.manual_source AS source,
-  COUNT(DISTINCT
-    (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id')
-  ) AS sessions
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-  FOR SYSTEM_TIME AS OF TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 2 HOUR)
-WHERE
-  _TABLE_SUFFIX BETWEEN '20250701' AND '20250731'
-GROUP BY
-  event_date, medium, source
-ORDER BY
-  event_date, sessions DESC;
-```
-
-### 41. GA4 BigQueryエクスポートのストリーミング vs 日次の違いと使い分け（日次テーブルを対象にしたクエリ例）
-
-**用途**: 日次テーブルを対象にしたクエリ例
-
-**必要なテーブル**: `${DATASET}.events_*`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-SELECT
-  event_name,
-  (
-    SELECT value.string_value
-    FROM UNNEST(event_params)
-    WHERE key = 'page_location'
-  ) AS page_location,
-  COUNT(*) AS event_count
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  _TABLE_SUFFIX BETWEEN
-    FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE('Asia/Tokyo'), INTERVAL 7 DAY))
-    AND FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE('Asia/Tokyo'), INTERVAL 1 DAY))
-GROUP BY
-  event_name,
-  page_location
-ORDER BY
-  event_count DESC
-LIMIT 50;
-```
-
-### 42. GA4 BigQueryエクスポートのストリーミング vs 日次の違いと使い分け（流入元の取得方法）
-
-**用途**: 流入元の取得方法
-
-**必要なテーブル**: `${DATASET}.events_*`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-SELECT
-  collected_traffic_source.manual_medium AS medium,
-  collected_traffic_source.manual_source AS source,
-  COUNT(DISTINCT user_pseudo_id) AS users,
-  COUNT(*) AS sessions
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  _TABLE_SUFFIX BETWEEN '20250701' AND '20250731'
-  AND event_name = 'session_start'
-GROUP BY
-  medium,
-  source
-ORDER BY
-  sessions DESC;
-```
-
-### 43. 小規模EC事業者がBigQueryを無料枠内で運用し続けるための設計戦略（GA4データを活用する際のSQL設計パターン）
-
-**用途**: GA4データを活用する際のSQL設計パターン
-
-**必要なテーブル**: `${DATASET}.events_*`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-SELECT
-  collected_traffic_source.manual_medium AS medium,
-  collected_traffic_source.manual_source AS source,
-  COUNT(DISTINCT
-    (SELECT ep.value.string_value
-     FROM UNNEST(event_params) AS ep
-     WHERE ep.key = 'ga_session_id')
-  ) AS session_count,
-  COUNT(*) AS purchase_count
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  _TABLE_SUFFIX BETWEEN '20250601' AND '20250630'
-  AND event_name = 'purchase'
-GROUP BY
-  medium, source
-ORDER BY
-  purchase_count DESC;
-```
-
-### 44. 小規模EC事業者がBigQueryを無料枠内で運用し続けるための設計戦略（ストレージコストを抑えるテーブル管理の工夫）
-
-**用途**: ストレージコストを抑えるテーブル管理の工夫
-
-**必要なテーブル**: `${DATASET}.events_*`
-
-**コストの注意**: `_TABLE_SUFFIX` で期間を絞っているためスキャン量は限定的です
-
-```sql
-CREATE OR REPLACE TABLE `your_project.ec_summary.monthly_revenue_202506` AS
-SELECT
-  collected_traffic_source.manual_medium AS medium,
-  collected_traffic_source.manual_source AS source,
-  COUNT(*) AS purchase_count,
-  SUM(
-    (SELECT ep.value.double_value
-     FROM UNNEST(event_params) AS ep
-     WHERE ep.key = 'value')
-  ) AS total_revenue
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  _TABLE_SUFFIX BETWEEN '20250601' AND '20250630'
-  AND event_name = 'purchase'
-GROUP BY
-  medium, source;
-```
-
-### 45. BigQueryのCOLUMN_FIELD_PATHSでGA4のネストされたスキーマを効率的に探索する
-
-**用途**: 実際の分析クエリへの応用
-
-**必要なテーブル**: `${DATASET}.events_20250101`
-
-**コストの注意**: スキャン量は参照テーブルのサイズ次第です。実行前にドライランで確認してください
-
-```sql
-SELECT
-  collected_traffic_source.manual_medium AS medium,
-  collected_traffic_source.manual_source AS source,
-  COUNT(DISTINCT
-    (SELECT ep.value.int_value
-     FROM UNNEST(event_params) AS ep
-     WHERE ep.key = 'ga_session_id')
-  ) AS sessions
-FROM
-  `${PROJECT}.${DATASET}.events_20250101`
-WHERE
-  event_name = 'session_start'
-GROUP BY
-  medium,
-  source
-ORDER BY
-  sessions DESC;
-```
-
-### 46. BigQueryのINFORMATION_SCHEMAでクエリコスト・実行履歴を自動監視する（ユーザー別・日別のコスト集計でチーム内の利用傾向を掴む）
-
-**用途**: ユーザー別・日別のコスト集計でチーム内の利用傾向を掴む
-
-**コストの注意**: スキャン量は参照テーブルのサイズ次第です。実行前にドライランで確認してください
-
-```sql
-SELECT
-  DATE(creation_time, 'Asia/Tokyo') AS query_date,
-  user_email,
-  COUNT(*) AS job_count,
-  ROUND(SUM(total_bytes_processed) / POW(1024, 4), 4) AS total_processed_tb,
-  ROUND(SUM(total_bytes_processed) / POW(1024, 4) * 6.25, 2) AS estimated_cost_usd
-FROM
-  `region-asia-northeast1`.INFORMATION_SCHEMA.JOBS
-WHERE
-  creation_time BETWEEN TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
-    AND CURRENT_TIMESTAMP()
-  AND job_type = 'QUERY'
-  AND state = 'DONE'
-  AND error_result IS NULL
-GROUP BY
-  query_date,
-  user_email
-ORDER BY
-  query_date DESC,
-  total_processed_tb DESC;
-```
-
-### 47. BigQueryのINFORMATION_SCHEMAでクエリコスト・実行履歴を自動監視する（定期監視の仕組みをBigQueryスケジュールクエリで構築する）
-
-**用途**: 定期監視の仕組みをBigQueryスケジュールクエリで構築する
-
-**コストの注意**: スキャン量は参照テーブルのサイズ次第です。実行前にドライランで確認してください
-
-```sql
-SELECT
-  DATE(creation_time, 'Asia/Tokyo') AS job_date,
-  user_email,
-  COUNT(*) AS job_count,
-  COUNTIF(error_result IS NOT NULL) AS error_count,
-  ROUND(SUM(total_bytes_processed) / POW(1024, 4), 6) AS total_processed_tb,
-  ROUND(SUM(total_bytes_processed) / POW(1024, 4) * 6.25, 4) AS estimated_cost_usd,
-  ROUND(AVG(TIMESTAMP_DIFF(end_time, start_time, SECOND)), 1) AS avg_duration_sec
-FROM
-  `region-asia-northeast1`.INFORMATION_SCHEMA.JOBS
-WHERE
-  DATE(creation_time, 'Asia/Tokyo') = DATE_SUB(CURRENT_DATE('Asia/Tokyo'), INTERVAL 1 DAY)
-  AND job_type = 'QUERY'
-GROUP BY
-  job_date,
-  user_email;
-```
-
-### 48. BigQueryのラベル機能でプロジェクト横断のコスト配分を自動管理する（ラベル別コストを集計するSQL）
-
-**用途**: ラベル別コストを集計するSQL
-
-**コストの注意**: スキャン量は参照テーブルのサイズ次第です。実行前にドライランで確認してください
-
-```sql
-SELECT
-  (SELECT value FROM UNNEST(labels) WHERE key = 'team') AS team,
-  (SELECT value FROM UNNEST(labels) WHERE key = 'purpose') AS purpose,
-  SUM(cost) AS total_cost_usd,
-  SUM(cost) * 150 AS total_cost_jpy_approx  -- 概算換算（為替レートは適宜変更）
-FROM
-  `your_billing_project.billing_dataset.gcp_billing_export_v1_XXXXXX_XXXXXX_XXXXXX`
-WHERE
-  service.description = 'BigQuery'
-  AND DATE(_PARTITIONTIME) BETWEEN '2024-06-01' AND '2024-06-30'
-GROUP BY
-  team, purpose
-ORDER BY
-  total_cost_usd DESC
-```
-
-### 49. BigQueryのマテリアライズドビューでGA4集計クエリを高速化した（マテリアライズドビューの作成手順） その2
-
-**用途**: マテリアライズドビューの作成手順
-
-**必要なテーブル**: `${DATASET}.mv_ga4_session_summary`
-
-**コストの注意**: スキャン量は参照テーブルのサイズ次第です。実行前にドライランで確認してください
-
-```sql
-SELECT
-  event_date,
-  source,
-  medium,
-  COUNT(DISTINCT ga_session_id) AS sessions,
-  SUM(purchase_count) AS purchases,
-  SUM(total_revenue) AS revenue
-FROM
-  `${PROJECT}.${DATASET}.mv_ga4_session_summary`
-WHERE
-  event_date BETWEEN '2025-06-01' AND '2025-06-30'
-GROUP BY
-  event_date,
-  source,
-  medium
-ORDER BY
-  event_date DESC
-```
-
-### 50. BigQueryのクエリコストを月1万円以下に抑える7つの実践テクニック（テクニック4：マテリアライズドビューで集計コストを自動化する）
-
-**用途**: テクニック4：マテリアライズドビューで集計コストを自動化する
-
-**必要なテーブル**: `${DATASET}.events_*`, `${DATASET}.mv_session_traffic`
-
-**コストの注意**: `_TABLE_SUFFIX` の条件が無いため全期間をスキャンします。期間を絞ってください
-
-```sql
-CREATE MATERIALIZED VIEW `${PROJECT}.${DATASET}.mv_session_traffic`
-AS
-SELECT
-  DATE(TIMESTAMP_MICROS(event_timestamp)) AS event_date,
-  collected_traffic_source.manual_medium AS traffic_medium,
-  collected_traffic_source.manual_source AS traffic_source,
-  COUNT(DISTINCT user_pseudo_id) AS unique_users
-FROM
-  `${PROJECT}.${DATASET}.events_*`
-WHERE
-  event_name = 'session_start'
-GROUP BY
-  event_date,
-  traffic_medium,
-  traffic_source
 ```

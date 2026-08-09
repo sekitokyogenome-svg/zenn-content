@@ -4,6 +4,7 @@ emoji: "🆓"
 type: "idea"
 topics: ["bigquery","ec","googlecloud","cost","sql"]
 published: false
+book_only: true
 ---
 
 ## はじめに

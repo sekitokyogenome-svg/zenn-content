@@ -4,6 +4,7 @@ emoji: "⚡"
 type: "tech"
 topics: ["bigquery","sql","googleanalytics","googlecloud","cost"]
 published: false
+book_only: true
 ---
 
 ## はじめに

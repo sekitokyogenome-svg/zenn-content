@@ -4,6 +4,7 @@ emoji: "⏰"
 type: "tech"
 topics: ["bigquery","sql","googlecloud","dataengineering","googleanalytics"]
 published: false
+book_only: true
 ---
 
 ## はじめに

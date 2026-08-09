@@ -4,6 +4,7 @@ emoji: "🏗️"
 type: "tech"
 topics: ["bigquery","terraform","googlecloud","dataengineering","iac"]
 published: false
+book_only: true
 ---
 
 ## はじめに

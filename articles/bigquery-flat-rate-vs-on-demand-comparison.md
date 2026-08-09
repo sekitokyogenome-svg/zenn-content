@@ -4,6 +4,7 @@ emoji: "💰"
 type: "idea"
 topics: ["bigquery","googlecloud","cost","sql","dataengineering"]
 published: false
+book_only: true
 ---
 
 ## はじめに

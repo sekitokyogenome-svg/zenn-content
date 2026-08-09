@@ -2502,7 +2502,7 @@
       "category": "BigQuery×GA4",
       "published": true,
       "ok": false,
-      "error": "ParseError: Required keyword: 'true' missing for <class 'sqlglot.expressions.functions.If'>. Line 4, Col: 10.",
+      "error": "ParseError: Required keyword: 'this' missing for <class 'sqlglot.expressions.functions.If'>. Line 4, Col: 10.",
       "kind": "script",
       "actionable": false,
       "product_ready": false

@@ -103,6 +103,30 @@ python3 scripts/build_sql_pack.py \
 コストの注意は静的解析（`_TABLE_SUFFIX` の有無、`SELECT *` の有無）で判定している。
 BigQuery の dry run を通したあとは、実測スキャン量に差し替えるとより強い訴求になる。
 
+### build_book.py — 商品②（Zenn Books）の生成
+
+`articles/` のJ系列25本から `books/bigquery-ga4-operations-guide/` を生成する。
+
+```bash
+python3 scripts/build_book.py --dry-run
+python3 scripts/build_book.py
+```
+
+**なぜJ系列を書籍にするか**: 同じ内容を無料公開しながら3,900円で売ることはできない。
+J系列25本は全て未公開なので、書籍専用にすれば独占性が作れる。
+内容もスケジュールクエリ・IAM・コスト管理・dbt・Terraform といった「運用」で、
+Zennのエンジニア読者層に最も合う。I系列（EC実務・175,195字）は将来のnote商材用に温存。
+
+このスクリプトは記事に `book_only: true` を付ける。
+`queue_drafts.py` がこれを見て無料公開の対象から外す。**これが無いと書籍の中身が無料公開される。**
+
+記事→チャプターの変換で、CTA・関連記事の除去、frontmatterの入れ替え、
+J系列記事へのリンクの章間リンク化、「この記事では」→「本章では」の語彙変換を行う。
+
+まえがき（`preface.md`）は唯一の書き下ろしで、再実行しても上書きされない。
+
+公開するには `config.yaml` の `published` を `true` にする。
+
 ## 現状（最終実行時）
 
 | 指標 | 着手前 | 現在 |
@@ -115,13 +139,23 @@ BigQuery の dry run を通したあとは、実測スキャン量に差し替�
 | 商材に載せられるSQL | — | 466本 |
 | 要修正SQL | 10本 | **0本** |
 | 要修正なしの記事 | 158/167 | **167/167** |
-| 公開キュー投入可 | 88本 | **92本** |
+| 公開キュー投入可 | 88本 | **70本**（J系列25本は書籍専用のため除外） |
 
 ### 商材の生成物
 
 | 商材 | 場所 | 内容 |
 |---|---|---|
-| 商品① SQL 50本パック | `assets/products/sql-pack-50/` | 50本（EC分析25 / 基盤運用25）、収録元32記事 |
+| 商品① SQL 50本パック | `assets/products/sql-pack-50/` | 50本（BigQuery×GA4 25 / EC分析25）、収録元28記事 |
+| 商品② Zenn Books | `books/bigquery-ga4-operations-guide/` | 26章・137,314字・SQL64個、3,900円 |
 | 商品③ フルカタログ | `assets/products/sql-catalog-full/` | 456本（全10カテゴリ）、収録元164記事 |
 
-どちらも収録SQLを個別に再パースして NG 0件を確認済み。
+商品①③は収録SQLを個別に再パースして NG 0件を確認済み。
+
+**商品①にJ系列を入れないこと。** 書籍専用の内容をより安い商材（1,980円）に入れると
+書籍（3,900円）が売れなくなる。再生成は必ず除外オプション付きで：
+
+```bash
+python3 scripts/build_sql_pack.py \
+    --categories "EC向けデータ分析" "BigQuery×GA4" \
+    --exclude-categories "データ基盤設計・運用Tips"
+```

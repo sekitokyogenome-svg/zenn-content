@@ -108,6 +108,12 @@ def main() -> int:
         help="対象カテゴリ。'all' で全カテゴリ",
     )
     parser.add_argument(
+        "--exclude-categories",
+        nargs="*",
+        default=[],
+        help="除外するカテゴリ。書籍専用にした系列を安い商材に入れないために使う",
+    )
+    parser.add_argument(
         "--max-per-article",
         type=int,
         default=MAX_PER_ARTICLE,
@@ -131,6 +137,8 @@ def main() -> int:
         if not r["product_ready"]:
             continue
         if not all_categories and r["category"] not in args.categories:
+            continue
+        if r["category"] in args.exclude_categories:
             continue
         meta = index[r["file"]]
         if meta["lines"] < args.min_lines:
