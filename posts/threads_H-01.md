@@ -1,0 +1,19 @@
+Google広告の管理画面だけで広告効果を把握しようとしていませんか？過去データの保存期間に限界があり、GA4や売上データとの突合もできない状況が続いていないでしょうか。
+
+BigQuery Data Transfer Service（DTS）を使えば、Google広告の日次データをBigQueryへ自動連携できます。この記事では以下の手順を具体的に解説しています。
+
+・BigQuery Data Transfer Serviceの概要と料金の考え方
+・必要なGoogleアカウント権限とAPIの有効化方法
+・転送先データセットの作成とリージョン選定の注意点
+・DTSでGoogle広告との接続設定をGUIで完結させる手順
+・転送後に自動生成されるテーブル構成と確認方法
+・キャンペーン別コスト・CPAを集計するSQLサンプル
+・GA4のセッションデータと掛け合わせて流入効果を可視化するSQL
+・転送失敗・テーブル未生成といったよくあるトラブルの対処法
+
+一度設定してしまえばデータ収集は全自動で動き続けます。手動ダウンロードや管理画面の確認作業から解放され、蓄積したデータをLooker Studioのダッシュボードに活用することもできます。
+
+設定の詳細はこちらから確認できます。
+https://zenn.dev/web_benriya/articles/google-ads-bigquery-dts-setup-guide
+
+#BigQuery #Google広告
