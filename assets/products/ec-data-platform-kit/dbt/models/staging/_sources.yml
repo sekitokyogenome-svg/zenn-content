@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: ga4_raw
+    database: your-project
+    schema: analytics_XXXXXXXXX
+    tables:
+      - name: events
+        identifier: "events_*"
+        description: "GA4のイベント生データ（日付シャードテーブル）"

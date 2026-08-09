@@ -1,0 +1,20 @@
+# models/staging/schema.yml
+
+version: 2
+
+models:
+  - name: stg_ga4_sessions
+    description: "GA4のsession_startイベントをセッション単位に整形したステージングモデル"
+    columns:
+      - name: ga_session_id
+        description: "セッションID（event_paramsより取得）"
+        tests:
+          - not_null
+      - name: user_pseudo_id
+        description: "匿名ユーザーID"
+        tests:
+          - not_null
+      - name: session_date
+        description: "セッション開始日"
+        tests:
+          - not_null

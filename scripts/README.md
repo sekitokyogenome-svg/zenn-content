@@ -127,6 +127,41 @@ J系列記事へのリンクの章間リンク化、「この記事では」→�
 
 公開するには `config.yaml` の `published` を `true` にする。
 
+### modernize_api_code.py — Anthropic モデルIDの現行化
+
+```bash
+python3 scripts/modernize_api_code.py --dry-run
+python3 scripts/modernize_api_code.py
+```
+
+記事中の `model=` の値だけを対象に、旧世代のモデルIDを現行世代へ移す。ティアは保つ
+（Sonnet→Sonnet / Opus→Opus）。日次実行など高頻度の用途で一律 Opus にすると
+読者の請求額が上がるため。本文中のモデル名への言及や Gemini の model 指定は書き換えない。
+
+`temperature` / `top_p` は**対象外**。実測したところ temperature は全て BigQuery ML の
+`STRUCT(0.0 AS temperature, ...)`（Gemini向け）、top_p は全て `top_pages` という
+関数名への部分一致で、Anthropic 呼び出しでの使用はゼロだった。触ると記事を壊すだけになる。
+
+### build_kit.py — 商品③（実装キット）の生成
+
+```bash
+python3 scripts/build_kit.py
+```
+
+`assets/products/ec-data-platform-kit/` に SQL・Pythonスクリプト・dbt雛形・
+Looker Studio のデータ層・プロンプト集を生成する。
+
+`README.md` / `looker-studio/setup-guide.md` / `dbt/README.md` は書き下ろしのため
+再実行しても上書きされない。
+
+**Looker Studio のレポート本体は生成できない。** クラウド上の成果物で、GUI で作成して
+テンプレート共有リンクを発行する必要があり、ファイルとして書き出す手段がないため。
+代わりにレポートが乗るデータ層（ビュー定義47個・フィールド定義書・接続手順）を同梱し、
+レポート作成だけを購入者の作業として残している。
+
+`dbt_project.yml` はどの記事にも無いのでスクリプトが生成する。
+プロファイル名は `profiles.yml.example` の最上位キーと自動で揃う。
+
 ## 現状（最終実行時）
 
 | 指標 | 着手前 | 現在 |
@@ -147,9 +182,12 @@ J系列記事へのリンクの章間リンク化、「この記事では」→�
 |---|---|---|
 | 商品① SQL 50本パック | `assets/products/sql-pack-50/` | 50本（BigQuery×GA4 25 / EC分析25）、収録元28記事 |
 | 商品② Zenn Books | `books/bigquery-ga4-operations-guide/` | 26章・137,314字・SQL64個、3,900円 |
-| 商品③ フルカタログ | `assets/products/sql-catalog-full/` | 456本（全10カテゴリ）、収録元164記事 |
+| 商品③ 実装キット | `assets/products/ec-data-platform-kit/` | SQL466 / Python33 / dbt10 / ビュー47 / プロンプト12、19,800円 |
+| （参考）フルカタログ | `assets/products/sql-catalog-full/` | 456本（全10カテゴリ）、収録元164記事 |
 
-商品①③は収録SQLを個別に再パースして NG 0件を確認済み。
+収録SQLは個別に再パースして NG 0件、キット内の Python 33本は `py_compile` を通過済み。
+**Python の実行検証は BigQuery・各種API の認証が要るため未実施**で、その旨をキットの
+README に明記している（SQL を「構文検証済み」と正直に書いているのと同じ扱い）。
 
 **商品①にJ系列を入れないこと。** 書籍専用の内容をより安い商材（1,980円）に入れると
 書籍（3,900円）が売れなくなる。再生成は必ず除外オプション付きで：

@@ -1,0 +1,35 @@
+# 収録スクリプト一覧
+
+- `ai-bigquery-ec-product-desc-ab-test-auto__01.py` — AI×BigQueryでEC商品説明文のA/Bテスト結果を自動分析・改善提案する仕組み
+- `bigquery-claude-code-anomaly-detection-alert__01.py` — BigQuery × Claude Codeで異常検知アラートを作る【売上急落を即通知】
+- `bigquery-dts-error-slack-notification__01.py` — BigQuery Data Transfer Serviceの転送エラーを自動検知してSlack通知する
+- `bigquery-query-export-cloud-storage__01.py` — BigQueryのクエリ結果をCloud Storageに自動エクスポートして外部ツール連携する
+- `claude-agents-sdk-ec-inventory-alert-slack__01.py` — Claude CodeのAgents SDKでEC在庫アラート→発注提案→Slack通知を全自動化した
+- `claude-code-ab-test-bigquery-ga4__01.py` — Claude CodeでEC×GA4のA/Bテスト結果をBigQueryから自動集計する
+- `claude-code-agent-mode-ec-sales-analysis__01.py` — Claude CodeのAgentモードでEC売上データを自動分析させた結果
+- `claude-code-agents-sdk-bigquery-multi-ec__01.py` — Claude CodeのAgents SDK × BigQueryで複数ECサイトを一括監視する
+- `claude-code-agents-sdk-bigquery-multi-ec__02.py` — Claude CodeのAgents SDK × BigQueryで複数ECサイトを一括監視する
+- `claude-code-agents-sdk-bigquery-multi-ec__03.py` — Claude CodeのAgents SDK × BigQueryで複数ECサイトを一括監視する
+- `claude-code-bigquery-ad-budget-optimization__03.py` — Claude Code × BigQueryでEC広告の予算配分を自動最適化する提案ツールを作った
+- `claude-code-cross-channel-attribution__01.py` — Claude Codeでクロスチャネルアトリビューション分析を自動化した
+- `claude-code-ga4-event-design-doc__01.py` — Claude CodeでGA4のイベント設計書を自動生成する方法
+- `claude-code-ga4-event-design-doc__03.py` — Claude CodeでGA4のイベント設計書を自動生成する方法
+- `claude-code-ga4-event-tracking-gap-detection__01.py` — Claude CodeでGA4のイベント計測漏れを自動検知・修正提案する仕組み
+- `claude-code-gemini-cli-orchestration-ec__01.py` — Claude Code × Gemini CLIをオーケストレーションしてEC分析を多角的に回す方法
+- `claude-code-looker-studio-api-auto-update__01.py` — Claude Code × Looker Studio APIでダッシュボードを自動更新する
+- `claude-code-looker-studio-api-auto-update__02.py` — Claude Code × Looker Studio APIでダッシュボードを自動更新する
+- `claude-code-mcp-ga4-slack-daily-report__01.py` — Claude Code × MCPでGA4レポートを毎朝Slack通知する仕組みを作った
+- `claude-code-mcp-ga4-slack-daily-report__02.py` — Claude Code × MCPでGA4レポートを毎朝Slack通知する仕組みを作った
+- `claude-code-multi-ad-roas-comparison__01.py` — Claude Codeで複数広告媒体のROASを一括比較するスクリプトを作成した
+- `claude-code-python-bigquery-ltv-prediction__01.py` — Claude Code × Python × BigQueryでLTV予測モデルを作った
+- `claude-code-python-bigquery-ltv-prediction__02.py` — Claude Code × Python × BigQueryでLTV予測モデルを作った
+- `claude-code-python-review-sentiment-nps__02.py` — Claude Code × Pythonで顧客レビューを感情分析してNPS予測に使う
+- `claude-code-sheets-api-bigquery-report__01.py` — Claude Code × Google Sheets APIでBigQueryレポートを自動更新する
+- `claude-code-weekly-report-markdown-zenn__01.py` — Claude Codeに週次レポートをMarkdownで生成させてそのままZennに投稿する
+- `claude-code-weekly-report-markdown-zenn__03.py` — Claude Codeに週次レポートをMarkdownで生成させてそのままZennに投稿する
+- `cloud-scheduler-functions-bigquery-etl__01.py` — Cloud Scheduler × Cloud Functions × BigQueryで完全サーバーレスなETLを構築する
+- `google-ads-offline-conversion-bigquery-auto__01.py` — Google広告のオフラインコンバージョンをBigQuery経由で自動化する
+- `looker-studio-bigquery-google-meta-ads__01.py` — Looker Studio × BigQueryでGoogle広告とMeta広告を一画面で比較する
+- `meta-ads-api-bigquery-python-import__01.py` — Meta広告APIからBigQueryにデータを自動取得するPythonスクリプトの作り方
+- `shopify-webhook-cloud-functions-bigquery-realtime__01.py` — ShopifyのWebhook × Cloud Functions × BigQueryでリアルタイム売上基盤を作る
+- `zenn-github-rate-limit-staggered-publish__01.py` — ZennのGitHub連携の投稿レート制限を、GitHub Actionsの段階公開で回避する

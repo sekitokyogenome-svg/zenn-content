@@ -1,0 +1,499 @@
+# 収録SQL一覧
+
+検証を通過し単体で完結する 466 本。
+
+## EC向けデータ分析（93本）
+
+- `bigquery-channel-roas-looker-studio__01.sql` — Step 1：チャネル別売上をBigQueryで集計する
+- `bigquery-channel-roas-looker-studio__02.sql` — Step 2：広告費データを用意する
+- `bigquery-channel-roas-looker-studio__03.sql` — Step 3：ROASをSQLで算出する
+- `bigquery-channel-roas-looker-studio__04.sql` — Step 4：マートテーブルに保存する
+- `bigquery-ec-pareto-top20-revenue__01.sql` — Step 1: 商品別売上集計SQL
+- `bigquery-ec-pareto-top20-revenue__02.sql` — Step 2: 累積比率を算出してパレート曲線を描く
+- `bigquery-ec-pareto-top20-revenue__03.sql` — Step 3: ABC分析のサマリー
+- `bigquery-ec-product-profit-cvr-dashboard__01.sql` — 商品別の流入数とCVRを算出するSQL
+- `bigquery-ec-product-profit-cvr-dashboard__02.sql` — 原価データとの結合で粗利を算出する
+- `bigquery-ec-product-profit-cvr-dashboard__03.sql` — 原価データとの結合で粗利を算出する
+- `bigquery-ec-product-profit-cvr-dashboard__04.sql` — 4象限マトリクスで優先度を整理する
+- `bigquery-ec-rfm-analysis-email-strategy__01.sql` — RFMスコアを算出するSQL
+- `bigquery-ec-rfm-analysis-email-strategy__02.sql` — セグメント分類SQL
+- `bigquery-ec-rfm-analysis-email-strategy__03.sql` — セグメント別の集計
+- `bigquery-ec-rfm-analysis-email-strategy__04.sql` — BigQueryでの定期更新
+- `bigquery-ec-seasonal-sales-prediction__01.sql` — Step 1: 日別売上データの準備
+- `bigquery-ec-seasonal-sales-prediction__02.sql` — Step 2: ARIMA_PLUSモデルの作成
+- `bigquery-ec-seasonal-sales-prediction__04.sql` — Step 4: 売上予測の実行
+- `bigquery-ec-seasonal-sales-prediction__05.sql` — Step 5: 予測精度の検証（バックテスト）
+- `bigquery-ec-seasonal-sales-prediction__06.sql` — 線形回帰モデルとの比較
+- `bigquery-ec-seasonal-yoy-analysis__01.sql` — 月別売上の前年比SQL
+- `bigquery-ec-seasonal-yoy-analysis__02.sql` — 週別売上の前年比SQL
+- `bigquery-ec-seasonal-yoy-analysis__03.sql` — 商品カテゴリ別×月別の分析
+- `bigquery-ga4-age-gender-estimation__01.sql` — Step 1: デモグラフィックデータのカバレッジを確認する
+- `bigquery-ga4-age-gender-estimation__02.sql` — Step 2: デモグラフィック別のセグメント分析
+- `bigquery-ga4-age-gender-estimation__03.sql` — Step 3: デモグラフィック別の購買行動比較
+- `bigquery-ga4-age-gender-estimation__04.sql` — Step 4: 年齢層別の購入単価・頻度分析
+- `bigquery-ga4-age-gender-estimation__05.sql` — BigQueryでCRMデータと統合するSQL例
+- `bigquery-ga4-days-to-purchase-distribution__01.sql` — 初回訪問日と初回購入日を取得するSQL
+- `bigquery-ga4-days-to-purchase-distribution__02.sql` — 日数分布をヒストグラム用に集計する
+- `bigquery-ga4-days-to-purchase-distribution__03.sql` — リマーケティング期間の設定根拠
+- `bigquery-ga4-traffic-revenue-heatmap__01.sql` — チャネル×デバイスのクロス集計SQL
+- `bigquery-ga4-traffic-revenue-heatmap__02.sql` — チャネル×地域のクロス集計SQL
+- `bigquery-ga4-traffic-revenue-heatmap__03.sql` — 時間帯×チャネルのクロス集計
+- `bigquery-one-time-vs-repeat-buyer-analysis__01.sql` — ユーザーを購入回数で分類するSQL
+- `bigquery-one-time-vs-repeat-buyer-analysis__02.sql` — 初回セッションの行動指標を比較する
+- `bigquery-one-time-vs-repeat-buyer-analysis__03.sql` — 流入元の違いを確認する
+- `ec-ltv-analysis-ga4-bigquery-free__01.sql` — SQL Template 1: ユーザーごとの平均購入単価
+- `ec-ltv-analysis-ga4-bigquery-free__02.sql` — SQL Template 2: コホート月別のリピート率（購入頻度）
+- `ec-ltv-analysis-ga4-bigquery-free__03.sql` — SQL Template 3: シンプルLTV計算
+- `ec-ltv-analysis-ga4-bigquery-free__04.sql` — SQL Template 4: コホート別LTV（月次リテンション）
+- `ec-ltv-analysis-ga4-bigquery-free__05.sql` — LTVを意思決定に活用する: LTV:CAC比率
+- `ec-revenue-drop-bigquery-queries-checklist__01.sql` — クエリ1：日別売上推移（いつから下がったかを特定する）
+- `ec-revenue-drop-bigquery-queries-checklist__02.sql` — クエリ2：チャネル別売上比較（どのチャネルが落ちたか）
+- `ec-revenue-drop-bigquery-queries-checklist__03.sql` — クエリ3：デバイス別CVR比較（モバイル vs デスクトップ）
+- `ec-revenue-drop-bigquery-queries-checklist__04.sql` — クエリ4：主要ランディングページの流入比較（どのページでトラフィックが減ったか）
+- `ec-revenue-drop-bigquery-queries-checklist__05.sql` — クエリ5：ファネルステップ比較（どの段階で離脱が増えたか）
+- `ga4-bigquery-cac-by-channel__01.sql` — チャネル別の新規購入者数を算出するSQL
+- `ga4-bigquery-cac-by-channel__02.sql` — 方法1: 手動でCTEに記述する
+- `ga4-bigquery-cac-by-channel__03.sql` — 方法2: Google Sheetsを外部テーブルとして使う
+- `ga4-bigquery-cac-by-channel__04.sql` — CACの評価基準
+- `ga4-bigquery-cart-abandonment-rate__01.sql` — 基本SQL：カート放棄率を算出する
+- `ga4-bigquery-cart-abandonment-rate__02.sql` — デバイス別のカート放棄率
+- `ga4-bigquery-cart-abandonment-rate__03.sql` — 流入元別のカート放棄率
+- `ga4-bigquery-cart-abandonment-rate__04.sql` — 商品別のカゴ落ち分析
+- `ga4-bigquery-cart-abandonment-rate__05.sql` — 改善の効果を時系列で追跡する
+- `ga4-bigquery-email-marketing-roi__01.sql` — メルマガ流入セッションを特定するSQL
+- `ga4-bigquery-email-marketing-roi__02.sql` — セッションをまたいだアトリビューション
+- `ga4-bigquery-email-marketing-roi__03.sql` — ROIを算出する
+- `ga4-bigquery-first-purchase-repeat-funnel__01.sql` — Step 1：ユーザーごとの初回購入日を特定する
+- `ga4-bigquery-first-purchase-repeat-funnel__02.sql` — Step 2：2回目・3回目の購入と購入間隔を算出する
+- `ga4-bigquery-first-purchase-repeat-funnel__03.sql` — Step 3：月次コホート別リピート率を算出する
+- `ga4-bigquery-first-purchase-repeat-funnel__04.sql` — Step 4：ファネル形式で可視化用データを作成する
+- `ga4-bigquery-google-ads-keyword-cvr__01.sql` — gclidの仕組みと取得方法
+- `ga4-bigquery-google-ads-keyword-cvr__02.sql` — GA4データからgclidを抽出するSQL
+- `ga4-bigquery-google-ads-keyword-cvr__03.sql` — キーワード別CVRを算出するSQL
+- `ga4-bigquery-mobile-pc-purchase-behavior__01.sql` — デバイス別の基本指標を比較する
+- `ga4-bigquery-mobile-pc-purchase-behavior__02.sql` — デバイス別ファネル分析
+- `ga4-bigquery-mobile-pc-purchase-behavior__03.sql` — モバイルの離脱ポイントを深掘りする
+- `ga4-bigquery-mobile-pc-purchase-behavior__04.sql` — クロスデバイスの考慮
+- `ga4-bigquery-point-reward-cohort__01.sql` — Step 1: コホートの抽出
+- `ga4-bigquery-point-reward-cohort__02.sql` — Step 2: コホート別の月次購入回数
+- `ga4-bigquery-point-reward-cohort__03.sql` — Step 3: コホート別LTVの比較
+- `ga4-bigquery-point-reward-cohort__04.sql` — Step 4: 施策のROI算出
+- `ga4-bigquery-product-page-exit-rate__01.sql` — 基本SQL：商品ページ別の離脱率を算出する
+- `ga4-bigquery-product-page-exit-rate__02.sql` — 流入元別に商品ページ離脱率を比較する
+- `ga4-bigquery-product-page-exit-rate__03.sql` — 改善施策の前後比較SQL
+- `ga4-bigquery-site-search-product-improvement__01.sql` — 検索キーワードのランキングを取得する
+- `ga4-bigquery-site-search-product-improvement__02.sql` — 検索キーワードごとの購入転換率を算出する
+- `ga4-bigquery-site-search-product-improvement__03.sql` — 検索後の行動を詳細に追う
+- `ga4-bigquery-sns-traffic-quality-comparison__01.sql` — セッション単位でSNS流入を集計するSQL
+- `ga4-bigquery-sns-traffic-quality-comparison__02.sql` — SNS流入のアシストコンバージョンを確認する
+- `ga4-bigquery-speed-improvement-cvr-impact__01.sql` — CrUXデータをBigQueryで活用する
+- `ga4-bigquery-speed-improvement-cvr-impact__02.sql` — Step 1: GA4でページ速度関連のイベントを取得する
+- `ga4-bigquery-speed-improvement-cvr-impact__03.sql` — Step 2: LCPとCVRの相関分析
+- `ga4-bigquery-speed-improvement-cvr-impact__04.sql` — Step 3: 速度改善前後の比較
+- `ga4-bigquery-speed-improvement-cvr-impact__05.sql` — Step 4: デバイス別の速度×CVR分析
+- `ga4-bigquery-subscription-retention__01.sql` — Step 1: 初回購入月の特定
+- `ga4-bigquery-subscription-retention__02.sql` — Step 2: 月別継続率の算出
+- `meta-ads-ga4-bigquery-creative-roas__01.sql` — GA4×BigQueryでUTMパラメータを取得するSQL
+- `meta-ads-ga4-bigquery-creative-roas__02.sql` — クリエイティブ別ROASを算出するSQL
+- `meta-ads-ga4-bigquery-creative-roas__03.sql` — 広告費データとの結合
+- `meta-ads-ga4-bigquery-creative-roas__04.sql` — フォーマット別の傾向分析
+
+## BigQuery×GA4（93本）
+
+- `bigquery-ga4-cost-query-optimization__01.sql` — パターン1：_TABLE_SUFFIXを使わない
+- `bigquery-ga4-cost-query-optimization__02.sql` — パターン1：_TABLE_SUFFIXを使わない
+- `bigquery-ga4-cost-query-optimization__03.sql` — パターン2：SELECT * を使う
+- `bigquery-ga4-cost-query-optimization__04.sql` — パターン2：SELECT * を使う
+- `bigquery-ga4-cost-query-optimization__06.sql` — テクニック2：必要なカラムだけSELECTする
+- `bigquery-ga4-cost-query-optimization__07.sql` — テクニック3：中間テーブルやビューを活用する
+- `bigquery-ga4-cost-query-optimization__08.sql` — パーティション
+- `bigquery-ga4-cost-query-optimization__09.sql` — 月額コストの見積もり方
+- `bigquery-ga4-page-time-on-page__01.sql` — engagement_time_msecをBigQueryで取得する
+- `bigquery-ga4-page-time-on-page__02.sql` — ページ別の平均滞在時間を集計するSQL
+- `bigquery-ga4-page-time-on-page__03.sql` — 最後のページ問題への対処
+- `bigquery-ga4-page-time-on-page__04.sql` — セッション単位で滞在時間を集計する
+- `bigquery-partition-clustering-ga4-optimization__01.sql` — GA4エクスポートテーブルの構造を理解する
+- `bigquery-partition-clustering-ga4-optimization__02.sql` — 集計テーブルにパーティションを設定する
+- `bigquery-partition-clustering-ga4-optimization__03.sql` — クラスタリングキーの選定
+- `bigquery-partition-clustering-ga4-optimization__05.sql` — 確認方法2：INFORMATION_SCHEMAで確認
+- `bigquery-partition-clustering-ga4-optimization__06.sql` — パターン1：セッション集計テーブル
+- `bigquery-partition-clustering-ga4-optimization__07.sql` — パターン2：ページビュー集計テーブル
+- `ga4-bigquery-3layer-design__01.sql` — 生データをそのまま使わない方がいい理由
+- `ga4-bigquery-3layer-design__02.sql` — staging層
+- `ga4-bigquery-3layer-design__03.sql` — mart層
+- `ga4-bigquery-avoid-sampling__01.sql` — BigQueryなら100%のデータで分析できる
+- `ga4-bigquery-avoid-sampling__02.sql` — GA4 UIとBigQueryの数値を比較してみる
+- `ga4-bigquery-avoid-sampling__03.sql` — _TABLE_SUFFIXで期間を絞る
+- `ga4-bigquery-avoid-sampling__04.sql` — _TABLE_SUFFIXで期間を絞る
+- `ga4-bigquery-bounce-rate-calculation__01.sql` — BigQueryでエンゲージメント情報を取得する
+- `ga4-bigquery-bounce-rate-calculation__02.sql` — 方法1：session_engagedを使う（推奨）
+- `ga4-bigquery-bounce-rate-calculation__03.sql` — 方法2：engagement_time_msecを使う
+- `ga4-bigquery-bounce-rate-calculation__04.sql` — ページ別の直帰率を計算する
+- `ga4-bigquery-bounce-rate-calculation__05.sql` — チャネル別の直帰率を比較する
+- `ga4-bigquery-bounce-rate-calculation__06.sql` — UAの直帰率定義をBigQueryで再現する
+- `ga4-bigquery-conversion-path-analysis__01.sql` — セッション内のページ遷移パスをSQLで生成する
+- `ga4-bigquery-conversion-path-analysis__02.sql` — コンバージョンしたセッションの経路だけを抽出する
+- `ga4-bigquery-conversion-path-analysis__03.sql` — よく通るコンバージョン経路をランキングする
+- `ga4-bigquery-conversion-path-analysis__04.sql` — ファーストタッチ分析：最初に見たページ
+- `ga4-bigquery-conversion-path-analysis__05.sql` — ラストタッチ分析：コンバージョン直前のページ
+- `ga4-bigquery-custom-dimensions__01.sql` — 基本的な取得パターン
+- `ga4-bigquery-custom-dimensions__03.sql` — user_propertiesからカスタムディメンションを取得する
+- `ga4-bigquery-custom-dimensions__04.sql` — user_propertiesの注意点
+- `ga4-bigquery-custom-dimensions__05.sql` — 実践例1：ABテストのバリアント別コンバージョン分析
+- `ga4-bigquery-custom-dimensions__06.sql` — 実践例2：会員ランク別の行動分析
+- `ga4-bigquery-custom-dimensions__07.sql` — event_paramsのキー一覧
+- `ga4-bigquery-custom-dimensions__08.sql` — user_propertiesのキー一覧
+- `ga4-bigquery-device-region-segment__01.sql` — デバイス別セッション数・コンバージョン率
+- `ga4-bigquery-device-region-segment__02.sql` — デバイス別×チャネル別のクロス集計
+- `ga4-bigquery-device-region-segment__03.sql` — 地域別セッション数（都道府県ランキング）
+- `ga4-bigquery-device-region-segment__04.sql` — 国別セッション数（海外展開サイト向け）
+- `ga4-bigquery-device-region-segment__05.sql` — PIVOT的なデバイス別集計（日別×デバイス）
+- `ga4-bigquery-device-region-segment__06.sql` — 地域×デバイスのクロス分析
+- `ga4-bigquery-device-region-segment__07.sql` — OS別・ブラウザ別の分析
+- `ga4-bigquery-ecommerce-events-analysis__01.sql` — purchaseイベントから商品別売上を抽出するSQL
+- `ga4-bigquery-ecommerce-events-analysis__02.sql` — purchaseイベントから商品別売上を抽出するSQL
+- `ga4-bigquery-ecommerce-events-analysis__03.sql` — add_to_cart分析：カートに入れたが購入されなかった商品
+- `ga4-bigquery-ecommerce-events-analysis__04.sql` — ファネル分析：view_item → add_to_cart → purchase の転換率
+- `ga4-bigquery-ecommerce-events-analysis__05.sql` — カテゴリ別・商品別の売上集計
+- `ga4-bigquery-ecommerce-events-analysis__06.sql` — カテゴリ別・商品別の売上集計
+- `ga4-bigquery-ecommerce-events-analysis__09.sql` — eコマーストラッキングの検証Tips
+- `ga4-bigquery-events-table-raw-data-structure__01.sql` — event_paramsのUNNEST展開
+- `ga4-bigquery-events-table-raw-data-structure__02.sql` — user_propertiesの展開
+- `ga4-bigquery-events-table-raw-data-structure__03.sql` — itemsの展開（eコマースの場合）
+- `ga4-bigquery-export-setup-guide-2026__01.sql` — セッションIDを取得するクエリ例
+- `ga4-bigquery-export-setup-guide-2026__02.sql` — 流入元（メディア）を取得するクエリ例
+- `ga4-bigquery-export-stopped-troubleshoot__01.sql` — STEP 1：最新テーブルの日付を確認する
+- `ga4-bigquery-export-stopped-troubleshoot__02.sql` — テーブルの作成日時と行数
+- `ga4-bigquery-export-stopped-troubleshoot__03.sql` — 直近のテーブル作成状況をチェック
+- `ga4-bigquery-first-touch-last-touch__01.sql` — ファーストタッチを取得するSQL
+- `ga4-bigquery-first-touch-last-touch__02.sql` — ラストタッチを取得するSQL
+- `ga4-bigquery-first-touch-last-touch__03.sql` — ファーストタッチとラストタッチを並べて比較する
+- `ga4-bigquery-new-returning-users__01.sql` — 基本パターン：first_visitイベントの有無で判定
+- `ga4-bigquery-new-returning-users__02.sql` — 応用パターン：初回訪問日を特定して分類する
+- `ga4-bigquery-new-returning-users__03.sql` — 新規/リピーター別のセッション指標を比較する
+- `ga4-bigquery-new-returning-users__04.sql` — 新規/リピーター別のチャネル分析
+- `ga4-bigquery-search-console-organic__01.sql` — Search Consoleデータの構造を確認する
+- `ga4-bigquery-search-console-organic__02.sql` — キーワード別パフォーマンス
+- `ga4-bigquery-search-console-organic__03.sql` — ランディングページ別パフォーマンス
+- `ga4-bigquery-search-console-organic__04.sql` — 結合のためのGA4側の準備
+- `ga4-bigquery-search-console-organic__05.sql` — GA4 × Search Console結合クエリ
+- `ga4-bigquery-search-console-organic__06.sql` — キーワード × ランディングページの分析
+- `ga4-bigquery-search-console-organic__07.sql` — URLの正規化
+- `ga4-bigquery-session-id-definition__01.sql` — ga_session_idはevent_paramsの中にある
+- `ga4-bigquery-session-id-definition__02.sql` — user_pseudo_id + ga_session_idで一意なセッションIDを作る
+- `ga4-bigquery-session-id-definition__03.sql` — セッション数のカウント
+- `ga4-bigquery-session-id-definition__04.sql` — セッションごとのPV数
+- `ga4-bigquery-session-id-definition__05.sql` — セッション開始時刻と流入元を紐づける
+- `ga4-bigquery-session-id-definition__06.sql` — ga_session_numberで新規・リピートを判定する
+- `ga4-bigquery-session-id-definition__07.sql` — stagingビューとして定義する
+- `ga4-bigquery-unnest-sql-patterns__01.sql` — パターン1：サブクエリで単一パラメータを取り出す
+- `ga4-bigquery-unnest-sql-patterns__02.sql` — パターン2：複数パラメータを一度に展開する
+- `ga4-bigquery-unnest-sql-patterns__03.sql` — パターン3：セッションIDを構築する
+- `ga4-bigquery-unnest-sql-patterns__04.sql` — パターン4：CROSS JOINでitemを展開する
+- `ga4-bigquery-unnest-sql-patterns__06.sql` — パターン5：user_propertiesを展開する
+- `ga4-bigquery-unnest-sql-patterns__07.sql` — パターン6：トラフィックソースを正しく取得する
+- `ga4-bigquery-unnest-sql-patterns__08.sql` — パターン7：stagingビューにまとめる
+
+## EC実務×データ活用（66本）
+
+- `amazon-ads-ga4-bigquery-channel-mix__01.sql` — GA4のBigQueryエクスポートデータでチャネル別売上を集計する
+- `amazon-ads-ga4-bigquery-channel-mix__02.sql` — Amazon広告データとGA4データをBigQueryで結合する
+- `base-stores-shopify-ga4-comparison-2026__01.sql` — Shopify：GA4計測の拡張性は最も高いが設定コストも高い
+- `base-stores-shopify-ga4-comparison-2026__02.sql` — GA4計測の精度を高めるための共通対策
+- `bigquery-ec-order-ga4-revenue-attribution__01.sql` — データ構造を理解する：GA4のBigQueryエクスポートとは
+- `bigquery-ec-order-ga4-revenue-attribution__02.sql` — GA4データと受注データを結合するSQL
+- `bigquery-ec-order-ga4-revenue-attribution__03.sql` — 分析結果をLooker Studioで可視化する
+- `cross-border-ec-ga4-bigquery-multilingual__01.sql` — 国別・言語別のセッション数をBigQueryで集計する
+- `cross-border-ec-ga4-bigquery-multilingual__02.sql` — 流入元と購買行動を国別に分析するSQL
+- `cross-border-ec-ga4-bigquery-multilingual__03.sql` — 多言語サイトにおける注意点とデータ品質の改善方法
+- `ec-cs-inquiry-bigquery-product-improvement__01.sql` — 問い合わせカテゴリ別・商品別の集計SQL
+- `ec-cs-inquiry-bigquery-product-improvement__02.sql` — GA4データと組み合わせて購入〜問い合わせの流れを把握する
+- `ec-email-click-purchase-ga4-bigquery__01.sql` — メルマガ経由セッションを抽出するSQL
+- `ec-email-click-purchase-ga4-bigquery__02.sql` — セグメント別の購入金額を集計するSQL
+- `ec-email-click-purchase-ga4-bigquery__03.sql` — リピーター・新規ユーザー別に効果を分ける
+- `ec-flyer-offline-cv-ga4-bigquery__01.sql` — BigQueryでチラシ経由CV数・売上を集計するSQLの書き方
+- `ec-free-shipping-threshold-bigquery__01.sql` — 注文金額の分布を把握する
+- `ec-free-shipping-threshold-bigquery__02.sql` — カゴ落ちセッションの注文金額帯を特定する
+- `ec-free-shipping-threshold-bigquery__03.sql` — 流入元別に送料感度を分析する
+- `ec-free-shipping-threshold-bigquery__04.sql` — 送料無料ライン変更のA/Bテスト設計と効果測定
+- `ec-gift-demand-ga4-bigquery-seasonal__01.sql` — 月別・週別の売上推移をBigQueryで時系列分析する
+- `ec-gift-demand-ga4-bigquery-seasonal__02.sql` — ギフトイベント前の「需要立ち上がり」タイミングを特定する
+- `ec-gift-demand-ga4-bigquery-seasonal__03.sql` — 流入元別にギフト購入者の行動を分析する
+- `ec-gross-margin-bigquery-product-channel__01.sql` — BigQueryで流入チャネルと購入を紐づけるSQL
+- `ec-gross-margin-bigquery-product-channel__02.sql` — 商品×チャネル別の粗利率を計算するSQL
+- `ec-inventory-turnover-bigquery-product__01.sql` — GA4のBigQueryエクスポートから商品別販売数量を取得するSQL
+- `ec-inventory-turnover-bigquery-product__02.sql` — 在庫マスタと結合して回転率を算出するSQL
+- `ec-inventory-turnover-bigquery-product__03.sql` — 流入チャネル別に死に筋を掘り下げる
+- `ec-price-change-cvr-causal-inference-bigquery__01.sql` — GA4×BigQueryでデータを準備する
+- `ec-price-change-cvr-causal-inference-bigquery__02.sql` — SQLで差分の差分を計算する
+- `ec-price-change-cvr-causal-inference-bigquery__03.sql` — 売上への影響も合わせて確認する
+- `ec-product-photo-cvr-ga4-bigquery-correlation__01.sql` — BigQueryでのセッションCVR集計SQL
+- `ec-product-photo-cvr-ga4-bigquery-correlation__02.sql` — 写真枚数データとのJOIN：相関を可視化する
+- `ec-product-photo-cvr-ga4-bigquery-correlation__03.sql` — 流入元別に見る：オーガニックとSNSでCVRは変わるか
+- `ec-product-review-sales-bigquery-analysis__01.sql` — SQLで商品ごとの転換率とレビュー数を集計する
+- `ec-product-review-sales-bigquery-analysis__02.sql` — レビュー件数を段階別に区切って比較する
+- `ec-product-review-sales-bigquery-analysis__03.sql` — 流入元別にレビュー効果の差を見る
+- `ec-return-rate-ga4-bigquery-category__01.sql` — BigQueryで商品カテゴリ別の返品率を集計するSQL
+- `ec-return-rate-ga4-bigquery-category__02.sql` — 返品率が高いカテゴリの流入元を深掘りする
+- `ec-return-rate-ga4-bigquery-category__03.sql` — LookerStudioでダッシュボード化して継続モニタリング
+- `ec-sale-effect-ga4-bigquery-before-after__02.sql` — SQLテンプレート：セール前後の主要KPIを比較する
+- `ec-sale-effect-ga4-bigquery-before-after__03.sql` — 流入元別の効果測定：どのチャネルがセール集客に貢献したか
+- `ec-site-speed-cvr-bigquery-crux__02.sql` — BigQueryでCrUXデータを取得するSQL
+- `ec-site-speed-cvr-bigquery-crux__03.sql` — GA4のBigQueryエクスポートでCVRを算出するSQL
+- `ec-site-speed-cvr-bigquery-crux__04.sql` — CrUXとGA4データを組み合わせた分析アプローチ
+- `ec-site-speed-cvr-bigquery-crux__05.sql` — CrUXとGA4データを組み合わせた分析アプローチ
+- `ga4-bigquery-ec-coupon-cannibalization__01.sql` — ステップ1：クーポン利用有無別の購入数と売上を流入元ごとに集計する
+- `ga4-bigquery-ec-coupon-cannibalization__02.sql` — ステップ2：施策前後でリピーターの購入傾向を比較する
+- `logistics-2026-bigquery-shipping-cost__01.sql` — 流入経路別・配送コスト分析のSQLサンプル
+- `logistics-2026-bigquery-shipping-cost__02.sql` — 流入経路別・配送コスト分析のSQLサンプル
+- `logistics-2026-bigquery-shipping-cost__03.sql` — 商品カテゴリ別の配送コスト分析で値付けを見直す
+- `rakuten-amazon-ec-bigquery-integration__01.sql` — BigQuery上でデータを統合するテーブル設計
+- `rakuten-amazon-ec-bigquery-integration__02.sql` — GA4データと売上を紐づける分析クエリ
+- `shopify-checkout-extension-ga4-bigquery__01.sql` — BigQueryでチェックアウトイベントを集計するSQL
+- `shopify-checkout-extension-ga4-bigquery__02.sql` — ファネル分析でボトルネックを特定する
+- `shopify-ga4-ecommerce-data-mismatch-fix__01.sql` — 日別のpurchaseイベント件数と売上を確認する
+- `shopify-ga4-ecommerce-data-mismatch-fix__02.sql` — transaction_idの重複を確認する
+- `shopify-ga4-ecommerce-data-mismatch-fix__03.sql` — 流入元別のpurchase数を確認する
+- `shopify-gtm-ga4-custom-pixel-tracking__01.sql` — GA4でのデータ確認とBigQueryでの分析クエリ
+- `shopify-webhook-cloud-functions-bigquery-realtime__01.sql` — BigQueryのテーブルを設計する
+- `shopify-webhook-cloud-functions-bigquery-realtime__02.sql` — BigQueryで売上を集計・分析する
+- `shopify-webhook-cloud-functions-bigquery-realtime__03.sql` — BigQueryで売上を集計・分析する
+- `subscription-ec-churn-bigquery-model__01.sql` — GA4×BigQueryエクスポートの基本構造を理解する
+- `subscription-ec-churn-bigquery-model__02.sql` — 解約予兆シグナルとなる行動パターンを定義する
+- `subscription-ec-churn-bigquery-model__03.sql` — 解約予兆スコアをSQLで算出する
+- `subscription-ec-churn-bigquery-model__04.sql` — 流入チャネル別に解約リスクを分析する
+
+## データ基盤設計・運用Tips（60本）
+
+- `bigquery-bi-engine-looker-studio-speedup__01.sql` — GA4データを使ったLooker Studio向けクエリの最適化例
+- `bigquery-column-field-paths-ga4-schema__01.sql` — COLUMN_FIELD_PATHSとは
+- `bigquery-column-field-paths-ga4-schema__02.sql` — 実践：GA4テーブルのスキーマ全体を取得する
+- `bigquery-column-field-paths-ga4-schema__03.sql` — 特定フィールドだけを絞り込んで探索する
+- `bigquery-column-field-paths-ga4-schema__04.sql` — 特定フィールドだけを絞り込んで探索する
+- `bigquery-column-field-paths-ga4-schema__05.sql` — 実際の分析クエリへの応用
+- `bigquery-data-lineage-datamart-dependency__01.sql` — GA4データを使ったビューの依存関係を実際に確認する
+- `bigquery-data-lineage-datamart-dependency__02.sql` — GA4データを使ったビューの依存関係を実際に確認する
+- `bigquery-export-limit-workarounds__01.sql` — 回避策②：日付パーティションを活用してクエリ・エクスポート対象を絞り込む
+- `bigquery-flat-rate-vs-on-demand-comparison__01.sql` — 実際のクエリで処理量を比較してみた
+- `bigquery-flat-rate-vs-on-demand-comparison__02.sql` — 実際のクエリで処理量を比較してみた
+- `bigquery-iam-access-control-team__01.sql` — GA4データへの閲覧権限を安全に設計する
+- `bigquery-information-schema-cost-monitoring__01.sql` — 直近7日間のコスト上位クエリを抽出する
+- `bigquery-information-schema-cost-monitoring__02.sql` — ユーザー別・日別のコスト集計でチーム内の利用傾向を掴む
+- `bigquery-information-schema-cost-monitoring__03.sql` — 定期監視の仕組みをBigQueryスケジュールクエリで構築する
+- `bigquery-labels-cross-project-cost__01.sql` — クエリジョブへのラベル付与方法
+- `bigquery-labels-cross-project-cost__02.sql` — ラベル別コストを集計するSQL
+- `bigquery-labels-cross-project-cost__03.sql` — プロジェクト横断でのコスト配分を自動化するポイント
+- `bigquery-materialized-view-ga4-speedup__01.sql` — GA4のBigQueryエクスポートテーブル構造を理解する
+- `bigquery-materialized-view-ga4-speedup__02.sql` — GA4のBigQueryエクスポートテーブル構造を理解する
+- `bigquery-materialized-view-ga4-speedup__03.sql` — マテリアライズドビューの作成手順
+- `bigquery-materialized-view-ga4-speedup__04.sql` — マテリアライズドビューの作成手順
+- `bigquery-query-cache-cost-efficiency__01.sql` — キャッシュが効く条件と効かない条件
+- `bigquery-query-cache-cost-efficiency__02.sql` — GA4データを活用するクエリでのキャッシュ設計
+- `bigquery-query-cache-cost-efficiency__03.sql` — キャッシュを最大限活用するための運用ポイント
+- `bigquery-query-cost-under-10k-techniques__01.sql` — テクニック1：パーティション絞り込みで読み取りデータ量を減らす
+- `bigquery-query-cost-under-10k-techniques__02.sql` — テクニック2：SELECT * を避けて必要な列だけ取得する
+- `bigquery-query-cost-under-10k-techniques__03.sql` — テクニック4：マテリアライズドビューで集計コストを自動化する
+- `bigquery-query-cost-under-10k-techniques__04.sql` — テクニック7：不要なテーブルと期限切れポリシーを活用する
+- `bigquery-query-export-cloud-storage__01.sql` — GA4データをBigQueryで集計するSQLの書き方
+- `bigquery-scheduled-query-datamart-auto__01.sql` — データマート用SQLの書き方（GA4エクスポートテーブル使用）
+- `bigquery-scheduled-query-datamart-auto__02.sql` — データの鮮度をSQLで確認する
+- `bigquery-sheets-auto-export-data-sharing__01.sql` — GA4データをコネクテッドシートで参照するカスタムクエリ例
+- `bigquery-sql-testing-datamart-quality__01.sql` — GA4エクスポートデータでのNULLチェックと一意性チェック
+- `bigquery-sql-testing-datamart-quality__02.sql` — GA4エクスポートデータでのNULLチェックと一意性チェック
+- `bigquery-sql-testing-datamart-quality__03.sql` — 流入元データの整合性チェック
+- `bigquery-sql-testing-datamart-quality__04.sql` — 流入元データの整合性チェック
+- `bigquery-sql-testing-datamart-quality__05.sql` — テストの自動実行――BigQuery Scheduled Queriesを活用する
+- `bigquery-struct-array-ga4-modeling__01.sql` — STRUCT型とARRAY型の基本を理解する
+- `bigquery-struct-array-ga4-modeling__02.sql` — UNNESTでevent_paramsを展開する
+- `bigquery-struct-array-ga4-modeling__03.sql` — UNNESTでevent_paramsを展開する
+- `bigquery-struct-array-ga4-modeling__04.sql` — 流入元データをcollected_traffic_sourceから取得する
+- `bigquery-struct-array-ga4-modeling__05.sql` — セッションテーブルをデータマートとして整形する
+- `bigquery-time-travel-data-recovery__01.sql` — 過去時点のデータをSELECTで確認する
+- `bigquery-time-travel-data-recovery__02.sql` — 誤更新したデータを元に戻す（テーブル上書き）
+- `bigquery-time-travel-data-recovery__03.sql` — 誤更新したデータを元に戻す（テーブル上書き）
+- `bigquery-time-travel-data-recovery__04.sql` — GA4集計テーブルの復旧シナリオ例
+- `dbt-bigquery-ga4-reproducible-pipeline__01.sql` — GA4イベントデータからセッション・流入元を抽出するモデルを作る
+- `ga4-bigquery-streaming-vs-daily-export__01.sql` — 日次テーブルを対象にしたクエリ例
+- `ga4-bigquery-streaming-vs-daily-export__02.sql` — ga_session_id の取得方法
+- `ga4-bigquery-streaming-vs-daily-export__03.sql` — 流入元の取得方法
+- `ga4-bigquery-streaming-vs-daily-export__04.sql` — ストリーミングテーブルを使うべきシーン
+- `ga4-bigquery-streaming-vs-daily-export__05.sql` — 日次テーブルとイントラデイを組み合わせる方法
+- `ga4-bigquery-table-partition-expiry__03.sql` — 方法2：パーティションテーブルに統合して有効期限を管理する
+- `gcs-ga4-bigquery-reimport__01.sql` — インポート後のデータ確認：GA4特有の構造を踏まえたSQL
+- `gcs-ga4-bigquery-reimport__02.sql` — インポート後のデータ確認：GA4特有の構造を踏まえたSQL
+- `gcs-ga4-bigquery-reimport__03.sql` — インポート後のデータ確認：GA4特有の構造を踏まえたSQL
+- `small-ec-bigquery-free-tier-strategy__01.sql` — クエリ設計でスキャン量を最小化する
+- `small-ec-bigquery-free-tier-strategy__02.sql` — GA4データを活用する際のSQL設計パターン
+- `small-ec-bigquery-free-tier-strategy__03.sql` — ストレージコストを抑えるテーブル管理の工夫
+
+## AI×データ分析（53本）
+
+- `ai-agent-bigquery-query-review-cost-reduction__01.sql` — BigQueryのコストが膨らむ典型的な原因
+- `ai-agent-bigquery-query-review-cost-reduction__02.sql` — AIが提案した最適化クエリの例
+- `ai-bigquery-ec-product-desc-ab-test-auto__01.sql` — BigQueryでA/Bテスト結果を集計するSQL
+- `ai-coding-assistant-bigquery-pipeline-comparison__01.sql` — Claude（Anthropic）の評価
+- `ai-coding-assistant-bigquery-pipeline-comparison__02.sql` — Gemini（Google）の評価
+- `ai-sql-verification-bigquery-framework__01.sql` — AIがよく間違えるGA4 SQLのパターン
+- `ai-sql-verification-bigquery-framework__02.sql` — AIがよく間違えるGA4 SQLのパターン
+- `ai-sql-verification-bigquery-framework__04.sql` — ステップ2: 既知の値と突き合わせる論理チェック
+- `bigquery-ai-embed-ec-product-similarity__01.sql` — 商品データをBigQueryに格納する
+- `bigquery-ai-embed-ec-product-similarity__02.sql` — AI.EMBEDで商品ベクトルを生成する
+- `bigquery-ai-embed-ec-product-similarity__03.sql` — AI.EMBEDで商品ベクトルを生成する
+- `bigquery-ai-embed-ec-product-similarity__05.sql` — GA4データと組み合わせた活用例
+- `bigquery-ai-generate-gemini-text-analysis__01.sql` — 事前準備：リモートモデルの作成
+- `bigquery-gemini-assistant-noneng-sql-validation__01.sql` — 実際にやってみた：セッション数の集計
+- `bigquery-gemini-assistant-noneng-sql-validation__02.sql` — 流入元別のセッション分析に挑戦
+- `bigquery-ml-arima-plus-ec-sales-forecast__01.sql` — ステップ1: GA4データから週次売上を集計する
+- `bigquery-ml-arima-plus-ec-sales-forecast__02.sql` — ステップ1: GA4データから週次売上を集計する
+- `bigquery-ml-arima-plus-ec-sales-forecast__03.sql` — ステップ2: ARIMA_PLUSモデルを学習させる
+- `bigquery-ml-arima-plus-ec-sales-forecast__04.sql` — ステップ3: 予測結果を取得する
+- `bigquery-ml-demand-forecast-ec-inventory__01.sql` — データ準備：GA4のBigQueryエクスポートを活用する
+- `bigquery-ml-demand-forecast-ec-inventory__02.sql` — ARIMA_PLUSモデルの構築手順
+- `bigquery-ml-demand-forecast-ec-inventory__04.sql` — 予測結果を仕入れ計画に反映する
+- `bigquery-ml-gemini-ec-purchase-prediction__01.sql` — 特徴量テーブルを作成する（GA4エクスポートデータの加工）
+- `bigquery-ml-gemini-ec-purchase-prediction__02.sql` — 特徴量テーブルを作成する（GA4エクスポートデータの加工）
+- `bigquery-ml-gemini-ec-purchase-prediction__03.sql` — BigQuery MLでロジスティック回帰モデルを訓練する
+- `bigquery-ml-gemini-ec-purchase-prediction__05.sql` — 購買確率を予測してセグメントを抽出する
+- `bigquery-ml-gemini-ec-purchase-prediction__06.sql` — GeminiでセグメントのインサイトをAIに言語化させる
+- `bigquery-ml-gemini-ec-purchase-prediction__07.sql` — GeminiでセグメントのインサイトをAIに言語化させる
+- `bigquery-vertex-ai-ec-recommendation__01.sql` — Step 1: GA4の閲覧・購入ログをBigQueryで整形する
+- `bigquery-vertex-ai-ec-recommendation__02.sql` — Step 2: ユーザー×商品のインタラクションマトリクスを作成する
+- `bigquery-vertex-ai-ec-recommendation__03.sql` — Step 3: BigQuery MLで協調フィルタリングモデルを学習する
+- `bigquery-vertex-ai-ec-recommendation__05.sql` — Step 5: 流入元別にレコメンドの効果を検証する
+- `chatgpt-claude-gemini-data-analysis-comparison__01.sql` — ChatGPTの回答傾向：汎用性は高いが GA4仕様に要注意
+- `chatgpt-claude-gemini-data-analysis-comparison__02.sql` — Claudeの回答傾向：仕様理解と説明の深さが際立つ
+- `claude-agents-sdk-ec-inventory-alert-slack__01.sql` — BigQuery での在庫 × 売上集計 SQL
+- `claude-code-dbt-pipeline-test-generation__01.sql` — dbt × BigQueryの基本構成を整理する
+- `claude-code-ec-seo-ga4-search-console-reverse__01.sql` — Search Consoleデータから検索キーワードの傾向を把握するSQL
+- `claude-code-ec-seo-ga4-search-console-reverse__02.sql` — GA4 BigQueryデータで流入セッションとコンバージョンを紐づけるSQL
+- `claude-code-ga4-anomaly-detection-prompt__01.sql` — 異常値を取得するBigQueryクエリの設計
+- `claude-code-ga4-event-tracking-gap-detection__01.sql` — BigQueryでイベント計測漏れを検知するSQL
+- `claude-code-ga4-event-tracking-gap-detection__02.sql` — BigQueryでイベント計測漏れを検知するSQL
+- `claude-code-gemini-cli-orchestration-ec__01.sql` — GA4 BigQueryエクスポートでEC分析に必要なSQL基礎
+- `claude-code-monthly-kpi-insight-prompt-design__01.sql` — BigQueryでGA4データを集計するSQL設計
+- `claude-code-python-review-sentiment-nps__01.sql` — BigQueryからレビューデータとGA4流入情報を取得する
+- `gemini-bigquery-nl-sql-guide-2026__01.sql` — セッション数の日別集計
+- `gemini-bigquery-nl-sql-guide-2026__02.sql` — 流入チャネル別のセッション数集計
+- `gemini-bigquery-pricing-complete-guide__02.sql` — データを絞り込んでからモデルに渡す
+- `gemini-bigquery-studio-resource-discovery__01.sql` — シナリオ: 2ブランドのコンバージョンを横断集計したい
+- `gemini-bigquery-studio-resource-discovery__02.sql` — 流入元分析への応用
+- `gemini-cli-ga4-analyst-setup-guide__01.sql` — 活用例①：流入元別セッション数の集計
+- `gemini-cli-ga4-analyst-setup-guide__02.sql` — 活用例②：購入完了ファネルのドロップオフ分析
+- `notebooklm-bigquery-ga4-interactive-analysis__01.sql` — GA4データをBigQueryからCSVに取り出す
+- `notebooklm-bigquery-ga4-interactive-analysis__02.sql` — 複数のクエリ結果を組み合わせてより深い分析を行う
+
+## 広告運用×データ基盤（31本）
+
+- `ad-creative-ltv-bigquery-winning-pattern__01.sql` — BigQueryでの初回流入情報の取得
+- `ad-creative-ltv-bigquery-winning-pattern__02.sql` — クリエイティブ別LTVを集計するSQLクエリ
+- `bigquery-data-driven-attribution__01.sql` — BigQueryでコンバージョン経路を抽出するSQL
+- `bigquery-data-driven-attribution__02.sql` — チャネルごとの貢献度を線形モデルで計算する
+- `bigquery-data-driven-attribution__03.sql` — 分析結果をLooker Studioで可視化する
+- `bigquery-google-ads-ga4-keyword-roas__02.sql` — GA4側でキーワード別売上を集計するSQL
+- `bigquery-google-ads-ga4-keyword-roas__03.sql` — Google広告データと結合してキーワード別ROASを算出するSQL
+- `bigquery-google-ads-ga4-keyword-roas__04.sql` — 結果をLooker Studioで可視化するヒント
+- `bigquery-listing-ads-search-query-ga4__01.sql` — GA4テーブルから流入クエリとセッション行動を抽出する
+- `bigquery-listing-ads-search-query-ga4__02.sql` — Google広告の検索クエリデータと突合する
+- `bigquery-listing-ads-search-query-ga4__03.sql` — 分析視点：クエリごとのサイト行動をどう読むか
+- `bigquery-looker-studio-cross-media-roas__01.sql` — 2. GA4 BigQueryエクスポートからROAS計算に必要なデータを取得する
+- `bigquery-looker-studio-cross-media-roas__02.sql` — 4. BigQueryで統合ビューを作成する
+- `cookie-ec-ad-measurement-first-party-bigquery__01.sql` — BigQueryでチャネル別コンバージョンを集計するSQL
+- `ec-ads-budget-allocation-bigquery-framework__01.sql` — チャネル別のパフォーマンスをBigQueryで可視化する
+- `ec-ads-budget-allocation-bigquery-framework__02.sql` — 売上貢献額ベースで予算配分の優先順位をつける
+- `ec-ads-budget-allocation-bigquery-framework__03.sql` — 月別トレンドから季節変動と広告効果の相関を読む
+- `google-ads-bigquery-dts-setup-guide__01.sql` — キャンペーン別コストとコンバージョンを確認するSQL
+- `google-ads-bigquery-dts-setup-guide__02.sql` — GA4データと掛け合わせて流入経路を確認するSQL
+- `google-ads-offline-conversion-bigquery-auto__01.sql` — GA4 BigQueryエクスポートからGCLIDを取得する
+- `google-ads-offline-conversion-bigquery-auto__02.sql` — CRMデータと結合してコンバージョンテーブルを作る
+- `line-ads-ga4-bigquery-cpa-roas__01.sql` — BIgQueryでLINE広告の流入セッションを抽出するSQL
+- `line-ads-ga4-bigquery-cpa-roas__02.sql` — CPA・ROASをSQLで集計する
+- `pmax-campaign-bigquery-analysis__01.sql` — SQLでP-MAX流入のランディングページを分析する
+- `pmax-campaign-bigquery-analysis__02.sql` — エンゲージメント率でセッション品質を評価する
+- `pmax-campaign-bigquery-analysis__03.sql` — Google広告データとの掛け合わせでCPAを算出する
+- `server-side-gtm-consent-mode-v2-2026__01.sql` — GA4 × BigQueryで同意率を可視化する
+- `yahoo-ads-bigquery-google-integrated-analysis__01.sql` — BigQueryにおける統合テーブルの設計方針
+- `yahoo-ads-bigquery-google-integrated-analysis__02.sql` — 媒体横断の集計クエリ実例
+- `yahoo-ads-bigquery-google-integrated-analysis__03.sql` — 媒体横断の集計クエリ実例
+- `yahoo-ads-bigquery-google-integrated-analysis__04.sql` — GA4データと組み合わせてユーザー行動を深掘りする
+
+## ClaudeCode×自動化（30本）
+
+- `bigquery-claude-code-anomaly-detection-alert__01.sql` — 日次メトリクスと移動平均のSQL
+- `bigquery-claude-code-anomaly-detection-alert__02.sql` — 異常検知ロジックのSQL
+- `bigquery-claude-code-monthly-business-report__01.sql` — セッション・CV・売上の月次サマリ
+- `bigquery-claude-code-monthly-business-report__02.sql` — チャネル別パフォーマンス
+- `claude-code-ab-test-bigquery-ga4__01.sql` — Step 1: BigQueryでA/Bテストデータを集計するSQL
+- `claude-code-agent-mode-ec-sales-analysis__01.sql` — Step 1: BigQueryクエリの自動生成
+- `claude-code-bigquery-ad-budget-optimization__01.sql` — GA4データから売上を抽出するSQL
+- `claude-code-bigquery-mcp-ga4__01.sql` — ケース1：チャネル別セッション数・CV数の確認
+- `claude-code-bigquery-revenue-drop-hypothesis__01.sql` — Step 1：売上変化の検出
+- `claude-code-bigquery-sql-auto-generate__01.sql` — 実例1：セッション数をチャネル別に集計
+- `claude-code-bigquery-sql-auto-generate__02.sql` — 実例2：purchaseイベントから商品別売上を集計
+- `claude-code-bigquery-sql-auto-generate__03.sql` — LIMIT句で結果を確認
+- `claude-code-competitor-analysis-ga4__01.sql` — Step 1：トレンド変化を検出するSQLを用意する
+- `claude-code-competitor-analysis-ga4__02.sql` — Step 3：購入率の変動も加える
+- `claude-code-cross-channel-attribution__01.sql` — Step 1：ユーザーのタッチポイント経路を抽出する
+- `claude-code-cross-channel-attribution__02.sql` — Step 2：線形モデルを実装する
+- `claude-code-cross-channel-attribution__03.sql` — Step 3：時間減衰モデルを実装する
+- `claude-code-ga4-event-design-doc__01.sql` — イベント名とパラメータの一覧を取得するSQL
+- `claude-code-ga4-event-design-doc__02.sql` — イベントごとのパラメータ一覧を取得するSQL
+- `claude-code-ga4-event-design-doc__03.sql` — Step 2: ecommerce関連イベントの詳細を取得する
+- `claude-code-looker-studio-api-auto-update__01.sql` — Step 3：BigQueryテーブル変更を検知する
+- `claude-code-mcp-ga4-slack-daily-report__01.sql` — 日次レポート用SQLクエリ
+- `claude-code-multi-ad-roas-comparison__01.sql` — テーブル設計
+- `claude-code-multi-ad-roas-comparison__02.sql` — Step 3: GA4のコンバージョンデータと突合する
+- `claude-code-python-bigquery-ltv-prediction__01.sql` — RFM（Recency, Frequency, Monetary）データの取得SQL
+- `claude-code-python-bigquery-ltv-prediction__02.sql` — セッション行動データの取得SQL（回帰モデル用）
+- `claude-code-sheets-api-bigquery-report__01.sql` — Step 2: BigQueryからデータを取得するSQL
+- `mcp-bigquery-claude-code-internal-analytics__01.sql` — 例1：チャネル別セッション数の確認
+- `non-engineer-ec-owner-claude-code-bigquery__01.sql` — 返ってきたSQL
+- `non-engineer-ec-owner-claude-code-bigquery__02.sql` — 体験3：定期的に見たい数字を「型」にする
+
+## LookerStudio（26本）
+
+- `bigquery-looker-studio-monthly-kpi-auto__01.sql` — mart層のKPIビュー
+- `bigquery-looker-studio-monthly-kpi-auto__02.sql` — 広告データとの統合ビュー
+- `bigquery-looker-studio-yoy-comparison-chart__01.sql` — 基本パターン: 日別の売上を今年・前年で横並びにする
+- `bigquery-looker-studio-yoy-comparison-chart__02.sql` — 月別集計パターン
+- `bigquery-looker-studio-yoy-comparison-chart__03.sql` — パターン3: スコアカードで前年比を大きく表示
+- `bigquery-looker-studio-yoy-comparison-chart__04.sql` — 日付パラメータとの連携
+- `ga4-bigquery-looker-studio-ec-analytics-full__01.sql` — stg_events（イベント単位のフラット化）
+- `ga4-bigquery-looker-studio-ec-analytics-full__02.sql` — stg_sessions（セッション単位の集約）
+- `ga4-bigquery-looker-studio-ec-analytics-full__03.sql` — stg_purchases（購入イベントのみ抽出）
+- `ga4-bigquery-looker-studio-ec-analytics-full__04.sql` — mart_traffic（日別×チャネル別トラフィック）
+- `ga4-bigquery-looker-studio-ec-analytics-full__05.sql` — mart_funnel（月次ファネル分析）
+- `ga4-bigquery-looker-studio-ec-analytics-full__06.sql` — mart_cohort（月次コホート分析）
+- `looker-studio-bigquery-cost-minimize__01.sql` — 方法2: マテリアライズドビューで集計済みデータを用意する
+- `looker-studio-bigquery-cost-minimize__02.sql` — 方法4: パーティションテーブルを活用する
+- `looker-studio-bigquery-ec-dashboard-guide__01.sql` — Step 1: ダッシュボード用のmartテーブルを作成する
+- `looker-studio-bigquery-google-meta-ads__01.sql` — ステップ3: 統合ビューをBigQueryで作成する
+- `looker-studio-bigquery-google-meta-ads__02.sql` — KPI集計ビュー
+- `looker-studio-bigquery-mobile-optimized__01.sql` — BigQuery側でスマホ用のデータを準備する
+- `looker-studio-blending-ga4-ads-data__01.sql` — GA4とGoogle広告を結合するSQL
+- `looker-studio-custom-metrics-roas-cpa__01.sql` — BigQueryでROASを事前計算する方法
+- `looker-studio-custom-metrics-roas-cpa__02.sql` — BigQueryで統合広告テーブルを作るSQL
+- `looker-studio-drilldown-ec-dashboard__01.sql` — ステップ1: データソースの準備
+- `looker-studio-drilldown-ec-dashboard__02.sql` — NULL値の対策をする
+- `looker-studio-ga4-vs-bigquery-connector__01.sql` — Looker Studioでの接続手順
+- `looker-studio-slow-fix-bigquery-migration__01.sql` — マートテーブルの作り方：日別サマリーの例
+- `looker-studio-slow-fix-bigquery-migration__02.sql` — パーティションとクラスタリング
+
+## フリーランス・ビジネス（8本）
+
+- `ga4-bigquery-chatgpt-ai-search-tracking__01.sql` — BigQueryでAI検索セッションを特定するSQL
+- `ga4-bigquery-chatgpt-ai-search-tracking__02.sql` — AI検索 vs オーガニック vs ダイレクトの行動比較
+- `ga4-bigquery-chatgpt-ai-search-tracking__03.sql` — BigQueryでカスタムチャネルグループを定義する
+- `ga4-bigquery-chatgpt-ai-search-tracking__04.sql` — AI検索流入のトレンド監視
+- `ga4-bigquery-self-implement-ec-first-week__01.sql` — Day 2：テーブル構造に驚く
+- `ga4-bigquery-self-implement-ec-first-week__02.sql` — Day 3：UNNESTとの格闘
+- `ga4-bigquery-self-implement-ec-first-week__03.sql` — Day 4：セッションの概念が違う
+- `small-ec-data-analysis-monthly-investment__01.sql` — 2. 離脱ポイントの特定
+
+## GTM×GA4（6本）
+
+- `ga4-gtm-site-search-tracking__01.sql` — 検索キーワードランキング
+- `ga4-gtm-site-search-tracking__02.sql` — 検索後のコンバージョン率
+- `ga4-migration-data-missing-gtm-debug__01.sql` — BigQueryエクスポートとGA4 UIのデータ差異
+- `gtm-ga4-ab-test-auto-tracking__01.sql` — バリアント別のコンバージョン率を算出
+- `gtm-ga4-ab-test-auto-tracking__02.sql` — 統計的有意差の検証（Z検定）
+- `gtm-ga4-scroll-video-event-tracking__01.sql` — BigQueryでのスクロールデータ分析例

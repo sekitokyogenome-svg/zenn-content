@@ -1,0 +1,15 @@
+anthropic
+claude-agent-sdk
+facebook-business
+functions-framework
+google-cloud-bigquery
+gspread
+lifetimes
+numpy
+pandas
+python-dotenv
+pyyaml
+requests
+scikit-learn
+scipy
+slack-sdk

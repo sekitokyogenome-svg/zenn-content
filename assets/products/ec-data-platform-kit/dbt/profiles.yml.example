@@ -1,0 +1,10 @@
+ga4_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: your-project
+      dataset: staging
+      location: asia-northeast1
+      threads: 4
