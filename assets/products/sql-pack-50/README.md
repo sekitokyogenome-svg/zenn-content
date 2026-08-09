@@ -3,7 +3,7 @@
 GA4 の BigQuery エクスポートを前提にした、実務で使う分析SQLを 50 本まとめたものです。
 **全てのSQLは BigQuery の方言でパース検証済み**で、コピーして `${PROJECT}` と `${DATASET}` を自社の値に置き換えればそのまま動きます。
 
-GA4 の BigQuery スキーマは、実際に叩くと細部で動きません。`event_params` の型、`collected_traffic_source` の有無、パーティションの指定。この 50 本は、その「動かない」を先に潰してあります。
+GA4 の BigQuery スキーマは、実際に叩くと細部で動きません。`event_params` の型、`collected_traffic_source` の有無、パーティションの指定。収録したSQLは、その「動かない」を先に潰してあります。
 
 ## 収録内容
 

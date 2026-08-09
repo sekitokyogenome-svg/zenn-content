@@ -1,26 +1,30 @@
 #!/usr/bin/env python3
-"""商品①「GA4×BigQuery 分析SQL 50本パック」を組み立てる。
+"""検証済み SQL を販売用パッケージに組み立てる。
 
-買い手が払うのは知識ではなく時間短縮。504 本の SQL は記事に散らばっていて
+買い手が払うのは知識ではなく時間短縮。SQL は記事に散らばっていて
 「探す・繋ぐ・動くか検証する」コストがかかる。そこを肩代わりしたものが商品になる。
 
-このスクリプトは検証済み SQL の中から実用的なものを選び、
-1 本ずつに「何が分かるか / 必要なテーブル / コストの注意」を付けて 1 つの
-販売用ドキュメントに束ねる。
+検証済み SQL の中から実用的なものを選び、1 本ずつに
+「用途 / 必要なテーブル / コストの注意」を付けて 1 つのドキュメントに束ねる。
 
 選定の条件:
     - validate_sql.py の product_ready（検証通過かつ単体で完結）
-    - 対象カテゴリ（既定: EC向けデータ分析 / データ基盤設計・運用Tips）
-    - 10 行未満の断片は除外（有料にするには薄い）
-    - 1 記事あたり最大 2 本（内容の重複を避ける）
-
-出力:
-    assets/products/sql-pack-50/README.md   販売用ドキュメント（note にそのまま貼れる）
-    assets/products/sql-pack-50/sql/*.sql   個別ファイル
+    - 指定カテゴリ（'all' で全カテゴリ）
+    - --min-lines 未満の断片は除外（有料にするには薄い）
+    - 1 記事あたり --max-per-article 本まで（内容の重複を避ける）
+    - カテゴリ間はラウンドロビンで選抜（スコア順だけだと集計系の多い
+      EC 分析に偏り、基盤運用がほとんど入らなくなるため）
 
 使い方:
+
+    # 商品①: フロント商品の 50 本パック（冒頭 3 本は無料公開部）
     python3 scripts/build_sql_pack.py
-    python3 scripts/build_sql_pack.py --count 50 --preview 3
+
+    # 商品③: 実装キットに同梱するフルカタログ
+    python3 scripts/build_sql_pack.py \\
+        --categories all --count 500 --max-per-article 99 --min-lines 5 \\
+        --preview 0 --title "GA4 × BigQuery 実務SQL 全集" \\
+        --out assets/products/sql-catalog-full
 """
 
 from __future__ import annotations
@@ -97,8 +101,23 @@ def main() -> int:
     parser.add_argument("--out", default="assets/products/sql-pack-50")
     parser.add_argument("--count", type=int, default=50)
     parser.add_argument("--preview", type=int, default=3, help="無料公開部の本数")
-    parser.add_argument("--categories", nargs="*", default=list(DEFAULT_CATEGORIES))
+    parser.add_argument(
+        "--categories",
+        nargs="*",
+        default=list(DEFAULT_CATEGORIES),
+        help="対象カテゴリ。'all' で全カテゴリ",
+    )
+    parser.add_argument(
+        "--max-per-article",
+        type=int,
+        default=MAX_PER_ARTICLE,
+        help="1記事から採用する上限。フルカタログを作るときは大きくする",
+    )
+    parser.add_argument("--title", default="GA4 × BigQuery 分析SQL 50本パック")
+    parser.add_argument("--min-lines", type=int, default=MIN_LINES)
     args = parser.parse_args()
+
+    all_categories = args.categories == ["all"]
 
     sql_dir = Path(args.sql_dir)
     report = json.loads((sql_dir / "validation.json").read_text(encoding="utf-8"))
@@ -109,10 +128,12 @@ def main() -> int:
 
     candidates = []
     for r in report["results"]:
-        if not r["product_ready"] or r["category"] not in args.categories:
+        if not r["product_ready"]:
+            continue
+        if not all_categories and r["category"] not in args.categories:
             continue
         meta = index[r["file"]]
-        if meta["lines"] < MIN_LINES:
+        if meta["lines"] < args.min_lines:
             continue
         sql = strip_provenance((sql_dir / r["file"]).read_text(encoding="utf-8"))
         candidates.append(
@@ -147,7 +168,7 @@ def main() -> int:
             queue = queues[cat]
             while queue:
                 c = queue.pop(0)
-                if per_article.get(c["slug"], 0) >= MAX_PER_ARTICLE:
+                if per_article.get(c["slug"], 0) >= args.max_per_article:
                     continue
                 per_article[c["slug"]] = per_article.get(c["slug"], 0) + 1
                 picked.append(c)
@@ -185,16 +206,16 @@ def main() -> int:
     (out_dir / "sql").mkdir(parents=True)
 
     doc: list[str] = []
-    doc.append("# GA4 × BigQuery 分析SQL 50本パック\n")
+    doc.append(f"# {args.title}\n")
     doc.append(
-        "GA4 の BigQuery エクスポートを前提にした、実務で使う分析SQLを 50 本まとめたものです。\n"
+        f"GA4 の BigQuery エクスポートを前提にした、実務で使う分析SQLを {len(picked)} 本まとめたものです。\n"
         "**全てのSQLは BigQuery の方言でパース検証済み**で、"
         "コピーして `${PROJECT}` と `${DATASET}` を自社の値に置き換えればそのまま動きます。\n"
     )
     doc.append(
         "GA4 の BigQuery スキーマは、実際に叩くと細部で動きません。"
         "`event_params` の型、`collected_traffic_source` の有無、パーティションの指定。"
-        "この 50 本は、その「動かない」を先に潰してあります。\n"
+        "収録したSQLは、その「動かない」を先に潰してあります。\n"
     )
     doc.append("## 収録内容\n")
     cats: dict[str, int] = {}

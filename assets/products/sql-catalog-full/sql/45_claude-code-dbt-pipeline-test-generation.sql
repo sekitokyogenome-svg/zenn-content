@@ -1,0 +1,17 @@
+-- 45. Claude Code × dbtでデータ変換パイプラインのテストコードを自動生成する
+-- 用途: dbt × BigQueryの基本構成を整理する
+-- ${PROJECT} / ${DATASET} を自社の値に置換して実行
+
+SELECT
+  event_date,
+  event_name,
+  user_pseudo_id,
+  (SELECT value.int_value
+   FROM UNNEST(event_params) AS ep
+   WHERE ep.key = 'ga_session_id') AS ga_session_id,
+  collected_traffic_source.manual_medium AS medium,
+  collected_traffic_source.manual_source AS source
+FROM
+  `${PROJECT}.${DATASET}.events_*`
+WHERE
+  _TABLE_SUFFIX BETWEEN '20240101' AND '20241231'
