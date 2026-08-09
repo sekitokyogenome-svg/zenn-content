@@ -138,7 +138,7 @@ def analyze_anomaly(csv_text: str) -> str:
 {csv_text}
 """
     message = client.messages.create(
-        model="claude-opus-4-5",
+        model="claude-opus-5",
         max_tokens=2048,
         messages=[{"role": "user", "content": prompt}]
     )

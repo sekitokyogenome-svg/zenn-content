@@ -124,7 +124,7 @@ def analyze_sentiment(review_text: str) -> dict:
 {review_text}
 """
     message = client.messages.create(
-        model="claude-sonnet-4-5",
+        model="claude-sonnet-5",
         max_tokens=256,
         messages=[{"role": "user", "content": prompt}]
     )

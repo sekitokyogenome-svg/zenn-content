@@ -159,7 +159,7 @@ def generate_suggestions(ab_result_csv: str, product_name: str) -> str:
 回答は日本語で、箇条書きを交えて読みやすくまとめてください。
 """
     message = ai_client.messages.create(
-        model="claude-opus-4-5",
+        model="claude-opus-5",
         max_tokens=1024,
         messages=[{"role": "user", "content": prompt}],
     )

@@ -64,7 +64,7 @@ def review_bq_query(query: str) -> str:
 {query}
 """
     message = client.messages.create(
-        model="claude-sonnet-4-5",
+        model="claude-sonnet-5",
         max_tokens=1024,
         messages=[
             {"role": "user", "content": prompt}
