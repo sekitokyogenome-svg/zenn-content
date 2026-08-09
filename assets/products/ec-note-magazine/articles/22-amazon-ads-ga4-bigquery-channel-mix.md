@@ -1,11 +1,4 @@
----
-title: "Amazon広告とGA4自社ECデータをBigQueryで統合してチャネルミックスを最適化する"
-emoji: "🛍️"
-type: "tech"
-topics: ["bigquery","googleanalytics","ec","advertising","sql"]
-published: false
-note_only: true
----
+# Amazon広告とGA4自社ECデータをBigQueryで統合してチャネルミックスを最適化する
 
 ## はじめに
 
@@ -23,9 +16,9 @@ BigQueryへのCSVアップロードは、GCPコンソールから「データセ
 
 定期的に取り込む場合は、Google Cloud StorageにCSVを置いてスケジュールされたクエリで読み込む方法や、Cloud Functionsで自動化する方法も選択肢に入ります。ただし、まずは手動アップロードで検証してから自動化に進むことをお勧めします。
 
-:::message
-Amazon広告のCSVレポートには日付・キャンペーン名・インプレッション数・クリック数・広告費・売上などが含まれています。BigQueryにアップロードする際は、列のデータ型（特に日付と数値）に注意して設定してください。
-:::
+> Amazon広告のCSVレポートには日付・キャンペーン名・インプレッション数・クリック数・広告費・売上などが含まれています。BigQueryにアップロードする際は、列のデータ型（特に日付と数値）に注意して設定してください。
+
+<!-- ここから有料 -->
 
 ## GA4のBigQueryエクスポートデータでチャネル別売上を集計する
 
@@ -141,9 +134,7 @@ BigQueryで集計したデータをLooker Studio（旧データポータル）�
 
 ダッシュボードができあがると、「今月前半はAmazonの広告費が高い割に自社ECへの流入が伸びていない」「特定の週に自社ECのCPC流入からの売上が跳ね上がっている」といったパターンが視覚的に掴めるようになります。定性的な感覚で判断していた部分を、数字で裏付けられる状態が整います。
 
-:::message
-Looker StudioからBigQueryへのアクセスには、GCPプロジェクトのBigQuery閲覧権限が必要です。個人アカウントで運用している場合は、IAMロールとして「BigQuery データ閲覧者」を付与してください。
-:::
+> Looker StudioからBigQueryへのアクセスには、GCPプロジェクトのBigQuery閲覧権限が必要です。個人アカウントで運用している場合は、IAMロールとして「BigQuery データ閲覧者」を付与してください。
 
 ## チャネルミックスを最適化するための判断軸
 
@@ -167,18 +158,15 @@ Looker StudioからBigQueryへのアクセスには、GCPプロジェクトのBi
 
 次のアクションとしては、まずGA4のBigQueryエクスポートが有効になっているか確認することをお勧めします。有効でない場合はGA4の管理画面から設定できます。その後、Amazon広告レポートを1か月分ダウンロードしてBigQueryにアップロードし、本記事のSQLを試してみてください。小さく始めて、データが揃ったら徐々にダッシュボードを拡充していく進め方が現実的です。
 
-## 関連記事
-
-- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
-- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
-- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
-- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

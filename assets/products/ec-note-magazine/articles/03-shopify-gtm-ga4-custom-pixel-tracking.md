@@ -1,11 +1,4 @@
----
-title: "Shopify×GTM×GA4でカスタムピクセルを使った高精度エコマース計測を実装する"
-emoji: "🏷️"
-type: "tech"
-topics: ["shopify","gtm","googleanalytics","ec","javascript"]
-published: false
-note_only: true
----
+# Shopify×GTM×GA4でカスタムピクセルを使った高精度エコマース計測を実装する
 
 ## はじめに
 
@@ -14,8 +7,6 @@ note_only: true
 Shopifyは2023年以降、セキュリティおよびパフォーマンス上の理由から、チェックアウトページへの外部スクリプトの直接挿入を段階的に制限しています。この変更により、従来の方法でGTMタグをチェックアウト完了ページに仕込む手法が機能しなくなるケースが増えてきました。
 
 そこで注目されているのが **Shopifyカスタムピクセル（Customer Events / Custom Pixels）** です。Shopifyが公式に提供するこの仕組みを使うと、サンドボックス環境でブラウザイベントを安全にキャプチャし、GTM経由でGA4へ購入データを送信できます。本記事では、カスタムピクセルの概要から実装手順、GA4でのデータ確認方法まで、ステップを追って説明します。
-
----
 
 ## Shopifyカスタムピクセルとは
 
@@ -49,11 +40,9 @@ analytics.subscribe('checkout_completed', (event) => {
 });
 ```
 
-:::message
-カスタムピクセルのサンドボックスからは`window.dataLayer`に直接アクセスできません。`postMessage`を使って親フレーム（ストアのページ）にデータを渡し、そちら側でdataLayerに追加する構成を取ります。
-:::
+> カスタムピクセルのサンドボックスからは`window.dataLayer`に直接アクセスできません。`postMessage`を使って親フレーム（ストアのページ）にデータを渡し、そちら側でdataLayerに追加する構成を取ります。
 
----
+<!-- ここから有料 -->
 
 ## GTM側の受信タグとトリガーの設定
 
@@ -85,11 +74,7 @@ Shopifyのカスタムピクセルから送られた`postMessage`を受け取る
 
 このトリガーに対してGA4イベントタグを紐付けます。GA4タグの設定では「イベント名」を`purchase`とし、ecommerceデータの送信を有効化するオプションをONにします。dataLayer変数として`ecommerce`オブジェクトを渡すことで、GA4の拡張eコマースとして計測されます。
 
-:::message
-GTMでecommerceデータを送信する際は、タグの「その他の設定 → eコマースデータを送信する」を有効にし、データソースを「Data Layer」に設定してください。これにより`items`配列も自動的に送信されます。
-:::
-
----
+> GTMでecommerceデータを送信する際は、タグの「その他の設定 → eコマースデータを送信する」を有効にし、データソースを「Data Layer」に設定してください。これにより`items`配列も自動的に送信されます。
 
 ## GA4でのデータ確認とBigQueryでの分析クエリ
 
@@ -126,11 +111,7 @@ ORDER BY
   total_revenue DESC;
 ```
 
-:::message
-`ga_session_id`はevent_paramsのネストされたフィールドに格納されているため、`UNNEST(event_params)`で展開してから参照してください。また、流入元情報は`collected_traffic_source.manual_medium`および`collected_traffic_source.manual_source`を使用します（`traffic_source`フィールドはセッション初回のみ記録される点にご注意ください）。
-:::
-
----
+> `ga_session_id`はevent_paramsのネストされたフィールドに格納されているため、`UNNEST(event_params)`で展開してから参照してください。また、流入元情報は`collected_traffic_source.manual_medium`および`collected_traffic_source.manual_source`を使用します（`traffic_source`フィールドはセッション初回のみ記録される点にご注意ください）。
 
 ## よくあるトラブルと対処法
 
@@ -148,8 +129,6 @@ ShopifyのPlus以外のプランでは、チェックアウトカスタマイズ
 
 GTMのカスタムHTMLタグが実際にページ上で実行されているか確認します。GTMプレビューモードを使い、「message」リスナーが正常にセットアップされているか確認してください。また、Shopifyのコンテンツセキュリティポリシー（CSP）の影響でpostMessageがブロックされている場合は、カスタムピクセルの設定側でShopify公式の`init`イベント経由でデータを送る方法に切り替えることも検討してください。
 
----
-
 ## まとめ
 
 本記事では、ShopifyのカスタムピクセルをGTMと連携させてGA4に高精度なeコマースデータを送信する方法を解説しました。
@@ -163,18 +142,15 @@ GTMのカスタムHTMLタグが実際にページ上で実行されているか�
 
 次のステップとしては、`product_viewed`や`cart_updated`など他のShopifyイベントも購読し、ファネル全体の可視化に取り組んでみてください。Looker Studioと組み合わせることで、チャネル別・商品別のコンバージョン分析ダッシュボードの構築も可能です。
 
-## 関連記事
-
-- [GA4×GTMでサイト内検索キーワードを正しく計測する設定](https://zenn.dev/web_benriya/articles/ga4-gtm-site-search-tracking)
-- [GTMのデータレイヤーを使ったGA4カスタムイベント設計のベストプラクティス](https://zenn.dev/web_benriya/articles/gtm-data-layer-ga4-custom-event-design)
-- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
-- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

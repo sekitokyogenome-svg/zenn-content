@@ -1,11 +1,4 @@
----
-title: "Shopify × GA4のエコマース計測でデータが合わない問題を徹底解決する"
-emoji: "🔧"
-type: "tech"
-topics: ["googleanalytics","bigquery","ec","shopify","gtm"]
-published: false
-note_only: true
----
+# Shopify × GA4のエコマース計測でデータが合わない問題を徹底解決する
 
 ## はじめに
 
@@ -14,8 +7,6 @@ note_only: true
 ShopifyとGA4を組み合わせてECサイトを運用する際、売上データや注文数のズレは非常によく起こる問題です。原因が一つではなく、計測の仕組みや設定の複数箇所に問題が潜んでいることが多いため、「どこから調べればいいかわからない」と困惑されている方も少なくありません。
 
 本記事では、ShopifyとGA4のデータ不一致が発生する主な原因を整理したうえで、GTMの設定見直しからBigQueryを使ったデータ検証まで、段階的な確認・修正方法をご説明します。EC運営のご担当者やWebコンサルタントの方に向けて、できる限り実践的な内容を心がけています。
-
----
 
 ## データが合わない主な原因を整理する
 
@@ -37,11 +28,9 @@ Shopifyでは決済時にPayPayやAmazon Payなどの外部決済画面へ遷移
 
 iOS・SafariのITPやuBlock等の広告ブロッカーによって、一定割合のGA4タグがブロックされます。Shopify管理画面の売上にはこの影響がありませんが、GA4側のカウントは低く出る傾向があります。
 
-:::message
-まず「二重計測」か「計測漏れ」かを切り分けることが先決です。GA4の数値がShopifyより多い場合は二重計測、少ない場合は計測漏れを疑います。
-:::
+> まず「二重計測」か「計測漏れ」かを切り分けることが先決です。GA4の数値がShopifyより多い場合は二重計測、少ない場合は計測漏れを疑います。
 
----
+<!-- ここから有料 -->
 
 ## GTMの設定を確認・修正する
 
@@ -62,8 +51,6 @@ GTMの「タグの順序付け」機能を使い、dataLayerのpush（カスタ�
 ### Shopify Pixelとの共存設定
 
 Shopify管理画面の「カスタマーイベント」からGA4のPixelを有効にしている場合は、GTM側のpurchaseイベントを無効にするか、どちらか一方に統一することをお勧めします。両方を有効にしたまま運用するには、重複排除の仕組みが必要です。
-
----
 
 ## BigQueryでデータのズレを定量的に検証する
 
@@ -140,8 +127,6 @@ ORDER BY
 
 特定のmedium（例: `cpc`や`email`）でpurchaseが極端に少ない場合、その流入経路でセッション切れが起きている可能性があります。
 
----
-
 ## Shopify側で実施できる追加対策
 
 GA4側の設定だけでなく、Shopify側でも取り組める対策があります。
@@ -158,22 +143,27 @@ PayPayやAmazon Pay等の外部決済を使用している場合、決済後の�
 
 GA4の管理画面 → データストリーム → 詳細設定 → 「除外するリファラー」から設定を行います。
 
-:::message
-外部決済ドメインの除外設定は、GA4のプロパティ設定画面から行います。GTMやBigQueryの設定ではないため、見落とされることがある箇所です。
-:::
-
----
+> 外部決済ドメインの除外設定は、GA4のプロパティ設定画面から行います。GTMやBigQueryの設定ではないため、見落とされることがある箇所です。
 
 ## まとめ
 
 ShopifyとGA4のエコマースデータが一致しない主な原因と対策を整理すると、以下のようになります。
 
-| 症状 | 主な原因 | 対策 |
-|------|----------|------|
-| GA4の数値がShopifyより多い | GTMとShopify Pixelの二重計測 | どちらか一方に統一する |
-| GA4の数値がShopifyより少ない | サンキューページの計測漏れ | Checkout ExtensibilityまたはカスタムPixelを使用 |
-| 特定流入元のコンバージョンが少ない | 外部決済によるセッション切れ | GA4の除外リファラーを設定 |
-| データにばらつきがある | 広告ブロッカー・ITP | サーバーサイド計測の導入を検討 |
+**GA4の数値がShopifyより多い**
+- 主な原因: GTMとShopify Pixelの二重計測
+- 対策: どちらか一方に統一する
+
+**GA4の数値がShopifyより少ない**
+- 主な原因: サンキューページの計測漏れ
+- 対策: Checkout ExtensibilityまたはカスタムPixelを使用
+
+**特定流入元のコンバージョンが少ない**
+- 主な原因: 外部決済によるセッション切れ
+- 対策: GA4の除外リファラーを設定
+
+**データにばらつきがある**
+- 主な原因: 広告ブロッカー・ITP
+- 対策: サーバーサイド計測の導入を検討
 
 まず取り組むべき順序としては、①GTMプレビューで二重計測の有無を確認 → ②BigQueryのtransaction_id重複チェック → ③外部決済ドメインのリファラー除外設定、という流れが効果的です。
 
@@ -181,18 +171,15 @@ ShopifyとGA4のエコマースデータが一致しない主な原因と対策�
 
 データの正確性はECサイトの意思決定の基盤です。少しずつでも計測の精度を高め、施策判断に活かしていただければ幸いです。
 
-## 関連記事
-
-- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
-- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
-- [中小ECのLTV分析をGA4×BigQueryで無料構築する方法【SQLテンプレ付き】](https://zenn.dev/web_benriya/articles/ec-ltv-analysis-ga4-bigquery-free)
-- [EC売上が下がったとき最初に確認すべきBigQueryクエリ5選](https://zenn.dev/web_benriya/articles/ec-revenue-drop-bigquery-queries-checklist)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

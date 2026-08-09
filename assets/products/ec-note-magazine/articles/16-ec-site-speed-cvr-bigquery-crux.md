@@ -1,11 +1,4 @@
----
-title: "ECサイトのサイト速度がCVRに与える影響をBigQueryのCrUXデータで検証する"
-emoji: "⚡"
-type: "tech"
-topics: ["bigquery","googleanalytics","ec","sql","googlecloud"]
-published: false
-note_only: true
----
+# ECサイトのサイト速度がCVRに与える影響をBigQueryのCrUXデータで検証する
 
 ## はじめに
 
@@ -14,6 +7,8 @@ note_only: true
 サイト速度とコンバージョン率（CVR）の関係については、GoogleやAmazonが長年にわたって調査を続けており、「ページ読み込みが遅いほどユーザーが離脱しやすい」という傾向は広く知られています。しかし「自分のサイトでは実際にどの程度影響があるのか」を定量的に把握している事業者はまだ少ない印象です。
 
 本記事では、Googleが提供する**CrUX（Chrome User Experience Report）**のBigQuery公開データセットと、GA4のBigQueryエクスポートデータを組み合わせ、自社ECサイトのサイト速度とCVRの相関を検証する方法をご紹介します。SQLの知識が多少あれば実践できる内容ですので、Webコンサルタントの方や、データ分析に取り組み始めたEC担当者の方にも参考にしていただけると思います。
+
+<!-- ここから有料 -->
 
 ## CrUXデータとは何か
 
@@ -31,17 +26,27 @@ BigQueryでは以下のプロジェクトで無料公開されています。
 
 主な指標として、以下のCore Web Vitalsが含まれています。
 
-| 指標 | 正式名称 | 概要 |
-|------|----------|------|
-| LCP | Largest Contentful Paint | 最大コンテンツの描画時間 |
-| INP | Interaction to Next Paint | 操作への応答速度 |
-| CLS | Cumulative Layout Shift | 視覚的な安定性 |
-| FCP | First Contentful Paint | 最初のコンテンツ描画 |
-| TTFB | Time to First Byte | サーバー応答時間 |
+**LCP**
+- 正式名称: Largest Contentful Paint
+- 概要: 最大コンテンツの描画時間
 
-:::message
-CrUXのデータはドメイン単位で集計されており、十分なトラフィックがあるURLのみが収録対象となります。月間アクセスが少ないページは収録されないケースもありますのでご注意ください。
-:::
+**INP**
+- 正式名称: Interaction to Next Paint
+- 概要: 操作への応答速度
+
+**CLS**
+- 正式名称: Cumulative Layout Shift
+- 概要: 視覚的な安定性
+
+**FCP**
+- 正式名称: First Contentful Paint
+- 概要: 最初のコンテンツ描画
+
+**TTFB**
+- 正式名称: Time to First Byte
+- 概要: サーバー応答時間
+
+> CrUXのデータはドメイン単位で集計されており、十分なトラフィックがあるURLのみが収録対象となります。月間アクセスが少ないページは収録されないケースもありますのでご注意ください。
 
 ## BigQueryでCrUXデータを取得するSQL
 
@@ -124,9 +129,7 @@ cvr_by_channel AS (
 SELECT * FROM cvr_by_channel;
 ```
 
-:::message
-`your_project.analytics_XXXXXXXXX`の部分は、BigQueryのGA4エクスポート先プロジェクトとデータセット名に置き換えてください。データセットIDはGA4の管理画面「BigQueryのリンク」から確認できます。
-:::
+> `your_project.analytics_XXXXXXXXX`の部分は、BigQueryのGA4エクスポート先プロジェクトとデータセット名に置き換えてください。データセットIDはGA4の管理画面「BigQueryのリンク」から確認できます。
 
 ## CrUXとGA4データを組み合わせた分析アプローチ
 
@@ -186,9 +189,7 @@ CrUXとCVRの相関が確認できたら、次は改善の優先箇所を絞り�
 
 GA4のBigQueryデータでは、ページ別のエンゲージメント率や離脱率も集計できます。LCPが特に悪いと推測されるページ（商品一覧ページやカートページなど）を重点的に調査することで、改善インパクトの大きい箇所から着手できます。
 
-:::message
-PageSpeed Insightsのフィールドデータ（CrUXベース）とラボデータ（Lighthouseシミュレーション）は別物です。サイト改善の効果確認にはフィールドデータの推移を継続的に追うことが重要です。数値が改善するまでに1〜2ヶ月程度かかる場合もあります。
-:::
+> PageSpeed Insightsのフィールドデータ（CrUXベース）とラボデータ（Lighthouseシミュレーション）は別物です。サイト改善の効果確認にはフィールドデータの推移を継続的に追うことが重要です。数値が改善するまでに1〜2ヶ月程度かかる場合もあります。
 
 ## まとめ
 
@@ -201,18 +202,15 @@ PageSpeed Insightsのフィールドデータ（CrUXベース）とラボデー�
 
 サイト速度の改善は一度対応すれば終わりではなく、商品追加やテーマ変更のたびに再劣化するリスクがあります。BigQueryとLooker Studioを組み合わせたモニタリング基盤を整備しておくと、変化に気づくタイミングを早めることができます。まずはCrUXデータで現状のLCP水準を把握するところから始めてみてください。
 
-## 関連記事
-
-- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
-- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
-- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
-- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

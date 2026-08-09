@@ -1,11 +1,4 @@
----
-title: "ECの送料無料ラインをBigQueryの購買データから最適設定する分析手法"
-emoji: "🆓"
-type: "idea"
-topics: ["bigquery","ec","sql","googleanalytics","datanalysis"]
-published: false
-note_only: true
----
+# ECの送料無料ラインをBigQueryの購買データから最適設定する分析手法
 
 ## はじめに
 
@@ -15,7 +8,7 @@ ECサイトを運営していると、「送料無料ラインをいくらに設
 
 GA4のBigQueryエクスポートを活用すれば、実際の注文金額の分布や、購入直前に離脱したユーザーの行動パターンを詳細に分析できます。本記事では、BigQueryとSQLを使った具体的な分析手法を、非エンジニアの方にも理解しやすいよう丁寧に解説します。
 
----
+<!-- ここから有料 -->
 
 ## 注文金額の分布を把握する
 
@@ -63,11 +56,7 @@ ORDER BY
 
 このクエリを実行することで、どの価格帯に注文が集中しているかが一目でわかります。たとえば「3,000〜4,000円」に注文の30%以上が集中している場合、送料無料ラインを3,500円前後に設定することで、自然に上乗せ購入を促せる可能性があります。
 
-:::message
-`your_project.analytics_XXXXXXX` の部分は、ご自身のプロジェクトIDとGA4のデータセットIDに置き換えてください。BigQueryのコンソールから確認できます。
-:::
-
----
+> `your_project.analytics_XXXXXXX` の部分は、ご自身のプロジェクトIDとGA4のデータセットIDに置き換えてください。BigQueryのコンソールから確認できます。
 
 ## カゴ落ちセッションの注文金額帯を特定する
 
@@ -141,8 +130,6 @@ ORDER BY
 
 カゴ落ちが特定の金額帯に集中している場合、その直上に送料無料ラインを設定することで、購入完了率の改善が期待できます。たとえば「3,000〜4,000円未満」のカゴ落ちが多い場合、送料無料ラインを4,000円から3,800円に下げるといった調整が選択肢になります。
 
----
-
 ## 流入元別に送料感度を分析する
 
 同じ送料設定でも、流入チャネルによって顧客の価格感度は異なります。たとえば、SEO流入のユーザーは比較検討を経て訪問しているため、送料に敏感なケースが多い傾向があります。一方、指名検索やリピーターはブランドへの信頼があるため、送料に対してやや寛容な場合もあります。
@@ -192,11 +179,7 @@ LIMIT 20
 
 このクエリで流入元別の平均注文金額・中央値を比較することで、「どのチャネルのユーザーが高単価か」「どのチャネルで送料無料ラインに届かない注文が多いか」を把握できます。メルマガ経由のリピーターは比較的高単価であることが多く、逆に広告流入は単発購入で金額が低めになりがちという傾向も見えてくることがあります。
 
-:::message
-`collected_traffic_source` が空になるケースでは、セッション開始時の `session_traffic_source_last_click` フィールドや `traffic_source` フィールドも補完的に活用できます。
-:::
-
----
+> `collected_traffic_source` が空になるケースでは、セッション開始時の `session_traffic_source_last_click` フィールドや `traffic_source` フィールドも補完的に活用できます。
 
 ## 送料無料ライン変更のA/Bテスト設計と効果測定
 
@@ -236,8 +219,6 @@ GROUP BY
 
 A/Bテストを経ずに一気に変更するよりも、小規模な検証を先に行うことで、リスクを抑えながら意思決定できます。特に既存顧客の多いECサイトでは、急な変更が顧客体験を損ねる場合もあるため、段階的な検証が有効です。
 
----
-
 ## まとめ
 
 本記事では、BigQueryとGA4の購買データを活用して、ECサイトの送料無料ラインを最適化するための分析手法を解説しました。要点を整理します。
@@ -251,18 +232,15 @@ A/Bテストを経ずに一気に変更するよりも、小規模な検証を�
 
 まずは注文金額の分布クエリを実行するところから始めてみてください。
 
-## 関連記事
-
-- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
-- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
-- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
-- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

@@ -1,11 +1,4 @@
----
-title: "ECの返品率をGA4×BigQueryで商品カテゴリ別に分析して原因を特定した"
-emoji: "↩️"
-type: "idea"
-topics: ["bigquery","googleanalytics","ec","sql","lookerstudio"]
-published: false
-note_only: true
----
+# ECの返品率をGA4×BigQueryで商品カテゴリ別に分析して原因を特定した
 
 ## はじめに
 
@@ -27,16 +20,25 @@ ECサイトを運営していると、売上の数字だけでなく「返品率
 
 どちらの方法でも、以下のパラメータをイベントに含めておくと、後のBigQuery分析がスムーズになります。
 
-| パラメータ名 | 例 | 役割 |
-|---|---|---|
-| item_category | `tops` / `shoes` | カテゴリ別集計に使用 |
-| item_id | `SKU-12345` | 商品単位の分析に使用 |
-| order_id | `ORD-98765` | 購入イベントとの紐づけ |
-| return_reason | `size_mismatch` | 返品理由の分類 |
+**item_category**
+- 例: `tops` / `shoes`
+- 役割: カテゴリ別集計に使用
 
-:::message
-GA4の標準eコマースイベント（`purchase`）にも `item_category` フィールドが含まれます。返品イベントにも同じ値を渡すことで、BigQuery上での結合が容易になります。
-:::
+**item_id**
+- 例: `SKU-12345`
+- 役割: 商品単位の分析に使用
+
+**order_id**
+- 例: `ORD-98765`
+- 役割: 購入イベントとの紐づけ
+
+**return_reason**
+- 例: `size_mismatch`
+- 役割: 返品理由の分類
+
+> GA4の標準eコマースイベント（`purchase`）にも `item_category` フィールドが含まれます。返品イベントにも同じ値を渡すことで、BigQuery上での結合が容易になります。
+
+<!-- ここから有料 -->
 
 ## BigQueryで商品カテゴリ別の返品率を集計するSQL
 
@@ -92,12 +94,25 @@ ORDER BY
 
 このクエリを実行すると、たとえば以下のような結果が得られます。
 
-| item_category | purchase_count | return_count | return_rate_pct |
-|---|---|---|---|
-| shoes | 1,240 | 186 | 15.00 |
-| outerwear | 980 | 127 | 12.96 |
-| tops | 3,100 | 248 | 8.00 |
-| bottoms | 2,450 | 147 | 6.00 |
+**shoes**
+- purchase_count: 1,240
+- return_count: 186
+- return_rate_pct: 15.00
+
+**outerwear**
+- purchase_count: 980
+- return_count: 127
+- return_rate_pct: 12.96
+
+**tops**
+- purchase_count: 3,100
+- return_count: 248
+- return_rate_pct: 8.00
+
+**bottoms**
+- purchase_count: 2,450
+- return_count: 147
+- return_rate_pct: 6.00
 
 この例では、`shoes`（靴）と `outerwear`（アウター）の返品率が突出して高いことが分かります。
 
@@ -156,9 +171,7 @@ ORDER BY
 ;
 ```
 
-:::message
-`ga_session_id` はイベントのトップレベルフィールドとして直接参照することはできません。`UNNEST(event_params)` を経由して `key = 'ga_session_id'` の値を取得する必要があります。
-:::
+> `ga_session_id` はイベントのトップレベルフィールドとして直接参照することはできません。`UNNEST(event_params)` を経由して `key = 'ga_session_id'` の値を取得する必要があります。
 
 このクエリの結果として、たとえば「靴カテゴリはInstagram広告（medium: paid_social）経由の返品率が特に高い」といった傾向が見えてくることがあります。その場合、広告クリエイティブや商品LP上のサイズ感の説明が不十分である可能性が考えられます。
 
@@ -201,18 +214,15 @@ GROUP BY
 
 次のアクションとしては、まず自社のGA4に返品イベントが正しく設定されているかを確認することをお勧めします。BigQueryエクスポートが有効であれば、本記事のSQLをベースに集計を試してみてください。データを見ることで、感覚だけに頼らない返品対策の議論が社内でできるようになります。
 
-## 関連記事
-
-- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
-- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
-- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
-- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

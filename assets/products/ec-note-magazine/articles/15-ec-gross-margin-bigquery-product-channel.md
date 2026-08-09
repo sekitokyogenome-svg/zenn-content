@@ -1,11 +1,4 @@
----
-title: "EC事業の粗利率をBigQueryで商品×チャネル別に自動計算する仕組み"
-emoji: "💹"
-type: "tech"
-topics: ["bigquery","ec","sql","googleanalytics","lookerstudio"]
-published: false
-note_only: true
----
+# EC事業の粗利率をBigQueryで商品×チャネル別に自動計算する仕組み
 
 ## はじめに
 
@@ -23,14 +16,14 @@ EC事業では、同じ商品でも流入チャネルによって購入単価・
 
 商品×チャネルの2軸でクロス集計することで、「高粗利×高流入のゴールデンゾーン」と「低粗利×高広告費のレッドゾーン」を可視化でき、改善施策の優先順位付けが容易になります。これは、売上データだけを見ていては気づけない視点です。
 
+<!-- ここから有料 -->
+
 ## データ構成の設計：GA4エクスポートと売上データの連携
 
 今回の仕組みでは以下の2種類のテーブルを利用します。
 
-| テーブル | 用途 |
-|---|---|
-| GA4 BigQueryエクスポートテーブル | セッション・流入元・商品閲覧データ |
-| 社内売上・原価テーブル | 注文番号・商品SKU・売上・原価 |
+- **GA4 BigQueryエクスポートテーブル**：セッション・流入元・商品閲覧データ
+- **社内売上・原価テーブル**：注文番号・商品SKU・売上・原価
 
 GA4のBigQueryエクスポートは、GCPプロジェクトとGA4プロパティを接続することで有効化できます。エクスポート先には `events_YYYYMMDD` 形式のテーブルが日次で生成されます。
 
@@ -38,9 +31,7 @@ GA4のBigQueryエクスポートは、GCPプロジェクトとGA4プロパティ
 
 連携のキーは「注文ID（order_id）」です。GA4側ではeコマースイベントの `transaction_id` として取得されており、社内売上テーブルの注文番号と突合することで、どのセッション経由の注文かを特定できます。
 
-:::message
-GA4のeコマース計測が未設定の場合、`purchase` イベントや `transaction_id` のデータが存在しません。まずGA4のeコマース設定を確認してください。
-:::
+> GA4のeコマース計測が未設定の場合、`purchase` イベントや `transaction_id` のデータが存在しません。まずGA4のeコマース設定を確認してください。
 
 ## BigQueryで流入チャネルと購入を紐づけるSQL
 
@@ -111,9 +102,7 @@ WHERE
 
 このクエリで、「どの流入元（source/medium）からの訪問が購入に至ったか」を注文ID単位で取得できます。`your_project` と `analytics_XXXXXXX` の部分は、実際のGCPプロジェクトIDとGA4のプロパティIDに置き換えてください。
 
-:::message
-`collected_traffic_source.manual_medium` は UTMパラメータの `utm_medium` に対応しています。UTMタグが付与されていない流入（直接流入やオーガニック検索）の場合は NULL になることがあります。
-:::
+> `collected_traffic_source.manual_medium` は UTMパラメータの `utm_medium` に対応しています。UTMタグが付与されていない流入（直接流入やオーガニック検索）の場合は NULL になることがあります。
 
 ## 商品×チャネル別の粗利率を計算するSQL
 
@@ -186,9 +175,7 @@ BigQueryのビューを作成したら、Looker Studio（旧データポータ�
 
 ピボットテーブルでヒートマップ（条件付き書式）を設定すると、高粗利率のセルが緑、低粗利率のセルが赤で色分けされ、一目で改善ポイントを把握できます。
 
-:::message
-Looker Studioのデータソース接続はBigQueryの課金（スキャン量）が発生します。集計済みのビューやパーティションテーブルを利用してスキャン量を抑えることをおすすめします。
-:::
+> Looker Studioのデータソース接続はBigQueryの課金（スキャン量）が発生します。集計済みのビューやパーティションテーブルを利用してスキャン量を抑えることをおすすめします。
 
 ダッシュボードを社内で共有する際は、Googleアカウント単位でアクセス権を設定できます。経営者・マーケター・バイヤーなど、それぞれの担当領域のチャートを1枚のダッシュボードに集約すると、定例会議での活用がしやすくなります。
 
@@ -203,18 +190,15 @@ Looker Studioのデータソース接続はBigQueryの課金（スキャン量�
 
 次のアクションとしては、まず自社のGA4にeコマース計測が正しく設定されているかを確認し、BigQueryエクスポートを有効化することから始めてみてください。その後、社内の受注・原価データをBigQueryに取り込む方法を検討するとスムーズです。
 
-## 関連記事
-
-- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
-- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
-- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
-- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

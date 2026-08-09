@@ -1,11 +1,4 @@
----
-title: "GA4×BigQueryでECクーポン施策のカニバリゼーションを検証する"
-emoji: "🎫"
-type: "tech"
-topics: ["bigquery","googleanalytics","ec","sql","datanalysis"]
-published: false
-note_only: true
----
+# GA4×BigQueryでECクーポン施策のカニバリゼーションを検証する
 
 ## はじめに
 
@@ -14,8 +7,6 @@ note_only: true
 このような現象を「カニバリゼーション（共食い）」と呼びます。EC施策におけるカニバリゼーションとは、クーポン配布などの販促施策が、新規獲得や購買意欲を高める効果を発揮するのではなく、もともと購入していた顧客の割引負担として機能してしまうことを指します。
 
 本記事では、GA4（Google Analytics 4）のBigQueryエクスポートデータを活用して、クーポン施策のカニバリゼーションを定量的に検証する方法を解説します。SQLは可能な限り丁寧に説明しますので、エンジニアでない方でも「どのような考え方でデータを見ているか」をご理解いただけるように努めます。
-
----
 
 ## クーポンのカニバリゼーションとは何か
 
@@ -31,7 +22,7 @@ ECにおけるクーポン施策のカニバリゼーションには、大きく
 
 これらを感覚ではなくデータで把握することが、施策改善の第一歩です。
 
----
+<!-- ここから有料 -->
 
 ## GA4 BigQueryエクスポートのデータ構造を理解する
 
@@ -46,21 +37,15 @@ GA4には「BigQueryエクスポート」という機能があり、サイトで
 
 各行は1イベントを表し、分析で使用する主なフィールドは次のとおりです。
 
-| フィールド | 内容 |
-|---|---|
-| event_name | イベント種別（purchase, add_to_cart など）|
-| event_params | イベントパラメータ（ARRAY型）|
-| user_pseudo_id | 匿名ユーザーID |
-| collected_traffic_source.manual_medium | 流入媒体（cpc, organic など）|
-| collected_traffic_source.manual_source | 流入元（google, email など）|
+- **event_name**：イベント種別（purchase, add_to_cart など）
+- **event_params**：イベントパラメータ（ARRAY型）
+- **user_pseudo_id**：匿名ユーザーID
+- **collected_traffic_source.manual_medium**：流入媒体（cpc, organic など）
+- **collected_traffic_source.manual_source**：流入元（google, email など）
 
-:::message
-`ga_session_id` はテーブルのトップレベルには存在しません。`UNNEST(event_params)` を使って `event_params` 配列の中から取り出す必要があります。この点は後述のSQLで実際に示します。直接 `ga_session_id` と書いてもエラーになるためご注意ください。
-:::
+> `ga_session_id` はテーブルのトップレベルには存在しません。`UNNEST(event_params)` を使って `event_params` 配列の中から取り出す必要があります。この点は後述のSQLで実際に示します。直接 `ga_session_id` と書いてもエラーになるためご注意ください。
 
 クーポン利用の判定には、`purchase` イベントの `coupon` パラメータを参照します。このパラメータも同様に `UNNEST(event_params)` 経由で取得します。
-
----
 
 ## SQLでカニバリゼーションを数値化する
 
@@ -163,11 +148,7 @@ ORDER BY user_type, coupon_flag;
 
 「既存リピーター × クーポン使用」のユーザー数が多く、「新規ユーザー × クーポン使用」が少ない場合は、クーポンが新規獲得ではなくリピーターの割引に使われている可能性が高いと判断できます。
 
-:::message
-分析の精度を高めるには、施策期間と比較期間の長さを揃えること、季節性や曜日の影響を考慮することが重要です。前年同期との比較も合わせて行うと、より信頼性の高い判断につながります。
-:::
-
----
+> 分析の精度を高めるには、施策期間と比較期間の長さを揃えること、季節性や曜日の影響を考慮することが重要です。前年同期との比較も合わせて行うと、より信頼性の高い判断につながります。
 
 ## 分析結果の読み方と次の打ち手
 
@@ -175,12 +156,10 @@ SQLで数値を出した後、どう解釈して施策に活かすかが重要�
 
 **カニバリゼーション度合いの判断目安**
 
-| 状況 | 考えられる解釈 |
-|---|---|
-| 既存リピーターのクーポン使用率が高い | カニバリゼーションの可能性が高い |
-| 自然検索流入者のクーポン使用率が高い | 広告費が不要なユーザーに割引している可能性 |
-| 新規ユーザーのクーポン使用率が高い | 獲得施策として機能している（比較的健全）|
-| クーポン期間中に購入頻度が増加している | 購買促進効果が出ている可能性がある |
+- **既存リピーターのクーポン使用率が高い**：カニバリゼーションの可能性が高い
+- **自然検索流入者のクーポン使用率が高い**：広告費が不要なユーザーに割引している可能性
+- **新規ユーザーのクーポン使用率が高い**：獲得施策として機能している（比較的健全）
+- **クーポン期間中に購入頻度が増加している**：購買促進効果が出ている可能性がある
 
 分析結果としてカニバリゼーションの傾向が見られた場合、次のような施策変更を検討する価値があります。
 
@@ -189,8 +168,6 @@ SQLで数値を出した後、どう解釈して施策に活かすかが重要�
 - **配布チャネルを目的別に分ける**：メール・LINEなど関係性のある既存顧客向けと、広告経由の新規獲得向けでクーポンの設計や割引率を変える
 
 いずれの打ち手も、変更後のデータを同じSQLで追跡し、継続的に効果を検証することをお勧めします。
-
----
 
 ## まとめ
 
@@ -204,18 +181,15 @@ SQLで数値を出した後、どう解釈して施策に活かすかが重要�
 
 データに基づく意思決定を積み重ねることで、クーポン施策の費用対効果を改善していくことができます。まずは自社のBigQueryデータでステップ1のクエリを実行してみるところからはじめてみてください。
 
-## 関連記事
-
-- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
-- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
-- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
-- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

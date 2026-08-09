@@ -1,11 +1,4 @@
----
-title: "楽天・Amazon・自社ECの売上データをBigQueryに集約して一元管理する方法"
-emoji: "🔄"
-type: "tech"
-topics: ["bigquery","ec","googlecloud","sql","dataengineering"]
-published: false
-note_only: true
----
+# 楽天・Amazon・自社ECの売上データをBigQueryに集約して一元管理する方法
 
 ## はじめに
 
@@ -14,8 +7,6 @@ note_only: true
 この方法の問題点は、時間がかかるだけでなく、転記ミスや集計基準のズレが生じやすいことです。たとえば「注文日ベース」と「出荷日ベース」で集計しているデータが混在してしまい、実態と乖離した数字で意思決定をしてしまうリスクがあります。
 
 本記事では、楽天・Amazon・自社ECの売上データをGoogle BigQueryに集約し、一元管理する仕組みの構築方法をご紹介します。難しいプログラミング知識がなくても進められるよう、ステップごとに丁寧に解説していきます。
-
----
 
 ## なぜBigQueryを選ぶのか
 
@@ -30,7 +21,7 @@ Google Analytics 4（GA4）とBigQueryは同じGoogle Cloud Platform上にある
 **Looker Studioでそのまま可視化できる**  
 BigQueryに集約したデータは、Google公式の無料BIツール「Looker Studio」と直接接続できます。ダッシュボードを作成すれば、毎朝最新の売上状況を確認するだけの運用に切り替えられます。
 
----
+<!-- ここから有料 -->
 
 ## 各チャネルのデータをBigQueryに取り込む方法
 
@@ -56,8 +47,6 @@ Amazonでは「レポート」メニューから売上レポートをダウン�
 自社ECがShopifyの場合は、公式のBigQueryコネクタが提供されており、設定画面から接続を有効にするだけでデータ転送が始まります。
 
 EC-CUBEやMagentoなどのオープンソース系ECの場合は、MySQLやPostgreSQLのデータベースから直接BigQueryにデータを転送するパイプラインを構築するケースが多くなります。Google Cloud DataflowやCloud Functionsを組み合わせる方法が一般的です。
-
----
 
 ## BigQuery上でデータを統合するテーブル設計
 
@@ -118,15 +107,11 @@ FROM `your_project.ec_dataset.mysite_orders`;
 
 このビューを作成しておくことで、以降の分析はすべて`unified_sales`テーブルに対してクエリを書くだけで済みます。
 
----
-
 ## GA4データと売上を紐づける分析クエリ
 
 BigQueryにGA4のエクスポートデータがある場合、流入元と売上を組み合わせた分析が可能です。どの広告チャネルからの訪問が売上に貢献しているかを把握するクエリ例を示します。
 
-:::message
-GA4のBigQueryエクスポートでは、`ga_session_id`は`event_params`配列の中にネストされているため、`UNNEST`を使って展開する必要があります。また流入元の情報は`collected_traffic_source`フィールドを参照します。
-:::
+> GA4のBigQueryエクスポートでは、`ga_session_id`は`event_params`配列の中にネストされているため、`UNNEST`を使って展開する必要があります。また流入元の情報は`collected_traffic_source`フィールドを参照します。
 
 ```sql
 -- 流入元別のセッション数と売上を集計する例
@@ -178,8 +163,6 @@ ORDER BY total_revenue_usd DESC;
 
 このクエリにより、「メール経由のセッションがどれだけの売上を生み出しているか」「リスティング広告とSNS広告ではどちらの転換率が高いか」といった分析が可能になります。
 
----
-
 ## Looker Studioでダッシュボードを構築する
 
 BigQueryにデータが集まったら、Looker Studioと接続してダッシュボードを作成します。手順は以下のとおりです。
@@ -197,8 +180,6 @@ BigQueryにデータが集まったら、Looker Studioと接続してダッシ�
 
 一度作成すれば、毎日自動でデータが更新されるため、朝の確認作業がグッと効率化されます。
 
----
-
 ## まとめ
 
 本記事では、楽天・Amazon・自社ECの売上データをBigQueryに集約して一元管理する方法をご紹介しました。要点を整理すると以下のとおりです。
@@ -210,18 +191,15 @@ BigQueryにデータが集まったら、Looker Studioと接続してダッシ�
 
 **次のアクション**として、まずはGoogleアカウントでBigQueryを有効化し、テスト用のプロジェクトを作成してみましょう。Google Cloud Platformの新規登録時には無料クレジットが付与されており、試験的に動かすコストはほとんどかかりません。小さく始めて、効果を確認しながら段階的に拡張していくアプローチが、運用負担を抑えながら仕組みを整えるうえで有効です。
 
-## 関連記事
-
-- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
-- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
-- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
-- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

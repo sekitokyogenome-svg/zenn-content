@@ -1,11 +1,4 @@
----
-title: "ECメルマガのクリック→購入をGA4×BigQueryで追跡してセグメント別効果を測定する"
-emoji: "📧"
-type: "tech"
-topics: ["bigquery","googleanalytics","ec","sql","advertising"]
-published: false
-note_only: true
----
+# ECメルマガのクリック→購入をGA4×BigQueryで追跡してセグメント別効果を測定する
 
 ## はじめに
 
@@ -15,8 +8,6 @@ GA4には、BigQueryへのデータエクスポート機能があります。こ
 
 本記事では、GA4のBigQueryエクスポートデータを使って「メルマガクリック→セッション→購入」の一連の流れをSQLで追跡する方法を解説します。BigQueryの操作経験が浅い方でも理解しやすいよう、クエリの意図を丁寧に説明しながら進めます。
 
----
-
 ## GA4のBigQueryエクスポートデータ構造を理解する
 
 分析を始める前に、GA4がBigQueryへ書き出すテーブル構造の基本を押さえておきましょう。
@@ -25,19 +16,15 @@ GA4のBigQueryエクスポートでは、1日1テーブル（`events_YYYYMMDD`�
 
 よく参照する主要フィールドを以下に示します。
 
-| フィールド名 | 内容 |
-|---|---|
-| `event_name` | イベント名（`page_view`, `purchase` など） |
-| `event_params` | イベントパラメータの配列（UNNEST必須） |
-| `user_pseudo_id` | ユーザーを識別する匿名ID |
-| `collected_traffic_source.manual_medium` | URLパラメータのutm_medium |
-| `collected_traffic_source.manual_source` | URLパラメータのutm_source |
+- **`event_name`**：イベント名（`page_view`, `purchase` など）
+- **`event_params`**：イベントパラメータの配列（UNNEST必須）
+- **`user_pseudo_id`**：ユーザーを識別する匿名ID
+- **`collected_traffic_source.manual_medium`**：URLパラメータのutm_medium
+- **`collected_traffic_source.manual_source`**：URLパラメータのutm_source
 
-:::message
-`ga_session_id` はトップレベルのフィールドとして存在しません。`event_params` の中にキー名 `ga_session_id` で格納されているため、`UNNEST` を使って取り出す必要があります。後述のSQLでその方法を確認してください。
-:::
+> `ga_session_id` はトップレベルのフィールドとして存在しません。`event_params` の中にキー名 `ga_session_id` で格納されているため、`UNNEST` を使って取り出す必要があります。後述のSQLでその方法を確認してください。
 
----
+<!-- ここから有料 -->
 
 ## メルマガ経由セッションを抽出するSQL
 
@@ -99,8 +86,6 @@ ORDER BY conversion_rate_pct DESC;
 
 `your_project.analytics_XXXXXXXX` の部分は、実際のGCPプロジェクトIDとGA4プロパティIDに置き換えてください。`_TABLE_SUFFIX` で期間を絞ることでスキャン量を抑えられます。
 
----
-
 ## セグメント別の購入金額を集計するSQL
 
 コンバージョン率だけでなく、購入金額（revenue）をセグメント別に把握することで、費用対効果の高い配信先が見えてきます。GA4の `purchase` イベントには `value`（購入金額）と `currency` パラメータが含まれています。
@@ -147,8 +132,6 @@ ORDER BY total_revenue DESC;
 ```
 
 `avg_order_value`（平均注文金額）をキャンペーン間で比較することで、単価の高い顧客を動かしたキャンペーンが特定できます。クーポン訴求と新商品告知では平均注文金額に差が出ることが多く、施策の方向性を考える参考になります。
-
----
 
 ## リピーター・新規ユーザー別に効果を分ける
 
@@ -203,11 +186,7 @@ GROUP BY utm_campaign, user_segment
 ORDER BY utm_campaign, user_segment;
 ```
 
-:::message
-`user_first_touch_timestamp` はユーザーが初めてサイトを訪れた日時をマイクロ秒で表します。`TIMESTAMP_MICROS()` で変換してから差分を計算してください。30日という閾値はビジネスの特性に合わせて調整してください。
-:::
-
----
+> `user_first_touch_timestamp` はユーザーが初めてサイトを訪れた日時をマイクロ秒で表します。`TIMESTAMP_MICROS()` で変換してから差分を計算してください。30日という閾値はビジネスの特性に合わせて調整してください。
 
 ## Looker Studioで定期モニタリングする
 
@@ -220,8 +199,6 @@ SQLによる集計が完成したら、BigQueryのビュー（VIEW）として�
 
 Looker Studioを使えばノーコードでグラフを作成でき、チームへの共有も容易です。配信担当者がSQLを書けなくても、定点観測できる環境を用意することが継続的な改善につながります。
 
----
-
 ## まとめ
 
 本記事では、GA4のBigQueryエクスポートデータを使ってメルマガ経由の購入を追跡し、セグメント別に効果を測定するSQLを紹介しました。要点を整理します。
@@ -233,18 +210,15 @@ Looker Studioを使えばノーコードでグラフを作成でき、チーム�
 
 次のアクションとして、まずは直近1〜2ヶ月分のデータでキャンペーン別CVRを比較してみてください。数値を見ることで、どのセグメントへの配信を強化すべきかの仮説が立てやすくなります。
 
-## 関連記事
-
-- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
-- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
-- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
-- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

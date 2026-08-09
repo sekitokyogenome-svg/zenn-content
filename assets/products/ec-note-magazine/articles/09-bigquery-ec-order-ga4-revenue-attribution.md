@@ -1,11 +1,4 @@
----
-title: "BigQueryでEC受注データ×GA4データを結合して正確な売上帰属分析をする"
-emoji: "🔗"
-type: "tech"
-topics: ["bigquery","googleanalytics","ec","sql","dataengineering"]
-published: false
-note_only: true
----
+# BigQueryでEC受注データ×GA4データを結合して正確な売上帰属分析をする
 
 ## はじめに
 
@@ -14,8 +7,6 @@ note_only: true
 たとえば、月次の売上レポートをGA4で見ると100万円のコンバージョンが記録されているのに、実際の受注システムでは80万円しか確定していない——こういったズレが生じると、広告の費用対効果の算出も、流入経路ごとの売上貢献度の評価も、正確に行えません。
 
 そこで本記事では、BigQueryに蓄積されたGA4のイベントデータと、EC受注システムから連携した受注テーブルを結合し、「どの流入経路が、実際にいくらの売上をもたらしたか」を分析するSQLの実装方法を解説します。非エンジニアの方にも読んでいただけるよう、データの構造や考え方からていねいに説明していきます。
-
----
 
 ## なぜEC受注データとGA4を結合する必要があるのか
 
@@ -29,7 +20,7 @@ GA4単体でのコンバージョン計測にはいくつかの限界があり�
 
 こうした課題を解決するために、受注管理システム（OMS）や基幹システムの受注テーブルをBigQueryにエクスポートし、GA4のセッションデータと結合することで、「実態に基づいた売上帰属分析」が実現できます。
 
----
+<!-- ここから有料 -->
 
 ## データ構造を理解する：GA4のBigQueryエクスポートとは
 
@@ -63,24 +54,18 @@ WHERE
   event_name = 'session_start'
 ```
 
-:::message
-`ga_session_id` は `event_params` の中にネストされているため、`UNNEST(event_params)` を用いてサブクエリ形式で取得します。`event.ga_session_id` のように直接参照することはできません。
-:::
-
----
+> `ga_session_id` は `event_params` の中にネストされているため、`UNNEST(event_params)` を用いてサブクエリ形式で取得します。`event.ga_session_id` のように直接参照することはできません。
 
 ## EC受注データをBigQueryに取り込む
 
 GA4データと結合するには、受注テーブルもBigQueryに用意する必要があります。一般的なEC受注テーブルには以下のようなカラムが含まれます。
 
-| カラム名 | 内容 |
-|---|---|
-| order_id | 受注ID（主キー） |
-| user_pseudo_id | GA4のユーザーID（クッキーベース） |
-| ga_session_id | GA4のセッションID |
-| order_amount | 確定受注金額 |
-| order_status | 受注ステータス（confirmed / cancelled など） |
-| ordered_at | 受注日時 |
+- **order_id**：受注ID（主キー）
+- **user_pseudo_id**：GA4のユーザーID（クッキーベース）
+- **ga_session_id**：GA4のセッションID
+- **order_amount**：確定受注金額
+- **order_status**：受注ステータス（confirmed / cancelled など）
+- **ordered_at**：受注日時
 
 GA4との結合キーとして `user_pseudo_id` と `ga_session_id` の両方を使用します。`user_pseudo_id` だけでは同一ユーザーの複数セッションが区別できないため、セッションIDとの組み合わせが重要です。
 
@@ -98,8 +83,6 @@ gtag('get', 'G-XXXXXXXXXX', 'session_id', (sessionId) => {
 ```
 
 取得したIDは注文データと一緒にDBに保存し、定期的にBigQueryへエクスポートします。
-
----
 
 ## GA4データと受注データを結合するSQL
 
@@ -170,13 +153,9 @@ ORDER BY
   total_revenue DESC
 ```
 
-:::message
-`LEFT JOIN` を使用しているのは、GA4のIDが受注データに紐付いていないケース（電話注文など）も漏らさずカウントするためです。その場合、`traffic_source` は `(direct)` として集計されます。
-:::
+> `LEFT JOIN` を使用しているのは、GA4のIDが受注データに紐付いていないケース（電話注文など）も漏らさずカウントするためです。その場合、`traffic_source` は `(direct)` として集計されます。
 
 このクエリを実行すると、「Google / CPC（検索広告）からの受注が月間XX万円」「メールマガジンからの受注がXX万円」といった形で、流入経路ごとの実売上が把握できます。
-
----
 
 ## 分析結果をLooker Studioで可視化する
 
@@ -228,8 +207,6 @@ GROUP BY
   traffic_medium
 ```
 
----
-
 ## まとめ
 
 本記事では、BigQueryを使ってEC受注データとGA4データを結合し、流入経路ごとの実売上を分析する方法を解説しました。要点を整理します。
@@ -242,18 +219,15 @@ GROUP BY
 
 次のアクションとして、まずは自社の受注テーブルにGA4の `user_pseudo_id` と `ga_session_id` を保存できているかを確認してみてください。このIDが揃っていれば、本記事のSQLをベースにした分析がすぐに始められます。
 
-## 関連記事
-
-- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
-- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
-- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
-- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

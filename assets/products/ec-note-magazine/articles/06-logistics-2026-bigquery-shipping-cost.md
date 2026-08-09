@@ -1,11 +1,4 @@
----
-title: "2024年問題に備えるデータ基盤―配送コストをBigQueryで最適化する"
-emoji: "🚛"
-type: "idea"
-topics: ["bigquery","ec","sql","dataengineering","googlecloud"]
-published: false
-note_only: true
----
+# 物流2024年問題で上がった配送コストを、BigQueryで商品別に可視化する
 
 ## はじめに
 
@@ -14,8 +7,6 @@ note_only: true
 一方で、多くの中小EC事業者がデータを活用した意思決定に踏み出せていないのも現実です。「Googleアナリティクス（GA4）は入れているが、数字の見方がわからない」「配送の数字は配送会社の明細しか見ていない」というケースは珍しくありません。しかし、GA4のデータをBigQueryに連携し、注文データと組み合わせることで、どの流入経路・どの商品カテゴリが配送コストを圧迫しているかを把握できるようになります。
 
 本記事では、BigQueryを活用して配送コストを可視化・分析する方法を、非エンジニアの方にも理解しやすいよう丁寧にご説明します。SQLのサンプルも掲載していますので、エンジニアや外部パートナーへの依頼時の参考としても活用していただけます。
-
----
 
 ## なぜ配送コストの「見える化」が急務なのか
 
@@ -27,23 +18,27 @@ note_only: true
 
 こうした問題は、注文データと配送コストデータをひもづけて初めて見えてきます。ECカートのCSVを毎月手作業で集計している場合、分析に工数がかかりすぎて「わかってはいるが対処できない」状態になりがちです。BigQueryを活用すると、データの蓄積・集計・可視化を自動化でき、月次レポートの作成時間を大幅に短縮できます。
 
----
+<!-- ここから有料 -->
 
 ## BigQueryで配送コストを分析するためのデータ設計
 
 BigQueryによる配送コスト分析では、主に以下のデータソースを連携させます。
 
-| データソース | 内容 | 連携方法 |
-|---|---|---|
-| GA4（BigQueryエクスポート） | 流入元・セッション・購買イベント | GA4管理画面から設定 |
-| ECカート注文データ | 注文ID・商品・金額・エリア | CSVインポートまたはAPI |
-| 配送会社の請求データ | 送り状番号・重量・配送料 | CSVインポート |
+**GA4（BigQueryエクスポート）**
+- 内容: 流入元・セッション・購買イベント
+- 連携方法: GA4管理画面から設定
+
+**ECカート注文データ**
+- 内容: 注文ID・商品・金額・エリア
+- 連携方法: CSVインポートまたはAPI
+
+**配送会社の請求データ**
+- 内容: 送り状番号・重量・配送料
+- 連携方法: CSVインポート
 
 GA4のBigQueryエクスポートは、GA4管理画面の「BigQueryのリンク」から設定することで、毎日自動的にデータが送られてきます。エクスポートされたデータは `プロジェクトID.analytics_XXXXXXXXX.events_YYYYMMDD` という形式のテーブルに格納されます。
 
 注文データや配送データは、まずBigQueryのストレージ（GCS）経由でインポートするか、Cloud Functionsを使ってAPIから自動取り込みする方法が一般的です。最初はCSVの手動インポートから始め、慣れてきたら自動化を検討するとよいでしょう。
-
----
 
 ## 流入経路別・配送コスト分析のSQLサンプル
 
@@ -115,13 +110,9 @@ ORDER BY
   total_shipping_cost DESC
 ```
 
-:::message
-`your_project` や `analytics_XXXXXXXXX`、`your_project.dataset.shipping_costs` の部分は、ご自身のGCPプロジェクトIDおよびテーブル名に置き換えてください。日付範囲の `_TABLE_SUFFIX` も分析対象期間に合わせて調整してください。
-:::
+> `your_project` や `analytics_XXXXXXXXX`、`your_project.dataset.shipping_costs` の部分は、ご自身のGCPプロジェクトIDおよびテーブル名に置き換えてください。日付範囲の `_TABLE_SUFFIX` も分析対象期間に合わせて調整してください。
 
 このクエリを実行すると、たとえば「Meta広告経由の注文は配送コスト比率が高い」「自然検索経由は平均配送コストが低い」といった傾向が見えてきます。広告費の投資対効果を評価する際に、配送コストを考慮に入れることで、より実態に即した判断が可能になります。
-
----
 
 ## 商品カテゴリ別の配送コスト分析で値付けを見直す
 
@@ -158,8 +149,6 @@ ORDER BY
 
 このような分析を行うと、「見かけの粗利率は高いが、重量があるため配送コストが高く、実質利益率が低い商品」を特定できます。その商品については価格改定・送料別途設定・梱包の見直しといった対策を検討する材料になります。
 
----
-
 ## LookerStudioでダッシュボード化して継続的に監視する
 
 SQLでの分析結果は、Google LookerStudio（旧データポータル）と接続することで、グラフやカード形式のダッシュボードとして関係者に共有できます。BigQueryとLookerStudioの連携は、LookerStudioの「データソース追加」からBigQueryを選択するだけで設定でき、専門的なサーバー設定は不要です。
@@ -172,8 +161,6 @@ SQLでの分析結果は、Google LookerStudio（旧データポータル）と�
 - **エリア別・平均配送費**：遠距離エリアへの送料無料適用条件を設定する判断材料にする
 
 ダッシュボードが整備されると、毎月の定例会議やEC担当者のモニタリング業務が大幅に効率化されます。「今月も配送コストが高い気がするが、何が原因かわからない」という状態から、「◯◯カテゴリの売上が伸びたことで配送コストが増加した」という原因特定まで、データで会話できるようになります。
-
----
 
 ## まとめ
 
@@ -188,18 +175,15 @@ SQLでの分析結果は、Google LookerStudio（旧データポータル）と�
 
 最初の一歩として、GA4のBigQueryエクスポートを有効化するだけでも、将来のデータ活用の幅が大きく広がります。まだ設定されていない場合は、GA4管理画面の「BigQueryのリンク」から今日にでも試してみることをお勧めします。
 
-## 関連記事
-
-- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
-- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
-- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
-- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

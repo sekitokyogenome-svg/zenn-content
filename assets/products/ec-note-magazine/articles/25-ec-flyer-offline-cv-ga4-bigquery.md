@@ -1,11 +1,4 @@
----
-title: "ECの同梱チラシ施策効果をGA4のオフラインCV連携×BigQueryで測定する"
-emoji: "📄"
-type: "idea"
-topics: ["bigquery","googleanalytics","ec","sql","advertising"]
-published: false
-note_only: true
----
+# ECの同梱チラシ施策効果をGA4のオフラインCV連携×BigQueryで測定する
 
 ## はじめに
 
@@ -27,17 +20,23 @@ https://your-ec-site.jp/coupon?utm_source=flyer&utm_medium=print&utm_campaign=fl
 
 各パラメータの意味は次の通りです。
 
-| パラメータ | 設定値（例） | 意味 |
-|---|---|---|
-| utm_source | flyer | 流入元（チラシ） |
-| utm_medium | print | メディア種別（印刷物） |
-| utm_campaign | flyer_2025summer | キャンペーン名 |
+**utm_source**
+- 設定値（例）: flyer
+- 意味: 流入元（チラシ）
+
+**utm_medium**
+- 設定値（例）: print
+- 意味: メディア種別（印刷物）
+
+**utm_campaign**
+- 設定値（例）: flyer_2025summer
+- 意味: キャンペーン名
 
 クーポンコードも忘れずに設定しておきましょう。注文時に入力されたクーポンコードをGA4のカスタムイベントとして送信するか、後述のオフラインCV連携で注文データとして取り込むことで、チラシ経由の購入を明確に識別できます。
 
-:::message
-UTMパラメータはGoogleのCampaign URL Builderを使うと入力ミスを防げます。チラシごとにcampaign値を変えておくと、時期や同梱商品別の比較も可能になります。
-:::
+> UTMパラメータはGoogleのCampaign URL Builderを使うと入力ミスを防げます。チラシごとにcampaign値を変えておくと、時期や同梱商品別の比較も可能になります。
+
+<!-- ここから有料 -->
 
 ## GA4のオフラインコンバージョン連携の仕組み
 
@@ -126,9 +125,7 @@ ORDER BY
   total_revenue DESC;
 ```
 
-:::message
-`collected_traffic_source.manual_medium` および `manual_source` はGA4のBigQueryエクスポートスキーマ（2023年以降）で利用可能なフィールドです。旧来の `traffic_source.medium` はセッション単位ではなく初回流入を指すため、キャンペーン計測には前者をお使いください。
-:::
+> `collected_traffic_source.manual_medium` および `manual_source` はGA4のBigQueryエクスポートスキーマ（2023年以降）で利用可能なフィールドです。旧来の `traffic_source.medium` はセッション単位ではなく初回流入を指すため、キャンペーン計測には前者をお使いください。
 
 このクエリを実行すると、キャンペーン名ごとのセッション数・購入者数・売上合計が一覧で確認できます。複数チラシを展開している場合はcampaignの値を変えておくことで、施策ごとの比較が容易になります。
 
@@ -167,9 +164,7 @@ ROI = (チラシ経由売上合計 - チラシコスト) / チラシコスト ×
 
 AppleのITP（Intelligent Tracking Prevention）により、SafariではCookieの有効期限が短縮される場合があります。チラシからのQRアクセスがSafariに集中している場合、セッション情報が消える前に購入まで至らないと計測から漏れるリスクがあります。サーバーサイドでのga_session_id取得・保存を検討することで、この影響を抑えられます。
 
-:::message
-計測の精度は「100%の捕捉」を目指すよりも、「一定の方法論で継続的に比較できる状態」を作ることが重要です。施策ごとに同じ条件で計測することで、相対的な改善効果を判断できます。
-:::
+> 計測の精度は「100%の捕捉」を目指すよりも、「一定の方法論で継続的に比較できる状態」を作ることが重要です。施策ごとに同じ条件で計測することで、相対的な改善効果を判断できます。
 
 ## まとめ
 
@@ -182,18 +177,15 @@ AppleのITP（Intelligent Tracking Prevention）により、SafariではCookie�
 
 最初の一歩として、次回のチラシ同梱前にQRコードのUTMパラメータを設定するだけでも、計測の精度は大きく変わります。段階的に仕組みを整えながら、データに基づいたチラシ施策の最適化を進めていただければと思います。
 
-## 関連記事
-
-- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
-- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
-- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
-- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

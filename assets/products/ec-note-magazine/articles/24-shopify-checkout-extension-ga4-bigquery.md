@@ -1,11 +1,4 @@
----
-title: "Shopifyのチェックアウト拡張機能のイベントをGA4×BigQueryで分析する"
-emoji: "🛒"
-type: "tech"
-topics: ["shopify","googleanalytics","bigquery","ec","javascript"]
-published: false
-note_only: true
----
+# Shopifyのチェックアウト拡張機能のイベントをGA4×BigQueryで分析する
 
 ## はじめに
 
@@ -14,8 +7,6 @@ Shopifyでストアを運営していると、「カートに入れたのに購�
 そこで注目されるのが、**Shopifyのチェックアウト拡張機能（Checkout Extensions）** です。これはShopify Plusをはじめとするプランで利用できる機能で、チェックアウト画面のUI拡張だけでなく、ユーザーの行動イベントをカスタムで送信することが可能です。このイベントデータをGA4に連携し、さらにBigQueryへエクスポートすることで、高精度な購買行動の分析基盤を構築できます。
 
 本記事では、Shopifyのチェックアウト拡張機能で発生するカスタムイベントをGA4に送信し、BigQueryで分析するまでの流れを解説します。ECサイトの改善施策を検討されているご担当者様や、計測環境の整備を進めたいWebコンサルタントの方を想定した内容です。コードサンプルも掲載しますが、技術的な背景知識がなくても全体の流れを把握いただけるよう、概念の説明も丁寧に盛り込んでいます。
-
----
 
 ## チェックアウト拡張機能でカスタムイベントを送信する
 
@@ -40,11 +31,9 @@ extension("Checkout::DeliveryAddress::RenderBefore", (root, api) => {
 
 ここで注意が必要なのは、Shopifyのチェックアウトページはサードパーティスクリプトの実行に制限があるという点です。`gtag`の呼び出しが可能かどうかは、ストアの設定やShopifyのバージョン（Hydrogen / 通常Storefront）によって異なります。まずは開発者ツールのコンソールで`window.gtag`が参照できるか確認してから実装を進めることをお勧めします。
 
-:::message
-Shopify Plusプラン未満の場合、チェックアウト拡張機能の一部機能が制限されることがあります。利用可能なAPIは公式ドキュメントで最新情報をご確認ください。
-:::
+> Shopify Plusプラン未満の場合、チェックアウト拡張機能の一部機能が制限されることがあります。利用可能なAPIは公式ドキュメントで最新情報をご確認ください。
 
----
+<!-- ここから有料 -->
 
 ## GA4でカスタムイベントを受け取る設定
 
@@ -61,8 +50,6 @@ GA4の管理画面から「プロダクトリンク」→「BigQueryリンク」
 **3. BigQueryのテーブル構成を把握する**
 
 GA4からBigQueryにエクスポートされるデータは、`events_YYYYMMDD`という形式のテーブルに格納されます。各行が1イベントに対応しており、イベントパラメータは`event_params`という繰り返しフィールド（RECORD型）に格納されています。
-
----
 
 ## BigQueryでチェックアウトイベントを集計するSQL
 
@@ -115,13 +102,9 @@ ORDER BY
   checkout_step;
 ```
 
-:::message
-`your_project.analytics_XXXXXXXXX`の部分は、実際のGCPプロジェクトIDとGA4プロパティIDに置き換えてください。プロパティIDはGA4の管理画面で確認できます。
-:::
+> `your_project.analytics_XXXXXXXXX`の部分は、実際のGCPプロジェクトIDとGA4プロパティIDに置き換えてください。プロパティIDはGA4の管理画面で確認できます。
 
 このSQLを実行することで、「日別・チェックアウトステップ別・流入元別のセッション数」が一覧で取得できます。たとえば、organic検索からの流入セッションが配送情報入力で多く離脱しているといった傾向が見えてくれば、そのステップのUI改善や送料表示の見直しといったアクションにつなげることができます。
-
----
 
 ## ファネル分析でボトルネックを特定する
 
@@ -173,8 +156,6 @@ FROM funnel;
 
 このような分析を行うことで、「配送方法選択から決済情報入力への遷移率が低い」といった具体的なボトルネックを数値で把握することができます。対策を講じた後に同じSQLで計測し直すことで、改善効果の検証も行えます。
 
----
-
 ## Looker Studioとの連携でレポートを可視化する
 
 BigQueryで集計したデータは、Looker Studio（旧データポータル）と連携することで、グラフや表として視覚的に表示できます。Looker StudioはGoogleのBIツールで、BigQueryをデータソースとして直接接続できるため、SQLの知識がない担当者でも最新のレポートを閲覧できる環境が作れます。
@@ -187,11 +168,7 @@ BigQueryで集計したデータは、Looker Studio（旧データポータル�
 
 特に「チェックアウトステップ別のセッション数」を棒グラフで並べると、どのステップで人数が大きく減っているかが一目で分かります。週次・月次の定期レポートとして関係者に共有する場合も、Looker Studioのリンクを渡すだけで最新データを参照できるため便利です。
 
-:::message
-Looker StudioからBigQueryへのクエリは実行のたびにコストが発生します。頻繁に参照するデータはBigQueryの「スケジュールされたクエリ」で事前に集計テーブルを作成しておくとコストを抑えられます。
-:::
-
----
+> Looker StudioからBigQueryへのクエリは実行のたびにコストが発生します。頻繁に参照するデータはBigQueryの「スケジュールされたクエリ」で事前に集計テーブルを作成しておくとコストを抑えられます。
 
 ## まとめ
 
@@ -205,18 +182,15 @@ Looker StudioからBigQueryへのクエリは実行のたびにコストが発�
 
 チェックアウトフローの離脱率改善は、広告費を増やさずに売上を伸ばすための重要な取り組みです。まずはBigQueryへのエクスポート設定から着手し、データを蓄積しながら分析の精度を高めていくことをお勧めします。
 
-## 関連記事
-
-- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
-- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
-- [中小ECのLTV分析をGA4×BigQueryで無料構築する方法【SQLテンプレ付き】](https://zenn.dev/web_benriya/articles/ec-ltv-analysis-ga4-bigquery-free)
-- [EC売上が下がったとき最初に確認すべきBigQueryクエリ5選](https://zenn.dev/web_benriya/articles/ec-revenue-drop-bigquery-queries-checklist)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

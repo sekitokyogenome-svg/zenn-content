@@ -1,11 +1,4 @@
----
-title: "ECのギフト需要をGA4×BigQueryで時系列分析して在庫計画に反映する"
-emoji: "🎁"
-type: "idea"
-topics: ["bigquery","googleanalytics","ec","sql","datanalysis"]
-published: false
-note_only: true
----
+# ECのギフト需要をGA4×BigQueryで時系列分析して在庫計画に反映する
 
 ## はじめに
 
@@ -28,6 +21,8 @@ GA4とBigQueryを組み合わせることで、過去の購買データや行動
 GA4でギフト需要を正確に分析するには、「ギフト用購入」と「自分用購入」を区別できるデータが理想的です。たとえば、ギフトラッピング選択時にカスタムイベントを送信したり、注文フォームの「ギフトとして贈る」チェックボックスの選択状態をパラメータとして送信したりする設計が有効です。
 
 ただし、そのようなデータがない場合でも、イベント時期に合わせた売上推移や、ギフト関連キーワードで検索して流入したユーザーの行動を分析することで、需要のパターンを把握することは十分可能です。
+
+<!-- ここから有料 -->
 
 ## 月別・週別の売上推移をBigQueryで時系列分析する
 
@@ -88,9 +83,7 @@ ORDER BY
 
 このクエリで11月1日〜12月25日の日別注文数を年度比較できます。2年分のデータを重ねて見ることで、需要が例年どのタイミングから増加し始めるかのパターンが見えてきます。
 
-:::message
-需要の立ち上がりを特定できたら、そのタイミングの2〜3週間前を「仕入れ確定期限」として社内ルール化しておくと、在庫不足のリスクを大幅に低減できます。
-:::
+> 需要の立ち上がりを特定できたら、そのタイミングの2〜3週間前を「仕入れ確定期限」として社内ルール化しておくと、在庫不足のリスクを大幅に低減できます。
 
 ## 流入元別にギフト購入者の行動を分析する
 
@@ -161,9 +154,7 @@ print(f"発注点: {reorder_point:.1f} 件")
 
 分析結果はBigQueryのビューとして保存し、Looker Studioのダッシュボードで常時モニタリングできる状態にしておくと、運営チーム全体でデータを共有しやすくなります。特に「今年の需要立ち上がりが昨年比でどうか」をリアルタイムに確認できる体制を整えておくと、仕入れタイミングの判断材料として活用できます。
 
-:::message
-Looker StudioとBigQueryを接続する際は、クエリの実行頻度に注意が必要です。データの更新頻度に合わせてキャッシュ設定を適切に行うことで、BigQueryの課金コストを抑えることができます。
-:::
+> Looker StudioとBigQueryを接続する際は、クエリの実行頻度に注意が必要です。データの更新頻度に合わせてキャッシュ設定を適切に行うことで、BigQueryの課金コストを抑えることができます。
 
 ## まとめ
 
@@ -178,18 +169,15 @@ Looker StudioとBigQueryを接続する際は、クエリの実行頻度に注�
 
 データ分析に慣れていない方でも、一度ダッシュボードを整備してしまえば、毎年のギフトシーズン前に振り返るだけで在庫計画の精度を高められます。ぜひ本記事を参考に、データ活用の取り組みを進めてみてください。
 
-## 関連記事
-
-- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
-- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
-- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
-- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

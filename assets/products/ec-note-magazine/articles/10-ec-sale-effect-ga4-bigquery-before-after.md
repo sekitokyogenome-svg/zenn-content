@@ -1,11 +1,4 @@
----
-title: "ECのセール施策効果をGA4×BigQueryでbefore/after比較する分析テンプレート"
-emoji: "🏷️"
-type: "tech"
-topics: ["bigquery","googleanalytics","ec","sql","lookerstudio"]
-published: false
-note_only: true
----
+# ECのセール施策効果をGA4×BigQueryでbefore/after比較する分析テンプレート
 
 ## はじめに
 
@@ -25,6 +18,8 @@ GA4の標準レポートでも期間比較は可能ですが、カスタムの�
 - 分析結果をLookerStudioに接続してダッシュボード化できる
 
 GA4のBigQueryエクスポートを有効にしていない場合は、GA4の管理画面から「BigQueryのリンク設定」を行い、Googleクラウドプロジェクトと接続してください。エクスポートが開始されると、`analytics_XXXXXXXXX.events_YYYYMMDD`形式のテーブルにイベントデータが蓄積されていきます。
+
+<!-- ここから有料 -->
 
 ## 分析に必要なデータ構造の理解
 
@@ -47,9 +42,7 @@ SELECT
 
 `ga_session_id`は`event_params`をUNNESTして取得する必要があります。また、流入元の情報は`collected_traffic_source.manual_medium`および`collected_traffic_source.manual_source`カラムから取得します。これはGA4の仕様上、セッション単位の流入元情報が格納されている場所であるため、この形式を使うことをお勧めします。
 
-:::message
-`collected_traffic_source`はGA4のBigQueryエクスポートで比較的新しく追加されたカラム群です。古いエクスポートデータが存在する場合、期間によってはNULLになることがあります。その場合は`traffic_source.medium`を代替として使用してください。
-:::
+> `collected_traffic_source`はGA4のBigQueryエクスポートで比較的新しく追加されたカラム群です。古いエクスポートデータが存在する場合、期間によってはNULLになることがあります。その場合は`traffic_source.medium`を代替として使用してください。
 
 ## SQLテンプレート：セール前後の主要KPIを比較する
 
@@ -109,9 +102,7 @@ ORDER BY
 
 このクエリを実行すると、期間ごとのセッション数・購入件数・CVR・売上が横並びで確認できます。セール期間中のCVRがbefore期と比較してどのように変化したかを数値で把握することが、次の施策判断の基礎となります。
 
-:::message
-`your_project.analytics_XXXXXXXXX`の部分は、BigQueryのデータセット名に置き換えてください。GA4の管理画面の「BigQueryのリンク」設定画面でプロジェクトIDとデータセットIDを確認できます。
-:::
+> `your_project.analytics_XXXXXXXXX`の部分は、BigQueryのデータセット名に置き換えてください。GA4の管理画面の「BigQueryのリンク」設定画面でプロジェクトIDとデータセットIDを確認できます。
 
 ## 流入元別の効果測定：どのチャネルがセール集客に貢献したか
 
@@ -188,9 +179,7 @@ LookerStudioでの接続手順は以下の通りです。
 
 特に有効なのは、`period`をディメンションとしてグループ棒グラフに設定し、CVRと売上を同時に表示するレイアウトです。視覚的にseasonalityとセール効果を分離して報告資料に使える形に仕上げられます。
 
-:::message
-LookerStudioからBigQueryへのクエリは課金対象になります。大規模なデータを参照する場合はBigQueryのビューやマテリアライズドビューを活用し、クエリのスキャン量を抑えることをお勧めします。
-:::
+> LookerStudioからBigQueryへのクエリは課金対象になります。大規模なデータを参照する場合はBigQueryのビューやマテリアライズドビューを活用し、クエリのスキャン量を抑えることをお勧めします。
 
 ## まとめ
 
@@ -204,18 +193,15 @@ ECのセール施策効果を客観的に評価するためのbefore/after分析
 
 まず手元のデータで「1つ前のセール期間」を対象にクエリを実行してみることから始めてみてください。数字が揃うと、次のセール企画の解像度が上がります。
 
-## 関連記事
-
-- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
-- [チャネル別ROASをBigQueryで集計してLooker Studioに可視化する](https://zenn.dev/web_benriya/articles/bigquery-channel-roas-looker-studio)
-- [BigQueryでEC商品別の粗利×CVR×流入数をまとめた利益ダッシュボードを作った](https://zenn.dev/web_benriya/articles/bigquery-ec-product-profit-cvr-dashboard)
-- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

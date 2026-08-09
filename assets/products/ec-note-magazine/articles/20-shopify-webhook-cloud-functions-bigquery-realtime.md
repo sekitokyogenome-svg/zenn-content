@@ -1,11 +1,4 @@
----
-title: "ShopifyのWebhook × Cloud Functions × BigQueryでリアルタイム売上基盤を作る"
-emoji: "⚡"
-type: "tech"
-topics: ["shopify","googlecloud","bigquery","python","dataengineering"]
-published: false
-note_only: true
----
+# ShopifyのWebhook × Cloud Functions × BigQueryでリアルタイム売上基盤を作る
 
 ## はじめに
 
@@ -15,8 +8,6 @@ ShopifyにはWebhookという仕組みがあり、注文・キャンセル・顧
 
 本記事では、ShopifyのWebhookをトリガーとして、Cloud Functions（Python）でデータを受け取り、BigQueryへ格納するまでの一連の流れを解説します。エンジニアでない方でも概要をつかめるよう、コードの意味を丁寧に説明しながら進めます。
 
----
-
 ## Shopify Webhookとは何か
 
 WebhookはShopify側からの「プッシュ通知」です。通常のAPIでは、こちらから定期的に「新しい注文はありますか？」と問い合わせる（ポーリング）必要がありますが、Webhookでは「注文が入ったら自動で通知する」という仕組みになっています。
@@ -25,7 +16,7 @@ Shopifyの管理画面（設定 → 通知 → Webhook）から、通知を送�
 
 送られてくるデータには、注文ID・商品名・金額・顧客情報・配送先・割引コードなど、受注に関わるほぼすべての情報が含まれています。これをそのまま保存しておけば、後からどんな切り口でも分析できる生データになります。
 
----
+<!-- ここから有料 -->
 
 ## Cloud Functionsで受信エンドポイントを作る
 
@@ -93,11 +84,7 @@ def shopify_webhook(request):
     return ("OK", 200)
 ```
 
-:::message
-`SHOPIFY_WEBHOOK_SECRET` はShopify管理画面のWebhook設定画面で確認できる署名シークレットです。Cloud FunctionsのSecret Manager連携、またはランタイム環境変数として設定してください。コード内にハードコーディングしないよう注意してください。
-:::
-
----
+> `SHOPIFY_WEBHOOK_SECRET` はShopify管理画面のWebhook設定画面で確認できる署名シークレットです。Cloud FunctionsのSecret Manager連携、またはランタイム環境変数として設定してください。コード内にハードコーディングしないよう注意してください。
 
 ## BigQueryのテーブルを設計する
 
@@ -122,8 +109,6 @@ OPTIONS(
 
 本番運用ではパーティショニング（`ingested_at` を基準にした日付パーティション）やクラスタリング（`financial_status` など）を設定すると、クエリコストを大幅に削減できます。
 
----
-
 ## Cloud Functionsのデプロイと設定
 
 ローカル環境にGoogle Cloud SDKを導入済みであれば、以下のコマンドでデプロイできます。
@@ -141,11 +126,7 @@ gcloud functions deploy shopify-webhook \
 
 デプロイが完了すると、`https://asia-northeast1-your-project-id.cloudfunctions.net/shopify-webhook` のようなURLが発行されます。このURLをShopifyのWebhook設定画面の「URL」欄に貼り付け、対象イベントとして `orders/create` を選択して保存します。
 
-:::message
-`--allow-unauthenticated` を指定するとインターネットから誰でもアクセスできる状態になります。ShopifyのHMAC署名検証をコード内で実装していれば不正データの書き込みは防げますが、Cloud Armorなどでさらに保護する方法も検討してください。
-:::
-
----
+> `--allow-unauthenticated` を指定するとインターネットから誰でもアクセスできる状態になります。ShopifyのHMAC署名検証をコード内で実装していれば不正データの書き込みは防げますが、Cloud Armorなどでさらに保護する方法も検討してください。
 
 ## BigQueryで売上を集計・分析する
 
@@ -189,8 +170,6 @@ GROUP BY
 
 このセッションIDを使ってShopifyの注文データとJOINすれば、「どのチャネルが売上に貢献しているか」を数値で把握できます。
 
----
-
 ## まとめ
 
 本記事では、ShopifyのWebhookをトリガーとして、Cloud Functions（Python）でデータを受け取り、BigQueryへリアルタイムに格納する構成を解説しました。
@@ -203,18 +182,15 @@ GROUP BY
 
 次のアクションとして、まずはShopify開発ストアとGoogle Cloudの無料枠を活用して小規模なプロトタイプを作ってみることをお勧めします。データが蓄積されてきたら、Looker Studioでダッシュボードを構築すると、経営判断に活かせるリアルタイム可視化環境が整います。
 
-## 関連記事
-
-- [BigQueryでGA4データをdbtで管理する入門](https://zenn.dev/web_benriya/articles/bigquery-ga4-dbt-management-intro)
-- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
-- [GA4のBigQueryエクスポート完全設定ガイド【2026年版】](https://zenn.dev/web_benriya/articles/ga4-bigquery-export-setup-guide-2026)
-- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

@@ -1,11 +1,4 @@
----
-title: "ECの商品レビュー数×売上の関係をBigQueryで定量分析した結果"
-emoji: "⭐"
-type: "idea"
-topics: ["bigquery","ec","sql","googleanalytics","datanalysis"]
-published: false
-note_only: true
----
+# ECの商品レビュー数×売上の関係をBigQueryで定量分析した結果
 
 ## はじめに
 
@@ -27,6 +20,8 @@ BigQueryを使うメリットは大きく3点あります。
 
 初期設定の手間はかかりますが、一度基盤を整えると繰り返し活用できるため、データドリブンな施策判断が格段にやりやすくなります。
 
+<!-- ここから有料 -->
+
 ## 前提となるデータ準備
 
 本記事では、以下の2つのデータソースが利用可能であることを前提とします。
@@ -36,12 +31,10 @@ BigQueryを使うメリットは大きく3点あります。
 
 レビューサマリーテーブルには、少なくとも以下のカラムが含まれている想定です。
 
-| カラム名 | 内容 |
-|---|---|
-| item_id | 商品ID（GA4のitem_idと一致させる） |
-| review_count | 総レビュー件数 |
-| avg_rating | 平均評価点 |
-| category | 商品カテゴリ |
+- **item_id**：商品ID（GA4のitem_idと一致させる）
+- **review_count**：総レビュー件数
+- **avg_rating**：平均評価点
+- **category**：商品カテゴリ
 
 GA4のBigQueryエクスポートがまだ設定されていない場合は、GA4の管理画面から「BigQueryのリンク設定」を行ってください（無料枠の範囲内で利用できます）。
 
@@ -160,18 +153,25 @@ ORDER BY
 
 このクエリを実行すると、例えば以下のような傾向が見えてきます（あくまで一例であり、自社データでの結果は異なります）。
 
-| レビュー件数 | 対象商品数 | 平均CVR |
-|---|---|---|
-| 0件 | 120 | 0.8% |
-| 1〜4件 | 85 | 1.4% |
-| 5〜9件 | 40 | 2.1% |
-| 10件以上 | 25 | 3.2% |
+**0件**
+- 対象商品数: 120
+- 平均CVR: 0.8%
+
+**1〜4件**
+- 対象商品数: 85
+- 平均CVR: 1.4%
+
+**5〜9件**
+- 対象商品数: 40
+- 平均CVR: 2.1%
+
+**10件以上**
+- 対象商品数: 25
+- 平均CVR: 3.2%
 
 このような数値が出た場合、「10件以上のレビューがある商品のCVRは0件商品の約4倍程度高い傾向にある」という定性的な仮説を、自社データで裏付けることができます。
 
-:::message
-SQLの `SAFE_DIVIDE` 関数はゼロ除算を防ぐためのものです。`purchase_count / view_count` と書くとview_countが0のときにエラーになるため、BigQueryでは必ず `SAFE_DIVIDE` を使うことをお勧めします。
-:::
+> SQLの `SAFE_DIVIDE` 関数はゼロ除算を防ぐためのものです。`purchase_count / view_count` と書くとview_countが0のときにエラーになるため、BigQueryでは必ず `SAFE_DIVIDE` を使うことをお勧めします。
 
 ## 流入元別にレビュー効果の差を見る
 
@@ -239,18 +239,15 @@ ORDER BY f.medium, review_bucket;
 
 次のアクションとして、まずはGA4のBigQueryエクスポートを設定し、本記事のSQLを自社データで試してみることをお勧めします。テーブル名やカラム名を自社の構成に合わせて調整するだけで、同様の分析が再現できます。定量的なエビデンスをもとにレビュー獲得施策を立案することで、施策の効果測定も格段にしやすくなります。
 
-## 関連記事
-
-- [GA4イベントパラメータをUNNESTで展開するSQLパターン集](https://zenn.dev/web_benriya/articles/ga4-bigquery-unnest-sql-patterns)
-- [ユーザーの閲覧から購入までの日数分布をBigQueryで可視化する](https://zenn.dev/web_benriya/articles/bigquery-ga4-days-to-purchase-distribution)
-- [BigQueryでGA4のページ別滞在時間を正しく集計する方法](https://zenn.dev/web_benriya/articles/bigquery-ga4-page-time-on-page)
-- [Claude CodeでBigQueryのSQLを自然言語から自動生成する](https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-auto-generate)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。

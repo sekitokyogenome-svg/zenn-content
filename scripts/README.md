@@ -81,6 +81,11 @@ python3 scripts/queue_drafts.py --max 20
 そのため検証を通過した記事だけをキューに入れる。検証レポートが無ければ実行を拒否する。
 SQL を含まない散文のみの記事は既定で対象外（`--include-prose` で明示的に含められる）。
 
+**商材専用フラグ（`_PRODUCT_ONLY_FLAGS`）が有料商材を守る唯一のゲート。**
+`book_only: true`（J系列25本＝Zenn Books）と `note_only: true`（I系列25本＝note マガジン）を
+公開対象から外す。**これが無いと有料で売る記事がそのまま無料公開される。**
+商材を増やすときはフラグ名を `<チャネル>_only` で揃えて、この定数に追加する。
+
 投入後は `.github/workflows/zenn-staggered-publish.yml` が日次2本ずつ公開する。
 
 ### build_sql_pack.py — 販売用SQLパッケージの組み立て
@@ -162,6 +167,35 @@ Looker Studio のデータ層・プロンプト集を生成する。
 `dbt_project.yml` はどの記事にも無いのでスクリプトが生成する。
 プロファイル名は `profiles.yml.example` の最上位キーと自動で揃う。
 
+### build_note_magazine.py — 商品④（note 有料マガジン）の生成
+
+`articles/` のI系列25本から `assets/products/ec-note-magazine/` に note 用原稿を生成する。
+
+```bash
+python3 scripts/build_note_magazine.py --dry-run
+python3 scripts/build_note_magazine.py
+```
+
+**なぜI系列をnoteにするか**: 内容が EC 事業者の困りごと（在庫・返品・送料無料ライン・
+解約予兆・セール効果）で、note の読者層に直結する。Zenn（エンジニア）とは読者が違うので
+書籍とも商品①とも食い合わない。25本とも未公開なので独占性がある。
+
+このスクリプトは記事に `note_only: true` を付ける。
+`queue_drafts.py` がこれを見て無料公開の対象から外す。**これが無いと中身が無料公開される。**
+
+**変換が要る理由**: note のエディタは Zenn 記法を解釈しない。
+`:::message` は記号の羅列に、**表はパイプ区切りの文字列**になって崩れる。
+そのため `:::message`→引用、表→「**項目**：値」の箇条書き、装飾用 `---` の除去、
+frontmatter除去とH1化、CTAのnote差し替え（`utm_source=note`）を行う。
+
+有料ラインの位置は「最初の ```sql を含む `##` 見出しの直前、ただし無料は
+『はじめに』＋本題1セクションまで」。素直に最初のSQL直前で切ると無料部分が
+9〜55%とばらつき、記事の半分を無料で配るものが出るため上限を設けている。
+実測で無料部分 7〜31%（文字数ベース）に収まる。
+
+`README.md` / `magazine-description.md` は書き下ろしのため再実行しても上書きされない。
+`INDEX.md` は自動生成なので手で編集しない。
+
 ## 現状（最終実行時）
 
 | 指標 | 着手前 | 現在 |
@@ -174,7 +208,7 @@ Looker Studio のデータ層・プロンプト集を生成する。
 | 商材に載せられるSQL | — | 466本 |
 | 要修正SQL | 10本 | **0本** |
 | 要修正なしの記事 | 158/167 | **167/167** |
-| 公開キュー投入可 | 88本 | **70本**（J系列25本は書籍専用のため除外） |
+| 公開キュー投入可 | 88本 | **45本**（J系列25本＝書籍専用、I系列25本＝note専用を除外） |
 
 ### 商材の生成物
 
@@ -183,6 +217,7 @@ Looker Studio のデータ層・プロンプト集を生成する。
 | 商品① SQL 50本パック | `assets/products/sql-pack-50/` | 50本（BigQuery×GA4 25 / EC分析25）、収録元28記事 |
 | 商品② Zenn Books | `books/bigquery-ga4-operations-guide/` | 26章・137,314字・SQL64個、3,900円 |
 | 商品③ 実装キット | `assets/products/ec-data-platform-kit/` | SQL466 / Python33 / dbt10 / ビュー47 / プロンプト12、19,800円 |
+| 商品④ note マガジン | `assets/products/ec-note-magazine/` | 25本・161,744字、個別980円 / マガジン6,980円 |
 | （参考）フルカタログ | `assets/products/sql-catalog-full/` | 456本（全10カテゴリ）、収録元164記事 |
 
 収録SQLは個別に再パースして NG 0件、キット内の Python 33本は `py_compile` を通過済み。

@@ -1,11 +1,4 @@
----
-title: "ECのCS問い合わせデータをBigQueryに集約して商品改善に活かす方法"
-emoji: "💬"
-type: "tech"
-topics: ["bigquery","ec","googlecloud","sql","ai"]
-published: false
-note_only: true
----
+# ECのCS問い合わせデータをBigQueryに集約して商品改善に活かす方法
 
 ## はじめに
 
@@ -14,8 +7,6 @@ note_only: true
 CS（カスタマーサポート）への問い合わせは、お客様の生の声が詰まった貴重なデータです。しかし多くの場合、問い合わせ管理ツール・メール・チャットツールといった複数の場所に分散してしまい、集計や分析に手間がかかります。結果として「なんとなく多い気がする」という定性的な判断のみに留まり、商品改善に結びつけられないケースが多いです。
 
 本記事では、EC事業者のCS問い合わせデータをBigQueryに集約し、GA4の行動データと組み合わせて商品改善に活かす方法を、非エンジニアの方にもわかりやすく解説します。ツールの構成から実際のSQL例まで、ステップごとにご説明します。
-
----
 
 ## CS問い合わせデータをBigQueryに集約する仕組み
 
@@ -29,11 +20,9 @@ CS（カスタマーサポート）への問い合わせは、お客様の生の
 
 BigQueryへのインポートはGoogle Cloud Consoleの画面操作のみで完結できるため、SQLが書けなくても始められます。インポートするCSVに含めておくと後々便利なカラムとして、「問い合わせカテゴリ」「対象商品コード（SKU）」「チャネル（メール・チャット・電話）」「解決日時」などが挙げられます。
 
-:::message
-エクスポートするCSVのカラム名は英語（スネークケース）に統一しておくと、BigQueryのテーブル設計がシンプルになります。例：`ticket_id`、`product_sku`、`category`、`created_at`
-:::
+> エクスポートするCSVのカラム名は英語（スネークケース）に統一しておくと、BigQueryのテーブル設計がシンプルになります。例：`ticket_id`、`product_sku`、`category`、`created_at`
 
----
+<!-- ここから有料 -->
 
 ## 問い合わせカテゴリ別・商品別の集計SQL
 
@@ -61,8 +50,6 @@ LIMIT 50
 このクエリを定期的に実行してLooker Studioでグラフ化するだけでも、「問い合わせが集中している商品」が一目でわかるようになります。
 
 さらに踏み込みたい場合は、GA4のBigQueryエクスポートデータと結合し、購入後にCS問い合わせを行ったユーザーの行動パターンを追うことも可能です。
-
----
 
 ## GA4データと組み合わせて購入〜問い合わせの流れを把握する
 
@@ -97,11 +84,7 @@ WHERE
 
 このクエリで取得した`transaction_id`を、CSデータ側の注文番号と突合することで、「購入から問い合わせまでの経路」が見えてきます。たとえばSNS広告経由の購入者に返品問い合わせが集中しているなら、商品説明や広告クリエイティブの見直しを検討するきっかけになります。
 
-:::message
-GA4の`collected_traffic_source`カラムはセッションスコープのデータを保持しており、イベント単位の`traffic_source`よりも広告経由の流入を正確に把握できます。購入イベントの分析には`collected_traffic_source`の使用を推奨します。
-:::
-
----
+> GA4の`collected_traffic_source`カラムはセッションスコープのデータを保持しており、イベント単位の`traffic_source`よりも広告経由の流入を正確に把握できます。購入イベントの分析には`collected_traffic_source`の使用を推奨します。
 
 ## AIを活用して問い合わせ本文を自動分類する
 
@@ -131,8 +114,6 @@ def classify_inquiry(inquiry_text: str) -> str:
 
 このような自動分類を週次でバッチ実行するだけで、「先月は商品不良の問い合わせが前月比で増加している」といった傾向を数値で把握できるようになります。分類結果をBigQueryに蓄積しておけば、Looker Studioでのダッシュボード化もスムーズに行えます。
 
----
-
 ## 分析結果を商品改善に落とし込むフロー
 
 データを集めて分析するだけでは、実際の改善には結びつきません。重要なのは、分析結果を商品改善のアクションにどう繋げるかです。
@@ -154,8 +135,6 @@ def classify_inquiry(inquiry_text: str) -> str:
 
 このサイクルを回すことで、CS担当者の対応工数削減と顧客満足度の向上を同時に目指すことができます。問い合わせデータは「コストセンターの記録」ではなく、「商品改善のヒントが詰まったリソース」として活用できます。
 
----
-
 ## まとめ
 
 本記事では、EC事業者のCS問い合わせデータをBigQueryに集約し、商品改善に活かすための方法を解説しました。要点を整理します。
@@ -167,18 +146,15 @@ def classify_inquiry(inquiry_text: str) -> str:
 
 データ基盤の構築は「一度整えれば、あとは継続的に活用できる」ものです。最初の設計と設定に少し時間をかけることで、日々の判断をデータに基づいて行えるようになります。ぜひ自社のCS問い合わせデータを見直すきっかけにしてみてください。
 
-## 関連記事
-
-- [BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した](https://zenn.dev/web_benriya/articles/bigquery-gemini-assistant-noneng-sql-validation)
-- [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://zenn.dev/web_benriya/articles/gemini-bigquery-nl-sql-guide-2026)
-- [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://zenn.dev/web_benriya/articles/claude-code-ga4-anomaly-detection-prompt)
-- [Claude Codeに月次KPIレポートの「考察」まで書かせるプロンプト設計術](https://zenn.dev/web_benriya/articles/claude-code-monthly-kpi-insight-prompt-design)
-
 ---
 
-:::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
-:::
+この記事は「EC データ分析 実務ガイド ― 25の課題と、その解き方」の1本です。
+EC の困りごと別に全25本を収録しています。個別に読むよりマガジンの方が安く済みます。
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+GA4・BigQuery・Looker Studio の構築や設定代行も承っています。
+「自社の場合はどうすれば？」のご相談も歓迎です。
+ウェブの便利屋（ろじかる） https://logical-web.jp/?utm_source=note&utm_medium=article&utm_campaign=magazine_cta
+
+掲載の SQL は BigQuery の構文検証を通しています。ただしスキーマはプロパティごとに違うため、
+自社のデータで動かして数字が想定と合うかは必ずご確認ください。
+本記事の制作には生成 AI を利用し、構成と説明を確認したうえで公開しています。
