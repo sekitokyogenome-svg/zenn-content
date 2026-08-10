@@ -3,7 +3,7 @@ title: "BigQueryでGoogle広告×GA4データを結合してキーワード別�
 emoji: "💹"
 type: "tech"
 topics: ["bigquery","googleads","googleanalytics","sql","ec"]
-published: false
+published: true
 ---
 
 ## はじめに
