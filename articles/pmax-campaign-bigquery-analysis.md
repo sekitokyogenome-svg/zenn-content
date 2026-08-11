@@ -3,7 +3,7 @@ title: "P-MAXキャンペーンの配信実績をBigQueryで詳細分析する�
 emoji: "🎯"
 type: "tech"
 topics: ["bigquery","googleads","sql","advertising","ec"]
-published: false
+published: true
 ---
 
 ## はじめに
