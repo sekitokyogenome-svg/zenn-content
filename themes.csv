@@ -128,7 +128,7 @@ H-01,広告運用×データ基盤,Google広告データをBigQuery Data Transfe
 H-02,広告運用×データ基盤,BigQueryでGoogle広告×GA4データを結合してキーワード別の真のROASを計算する,tech,1,TRUE,2026-08-10,bigquery-google-ads-ga4-keyword-roas.md
 H-03,広告運用×データ基盤,Meta広告APIからBigQueryにデータを自動取得するPythonスクリプトの作り方,tech,2,FALSE,,meta-ads-api-bigquery-python-import.md
 H-04,広告運用×データ基盤,P-MAXキャンペーンの配信実績をBigQueryで詳細分析する方法,tech,1,TRUE,2026-08-11,pmax-campaign-bigquery-analysis.md
-H-05,広告運用×データ基盤,BigQuery × Looker Studioで広告媒体横断ROASダッシュボードを構築する全手順,tech,1,FALSE,,bigquery-looker-studio-cross-media-roas.md
+H-05,広告運用×データ基盤,BigQuery × Looker Studioで広告媒体横断ROASダッシュボードを構築する全手順,tech,1,TRUE,2026-08-12,bigquery-looker-studio-cross-media-roas.md
 H-06,広告運用×データ基盤,LINE広告×GA4×BigQueryでCPA・ROASを正確に計測する設定と集計SQL,tech,2,FALSE,,line-ads-ga4-bigquery-cpa-roas.md
 H-07,広告運用×データ基盤,TikTok広告のコンバージョンAPIをサーバーサイドGTMで実装する手順,tech,2,FALSE,,tiktok-ads-conversion-api-server-side-gtm.md
 H-08,広告運用×データ基盤,BigQueryで広告の貢献度をデータドリブンアトリビューションで再計算する,tech,3,FALSE,,bigquery-data-driven-attribution.md
