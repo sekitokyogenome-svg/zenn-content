@@ -3,7 +3,7 @@ title: "BigQuery × Looker Studioで広告媒体横断ROASダッシュボード�
 emoji: "📊"
 type: "tech"
 topics: ["bigquery","lookerstudio","googleads","advertising","ec"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -20,7 +20,7 @@ published: false
 
 ダッシュボードを構築するにあたり、まずデータの流れを整理しておきます。
 
-```
+```text
 GA4 → BigQuery（イベントデータ）
                           ↓
 広告媒体API（Google Ads / Meta Ads）→ BigQuery（広告費テーブル）
@@ -84,7 +84,7 @@ Google Ads管理画面の「ツールと設定 → データマネージャー �
 
 Meta AdsやYahoo広告など、BigQuery直接連携に対応していない媒体は、スプレッドシートで費用をまとめてBigQueryにアップロードする方法が現実的です。以下のような形式でCSVを準備してください。
 
-```
+```csv
 date,medium,source,cost
 2025-07-01,cpc,google,15000
 2025-07-01,cpc,facebook,8000
