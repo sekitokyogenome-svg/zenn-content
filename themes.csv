@@ -136,7 +136,7 @@ H-09,広告運用×データ基盤,Google広告のオフラインコンバージ
 H-10,広告運用×データ基盤,EC広告費の予算配分をBigQueryの過去データから最適化するフレームワーク,idea,2,FALSE,,ec-ads-budget-allocation-bigquery-framework.md
 H-11,広告運用×データ基盤,Yahoo!広告データをBigQueryに取り込んでGoogle広告と統合分析する方法,tech,2,FALSE,,yahoo-ads-bigquery-google-integrated-analysis.md
 H-12,広告運用×データ基盤,広告クリエイティブ別のLTVをBigQueryで追跡して勝ちパターンを見つける,idea,2,FALSE,,ad-creative-ltv-bigquery-winning-pattern.md
-H-13,広告運用×データ基盤,サーバーサイドGTM × Consent Mode v2で広告計測精度を維持゙2026年の最適解,tech,1,FALSE,,server-side-gtm-consent-mode-v2-2026.md
+H-13,広告運用×データ基盤,サーバーサイドGTM × Consent Mode v2で広告計測精度を維持゙2026年の最適解,tech,1,TRUE,2026-08-13,server-side-gtm-consent-mode-v2-2026.md
 H-14,広告運用×データ基盤,BigQueryでリスティング広告の検索クエリとGA4行動データを突合分析する,tech,2,FALSE,,bigquery-listing-ads-search-query-ga4.md
 H-15,広告運用×データ基盤,Cookie規制後EC広告効果測定をファーストパーティデータ×BigQueryで再構築する,idea,1,FALSE,,cookie-ec-ad-measurement-first-party-bigquery.md
 I-01,EC実務×データ活用,ECの在庫回転率をGA4×BigQueryで商品別に可視化して死に筋を特定する,tech,1,FALSE,,ec-inventory-turnover-bigquery-product.md
