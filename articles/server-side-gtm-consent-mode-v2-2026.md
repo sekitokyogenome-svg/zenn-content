@@ -3,7 +3,7 @@ title: "サーバーサイドGTM × Consent Mode v2で広告計測精度を維�
 emoji: "🔐"
 type: "tech"
 topics: ["gtm","googleanalytics","advertising","javascript","googlecloud"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -70,7 +70,7 @@ window.dataLayer.push({
 });
 ```
 
-同意が拒否された場合は、すべてのパラメータを `denied` にします。Consent Mode v2では、ページ読み込み時に**デフォルト値を必ず設定**しておくことが求められます。
+同意が拒否された場合は、すべてのパラメータを `denied` にします。Consent Mode v2では、ページ読み込み時に**デフォルト値を事前に設定**しておくことが求められます。
 
 ```javascript
 // ページ読み込み直後（GTMスニペットより前）に設置
