@@ -3,7 +3,7 @@ title: "Cookie規制後のEC広告効果測定をファーストパーティデ�
 emoji: "🍪"
 type: "idea"
 topics: ["bigquery","googleanalytics","advertising","ec","gtm"]
-published: false
+published: true
 ---
 
 ## はじめに
