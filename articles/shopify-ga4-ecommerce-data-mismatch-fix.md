@@ -3,7 +3,7 @@ title: "Shopify × GA4のエコマース計測でデータが合わない問題�
 emoji: "🔧"
 type: "tech"
 topics: ["googleanalytics","bigquery","ec","shopify","gtm"]
-published: false
+published: true
 ---
 
 ## はじめに
