@@ -1,0 +1,17 @@
+Shopifyに標準のGA4連携を設定しているのに、購入データが正確に取れていないという課題はありませんか？チェックアウトページへの外部スクリプト制限が強化されている今、従来のGTM設置方法では計測漏れが起きやすくなっています。
+
+今回の記事では、Shopify公式の「カスタムピクセル」を活用した高精度エコマース計測の実装手順を解説しました。
+
+・Shopifyカスタムピクセルの仕組みと、サンドボックス環境からGTMへデータを受け渡すpostMessage設計
+・GTM側でのカスタムHTMLタグとカスタムイベントトリガーの具体的な設定方法
+・GA4の拡張eコマースとしてpurchaseイベントを正しく送信するための設定ポイント
+・BigQueryでga_session_idをUNNEST経由で取得し、collected_traffic_sourceで流入元チャネル別の購入金額を集計するSQL
+・checkout_completedが発火しない、ecommerceデータが届かないなど、よくあるトラブルと対処法
+
+一度構築してしまえば、Shopifyのアップデートに左右されにくい安定した計測基盤になります。GTMプレビューモードとGA4 DebugViewを併用しながら、段階的に動作確認していく手順も記載しています。
+
+Shopify×GTM×GA4の計測精度を改善したい方は、ぜひ参考にしてください。
+
+https://zenn.dev/web_benriya/articles/shopify-gtm-ga4-custom-pixel-tracking
+
+#Shopify #GA4
