@@ -3,7 +3,7 @@ title: "Shopify×GTM×GA4でカスタムピクセルを使った高精度エコ�
 emoji: "🏷️"
 type: "tech"
 topics: ["shopify","gtm","googleanalytics","ec","javascript"]
-published: false
+published: true
 ---
 
 ## はじめに
