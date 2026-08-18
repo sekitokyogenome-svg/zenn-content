@@ -3,7 +3,7 @@ title: "BASE・STORES・ShopifyのGA4計測精度を比較検証した【2026年
 emoji: "⚖️"
 type: "tech"
 topics: ["googleanalytics","bigquery","ec","shopify","gtm"]
-published: false
+published: true
 ---
 
 ## はじめに
