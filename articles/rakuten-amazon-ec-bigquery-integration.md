@@ -3,7 +3,7 @@ title: "楽天・Amazon・自社ECの売上データをBigQueryに集約して�
 emoji: "🔄"
 type: "tech"
 topics: ["bigquery","ec","googlecloud","sql","dataengineering"]
-published: false
+published: true
 ---
 
 ## はじめに
