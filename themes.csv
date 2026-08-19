@@ -151,7 +151,7 @@ I-09,EC実務×データ活用,ECのセール施策効果をGA4×BigQueryでbefo
 I-10,EC実務×データ活用,ECメルマガのクリック→購入をGA4×BigQueryで追跡してセグメント別効果を測定する,tech,2,FALSE,,ec-email-click-purchase-ga4-bigquery.md
 I-11,EC実務×データ活用,ECの商品ページ写真枚数×CVRの相関をGA4×BigQueryで検証した,idea,3,FALSE,,ec-product-photo-cvr-ga4-bigquery-correlation.md
 I-12,EC実務×データ活用,定期購入ECの解約予兆をGA4行動ログから検知するBigQueryモデル,tech,2,FALSE,,subscription-ec-churn-bigquery-model.md
-I-13,EC実務×データ活用,樽天・Amazon・自社ECの売上データをBigQueryに集約して一元管理する方法,tech,1,FALSE,,rakuten-amazon-ec-bigquery-integration.md
+I-13,EC実務×データ活用,樽天・Amazon・自社ECの売上データをBigQueryに集約して一元管理する方法,tech,1,TRUE,2026-08-19,rakuten-amazon-ec-bigquery-integration.md
 I-14,EC実務×データ活用,ECの送料無料ラインをBigQueryの購買データから最適設定する分析手法,idea,2,FALSE,,ec-free-shipping-threshold-bigquery.md
 I-15,EC実務×データ活用,GA4×BigQueryでECクーポン施策のカニバリゼーションを検証する,tech,2,FALSE,,ga4-bigquery-ec-coupon-cannibalization.md
 I-16,EC実務×データ活用,ECの商品レビュー数×売上の関係をBigQueryで定量分析した結果,idea,3,FALSE,,ec-product-review-sales-bigquery-analysis.md
