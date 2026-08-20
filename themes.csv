@@ -164,7 +164,7 @@ I-22,EC実務×データ活用,Amazon広告とGA4自社ECデータをBigQueryで
 I-23,EC実務×データ活用,ECのギフト需要をGA4×BigQueryで時系列分析して在庫計画に反映する,idea,3,FALSE,,ec-gift-demand-ga4-bigquery-seasonal.md
 I-24,EC実務×データ活用,Shopifyのチェックアウト拡張機能のイベントをGA4×BigQueryで分析する,tech,3,FALSE,,shopify-checkout-extension-ga4-bigquery.md
 I-25,EC実務×データ活用,ECの同抱チラシ施策効果をGA4のオフラインCV連携×BigQueryで測定する,idea,3,FALSE,,ec-flyer-offline-cv-ga4-bigquery.md
-J-01,データ基盤設計・運用Tips,BigQueryのスケジュールクエリでデータマートを毎朝自動更新する設定と監視方法,tech,1,FALSE,,bigquery-scheduled-query-datamart-auto.md
+J-01,データ基盤設計・運用Tips,BigQueryのスケジュールクエリでデータマートを毎朝自動更新する設定と監視方法,tech,1,TRUE,2026-08-20,bigquery-scheduled-query-datamart-auto.md
 J-02,データ基盤設計・運用Tips,BigQueryのクエリコストを月1万円以下に押える7つの実践テクニック,tech,1,FALSE,,bigquery-query-cost-under-10k-techniques.md
 J-03,データ基盤設計・運用Tips,BigQueryのINFORMATION_SCHEMAでクエリコスト・実行履歴を自動監視する,tech,2,FALSE,,bigquery-information-schema-cost-monitoring.md
 J-04,データ基盤設計・運用Tips,BigQueryのマテリアライズドビューでGA4集計クエリを高速化した,tech,2,FALSE,,bigquery-materialized-view-ga4-speedup.md
