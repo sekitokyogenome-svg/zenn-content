@@ -3,7 +3,7 @@ title: "BigQueryのスケジュールクエリでデータマートを毎朝自�
 emoji: "⏰"
 type: "tech"
 topics: ["bigquery","sql","googlecloud","dataengineering","googleanalytics"]
-published: false
+published: true
 ---
 
 ## はじめに
