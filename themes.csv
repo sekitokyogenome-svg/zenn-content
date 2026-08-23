@@ -174,7 +174,7 @@ J-07,データ基盤設計・運用Tips,BigQueryのデータリネージ機能�
 J-08,データ基盤設計・運用Tips,BigQueryからGoogleスプレッドシートに自動出力して非エンジニアとデータ共有する,tech,1,TRUE,2026-08-22,bigquery-sheets-auto-export-data-sharing.md
 J-09,データ基盤設計・運用Tips,BigQueryのタイムトラベル機能で誤削除・誤更新からデータを復旧する方法,tech,2,FALSE,,bigquery-time-travel-data-recovery.md
 J-10,データ基盤設計・運用Tips,BigQueryのBI Engineを有効化してLooker Studioの表示速度を改善する,tech,2,FALSE,,bigquery-bi-engine-looker-studio-speedup.md
-J-11,データ基盤設計・運用Tips,GA4 BigQueryエクスポートのストリーミング vs 日次の違いと使い分け,tech,1,FALSE,,ga4-bigquery-streaming-vs-daily-export.md
+J-11,データ基盤設計・運用Tips,GA4 BigQueryエクスポートのストリーミング vs 日次の違いと使い分け,tech,1,TRUE,2026-08-23,ga4-bigquery-streaming-vs-daily-export.md
 J-12,データ基盤設計・運用Tips,BigQueryのアクセス制御をIAMで適切に設計する》チーム運用編』,tech,3,FALSE,,bigquery-iam-access-control-team.md
 J-13,データ基盤設計・運用Tips,BigQueryのクエリキャッシュの仕組みを理解してコスト効率を最大化する,tech,2,FALSE,,bigquery-query-cache-cost-efficiency.md
 J-14,データ基盤設計・運用Tips,TerraformでBigQueryのデータセット・テーブル・ビューをコード管理する,tech,3,FALSE,,terraform-bigquery-code-management.md
