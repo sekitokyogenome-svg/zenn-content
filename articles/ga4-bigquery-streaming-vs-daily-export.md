@@ -3,7 +3,7 @@ title: "GA4 BigQueryエクスポートのストリーミング vs 日次の違�
 emoji: "🔄"
 type: "tech"
 topics: ["bigquery","googleanalytics","googlecloud","sql","dataengineering"]
-published: false
+published: true
 ---
 
 ## はじめに
