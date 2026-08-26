@@ -3,7 +3,7 @@ title: "BigQuery ML × Gemini でEC顧客の購買予測モデルを構築する
 emoji: "🧠"
 type: "tech"
 topics: ["bigquery","gemini","machinelearning","ec","googlecloud"]
-published: false
+published: true
 ---
 
 ## はじめに
