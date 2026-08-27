@@ -3,7 +3,7 @@ title: "AI.GENERATE関数でBigQueryから直接Geminiを呼び出してテキ�
 emoji: "⚡"
 type: "tech"
 topics: ["bigquery","gemini","sql","googlecloud","ai"]
-published: false
+published: true
 ---
 
 ## はじめに
