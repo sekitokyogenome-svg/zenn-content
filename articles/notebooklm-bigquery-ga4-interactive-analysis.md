@@ -3,7 +3,7 @@ title: "NotebookLM × BigQueryエクスポートでGA4データを対話的に�
 emoji: "📓"
 type: "tech"
 topics: ["bigquery","googleanalytics","ai","googlecloud","datanalysis"]
-published: false
+published: true
 ---
 
 ## はじめに
