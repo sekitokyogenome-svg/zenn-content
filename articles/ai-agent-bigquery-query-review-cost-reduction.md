@@ -3,7 +3,7 @@ title: "AIエージェントにBigQueryのクエリレビューをさせてコ�
 emoji: "🤖"
 type: "tech"
 topics: ["bigquery","ai","claude","googlecloud","cost"]
-published: false
+published: true
 ---
 
 ## はじめに
