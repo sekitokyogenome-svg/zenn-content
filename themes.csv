@@ -109,7 +109,7 @@ G-07,AI×データ分析,AI.GENERATE関数でBigQueryから直接Geminiを呼び
 G-08,AI×データ分析,NotebookLM × BigQueryエクスポートでGA4データを対話的に分析する,tech,2,TRUE,2026-08-28,notebooklm-bigquery-ga4-interactive-analysis.md
 G-09,AI×データ分析,Claude Codeで競合ECサイトのSEO戦略をGA4×Search Consoleデータから逆算する,tech,3,FALSE,,claude-code-ec-seo-ga4-search-console-reverse.md
 G-10,AI×データ分析,BigQuery × Vertex AIでEC商品レコメンドエンジンを自作した話,tech,3,FALSE,,bigquery-vertex-ai-ec-recommendation.md
-G-11,AI×データ分析,AIエージェントにBigQueryのクエリレビューをさせてコスト削減した方法,tech,2,FALSE,,ai-agent-bigquery-query-review-cost-reduction.md
+G-11,AI×データ分析,AIエージェントにBigQueryのクエリレビューをさせてコスト削減した方法,tech,2,TRUE,2026-08-29,ai-agent-bigquery-query-review-cost-reduction.md
 G-12,AI×データ分析,Claude CodeのAgents SDKでEC在庫アラート→発注提案→Slack通知を全自動化した,tech,2,FALSE,,claude-agents-sdk-ec-inventory-alert-slack.md
 G-13,AI×データ分析,Gemini CLIをGA4データアナリストとして使う具体的な設定と活用例,tech,2,FALSE,,gemini-cli-ga4-analyst-setup-guide.md
 G-14,AI×データ分析,BigQuery MLの需要予測モデルでEC仕入れ量を最適化する実装手順,tech,2,FALSE,,bigquery-ml-demand-forecast-ec-inventory.md
