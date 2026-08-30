@@ -3,7 +3,7 @@ title: "Claude CodeのAgents SDKでEC在庫アラート→発注提案→Slack�
 emoji: "🔔"
 type: "tech"
 topics: ["claude","bigquery","ec","slack","ai"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -27,7 +27,7 @@ published: false
 
 在庫データは EC システム（Shopify / カラーミーショップ等）から BigQuery にエクスポートしたテーブルを前提としています。GA4 の購買イベントと突き合わせることで「売れているのに在庫が薄い商品」を優先的にアラート対象にできます。
 
-```
+```text
 [BigQuery] ──SQL集計──▶ [Python スクリプト]
                               │
                     [Claude Agents SDK]
@@ -275,7 +275,7 @@ gcloud scheduler jobs create http inventory-alert-schedule \
 
 Claude が生成する Slack メッセージは、単なるデータの羅列ではなく、担当者がすぐに行動できる形式で出力されます。以下は実際に受信したメッセージの例です。
 
-```
+```text
 📦 *本日の在庫アラート（2026-08-02 08:00 JST）*
 
 ⚠️ *発注優先度：高*
