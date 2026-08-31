@@ -3,7 +3,7 @@ title: "Gemini CLIをGA4データアナリストとして使う具体的な設�
 emoji: "💻"
 type: "tech"
 topics: ["gemini","googleanalytics","bigquery","ai","googlecloud"]
-published: false
+published: true
 ---
 
 ## はじめに
