@@ -3,7 +3,7 @@ title: "BigQuery MLの需要予測モデルでEC仕入れ量を最適化する�
 emoji: "📈"
 type: "tech"
 topics: ["bigquery","machinelearning","ec","googlecloud","sql"]
-published: false
+published: true
 ---
 
 ## はじめに
