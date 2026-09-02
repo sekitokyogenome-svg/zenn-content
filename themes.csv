@@ -113,7 +113,7 @@ G-11,AI×データ分析,AIエージェントにBigQueryのクエリレビュー
 G-12,AI×データ分析,Claude CodeのAgents SDKでEC在庫アラート→発注提案→Slack通知を全自動化した,tech,2,TRUE,2026-08-30,claude-agents-sdk-ec-inventory-alert-slack.md
 G-13,AI×データ分析,Gemini CLIをGA4データアナリストとして使う具体的な設定と活用例,tech,2,TRUE,2026-08-31,gemini-cli-ga4-analyst-setup-guide.md
 G-14,AI×データ分析,BigQuery MLの需要予測モデルでEC仕入れ量を最適化する実装手順,tech,2,TRUE,2026-09-01,bigquery-ml-demand-forecast-ec-inventory.md
-G-15,AI×データ分析,AIコーディングアシスタン3种でBigQueryのデータパイプラインを作り比べた,idea,2,FALSE,,ai-coding-assistant-bigquery-pipeline-comparison.md
+G-15,AI×データ分析,AIコーディングアシスタン3种でBigQueryのデータパイプラインを作り比べた,idea,2,TRUE,2026-09-02,ai-coding-assistant-bigquery-pipeline-comparison.md
 G-16,AI×データ分析,Claude Code × Pythonで顧客レビューを感情分析してNPS予測に使う,tech,3,FALSE,,claude-code-python-review-sentiment-nps.md
 G-17,AI×データ分析,BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した,idea,1,TRUE,2026-08-07,bigquery-gemini-assistant-noneng-sql-validation.md
 G-18,AI×データ分析,AI×BigQueryでEC商品説明文のA/Bテスト結果を自動分析・改善提案する仕組み,tech,3,FALSE,,ai-bigquery-ec-product-desc-ab-test-auto.md
