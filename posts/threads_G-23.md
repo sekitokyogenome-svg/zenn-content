@@ -1,0 +1,18 @@
+AIにSQLを書いてもらったら、数字がおかしいと感じたことはありませんか？
+ChatGPTやClaudeが生成したクエリは一見正しそうでも、実際には論理的な誤りを含んでいることがあります。
+
+GA4のBigQueryエクスポートでAIがよく犯す間違いと、それを防ぐ検証フレームワークをまとめました。
+
+・ga_session_idはトップレベルフィールドではなく、UNNEST(event_params)経由で取得が必要
+・流入元の取得にはcollected_traffic_source.manual_mediumが正しい（古いtraffic_source.mediumではない）
+・BigQueryのドライランで構文チェックをコスト0で実施できる
+・GA4管理画面の既知値と照合して論理的な正しさを確認する
+・Pythonで信頼クエリとAI生成クエリを自動比較するスクリプトも公開
+
+3ステップの検証フレームワークを導入するだけで、AI生成SQLに起因するデータ品質の問題を事前に発見できます。
+
+本番データに適用する前に一度確認いただける内容です。詳細は記事をご覧ください。
+
+https://zenn.dev/web_benriya/articles/ai-sql-verification-bigquery-framework
+
+#BigQuery #GA4
