@@ -121,7 +121,7 @@ G-19,AI×データ分析,Claude Codeに月次KPIレポートの「考察」ま�
 G-20,AI×データ分析,BigQuery × AI.EMBED関数でEC商品の類似度検索を実装する,tech,3,FALSE,,bigquery-ai-embed-ec-product-similarity.md
 G-21,AI×データ分析,Gemini in BigQuery Studioのリソース検出機能でマルチプロジェクト分析を効率化する,tech,3,FALSE,,gemini-bigquery-studio-resource-discovery.md
 G-22,AI×データ分析,Claude Code × dbtでデータ変換パイプラインのテストコードを自動生成する,tech,3,FALSE,,claude-code-dbt-pipeline-test-generation.md
-G-23,AI×データ分析,AIが生成したSQLは本当に正しいのか？BigQueryでの検証フレームワークを作った,tech,2,FALSE,,ai-sql-verification-bigquery-framework.md
+G-23,AI×データ分析,AIが生成したSQLは本当に正しいのか？BigQueryでの検証フレームワークを作った,tech,2,TRUE,2026-09-03,ai-sql-verification-bigquery-framework.md
 G-24,AI×データ分析,Claude CodeでGA4のイベント計測漏れを自動検知・修正提案する仕組み,tech,2,FALSE,,claude-code-ga4-event-tracking-gap-detection.md
 G-25,AI×データ分析,BigQuery ML × 時系列モデルARIMA_PLUSでEC売上の週次予測を自動化する,tech,2,FALSE,,bigquery-ml-arima-plus-ec-sales-forecast.md
 H-01,広告運用×データ基盤,Google広告データをBigQuery Data Transfer Serviceで自動連携する完全手順,tech,1,TRUE,2026-08-09,google-ads-bigquery-dts-setup-guide.md
