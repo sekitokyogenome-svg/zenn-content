@@ -123,7 +123,7 @@ G-21,AI×データ分析,Gemini in BigQuery Studioのリソース検出機能で
 G-22,AI×データ分析,Claude Code × dbtでデータ変換パイプラインのテストコードを自動生成する,tech,3,FALSE,,claude-code-dbt-pipeline-test-generation.md
 G-23,AI×データ分析,AIが生成したSQLは本当に正しいのか？BigQueryでの検証フレームワークを作った,tech,2,TRUE,2026-09-03,ai-sql-verification-bigquery-framework.md
 G-24,AI×データ分析,Claude CodeでGA4のイベント計測漏れを自動検知・修正提案する仕組み,tech,2,TRUE,2026-09-04,claude-code-ga4-event-tracking-gap-detection.md
-G-25,AI×データ分析,BigQuery ML × 時系列モデルARIMA_PLUSでEC売上の週次予測を自動化する,tech,2,FALSE,,bigquery-ml-arima-plus-ec-sales-forecast.md
+G-25,AI×データ分析,BigQuery ML × 時系列モデルARIMA_PLUSでEC売上の週次予測を自動化する,tech,2,TRUE,2026-09-05,bigquery-ml-arima-plus-ec-sales-forecast.md
 H-01,広告運用×データ基盤,Google広告データをBigQuery Data Transfer Serviceで自動連携する完全手順,tech,1,TRUE,2026-08-09,google-ads-bigquery-dts-setup-guide.md
 H-02,広告運用×データ基盤,BigQueryでGoogle広告×GA4データを結合してキーワード別の真のROASを計算する,tech,1,TRUE,2026-08-10,bigquery-google-ads-ga4-keyword-roas.md
 H-03,広告運用×データ基盤,Meta広告APIからBigQueryにデータを自動取得するPythonスクリプトの作り方,tech,2,FALSE,,meta-ads-api-bigquery-python-import.md
