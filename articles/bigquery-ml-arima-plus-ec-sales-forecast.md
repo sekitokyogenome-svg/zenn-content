@@ -3,7 +3,7 @@ title: "BigQuery ML × 時系列モデルARIMA_PLUSでEC売上の週次予測を
 emoji: "📊"
 type: "tech"
 topics: ["bigquery","machinelearning","ec","sql","googlecloud"]
-published: false
+published: true
 ---
 
 ## はじめに
