@@ -3,7 +3,7 @@ title: "Meta広告APIからBigQueryにデータを自動取得するPythonスク
 emoji: "📊"
 type: "tech"
 topics: ["bigquery","python","googlecloud","advertising","dataengineering"]
-published: false
+published: true
 ---
 
 ## はじめに
