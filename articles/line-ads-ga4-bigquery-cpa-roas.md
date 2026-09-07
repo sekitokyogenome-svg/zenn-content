@@ -3,7 +3,7 @@ title: "LINE広告×GA4×BigQueryでCPA・ROASを正確に計測する設定と�
 emoji: "📱"
 type: "tech"
 topics: ["bigquery","googleanalytics","advertising","sql","ec"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -20,7 +20,7 @@ published: false
 
 GA4でLINE広告の流入を正しく識別するためには、広告のリンクURLにUTMパラメータを付与することが前提となります。LINE広告管理画面でクリエイティブや広告グループを設定する際に、遷移先URLへ以下のようなパラメータを追加してください。
 
-```
+```text
 https://example.com/lp/?utm_source=line&utm_medium=cpc&utm_campaign=summer2025&utm_content=banner_A
 ```
 
@@ -53,7 +53,7 @@ UTMパラメータが設定できたら、GA4のデータをBigQueryへエクス
 
 エクスポートが開始されると、BigQuery上に以下のようなテーブル構造でデータが保存されます。
 
-```
+```text
 プロジェクトID.analytics_XXXXXXXX.events_20250801
 ```
 
@@ -65,7 +65,7 @@ BigQueryの無料枠（月10GBのクエリ処理）を超える場合は費用�
 
 ---
 
-## BIgQueryでLINE広告の流入セッションを抽出するSQL
+## BigQueryでLINE広告の流入セッションを抽出するSQL
 
 BigQueryへデータが蓄積できたら、LINE広告経由のセッションを抽出してみましょう。GA4のBigQueryエクスポートでは、流入元情報は`collected_traffic_source`フィールドに格納されています。また、`ga_session_id`を取得する際は`event_params`をUNNESTする必要があります。
 
