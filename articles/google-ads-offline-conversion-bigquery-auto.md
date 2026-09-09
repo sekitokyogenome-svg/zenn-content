@@ -3,7 +3,7 @@ title: "Google広告のオフラインコンバージョンをBigQuery経由で�
 emoji: "📥"
 type: "tech"
 topics: ["bigquery","googleads","googlecloud","sql","advertising"]
-published: false
+published: true
 ---
 
 ## はじめに
