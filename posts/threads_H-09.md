@@ -1,0 +1,17 @@
+広告経由で問い合わせがあったのに、管理画面のコンバージョン数がゼロのまま——そんな状況に心当たりはありませんか？
+
+Google広告のオフラインコンバージョンをBigQuery経由で自動化する方法を解説した記事を公開しました。
+
+・クリック時に付与されるGCLIDをフォーム／CRMに保存することで、後日の成約をGoogle広告に通知できる
+・GA4 BigQueryエクスポートからGCLIDを抽出し、CRMの成約データと結合するSQLを紹介
+・PythonとGoogle広告公式ライブラリを使い、BigQueryのデータをAPIへ自動送信するスクリプトを実装
+・Cloud Functions＋Cloud Schedulerで毎日深夜0時に自動実行する構成を解説
+・GCLIDの有効期限（90日）やコンバージョンアクションの事前設定など、運用上の注意点も整理
+
+tCPA・tROASの自動入札精度は、インポートするデータの質に直結します。手動アップロードを自動化するだけで、機械学習の最適化が継続的に機能するようになります。
+
+まずはGA4のBigQueryエクスポートが有効になっているか、GCLIDがCRMに保存されているかを確認してみてください。
+
+https://zenn.dev/web_benriya/articles/google-ads-offline-conversion-bigquery-auto
+
+#Google広告 #BigQuery
