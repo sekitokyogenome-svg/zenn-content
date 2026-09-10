@@ -3,7 +3,7 @@ title: "EC広告費の予算配分をBigQueryの過去データから最適化�
 emoji: "💰"
 type: "idea"
 topics: ["bigquery","advertising","ec","googleads","sql"]
-published: false
+published: true
 ---
 
 ## はじめに
