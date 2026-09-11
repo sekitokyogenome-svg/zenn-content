@@ -134,7 +134,7 @@ H-07,広告運用×データ基盤,TikTok広告のコンバージョンAPIをサ
 H-08,広告運用×データ基盤,BigQueryで広告の貢献度をデータドリブンアトリビューションで再計算する,tech,3,FALSE,,bigquery-data-driven-attribution.md
 H-09,広告運用×データ基盤,Google広告のオフラインコンバージョンインポートをBigQuery経由で自動化する,tech,2,TRUE,2026-09-09,google-ads-offline-conversion-bigquery-auto.md
 H-10,広告運用×データ基盤,EC広告費の予算配分をBigQueryの過去データから最適化するフレームワーク,idea,2,TRUE,2026-09-10,ec-ads-budget-allocation-bigquery-framework.md
-H-11,広告運用×データ基盤,Yahoo!広告データをBigQueryに取り込んでGoogle広告と統合分析する方法,tech,2,FALSE,,yahoo-ads-bigquery-google-integrated-analysis.md
+H-11,広告運用×データ基盤,Yahoo!広告データをBigQueryに取り込んでGoogle広告と統合分析する方法,tech,2,TRUE,2026-09-11,yahoo-ads-bigquery-google-integrated-analysis.md
 H-12,広告運用×データ基盤,広告クリエイティブ別のLTVをBigQueryで追跡して勝ちパターンを見つける,idea,2,FALSE,,ad-creative-ltv-bigquery-winning-pattern.md
 H-13,広告運用×データ基盤,サーバーサイドGTM × Consent Mode v2で広告計測精度を維持゙2026年の最適解,tech,1,TRUE,2026-08-13,server-side-gtm-consent-mode-v2-2026.md
 H-14,広告運用×データ基盤,BigQueryでリスティング広告の検索クエリとGA4行動データを突合分析する,tech,2,FALSE,,bigquery-listing-ads-search-query-ga4.md
