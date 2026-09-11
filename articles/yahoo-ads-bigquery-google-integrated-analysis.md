@@ -3,7 +3,7 @@ title: "Yahoo!広告データをBigQueryに取り込んでGoogle広告と統合�
 emoji: "🔍"
 type: "tech"
 topics: ["bigquery","advertising","googleads","sql","dataengineering"]
-published: false
+published: true
 ---
 
 ## はじめに
