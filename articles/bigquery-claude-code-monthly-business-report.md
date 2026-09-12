@@ -44,7 +44,7 @@ WITH monthly_data AS (
   SELECT
     FORMAT_DATE('%Y-%m', PARSE_DATE('%Y%m%d', event_date)) AS month,
     COUNT(DISTINCT CONCAT(
-      user_pseudo_id,
+      user_pseudo_id, '-',
       CAST((SELECT value.int_value FROM UNNEST(event_params)
             WHERE key = 'ga_session_id') AS STRING)
     )) AS sessions,
@@ -81,7 +81,7 @@ SELECT
     IFNULL(collected_traffic_source.manual_medium, '(none)')
   ) AS channel,
   COUNT(DISTINCT CONCAT(
-    user_pseudo_id,
+    user_pseudo_id, '-',
     CAST((SELECT value.int_value FROM UNNEST(event_params)
           WHERE key = 'ga_session_id') AS STRING)
   )) AS sessions,

@@ -54,7 +54,7 @@ sessions AS (
     date,
     medium,
     source,
-    COUNT(DISTINCT CONCAT(user_pseudo_id, CAST(ga_session_id AS STRING))) AS sessions
+    COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING))) AS sessions
   FROM session_base
   GROUP BY 1, 2, 3
 ),
@@ -63,7 +63,7 @@ purchases AS (
     date,
     medium,
     source,
-    COUNT(DISTINCT CONCAT(user_pseudo_id, CAST(ga_session_id AS STRING))) AS conversions
+    COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING))) AS conversions
   FROM session_base
   WHERE event_name = 'purchase'
   GROUP BY 1, 2, 3

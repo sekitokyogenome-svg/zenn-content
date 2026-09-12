@@ -53,7 +53,7 @@ weekly_metrics AS (
   SELECT
     week_start,
     CONCAT(IFNULL(source, '(direct)'), ' / ', IFNULL(medium, '(none)')) AS channel,
-    COUNT(DISTINCT CONCAT(user_pseudo_id, CAST(session_id AS STRING))) AS sessions
+    COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(session_id AS STRING))) AS sessions
   FROM sessions
   GROUP BY week_start, channel
 )

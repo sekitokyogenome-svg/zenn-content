@@ -70,7 +70,7 @@ GA4のBigQueryテーブル project.analytics_XXXXXX.events_* を使って、
 ```sql
 SELECT
   COUNT(DISTINCT CONCAT(
-    user_pseudo_id,
+    user_pseudo_id, '-',
     CAST((SELECT value.int_value FROM UNNEST(event_params)
           WHERE key = 'ga_session_id') AS STRING)
   )) AS sessions,
@@ -142,13 +142,13 @@ WITH base AS (
 )
 SELECT
   COUNT(DISTINCT CONCAT(
-    user_pseudo_id, CAST(session_id AS STRING))
+    user_pseudo_id, '-', CAST(session_id AS STRING))
   ) AS total_sessions,
   COUNTIF(event_name = 'purchase') AS purchases,
   SAFE_DIVIDE(
     COUNTIF(event_name = 'purchase'),
     COUNT(DISTINCT CONCAT(
-      user_pseudo_id, CAST(session_id AS STRING)))
+      user_pseudo_id, '-', CAST(session_id AS STRING)))
   ) AS purchase_rate,
   ROUND(AVG(
     CASE WHEN event_name = 'purchase' AND revenue > 0
@@ -157,7 +157,7 @@ SELECT
   SAFE_DIVIDE(
     COUNTIF(event_name = 'add_to_cart'),
     COUNT(DISTINCT CONCAT(
-      user_pseudo_id, CAST(session_id AS STRING)))
+      user_pseudo_id, '-', CAST(session_id AS STRING)))
   ) AS cart_add_rate
 FROM base;
 ```

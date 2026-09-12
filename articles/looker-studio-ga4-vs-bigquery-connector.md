@@ -123,7 +123,7 @@ SELECT
   traffic_source.source AS source,
   traffic_source.medium AS medium,
   COUNT(DISTINCT CONCAT(
-    user_pseudo_id,
+    user_pseudo_id, '-',
     CAST((SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS STRING)
   )) AS sessions,
   COUNT(DISTINCT user_pseudo_id) AS users,

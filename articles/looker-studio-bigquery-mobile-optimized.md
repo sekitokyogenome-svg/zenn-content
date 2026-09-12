@@ -150,7 +150,7 @@ CREATE OR REPLACE VIEW `project.dataset.mobile_dashboard_daily` AS
 SELECT
   PARSE_DATE('%Y%m%d', event_date) AS date,
   COUNT(DISTINCT CONCAT(
-    user_pseudo_id,
+    user_pseudo_id, '-',
     CAST((SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS STRING)
   )) AS sessions,
   COUNT(DISTINCT user_pseudo_id) AS users,
@@ -159,7 +159,7 @@ SELECT
   SAFE_DIVIDE(
     COUNTIF(event_name = 'purchase'),
     COUNT(DISTINCT CONCAT(
-      user_pseudo_id,
+      user_pseudo_id, '-',
       CAST((SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS STRING)
     ))
   ) AS cvr

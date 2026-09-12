@@ -110,7 +110,7 @@ flyer_sessions AS (
 )
 SELECT
   s.campaign,
-  COUNT(DISTINCT CONCAT(sp.user_pseudo_id, CAST(sp.ga_session_id AS STRING))) AS sessions,
+  COUNT(DISTINCT CONCAT(sp.user_pseudo_id, '-', CAST(sp.ga_session_id AS STRING))) AS sessions,
   COUNT(DISTINCT CASE WHEN sp.event_name = 'purchase' THEN sp.user_pseudo_id END) AS purchasers,
   SUM(CASE WHEN sp.event_name = 'purchase' THEN sp.purchase_value ELSE 0 END) AS total_revenue
 FROM

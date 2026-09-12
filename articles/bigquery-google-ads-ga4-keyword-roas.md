@@ -177,7 +177,7 @@ session_revenue AS (
 keyword_ga4 AS (
   SELECT
     s.keyword,
-    COUNT(DISTINCT CONCAT(s.user_pseudo_id, CAST(s.ga_session_id AS STRING))) AS sessions,
+    COUNT(DISTINCT CONCAT(s.user_pseudo_id, '-', CAST(s.ga_session_id AS STRING))) AS sessions,
     COALESCE(SUM(sr.session_revenue), 0) AS revenue
   FROM paid_search_sessions s
   LEFT JOIN session_revenue sr
@@ -254,7 +254,7 @@ session_revenue AS (
 keyword_ga4 AS (
   SELECT
     LOWER(TRIM(s.keyword)) AS keyword_normalized,
-    COUNT(DISTINCT CONCAT(s.user_pseudo_id, CAST(s.ga_session_id AS STRING))) AS sessions,
+    COUNT(DISTINCT CONCAT(s.user_pseudo_id, '-', CAST(s.ga_session_id AS STRING))) AS sessions,
     COALESCE(SUM(sr.session_revenue), 0) AS revenue
   FROM paid_search_sessions s
   LEFT JOIN session_revenue sr

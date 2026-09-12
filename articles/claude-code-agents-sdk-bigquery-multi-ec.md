@@ -114,7 +114,7 @@ DAILY_KPI_QUERY = """
 WITH today AS (
   SELECT
     COUNT(DISTINCT CONCAT(
-      user_pseudo_id,
+      user_pseudo_id, '-',
       CAST((SELECT value.int_value FROM UNNEST(event_params)
             WHERE key = 'ga_session_id') AS STRING)
     )) AS sessions,
@@ -128,7 +128,7 @@ WITH today AS (
 prev_week AS (
   SELECT
     COUNT(DISTINCT CONCAT(
-      user_pseudo_id,
+      user_pseudo_id, '-',
       CAST((SELECT value.int_value FROM UNNEST(event_params)
             WHERE key = 'ga_session_id') AS STRING)
     )) AS sessions,

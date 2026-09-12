@@ -42,7 +42,7 @@ WITH current_year AS (
     SUM(ecommerce.purchase_revenue) AS revenue,
     COUNTIF(event_name = 'purchase') AS purchases,
     COUNT(DISTINCT CONCAT(
-      user_pseudo_id,
+      user_pseudo_id, '-',
       CAST((SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS STRING)
     )) AS sessions
   FROM
@@ -60,7 +60,7 @@ previous_year AS (
     SUM(ecommerce.purchase_revenue) AS revenue_ly,
     COUNTIF(event_name = 'purchase') AS purchases_ly,
     COUNT(DISTINCT CONCAT(
-      user_pseudo_id,
+      user_pseudo_id, '-',
       CAST((SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS STRING)
     )) AS sessions_ly
   FROM
