@@ -162,5 +162,5 @@ ORDER BY sns_visitors DESC
 
 :::message
 「ECサイトのデータ分析基盤を構築したい」という方は、お気軽にご相談ください。
-👉 [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+[GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
 :::

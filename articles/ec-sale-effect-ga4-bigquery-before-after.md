@@ -21,7 +21,7 @@ GA4の標準レポートでも期間比較は可能ですが、カスタムの�
 - **セール前・期間中・セール後の3期間を一括比較**できる
 - **流入元（メルマガ・SNS広告・自然検索など）別**に効果を分解できる
 - **商品カテゴリや購入回数（新規/リピート）**で絞り込んだ分析が可能
-- 分析結果をLookerStudioに接続してダッシュボード化できる
+- 分析結果をLooker Studioに接続してダッシュボード化できる
 
 GA4のBigQueryエクスポートを有効にしていない場合は、GA4の管理画面から「BigQueryのリンク設定」を行い、Googleクラウドプロジェクトと接続してください。エクスポートが開始されると、`analytics_XXXXXXXXX.events_YYYYMMDD`形式のテーブルにイベントデータが蓄積されていきます。
 
@@ -171,14 +171,14 @@ LIMIT 20
 
 このクエリの結果をもとに、たとえば「メルマガ（email/newsletter）のCVRが他チャネルと比べて高い」という事実が確認できれば、次回のセールではメルマガの配信タイミングや対象リストの拡充を優先する、といった判断ができます。
 
-## LookerStudioでダッシュボード化して継続的に活用する
+## Looker Studioでダッシュボード化して継続的に活用する
 
-一度分析したクエリはBigQueryのビューとして保存しておくと、LookerStudioから毎回クエリを書かずにデータを参照できるようになります。
+一度分析したクエリはBigQueryのビューとして保存しておくと、Looker Studioから毎回クエリを書かずにデータを参照できるようになります。
 
-LookerStudioでの接続手順は以下の通りです。
+Looker Studioでの接続手順は以下の通りです。
 
 ```
-1. LookerStudio（https://lookerstudio.google.com/）を開く
+1. Looker Studio（https://lookerstudio.google.com/）を開く
 2. 「データを追加」→「BigQuery」を選択
 3. プロジェクト・データセット・テーブル（またはビュー）を選択して接続
 4. ディメンション（period、medium など）とメトリクス（sessions、revenue など）を設定
@@ -188,7 +188,7 @@ LookerStudioでの接続手順は以下の通りです。
 特に有効なのは、`period`をディメンションとしてグループ棒グラフに設定し、CVRと売上を同時に表示するレイアウトです。視覚的にseasonalityとセール効果を分離して報告資料に使える形に仕上げられます。
 
 :::message
-LookerStudioからBigQueryへのクエリは課金対象になります。大規模なデータを参照する場合はBigQueryのビューやマテリアライズドビューを活用し、クエリのスキャン量を抑えることをお勧めします。
+Looker StudioからBigQueryへのクエリは課金対象になります。大規模なデータを参照する場合はBigQueryのビューやマテリアライズドビューを活用し、クエリのスキャン量を抑えることをお勧めします。
 :::
 
 ## まとめ
@@ -199,15 +199,15 @@ ECのセール施策効果を客観的に評価するためのbefore/after分析
 - `ga_session_id`は`UNNEST(event_params)`経由で取得し、流入元は`collected_traffic_source.manual_medium/manual_source`を参照する
 - **3期間（before/during/after）の比較**により、セール効果と期間終了後の反動も把握できる
 - 流入元別の分解により、**次回施策のチャネル配分判断**が数値ベースで行える
-- BIgQueryビュー＋LookerStudioを組み合わせることで、**毎回のセール後に再利用できるテンプレート**として定着させられる
+- BIgQueryビュー＋Looker Studioを組み合わせることで、**毎回のセール後に再利用できるテンプレート**として定着させられる
 
 まず手元のデータで「1つ前のセール期間」を対象にクエリを実行してみることから始めてみてください。数字が揃うと、次のセール企画の解像度が上がります。
 
 ---
 
 :::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
 ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)

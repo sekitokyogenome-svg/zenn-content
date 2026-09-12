@@ -12,7 +12,7 @@ published: true
 
 自分が支援していた某雑貨系ECでは、売上ランキングTOP5のうち2商品が、原価率の高さと広告費を考慮すると実質赤字だったことが発覚しました。売上だけを見ていると、こういう落とし穴に気づけません。
 
-そこで作ったのが、商品別の「粗利×CVR×流入数」を一覧で確認できる利益ダッシュボードです。BigQueryで各指標を算出し、LookerStudioで可視化する仕組みを構築しました。本記事では、そのSQLと設計のポイントを紹介します。
+そこで作ったのが、商品別の「粗利×CVR×流入数」を一覧で確認できる利益ダッシュボードです。BigQueryで各指標を算出し、Looker Studioで可視化する仕組みを構築しました。本記事では、そのSQLと設計のポイントを紹介します。
 
 ---
 
@@ -203,9 +203,9 @@ ORDER BY quadrant, gross_profit DESC;
 
 ---
 
-## LookerStudioでダッシュボード化する
+## Looker Studioでダッシュボード化する
 
-BigQueryのクエリ結果をLookerStudioに接続してダッシュボードを構築します。
+BigQueryのクエリ結果をLooker Studioに接続してダッシュボードを構築します。
 
 ### ダッシュボードの構成要素
 
@@ -232,5 +232,12 @@ BigQueryのクエリ結果をLookerStudioに接続してダッシュボードを
 
 :::message
 「ECサイトのデータ分析基盤を構築したい」という方は、お気軽にご相談ください。
-👉 [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+[GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+:::
+
+---
+
+:::message
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::

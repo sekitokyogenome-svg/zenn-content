@@ -161,18 +161,18 @@ ORDER BY
 
 このクエリの結果として、たとえば「靴カテゴリはInstagram広告（medium: paid_social）経由の返品率が特に高い」といった傾向が見えてくることがあります。その場合、広告クリエイティブや商品LP上のサイズ感の説明が不十分である可能性が考えられます。
 
-## LookerStudioでダッシュボード化して継続モニタリング
+## Looker Studioでダッシュボード化して継続モニタリング
 
-一度きりの分析で終わらせず、毎月・毎週の返品率推移をモニタリングする仕組みを作るとより効果的です。BigQueryのクエリ結果をLookerStudio（旧データポータル）に接続することで、視覚的なダッシュボードを無料で作成できます。
+一度きりの分析で終わらせず、毎月・毎週の返品率推移をモニタリングする仕組みを作るとより効果的です。BigQueryのクエリ結果をLooker Studio（旧データポータル）に接続することで、視覚的なダッシュボードを無料で作成できます。
 
-**LookerStudioとの連携手順（概要）**
+**Looker Studioとの連携手順（概要）**
 
-1. LookerStudio（[lookerstudio.google.com](https://lookerstudio.google.com)）を開き、新しいレポートを作成する
+1. Looker Studio（[lookerstudio.google.com](https://lookerstudio.google.com)）を開き、新しいレポートを作成する
 2. データソースとして「BigQuery」を選択し、集計済みのビューまたはクエリを指定する
 3. 棒グラフや折れ線グラフを使って「カテゴリ別返品率」「月次推移」「流入元別比較」を配置する
 
 ```sql
--- BigQueryにビューとして保存しておくと、LookerStudioから繰り返し参照できる
+-- BigQueryにビューとして保存しておくと、Looker Studioから繰り返し参照できる
 CREATE OR REPLACE VIEW `your_project.your_dataset.v_return_rate_by_category` AS
 SELECT
   FORMAT_DATE('%Y-%m', PARSE_DATE('%Y%m%d', event_date)) AS month,
@@ -187,7 +187,7 @@ GROUP BY
 ;
 ```
 
-ビューを作成しておくと、LookerStudio側でフィルタや期間指定を柔軟に変えながら分析できます。ダッシュボードを月次レビュー資料として活用することで、施策の効果検証サイクルも回しやすくなります。
+ビューを作成しておくと、Looker Studio側でフィルタや期間指定を柔軟に変えながら分析できます。ダッシュボードを月次レビュー資料として活用することで、施策の効果検証サイクルも回しやすくなります。
 
 ## まとめ
 
@@ -196,13 +196,13 @@ GROUP BY
 - **GA4への返品イベント設計が基盤**：`item_category`・`order_id` などのパラメータを最初から設計に組み込むことが、後の分析精度を左右します
 - **カテゴリ別集計で「問題カテゴリ」を特定**：全体の平均に埋もれていた返品率の高いカテゴリが浮かび上がります
 - **流入元のクロス分析で原因の仮説を立てる**：SNS広告と自然検索では購入者のペルソナが異なり、返品率に差が出るケースがあります
-- **LookerStudioで継続モニタリング**：一度作ったビューを活用し、月次・週次で返品率を追う習慣が改善サイクルを加速させます
+- **Looker Studioで継続モニタリング**：一度作ったビューを活用し、月次・週次で返品率を追う習慣が改善サイクルを加速させます
 
 次のアクションとしては、まず自社のGA4に返品イベントが正しく設定されているかを確認することをお勧めします。BigQueryエクスポートが有効であれば、本記事のSQLをベースに集計を試してみてください。データを見ることで、感覚だけに頼らない返品対策の議論が社内でできるようになります。
 
 :::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
 ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)

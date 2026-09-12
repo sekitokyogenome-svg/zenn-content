@@ -118,9 +118,9 @@ ORDER BY
 
 ---
 
-## LookerStudioで広告効果ダッシュボードを作成する
+## Looker Studioで広告効果ダッシュボードを作成する
 
-BigQueryで集計したデータは、LookerStudio（旧データポータル）と連携してダッシュボード化することができます。LookerStudioはGoogleアカウントがあれば無料で利用でき、BigQueryをデータソースとして接続する機能が標準搭載されています。
+BigQueryで集計したデータは、Looker Studio（旧データポータル）と連携してダッシュボード化することができます。Looker StudioはGoogleアカウントがあれば無料で利用でき、BigQueryをデータソースとして接続する機能が標準搭載されています。
 
 ダッシュボードに入れておきたい指標の例を以下に挙げます。
 
@@ -131,10 +131,10 @@ BigQueryで集計したデータは、LookerStudio（旧データポータル）
 | 新規 vs リピート購入比率 | user_idの初回・再購入判定 |
 | 購入までのセッション数 | コンバージョンパスの長さ |
 
-LookerStudioでは、BigQueryに保存しておいたSQL集計ビューをデータソースとして利用すると、毎回SQLを書き直す手間がなくなります。BigQuery上にビューを作成しておき、LookerStudioからはそのビューを参照するのが運用しやすい構成です。
+Looker Studioでは、BigQueryに保存しておいたSQL集計ビューをデータソースとして利用すると、毎回SQLを書き直す手間がなくなります。BigQuery上にビューを作成しておき、Looker Studioからはそのビューを参照するのが運用しやすい構成です。
 
 :::message
-LookerStudioとBigQueryの接続は、LookerStudioの「データソースを追加」からBigQueryを選択し、プロジェクト・データセット・テーブル（またはビュー）を指定するだけです。GCPの権限設定（BigQueryデータ閲覧者ロール）が必要です。
+Looker StudioとBigQueryの接続は、Looker Studioの「データソースを追加」からBigQueryを選択し、プロジェクト・データセット・テーブル（またはビュー）を指定するだけです。GCPの権限設定（BigQueryデータ閲覧者ロール）が必要です。
 :::
 
 ---
@@ -146,13 +146,15 @@ Cookie規制によって広告計測の環境は大きく変化しています�
 - **サードパーティCookieへの依存を減らす**: GA4のファーストパーティCookieとGTMによる計測設計を整備する
 - **BigQueryエクスポートを活用する**: サンプリングなしのローデータで正確なコンバージョン把握を行う
 - **SQLで柔軟に分析する**: チャネル別・キャンペーン別の売上・CPOを自社の定義で集計する
-- **LookerStudioで可視化する**: 経営層にも伝わるダッシュボードで意思決定を支援する
+- **Looker Studioで可視化する**: 経営層にも伝わるダッシュボードで意思決定を支援する
 
 はじめから完璧な基盤を目指す必要はありません。まずはGA4のBigQueryエクスポートを有効にし、購入イベントが正しく計測されているかを確認するところから始めてみてください。データが蓄積されれば、分析の幅は自然と広がっていきます。
 
 :::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
 ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+
+関連記事: [Cookie規制後のEC広告効果測定をファーストパーティデータ×BigQueryで再構築する](https://logical-web.jp/blog/cookieless-ec-ad-measurement-first-party-bigquery/?utm_source=zenn&utm_medium=article&utm_campaign=related_article)

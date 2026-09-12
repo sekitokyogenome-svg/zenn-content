@@ -381,5 +381,14 @@ GA4のイベント設計書を自動生成する手順は以下のとおりで�
 ---
 :::message
 「Claude Codeを使ったデータ分析の自動化に興味がある」という方は、お気軽にご相談ください。
-👉 [データ分析スポットプラン](https://coconala.com/services/554778)
+[データ分析スポットプラン](https://coconala.com/services/554778)
+:::
+
+関連記事: [Claude CodeでGA4のイベント計測漏れを自動検知・修正提案する](https://logical-web.jp/blog/claude-code-ga4-event-tracking-gap-detection/?utm_source=zenn&utm_medium=article&utm_campaign=related_article)
+
+---
+
+:::message
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::

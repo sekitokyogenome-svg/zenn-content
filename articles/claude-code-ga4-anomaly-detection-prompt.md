@@ -192,11 +192,13 @@ Claude Codeへのプロンプト設計で、実際の運用でよく見られる
 
 まずは手元のGA4データで30日分のCSVを取得し、本記事のプロンプトテンプレートをそのまま試してみることをお勧めします。データと向き合う時間が大幅に短縮され、「異常を発見して終わり」から「原因を仮説立てて次の一手を打つ」サイクルへと移行していただけるはずです。
 
+関連記事: [Claude CodeにGA4の異常値を検知させて原因仮説まで出力させるプロンプト設計](https://logical-web.jp/blog/claude-code-ga4-anomaly-detection-hypothesis-prompt/?utm_source=zenn&utm_medium=article&utm_campaign=related_article)
+
 ---
 
 :::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
 ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)

@@ -195,5 +195,5 @@ GA4と広告データの結合は、広告投資の効果を正しく評価す�
 
 :::message
 「Looker Studioのダッシュボード構築を依頼したい」という方は、お気軽にご相談ください。
-👉 [Looker Studioダッシュボード作成サービス](https://coconala.com/services/419062)
+[Looker Studioダッシュボード作成サービス](https://coconala.com/services/419062)
 :::

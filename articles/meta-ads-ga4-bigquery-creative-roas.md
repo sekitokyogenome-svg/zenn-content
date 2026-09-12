@@ -223,5 +223,5 @@ Meta広告のクリエイティブ別ROAS分析は、「Meta広告マネージ�
 
 :::message
 「ECサイトのデータ分析基盤を構築したい」という方は、お気軽にご相談ください。
-👉 [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+[GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
 :::

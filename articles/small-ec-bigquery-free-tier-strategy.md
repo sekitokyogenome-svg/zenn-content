@@ -147,11 +147,13 @@ Looker Studio（旧データポータル）からBigQueryにクエリを発行�
 
 BigQueryは正しく設計することで、小規模ECサイトの分析基盤として低コストで安定運用できるサービスです。まずは分析頻度の高いレポートから設計を見直し、スキャン量の可視化を習慣づけることから始めてみてください。データ活用が進むにつれて、次のステップとして有料機能の検討も自然と見えてくるでしょう。
 
+関連記事: [小規模EC事業者がBigQueryを無料枠内で運用し続けるための設計戦略](https://logical-web.jp/blog/small-ec-bigquery-free-tier-operation-strategy/?utm_source=zenn&utm_medium=article&utm_campaign=related_article)
+
 ---
 
 :::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
 ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)

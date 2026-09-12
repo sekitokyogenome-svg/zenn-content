@@ -159,9 +159,9 @@ ORDER BY
 
 ---
 
-## LookerStudioでダッシュボード化して継続的に監視する
+## Looker Studioでダッシュボード化して継続的に監視する
 
-SQLでの分析結果は、Google LookerStudio（旧データポータル）と接続することで、グラフやカード形式のダッシュボードとして関係者に共有できます。BigQueryとLookerStudioの連携は、LookerStudioの「データソース追加」からBigQueryを選択するだけで設定でき、専門的なサーバー設定は不要です。
+SQLでの分析結果は、Google Looker Studio（旧データポータル）と接続することで、グラフやカード形式のダッシュボードとして関係者に共有できます。BigQueryとLooker Studioの連携は、Looker Studioの「データソース追加」からBigQueryを選択するだけで設定でき、専門的なサーバー設定は不要です。
 
 ダッシュボードに含めると有用な指標の例を挙げます。
 
@@ -182,7 +182,7 @@ SQLでの分析結果は、Google LookerStudio（旧データポータル）と�
 
 - GA4のBigQueryエクスポートと注文データ・配送コストデータを連携させることで、流入経路別・商品別の配送コスト分析が可能になる
 - `ga_session_id` は `UNNEST(event_params)` 経由で取得し、流入元は `collected_traffic_source.manual_medium / manual_source` を使用する
-- LookerStudioと組み合わせることで、継続的なモニタリング体制を低コストで構築できる
+- Looker Studioと組み合わせることで、継続的なモニタリング体制を低コストで構築できる
 - 分析結果は値付け・送料設定・広告予算配分の見直しに直結させることが重要
 
 最初の一歩として、GA4のBigQueryエクスポートを有効化するだけでも、将来のデータ活用の幅が大きく広がります。まだ設定されていない場合は、GA4管理画面の「BigQueryのリンク」から今日にでも試してみることをお勧めします。
@@ -190,8 +190,8 @@ SQLでの分析結果は、Google LookerStudio（旧データポータル）と�
 ---
 
 :::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
 ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)

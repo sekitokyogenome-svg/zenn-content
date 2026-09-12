@@ -207,11 +207,13 @@ Looker Studioは複数のデータソースを1つのレポートに統合でき
 
 次のアクションとしては、まず直近1〜3ヶ月分のデータで回転率を算出し、下位10〜20商品をリストアップすることをお勧めします。そのうえで、在庫処分・値引きプロモーション・仕入れ抑制のどれが適切かを個別に検討していくと、キャッシュフローの改善につながります。
 
+関連記事: [ECの在庫回転率をGA4×BigQueryで商品別に可視化して死に筋を特定する](https://logical-web.jp/blog/ec-inventory-turnover-ga4-bigquery-deadstock/?utm_source=zenn&utm_medium=article&utm_campaign=related_article)
+
 ---
 
 :::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
 ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)

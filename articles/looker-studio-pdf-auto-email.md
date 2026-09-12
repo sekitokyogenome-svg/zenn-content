@@ -83,7 +83,7 @@ Looker Studioの標準機能では対応できない要件がある場合、GAS�
 ### GASのコード例: レポートPDFをメール送信
 
 ```javascript
-function sendLookerStudioReport() {
+function sendLooker StudioReport() {
   // レポートのURL（PDF出力用パラメータ付き）
   var reportUrl = 'https://lookerstudio.google.com/reporting/REPORT_ID/page/PAGE_ID';
   var pdfUrl = reportUrl + '/export?format=pdf';
@@ -138,7 +138,7 @@ function createEmailBody() {
 3. 以下を設定
 
 ```text
-関数: sendLookerStudioReport
+関数: sendLooker StudioReport
 デプロイ: Head
 イベントソース: 時間主導型
 トリガータイプ: 週ベースのタイマー
@@ -272,5 +272,5 @@ Looker Studioのレポート自動配信は、3つのレベルで実装できま
 
 :::message
 「Looker Studioのダッシュボード構築を依頼したい」という方は、お気軽にご相談ください。
-👉 [Looker Studioダッシュボード作成サービス](https://coconala.com/services/419062)
+[Looker Studioダッシュボード作成サービス](https://coconala.com/services/419062)
 :::

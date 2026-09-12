@@ -204,8 +204,10 @@ Claude Codeで自走できるようになったとはいえ、すべてを一人
 「データは溜まっているのに活用できていない」という状態は、もったいないだけでなく、経営判断の機会損失でもあります。
 
 :::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
 ココナラからのご依頼はこちら → [ココナラでサービスを見る](https://coconala.com/services/554778)
+
+関連記事: [非エンジニアEC経営者がClaude Code × BigQueryで自走できるようになるまで](https://logical-web.jp/blog/non-engineer-ec-owner-claude-code-bigquery/?utm_source=zenn&utm_medium=article&utm_campaign=related_article)

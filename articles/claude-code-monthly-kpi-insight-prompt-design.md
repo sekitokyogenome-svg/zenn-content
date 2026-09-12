@@ -162,11 +162,13 @@ Claude Codeの出力はあくまで「たたき台」として活用し、実際
 
 月次レポートの「数字を並べるだけ」から脱却し、考察まで含めた意思決定に役立つレポートへと進化させるための一助となれば幸いです。まずは1チャネルのデータだけに絞って試してみるところから始めてみてください。
 
+関連記事: [Claude Codeに月次KPIレポートの「考察」まで書かせるプロンプト設計術](https://logical-web.jp/blog/claude-code-monthly-kpi-report-insight-prompt/?utm_source=zenn&utm_medium=article&utm_campaign=related_article)
+
 ---
 
 :::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
 ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)

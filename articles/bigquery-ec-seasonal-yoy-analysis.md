@@ -22,7 +22,7 @@ GA4の標準UIにも前年比較機能はありますが、以下の点でBigQue
 
 - **任意の粒度で集計できる**: 月別・週別・日別を自由に切り替え可能
 - **商品カテゴリ×期間のクロス分析**: 標準UIでは限界がある掛け合わせ
-- **SQL結果をそのまま仕入れ計画シートに反映**: スプレッドシートやLookerStudioとの連携が容易
+- **SQL結果をそのまま仕入れ計画シートに反映**: スプレッドシートやLooker Studioとの連携が容易
 - **サンプリングなし**: データ量が多くても正確な数値で比較できる
 
 ---
@@ -187,9 +187,9 @@ ORDER BY curr.category, curr.month;
 
 ---
 
-## LookerStudioでの可視化
+## Looker Studioでの可視化
 
-BigQueryの前年比データをLookerStudioに接続すると、売上推移のグラフ上に前年のラインを重ねて表示できます。
+BigQueryの前年比データをLooker Studioに接続すると、売上推移のグラフ上に前年のラインを重ねて表示できます。
 
 可視化のポイントは以下の通りです。
 
@@ -212,5 +212,12 @@ ECの季節変動を前年比で分析することは、仕入れ判断の精度
 
 :::message
 「ECサイトのデータ分析基盤を構築したい」という方は、お気軽にご相談ください。
-👉 [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+[GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+:::
+
+---
+
+:::message
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::

@@ -177,11 +177,13 @@ Gemini in BigQueryは、SQLに不慣れな方がデータ分析へ踏み出す�
 
 AIに任せきりにするのではなく、「AIが書いた下書きを人が確認・修正する」というプロセスを大切にすることが、精度の高い分析につながります。まずは小さな分析から試してみてください。
 
+関連記事: [Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】](https://logical-web.jp/blog/gemini-in-bigquery-natural-language-sql-2026/?utm_source=zenn&utm_medium=article&utm_campaign=related_article)
+
 ---
 
 :::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
 ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)

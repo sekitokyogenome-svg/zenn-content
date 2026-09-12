@@ -172,5 +172,5 @@ GA4コネクタとBigQueryコネクタは、それぞれ異なる強みがあり
 
 :::message
 「Looker Studioのダッシュボード構築を依頼したい」という方は、お気軽にご相談ください。
-👉 [Looker Studioダッシュボード作成サービス](https://coconala.com/services/419062)
+[Looker Studioダッシュボード作成サービス](https://coconala.com/services/419062)
 :::

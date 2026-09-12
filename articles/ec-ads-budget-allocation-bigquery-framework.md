@@ -168,11 +168,13 @@ BigQueryで取得したデータをもとに、各チャネルをスコアリン
 
 次のアクションとしては、まずBigQueryでチャネル別パフォーマンスを集計するクエリを実行し、現状のデータを可視化することから始めてみてください。データの全体像が見えてくると、どこに改善余地があるかが具体的に見えてきます。
 
+関連記事: [EC広告費の予算配分をBigQueryの過去データから最適化するフレームワーク](https://logical-web.jp/blog/ec-ad-budget-allocation-bigquery-framework/?utm_source=zenn&utm_medium=article&utm_campaign=related_article)
+
 ---
 
 :::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
 ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)

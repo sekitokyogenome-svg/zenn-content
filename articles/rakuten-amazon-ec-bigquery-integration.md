@@ -209,11 +209,13 @@ BigQueryにデータが集まったら、Looker Studioと接続してダッシ�
 
 **次のアクション**として、まずはGoogleアカウントでBigQueryを有効化し、テスト用のプロジェクトを作成してみましょう。Google Cloud Platformの新規登録時には無料クレジットが付与されており、試験的に動かすコストはほとんどかかりません。小さく始めて、効果を確認しながら段階的に拡張していくアプローチが、運用負担を抑えながら仕組みを整えるうえで有効です。
 
+関連記事: [楽天・Amazon・自社ECの売上データをBigQueryに集約して一元管理する方法](https://logical-web.jp/blog/rakuten-amazon-own-ec-sales-bigquery-integration/?utm_source=zenn&utm_medium=article&utm_campaign=related_article)
+
 ---
 
 :::message
-GA4・BigQuery・LookerStudio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
-👉 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
 ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
