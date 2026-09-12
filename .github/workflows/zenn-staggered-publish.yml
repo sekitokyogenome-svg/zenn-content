@@ -16,7 +16,7 @@ on:
       max:
         description: "今回公開する最大本数"
         required: false
-        default: "2"
+        default: "3"
 
 # リポジトリへ push し返すために write 権限が必要
 permissions:
@@ -32,7 +32,7 @@ jobs:
         run: |
           python3 .github/scripts/zenn_publish_queue.py \
             --dir articles \
-            --max "${{ github.event.inputs.max || '2' }}"
+            --max "${{ github.event.inputs.max || '3' }}"
 
       - name: Commit & push if changed
         run: |
