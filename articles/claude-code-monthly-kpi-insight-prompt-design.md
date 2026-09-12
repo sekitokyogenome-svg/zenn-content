@@ -50,7 +50,7 @@ sessions AS (
     month,
     medium,
     source,
-    COUNT(DISTINCT CONCAT(user_pseudo_id, CAST(ga_session_id AS STRING))) AS sessions
+    COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING))) AS sessions
   FROM session_base
   GROUP BY 1, 2, 3
 ),

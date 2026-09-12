@@ -100,10 +100,10 @@ session_summary AS (
 )
 SELECT
   source,
-  COUNT(DISTINCT CONCAT(user_pseudo_id, CAST(session_id AS STRING))) AS sessions,
+  COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(session_id AS STRING))) AS sessions,
   SUM(purchase_count)                                                  AS purchases,
   ROUND(SUM(purchase_count) /
-        COUNT(DISTINCT CONCAT(user_pseudo_id, CAST(session_id AS STRING))) * 100, 2) AS cvr_pct
+        COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(session_id AS STRING))) * 100, 2) AS cvr_pct
 FROM session_summary
 GROUP BY source
 ORDER BY sessions DESC;

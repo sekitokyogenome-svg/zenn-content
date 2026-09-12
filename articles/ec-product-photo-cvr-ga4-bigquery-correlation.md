@@ -75,7 +75,7 @@ purchase_sessions AS (
 -- 商品URLごとにセッションCVRを算出
 SELECT
   ps.page_location,
-  COUNT(DISTINCT CONCAT(ps.user_pseudo_id, CAST(ps.session_id AS STRING))) AS total_sessions,
+  COUNT(DISTINCT CONCAT(ps.user_pseudo_id, '-', CAST(ps.session_id AS STRING))) AS total_sessions,
   COUNT(DISTINCT
     CASE WHEN pur.session_id IS NOT NULL
     THEN CONCAT(ps.user_pseudo_id, CAST(ps.session_id AS STRING))
@@ -88,7 +88,7 @@ SELECT
         THEN CONCAT(ps.user_pseudo_id, CAST(ps.session_id AS STRING))
         END
       ),
-      COUNT(DISTINCT CONCAT(ps.user_pseudo_id, CAST(ps.session_id AS STRING)))
+      COUNT(DISTINCT CONCAT(ps.user_pseudo_id, '-', CAST(ps.session_id AS STRING)))
     ) * 100, 2
   ) AS cvr_pct
 FROM

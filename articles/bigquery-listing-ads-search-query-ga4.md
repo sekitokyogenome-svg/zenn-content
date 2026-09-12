@@ -118,7 +118,7 @@ SELECT
   aq.Clicks,
   aq.Cost,
   aq.Conversions,
-  COUNT(DISTINCT CONCAT(gs.user_pseudo_id, CAST(gs.ga_session_id AS STRING))) AS ga4_sessions,
+  COUNT(DISTINCT CONCAT(gs.user_pseudo_id, '-', CAST(gs.ga_session_id AS STRING))) AS ga4_sessions,
   COUNTIF(gs.event_name = 'purchase') AS purchase_events,
   COUNTIF(gs.event_name = 'generate_lead') AS lead_events
 FROM

@@ -75,7 +75,7 @@ WITH period_data AS (
 SELECT
   period,
   IFNULL(medium, '(none)') AS medium,
-  COUNT(DISTINCT CONCAT(user_pseudo_id, CAST(ga_session_id AS STRING))) AS sessions,
+  COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING))) AS sessions,
   COUNT(DISTINCT CASE WHEN event_name = 'purchase' THEN transaction_id END) AS transactions,
   SUM(CASE WHEN event_name = 'purchase' THEN purchase_revenue END) AS revenue
 FROM

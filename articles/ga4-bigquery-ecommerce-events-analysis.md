@@ -155,7 +155,7 @@ WITH funnel AS (
   SELECT
     event_name,
     COUNT(DISTINCT CONCAT(
-      user_pseudo_id,
+      user_pseudo_id, '-',
       (SELECT CAST(value.int_value AS STRING) FROM UNNEST(event_params) WHERE key = 'ga_session_id')
     )) AS unique_sessions
   FROM

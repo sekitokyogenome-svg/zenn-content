@@ -184,11 +184,11 @@ WITH revenue_base AS (
 SELECT
   event_date,
   item_id,
-  COUNT(DISTINCT CONCAT(user_pseudo_id, CAST(ga_session_id AS STRING))) AS sessions,
+  COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING))) AS sessions,
   SUM(IF(event_name = 'purchase', revenue, 0))                          AS total_revenue,
   SAFE_DIVIDE(
     SUM(IF(event_name = 'purchase', revenue, 0)),
-    COUNT(DISTINCT CONCAT(user_pseudo_id, CAST(ga_session_id AS STRING)))
+    COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING)))
   ) AS rps
 FROM revenue_base
 WHERE item_id IS NOT NULL

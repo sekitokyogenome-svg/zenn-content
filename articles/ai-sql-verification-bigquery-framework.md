@@ -223,7 +223,7 @@ NULLが0件でなければ、その列を使った集計値はその分だけ実
 --   2. 区切り文字が無いため、別の組み合わせが同じ文字列に潰れうる
 SELECT
   COUNT(DISTINCT CONCAT(
-    user_pseudo_id,
+    user_pseudo_id, '-',
     CAST(
       (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id')
       AS STRING

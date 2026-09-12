@@ -65,7 +65,7 @@ WITH session_base AS (
 SELECT
   country,
   browser_language,
-  COUNT(DISTINCT CONCAT(user_pseudo_id, CAST(ga_session_id AS STRING))) AS session_count
+  COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING))) AS session_count
 FROM
   session_base
 GROUP BY

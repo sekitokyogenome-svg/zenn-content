@@ -86,7 +86,7 @@ session_summary AS (
 
 SELECT
   utm_campaign,
-  COUNT(DISTINCT CONCAT(user_pseudo_id, CAST(session_id AS STRING))) AS total_sessions,
+  COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(session_id AS STRING))) AS total_sessions,
   COUNTIF(purchase_count > 0) AS purchase_sessions,
   ROUND(
     SAFE_DIVIDE(COUNTIF(purchase_count > 0), COUNT(*)) * 100, 2
