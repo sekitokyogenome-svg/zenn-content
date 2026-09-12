@@ -4,7 +4,7 @@ emoji: "🔭"
 type: "tech"
 topics: ["opentelemetry", "claudecode", "bigquery", "observability", "googlecloud"]
 published: false
-publish_queue: false
+publish_queue: true
 ---
 
 ## はじめに
