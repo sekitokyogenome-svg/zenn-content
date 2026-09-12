@@ -150,3 +150,5 @@ GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承って
 :::
 
 ココナラからのご依頼はこちら → https://coconala.com/services/419062
+
+関連記事: [「作ったのに誰も見ない」を防ぐECダッシュボード設計術｜経営者が毎朝30秒で意思決定できる基準と外注判断](https://logical-web.jp/blog/ec-ceo-looker-studio-dashboard-design-guide/?utm_source=zenn&utm_medium=article&utm_campaign=related_article)
