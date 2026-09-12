@@ -76,11 +76,12 @@ ORDER BY users DESC
 
 ## 検証フレームワークの全体像
 
-AIが生成したSQLを検証するにあたって、筆者は次の3ステップのフレームワークを運用しています。
+AIが生成したSQLを検証するにあたって、筆者は次の4ステップのフレームワークを運用しています。
 
 1. **構文チェック** — BigQueryのドライランでコスト0で構文エラーを検出する
-2. **論理チェック** — 既知の値と突き合わせて数字の妥当性を確認する
-3. **差分チェック** — 既存の信頼できるレポートと比較して乖離を検出する
+2. **単体検査** — 比較対象がなくても検出できる「沈黙エラー」を潰す
+3. **論理チェック** — 既知の値と突き合わせて数字の妥当性を確認する
+4. **差分チェック** — 既存の信頼できるレポートと比較して乖離を検出する
 
 このフレームワークを使えば、AIが生成したSQLを本番データに適用する前に問題を発見できます。以下、各ステップを順番に説明します。
 
@@ -134,14 +135,92 @@ print(result)
 
 ---
 
-## ステップ2: 既知の値と突き合わせる論理チェック
+## ステップ2: 比較対象なしで沈黙エラーを検出する
+
+このあとのステップ3とステップ4は、どちらも「すでに正しいとわかっている数字」があることを前提にしています。しかし新しく作る分析には、そもそも比較対象がありません。
+
+そして厄介なことに、比較対象があっても見つけにくい誤りが2種類あります。構文は通り、エラーも出ず、それらしい数字が返ってくる——この「沈黙エラー」の代表格が **JOIN fan-out** と **NULLの扱い誤り** です。どちらも比較対象なしで検出できるので、先に潰しておきます。
+
+:::message
+このセクションは、本記事に寄せられた「構文チェックを通すだけでは、JOIN fan-outによる指標の水増しやNULLの扱い誤りが最も見逃されやすい」というご指摘を受けて追記しました。
+:::
+
+### JOIN fan-out —— 行が増えて指標が水増しされる
+
+結合先のテーブルでキーが重複していると、JOINした瞬間に行が増えます。1つの注文に明細が3行ぶら下がっていれば、注文テーブル側の売上が3倍に膨らんで集計されます。**エラーは出ません。**
+
+AIに「注文データとイベントデータを結合して」と頼むと素直にJOINを書いてくれますが、結合キーが一意かどうかまでは確認してくれません。
+
+対処は単純で、**JOINする前に「結合先（増える側）のキーが一意か」を確かめる**ことです。注文テーブルに明細テーブルを結合するなら、調べるのは明細テーブルの方です。
+
+```sql
+-- 結合先のキーが重複していないか確認する。1行でも返ってきたらfan-outする
+SELECT
+  order_id,
+  COUNT(*) AS rows_per_key
+FROM `project.dataset.order_items`
+GROUP BY order_id
+HAVING COUNT(*) > 1
+LIMIT 10
+```
+
+すでに書かれたクエリを検査する場合は、**JOINの前後で行数を比べる**のが確実です。
+
+```sql
+-- JOIN前後の行数を比較する。増えていればfan-outしている
+WITH base AS (
+  SELECT order_id, revenue
+  FROM `project.dataset.orders`
+)
+SELECT
+  (SELECT COUNT(*) FROM base) AS rows_before_join,
+  (
+    SELECT COUNT(*)
+    FROM base
+    LEFT JOIN `project.dataset.order_items` USING (order_id)
+  ) AS rows_after_join
+```
+
+:::message
+`COUNT(DISTINCT ...)`で集計していると、fan-outで増えた行が重複排除され、**水増しがかえって見えなくなります**。数字が正しく見えるぶん発見が遅れるので、検査には`COUNT(*)`を使ってください。
+:::
+
+### NULLの扱い —— 黙って行が消える
+
+BigQueryの`CONCAT`は、引数が1つでもNULLなら**結果全体がNULLになります**。そして`COUNT(DISTINCT ...)`と`SUM`はNULLを集計対象から外します。この2つが重なると、エラーを出さないまま件数や金額が減ります。
+
+実は、次のステップ3で使うセッション数のクエリがまさにこの形をしています（後述のNG例）。自分で書いた記事のサンプルコードでも踏んでいた、それくらい気づきにくい罠です。
+
+対処は、**結合キーと集計列のNULL率を先に測っておく**ことです。
+
+```sql
+-- 結合キー・集計列のNULL件数を出す
+SELECT
+  COUNT(*) AS total_events,
+  COUNTIF(user_pseudo_id IS NULL) AS null_user_pseudo_id,
+  COUNTIF(
+    (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') IS NULL
+  ) AS null_ga_session_id
+FROM `project.dataset.events_*`
+WHERE _TABLE_SUFFIX BETWEEN '20240101' AND '20240131'
+```
+
+NULLが0件でなければ、その列を使った集計値はその分だけ実態とずれています。
+
+---
+
+## ステップ3: 既知の値と突き合わせる論理チェック
 
 構文が正しくても、集計ロジックが間違っていることがあります。そこで、GA4管理画面やLooker Studioなど「すでに正しいとわかっている数値」とBigQueryの結果を比較します。
 
 たとえば、GA4管理画面で「先月のセッション数が12,000件」とわかっている場合、BigQueryで同じ期間のセッション数を集計して一致するか確認します。
 
+セッション数は`user_pseudo_id`と`ga_session_id`の組み合わせで数えるのですが、素直に書くとステップ2で触れた罠を踏みます。
+
 ```sql
--- セッション数を集計して既知の値と照合する
+-- NG: 2つの問題がある
+--   1. ga_session_idがNULLだとCONCATごとNULLになり、COUNT(DISTINCT)が黙って捨てる
+--   2. 区切り文字が無いため、別の組み合わせが同じ文字列に潰れうる
 SELECT
   COUNT(DISTINCT CONCAT(
     user_pseudo_id,
@@ -155,13 +234,35 @@ WHERE _TABLE_SUFFIX BETWEEN '20240101' AND '20240131'
   AND event_name = 'session_start'
 ```
 
+`event_name = 'session_start'`で絞っている間は`ga_session_id`がほぼ入っているため実害が出にくいのですが、**この条件を外した途端に過少カウントが始まります**。しかもエラーは出ません。
+
+区切り文字を入れ、捨てられた行数を指標の隣に並べておけば、沈黙しなくなります。
+
+```sql
+-- OK: 区切り文字を入れ、NULLで捨てられた行数を同時に出す
+WITH events AS (
+  SELECT
+    user_pseudo_id,
+    (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id
+  FROM `myproject.analytics_123456.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN '20240101' AND '20240131'
+    AND event_name = 'session_start'
+)
+SELECT
+  COUNT(DISTINCT CONCAT(user_pseudo_id, '-', CAST(ga_session_id AS STRING))) AS total_sessions,
+  COUNTIF(user_pseudo_id IS NULL OR ga_session_id IS NULL) AS dropped_rows
+FROM events
+```
+
+`dropped_rows`が0でなければ、`total_sessions`はその分だけ少なく出ています。管理画面との差を「サンプリングのせい」で片付ける前に、まずここを見てください。
+
 :::message
 GA4管理画面とBigQueryの数値は、サンプリングや処理タイミングの違いから完全には一致しないことがあります。誤差の目安は±5%程度です。それ以上乖離している場合はロジックを再確認してください。
 :::
 
 ---
 
-## ステップ3: Pythonで自動差分チェックを実装する
+## ステップ4: Pythonで自動差分チェックを実装する
 
 毎回手動で確認するのは手間がかかります。そこで、AIが生成したSQLと既存の信頼クエリを比較する自動チェックをPythonで実装しました。
 
@@ -209,11 +310,13 @@ def compare_queries(trusted_sql: str, ai_sql: str, project_id: str, threshold: f
 
 ## まとめ
 
-AIが生成したSQLは「使えるけれど、そのまま信じるのは危険」というのが本記事のメッセージです。特にGA4のBigQueryエクスポートのように複雑なスキーマを扱う場合は、以下の点を意識するだけで多くの問題を防げます。
+AIが生成したSQLは「使えるけれど、そのまま信じるのは危険」というのが本記事のメッセージです。とくに怖いのは、エラーも出ずそれらしい数字が返ってくる沈黙エラーです。特にGA4のBigQueryエクスポートのように複雑なスキーマを扱う場合は、以下の点を意識するだけで多くの問題を防げます。
 
 - `ga_session_id`は`UNNEST(event_params)`経由で取得する
 - 流入元は`collected_traffic_source.manual_medium / manual_source`を使う
-- ドライランで構文チェック → 既知値との照合 → 差分チェックの3ステップで検証する
+- **JOINする前に結合先のキーが一意か確かめる**（fan-outは指標を水増しするがエラーを出さない）
+- **`CONCAT`はNULLが1つ混じると結果全体がNULLになり、`COUNT(DISTINCT)`がそれを黙って捨てる**
+- ドライランで構文チェック → 単体検査 → 既知値との照合 → 差分チェックの4ステップで検証する
 
 AIは優秀なアシスタントですが、最終的な品質責任はデータを使う側にあります。本記事で紹介したフレームワークを活用して、AIが生成したSQLを安心して活用できる環境を整えてください。
 
