@@ -48,7 +48,7 @@ GA4のBigQueryエクスポートデータは、イベントパラメータがREC
 
 ## 転機：Claude Code × BigQuery MCPとの出会い
 
-Claude Codeには**MCP（Model Context Protocol）**という仕組みがあり、BigQueryに直接接続して、自然言語でSQLを生成・実行できます。
+Claude Codeには**MCP（Model Context Protocol）という**仕組みがあり、BigQueryに直接接続して、自然言語でSQLを生成・実行できます。
 
 これを知ったとき「本当にそんなうまくいくのか？」と半信半疑でしたが、試してみたら想像以上でした。
 

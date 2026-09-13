@@ -329,7 +329,7 @@ Looker Studioでは「キーワード別ROASの棒グラフ」「費用対売上
 本記事では、BigQueryを使ってGoogle広告のキーワード別広告費データとGA4のセッション・売上データを結合し、キーワード単位のROASを算出する方法を解説しました。要点を整理します。
 
 - **GA4のga_session_idはUNNEST(event_params)経由**で取得する必要があります
-- **流入元の判定には`collected_traffic_source.manual_medium / manual_source`**を使用します
+- **流入元の判定には`collected_traffic_source.manual_medium / manual_source`を**使用します
 - Google広告データはAPI・スプレッドシート・データパイプラインツールなどでBigQueryに取り込みます
 - **FULL OUTER JOINでGA4と広告費を結合**することで、どちらかにしかないキーワードも漏れなく確認できます
 - 結果をBigQueryビューとして保存すると、Looker Studioでのダッシュボード化がスムーズです

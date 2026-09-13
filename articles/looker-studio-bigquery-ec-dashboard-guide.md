@@ -20,7 +20,7 @@ published: true
 
 - **GA4→BigQueryエクスポート**が有効になっていること
 - BigQuery上に `analytics_XXXXXXXX.events_*` テーブルが存在すること
-- **mart層（集計済みテーブル）**の設計方針が決まっていること
+- **mart層（集計済みテーブル）の**設計方針が決まっていること
 
 :::message
 GA4→BigQueryエクスポートの設定がまだの方は、GA4管理画面の「BigQueryのリンク設定」から有効化できます。設定翌日からデータが蓄積されます。
