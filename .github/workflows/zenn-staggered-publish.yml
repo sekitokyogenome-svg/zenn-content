@@ -10,6 +10,11 @@ name: Zenn staggered publish
 on:
   schedule:
     # 毎日 00:00 UTC（= 09:00 JST）に実行
+    #
+    # ⚠️ 実測では 03:18〜03:23 UTC（12:18〜12:23 JST）に起動している。
+    #    2026-09-10 / 09-11 / 09-12 の3日連続で3時間以上の遅延。
+    #    GitHub Actions の schedule は混雑時に後ろへずれる仕様なので、設定ミスではない。
+    #    09:05 JST に見て「動いていない」と判断しないこと。
     - cron: "0 0 * * *"
   workflow_dispatch:
     inputs:
