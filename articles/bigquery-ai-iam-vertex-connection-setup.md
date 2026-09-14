@@ -329,3 +329,12 @@ gcloud projects get-iam-policy "$PROJECT_ID" \
 - 実験用と本番用で**接続を分ける**と、権限とコストを分離できる
 
 次回は Knowledge Catalog を扱います。エージェントの回答精度を左右する、地味だが最も効く部分です。
+
+---
+
+:::message
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+:::
+
+ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
