@@ -3,9 +3,7 @@ title: "BigQueryでAI機能を使うためのIAM・Vertex AI接続セットア�
 emoji: "🔐"
 type: "tech"
 topics: ["bigquery", "googlecloud", "iam", "vertexai", "gemini"]
-published: false
-publish_queue: true
-publish_order: 2
+published: true
 ---
 
 ## はじめに
