@@ -8,12 +8,12 @@ published: true
 
 ## はじめに
 
-BigQuery に AI 関連の機能が一気に増えました。`AI.GENERATE`、Conversational Analytics、Data Engineering Agent、MCP サーバー、Knowledge Catalog……名前は目に入るものの、**どれが何をするもので、自分の仕事のどこに刺さるのか**が整理されていない、という状態の方は多いと思います。私もそうでした。
+BigQuery に AI 関連の機能が一気に増えました。`AI.GENERATE`、Conversational Analytics、Data Engineering Agent、MCP サーバー、Knowledge Catalog……次々と名前が登場します。しかし**どれが何をするもので、自分の仕事のどこに刺さるのか**が整理できていない、という方は多いと思います。私もそうでした。
 
 この記事はシリーズ全48回の第1回として、**BigQuery の AI 機能を地図にする**ことを目的にします。個々の使い方は次回以降で扱うので、ここでは「何があるか」「どう選ぶか」に絞ります。
 
 :::message
-機能の GA / プレビュー状況は変化が速い領域です。本記事は 2026年7月時点で確認できた情報に基づいています。実際に採用を決める際は、公式ドキュメントで最新のステータスとリージョン対応を確認してください。
+機能の GA / プレビュー状況は変化が速い領域です。本記事は 2026年7月時点で確認できた情報に基づいています。実際に採用を決める際は、公式ドキュメントで最新のステータスとリージョン対応をご確認ください。
 :::
 
 ---
@@ -224,3 +224,12 @@ AI 関数は**処理した行ごとにモデルを呼ぶ**ため、`SELECT AI.GE
 - [Use Knowledge Catalog with BigQuery](https://docs.cloud.google.com/bigquery/docs/use-knowledge-catalog)
 - [Introduction to embeddings and vector search](https://docs.cloud.google.com/bigquery/docs/vector-search-intro)
 - [The TimesFM model | BigQuery](https://docs.cloud.google.com/bigquery/docs/timesfm-model)
+
+---
+
+:::message
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+:::
+
+ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
