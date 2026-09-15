@@ -3,9 +3,7 @@ title: "Knowledge CatalogでAIエージェントに自社のビジネス文脈�
 emoji: "📚"
 type: "tech"
 topics: ["bigquery", "googlecloud", "ai", "gemini", "dataengineering"]
-published: false
-publish_queue: true
-publish_order: 3
+published: true
 ---
 
 ## はじめに
