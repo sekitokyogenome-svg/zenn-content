@@ -193,7 +193,7 @@ F-11,フリーランス・ビジネス,"ココナラ154件、3時間で構造化
 F-12,フリーランス・ビジネス,"ココナラ7年・154件のデータから見えた、コンサル仕事の構造（分析編）",tech,1,TRUE,2026-05-08,coconala-154-structure.md
 K-01,BigQuery AIエージェント,BigQueryのAIエージェント全体像2026 — 何があって、どう使い分けるのか,tech,1,TRUE,2026-09-13,bigquery-ai-agents-landscape-2026.md
 K-02,BigQuery AIエージェント,BigQueryでAI機能を使うためのIAM・Vertex AI接続セットアップ,tech,1,TRUE,2026-09-14,bigquery-ai-iam-vertex-connection-setup.md
-K-03,BigQuery AIエージェント,Knowledge CatalogでAIエージェントに自社のビジネス文脈を教える,tech,1,FALSE,,bigquery-knowledge-catalog-business-context.md
+K-03,BigQuery AIエージェント,Knowledge CatalogでAIエージェントに自社のビジネス文脈を教える,tech,1,TRUE,2026-09-15,bigquery-knowledge-catalog-business-context.md
 K-04,BigQuery AIエージェント,ML.GENERATE_TEXTからAI.*関数へ — 何が変わり、どう移行するか,tech,1,FALSE,,bigquery-ml-generate-text-to-ai-functions.md
 K-05,BigQuery AIエージェント,AI.GENERATE完全ガイド — 引数・戻り値STRUCT・実務での使いどころ,tech,1,FALSE,,bigquery-ai-generate-complete-guide.md
 K-06,BigQuery AIエージェント,AI.GENERATE_TABLEで非構造化テキストを構造化データに変換する,tech,1,FALSE,,bigquery-ai-generate-table-structuring.md
