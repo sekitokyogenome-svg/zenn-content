@@ -3,9 +3,7 @@ title: "ML.GENERATE_TEXTからAI.*関数へ — 何が変わり、どう移行�
 emoji: "🔄"
 type: "tech"
 topics: ["bigquery", "googlecloud", "ai", "gemini", "bigqueryml"]
-published: false
-publish_queue: true
-publish_order: 4
+published: true
 ---
 
 ## はじめに
