@@ -255,3 +255,12 @@ DROP MODEL IF EXISTS `your-project.ai_lab.gemini_model`;
 - **新規は AI 関数**。既存の安定稼働システムは急いで移行しなくてよい
 - 移行は**並行稼働で比較してから**。出力の完全一致は期待しない
 - **分類・判定系は影響が大きい**。この機会に `AI.CLASSIFY` への置き換えを検討する価値がある
+
+---
+
+:::message
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+:::
+
+ここからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
