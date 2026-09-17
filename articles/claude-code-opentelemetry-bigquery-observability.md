@@ -3,8 +3,7 @@ title: "Claude CodeのOpenTelemetryをBigQueryに流してAIコーディング�
 emoji: "🔭"
 type: "tech"
 topics: ["opentelemetry", "claudecode", "bigquery", "observability", "googlecloud"]
-published: false
-publish_queue: true
+published: true
 ---
 
 ## はじめに
