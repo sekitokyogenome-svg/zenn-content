@@ -3,7 +3,7 @@ title: "AIコーディングアシスタント3種でBigQueryのデータパイ�
 emoji: "⚔️"
 type: "idea"
 topics: ["bigquery","ai","claude","gemini","dataengineering"]
-published: true
+published: false
 ---
 
 ## はじめに

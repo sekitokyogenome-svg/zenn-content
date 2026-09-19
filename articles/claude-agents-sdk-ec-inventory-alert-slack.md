@@ -3,7 +3,7 @@ title: "Claude CodeのAgents SDKでEC在庫アラート→発注提案→Slack�
 emoji: "🔔"
 type: "tech"
 topics: ["claude","bigquery","ec","slack","ai"]
-published: true
+published: false
 ---
 
 ## はじめに

@@ -3,7 +3,7 @@ title: "ChatGPT・Claude・GeminiのデータAI分析能力を実データで徹
 emoji: "⚖️"
 type: "idea"
 topics: ["ai","bigquery","googleanalytics","claude","gemini"]
-published: true
+published: false
 ---
 
 ## はじめに

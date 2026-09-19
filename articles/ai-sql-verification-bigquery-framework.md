@@ -3,7 +3,7 @@ title: "AIが生成したSQLは本当に正しいのか？BigQueryでの検証�
 emoji: "🛡️"
 type: "tech"
 topics: ["bigquery","sql","ai","claude","dataengineering"]
-published: true
+published: false
 ---
 
 ## はじめに

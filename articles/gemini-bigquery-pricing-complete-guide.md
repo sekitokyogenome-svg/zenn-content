@@ -3,7 +3,7 @@ title: "Gemini in BigQueryの料金体系を完全解説【思わぬ課金を防
 emoji: "💰"
 type: "tech"
 topics: ["bigquery","gemini","googlecloud","ai","cost"]
-published: true
+published: false
 ---
 
 ## はじめに

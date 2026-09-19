@@ -3,7 +3,7 @@ title: "Gemini in BigQueryで自然言語からSQLを生成する実践ガイド
 emoji: "🤖"
 type: "tech"
 topics: ["bigquery","gemini","sql","googlecloud","ai"]
-published: true
+published: false
 ---
 
 ## はじめに

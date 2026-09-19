@@ -3,7 +3,7 @@ title: "ECの在庫回転率をGA4×BigQueryで商品別に可視化して死に
 emoji: "📦"
 type: "tech"
 topics: ["bigquery","googleanalytics","ec","sql","lookerstudio"]
-published: true
+published: false
 ---
 
 ## はじめに

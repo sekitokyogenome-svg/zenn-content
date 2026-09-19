@@ -3,7 +3,7 @@ title: "小規模EC事業者がBigQueryを無料枠内で運用し続けるた�
 emoji: "🆓"
 type: "idea"
 topics: ["bigquery","ec","googlecloud","cost","sql"]
-published: true
+published: false
 ---
 
 ## はじめに

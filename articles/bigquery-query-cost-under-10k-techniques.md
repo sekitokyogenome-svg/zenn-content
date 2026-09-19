@@ -3,7 +3,7 @@ title: "BigQueryのクエリコストを月1万円以下に抑える7つの実�
 emoji: "💡"
 type: "tech"
 topics: ["bigquery","sql","googlecloud","cost","dataengineering"]
-published: true
+published: false
 ---
 
 ## はじめに

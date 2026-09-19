@@ -3,7 +3,7 @@ title: "TikTok広告のコンバージョンAPIをサーバーサイドGTMで実
 emoji: "🎵"
 type: "tech"
 topics: ["gtm","advertising","googleanalytics","ec","javascript"]
-published: true
+published: false
 ---
 
 ## はじめに
