@@ -109,15 +109,81 @@ def is_published(path: Path) -> bool:
     return False
 
 
+def stock(q) -> int:
+    """未公開在庫を、自サイトとの題名衝突つきで出す。
+
+    2026-09-19 の棚卸しで分かったこと: 未公開113本の**本文類似度はすべて 0.21〜0.25**で、
+    書き分け自体はできている。詰まっているのは題名だけ。
+    つまり Zenn の在庫切れは執筆の問題ではなく**題名の付け方の問題**で、
+    新規に書くより題名を技術者向けに付け替えるほうが速い。
+
+    この一覧は「どれを付け替えれば出せるか」を出す。
+    """
+    try:
+        hp = q.fetch_hp_titles(q.HP_FEED_DEFAULT)
+    except Exception as exc:
+        print(f"自サイトRSSを取得できませんでした: {exc}", file=sys.stderr)
+        return 1
+
+    rows = []
+    for p in sorted(ARTICLES.glob("*.md")):
+        head = p.read_text(encoding="utf-8")[:800]
+        pub = qflag = False
+        for line in head.splitlines():
+            t = line.strip()
+            if t.startswith("published:"):
+                pub = t.split(":", 1)[1].strip().lower() == "true"
+            elif t.startswith("publish_queue:"):
+                qflag = t.split(":", 1)[1].strip().lower() == "true"
+        if pub or qflag:
+            continue
+        title = q.article_title(p)
+        best, score = "", 0.0
+        for h in hp:
+            v = q.similarity(title, h)
+            if v > score:
+                best, score = h, v
+        rows.append((score, p.stem, title, best))
+
+    rows.sort(reverse=True)
+    blocked = [r for r in rows if r[0] >= q.DUP_THRESHOLD_DEFAULT]
+    free = [r for r in rows if r[0] < q.DUP_THRESHOLD_DEFAULT]
+    print(f"未公開在庫 {len(rows)} 本")
+    print(f"  題名が自サイトと衝突（{q.DUP_THRESHOLD_DEFAULT}以上）: {len(blocked)} 本 ← 題名を変えれば出せる")
+    print(f"  衝突なし                                  : {len(free)} 本 ← そのままキューに入れられる")
+
+    if free:
+        print("\n■ そのまま出せる在庫")
+        for score, slug, title, _ in free:
+            print(f"  {score:.2f}  {slug}\n        {title}")
+
+    print("\n■ 題名の付け替えが要る在庫（衝突度の高い順・上位20）")
+    for score, slug, title, hp_title in blocked[:20]:
+        print(f"  {score:.2f}  {slug}")
+        print(f"        Zenn   : {title}")
+        print(f"        自サイト: {hp_title}")
+    if len(blocked) > 20:
+        print(f"  …ほか {len(blocked) - 20} 本")
+
+    print("\n付け替えるときは **技術者が検索する語**に寄せる（実装・エラー・検証手順）。")
+    print("自サイト側は経営判断の語なので、そことぶつからない題名になれば自然に棲み分く。")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Zenn公開記事と自サイトの重複を検査する")
     ap.add_argument("--all", action="store_true",
                     help="公開済み全件を検査する（棚卸し用。既定は新規公開分のみ）")
+    ap.add_argument("--stock", action="store_true",
+                    help="未公開在庫を、自サイトとの題名衝突つきで一覧する（増産の入口）")
     ap.add_argument("--base", default="",
                     help="この push の直前のコミット（GitHub Actions の github.event.before）")
     args = ap.parse_args()
 
     q = load_queue_module()
+
+    if args.stock:
+        return stock(q)
 
     allow = set()
     if ALLOWLIST.exists():
