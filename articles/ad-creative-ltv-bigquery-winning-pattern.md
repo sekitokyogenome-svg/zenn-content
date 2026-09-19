@@ -3,7 +3,7 @@ title: "広告クリエイティブ別のLTVをBigQueryで追跡して勝ちパ�
 emoji: "🎨"
 type: "idea"
 topics: ["bigquery","advertising","ec","googleanalytics","sql"]
-published: true
+published: false
 ---
 
 ## はじめに

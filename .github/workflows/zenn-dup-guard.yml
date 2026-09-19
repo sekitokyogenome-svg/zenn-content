@@ -1,0 +1,61 @@
+# Zenn と自サイトの重複公開ガード（保険）
+#
+# 【なぜ必要か】
+# 公開経路が2つあり、既存のゲート（zenn_publish_queue.py）は片方しか守っていない。
+#
+#   chore: staggered publish of queued Zenn articles
+#       → zenn-staggered-publish.yml 経由。ゲートを通る
+#   publish: <記事タイトル>
+#       → 別セッション（themes.csv ベースの Routine）が published: を直接書き換える。
+#         **ゲートを通らない**
+#
+# 2026-09-12 以降の公開コミット12件のうち7件が後者で、そのうち1件が自サイトと
+# 完全一致のまま公開された（2026-09-19 に発見・取り下げ済み）。
+#
+# 入口を1つに絞れない以上、出口で見る。**経路を問わず push のたびに検査する。**
+#
+# 【何を見るか】
+# 既定では「この push で published: false → true になった記事」だけ。
+# 公開済み全件だと、ゲート導入前の重複68本で毎回失敗し、新しい事故が埋もれるため。
+# 全件の棚卸しは手動実行で `all: true` を指定する。
+#
+# 【止め方】
+# このファイルを削除するか、on: を workflow_dispatch だけにする。
+# 併せて .github/scripts/zenn_dup_guard.py と .github/zenn-dup-allowlist.txt も消すこと。
+
+name: Zenn 重複ガード
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "articles/**"
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "公開済み全件を棚卸しする（true / false）"
+        default: "false"
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 重複を検査
+        run: |
+          BEFORE="${{ github.event.before }}"
+          if [ "${{ inputs.all }}" = "true" ]; then
+            python3 .github/scripts/zenn_dup_guard.py --all
+          elif [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            # 初回 push など直前のコミットが取れないときは全件で見る
+            echo "::notice::直前のコミットが特定できないため全件を検査します"
+            python3 .github/scripts/zenn_dup_guard.py --all
+          else
+            python3 .github/scripts/zenn_dup_guard.py --base "$BEFORE"
+          fi
