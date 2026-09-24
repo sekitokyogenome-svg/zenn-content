@@ -199,7 +199,7 @@ K-05,BigQuery AIエージェント,AI.GENERATE完全ガイド — 引数・戻�
 K-06,BigQuery AIエージェント,AI.GENERATE_TABLEで非構造化テキストを構造化データに変換する,tech,1,TRUE,2026-09-21,bigquery-ai-generate-table-structuring.md
 K-07,BigQuery AIエージェント,AI.GENERATE_BOOL / INT / DOUBLEで型付きの判定をSQLに埋め込む,tech,1,TRUE,2026-09-22,bigquery-ai-generate-typed-functions.md
 K-08,BigQuery AIエージェント,AI.IFでWHERE句に意味を持ち込む — セマンティックフィルタ入門,tech,1,TRUE,2026-09-23,bigquery-ai-if-semantic-filter.md
-K-09,BigQuery AIエージェント,AI.CLASSIFYでGROUP BYする — 分類軸を自然言語で定義する,tech,1,FALSE,,bigquery-ai-classify-group-by.md
+K-09,BigQuery AIエージェント,AI.CLASSIFYでGROUP BYする — 分類軸を自然言語で定義する,tech,1,TRUE,2026-09-24,bigquery-ai-classify-group-by.md
 K-10,BigQuery AIエージェント,AI.SCOREでORDER BYする — 自然言語の基準でランキングを作る,tech,1,FALSE,,bigquery-ai-score-ranking.md
 K-11,BigQuery AIエージェント,AI.EMBED / AI.GENERATE_EMBEDDINGでベクトルを作る,tech,1,FALSE,,bigquery-ai-embedding-generation.md
 K-12,BigQuery AIエージェント,BigQueryベクトル検索とVECTOR INDEX — 類似検索を実装する,tech,1,FALSE,,bigquery-vector-search-index.md
