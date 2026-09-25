@@ -3,7 +3,7 @@ title: "2024年問題に備えるデータ基盤―配送コストをBigQueryで
 emoji: "🚛"
 type: "idea"
 topics: ["bigquery","ec","sql","dataengineering","googlecloud"]
-published: false
+published: true
 ---
 
 ## はじめに
