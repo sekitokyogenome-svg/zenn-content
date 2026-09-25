@@ -3,7 +3,7 @@ title: "ECのCS問い合わせデータをBigQueryに集約して商品改善に
 emoji: "💬"
 type: "tech"
 topics: ["bigquery","ec","googlecloud","sql","ai"]
-published: false
+published: true
 ---
 
 ## はじめに
