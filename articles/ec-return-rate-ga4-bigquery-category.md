@@ -3,7 +3,7 @@ title: "ECの返品率をGA4×BigQueryで商品カテゴリ別に分析して原
 emoji: "↩️"
 type: "idea"
 topics: ["bigquery","googleanalytics","ec","sql","lookerstudio"]
-published: false
+published: true
 ---
 
 ## はじめに
