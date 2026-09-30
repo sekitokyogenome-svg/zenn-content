@@ -3,7 +3,7 @@ title: "BigQueryでEC受注データ×GA4データを結合して正確な売上
 emoji: "🔗"
 type: "tech"
 topics: ["bigquery","googleanalytics","ec","sql","dataengineering"]
-published: false
+published: true
 ---
 
 ## はじめに
