@@ -3,8 +3,7 @@ title: "Cloudflare Pages 移行後、独自ドメインの MX が _dc-mx 経由�
 emoji: "📭"
 type: "tech"
 topics: ["cloudflare", "dns", "googleworkspace", "email"]
-published: false
-publish_queue: true
+published: true
 published_at: "2026-10-03 13:00"
 ---
 
