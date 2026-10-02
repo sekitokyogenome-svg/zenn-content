@@ -3,7 +3,7 @@ title: "ECのセール施策効果をGA4×BigQueryでbefore/after比較する分
 emoji: "🏷️"
 type: "tech"
 topics: ["bigquery","googleanalytics","ec","sql","lookerstudio"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -44,7 +44,7 @@ SELECT
   collected_traffic_source.manual_source AS source
 ```
 
-`ga_session_id`は`event_params`をUNNESTして取得する必要があります。また、流入元の情報は`collected_traffic_source.manual_medium`および`collected_traffic_source.manual_source`カラムから取得します。これはGA4の仕様上、セッション単位の流入元情報が格納されている場所であるため、この形式を使うことをお勧めします。
+`ga_session_id`は`event_params`をUNNESTして取得する必要があります。流入元の情報は`collected_traffic_source.manual_medium`と`collected_traffic_source.manual_source`から取得します。GA4の仕様上、セッション単位の流入元情報はこのカラム群に格納されているため、この形式を使うことをお勧めします。
 
 :::message
 `collected_traffic_source`はGA4のBigQueryエクスポートで比較的新しく追加されたカラム群です。古いエクスポートデータが存在する場合、期間によってはNULLになることがあります。その場合は`traffic_source.medium`を代替として使用してください。
@@ -169,7 +169,7 @@ LIMIT 20
 ;
 ```
 
-このクエリの結果をもとに、たとえば「メルマガ（email/newsletter）のCVRが他チャネルと比べて高い」という事実が確認できれば、次回のセールではメルマガの配信タイミングや対象リストの拡充を優先する、といった判断ができます。
+たとえば「メルマガ（email/newsletter）のCVRが他チャネルより高い」という事実が数値で確認できれば、次回のセールではメルマガの配信タイミングや対象リストの拡充を優先する判断ができます。
 
 ## Looker Studioでダッシュボード化して継続的に活用する
 
@@ -177,7 +177,7 @@ LIMIT 20
 
 Looker Studioでの接続手順は以下の通りです。
 
-```
+```text
 1. Looker Studio（https://lookerstudio.google.com/）を開く
 2. 「データを追加」→「BigQuery」を選択
 3. プロジェクト・データセット・テーブル（またはビュー）を選択して接続
