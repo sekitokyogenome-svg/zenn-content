@@ -204,7 +204,7 @@ K-10,BigQuery AIエージェント,AI.SCOREでORDER BYする — 自然言語の
 K-11,BigQuery AIエージェント,AI.EMBED / AI.GENERATE_EMBEDDINGでベクトルを作る,tech,1,TRUE,2026-09-27,bigquery-ai-embedding-generation.md
 K-12,BigQuery AIエージェント,BigQueryベクトル検索とVECTOR INDEX — 類似検索を実装する,tech,1,TRUE,2026-09-28,bigquery-vector-search-index.md
 K-13,BigQuery AIエージェント,自律型エンベディング生成でベクトルインデックスを自動同期する,tech,1,TRUE,2026-10-01,bigquery-autonomous-embedding-pipeline.md
-K-14,BigQuery AIエージェント,AI.FORECASTとTimesFM — 学習不要で時系列予測する,tech,1,FALSE,,bigquery-ai-forecast-timesfm.md
+K-14,BigQuery AIエージェント,AI.FORECASTとTimesFM — 学習不要で時系列予測する,tech,1,TRUE,2026-10-04,bigquery-ai-forecast-timesfm.md
 K-15,BigQuery AIエージェント,ObjectRefで画像・PDFなど非構造化データをSQLから扱う,tech,1,FALSE,,bigquery-objectref-unstructured-data.md
 K-16,BigQuery AIエージェント,SQL内プロンプト設計のコツ — 出力を安定させる書き方,tech,1,FALSE,,bigquery-ai-prompt-design-in-sql.md
 K-17,BigQuery AIエージェント,AI関数のコスト最適化 — トークン課金を膨らませない設計,tech,1,FALSE,,bigquery-ai-functions-cost-optimization.md
