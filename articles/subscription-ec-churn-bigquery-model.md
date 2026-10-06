@@ -3,7 +3,7 @@ title: "定期購入ECの解約予兆をGA4行動ログから検知するBigQuer
 emoji: "🔮"
 type: "tech"
 topics: ["bigquery","googleanalytics","ec","sql","machinelearning"]
-published: false
+published: true
 ---
 
 ## はじめに
