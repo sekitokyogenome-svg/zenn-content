@@ -208,7 +208,7 @@ K-14,BigQuery AIエージェント,AI.FORECASTとTimesFM — 学習不要で時�
 K-15,BigQuery AIエージェント,ObjectRefで画像・PDFなど非構造化データをSQLから扱う,tech,1,TRUE,2026-10-05,bigquery-objectref-unstructured-data.md
 K-16,BigQuery AIエージェント,SQL内プロンプト設計のコツ — 出力を安定させる書き方,tech,1,TRUE,2026-10-07,bigquery-ai-prompt-design-in-sql.md
 K-17,BigQuery AIエージェント,AI関数のコスト最適化 — トークン課金を膨らませない設計,tech,1,TRUE,2026-10-08,bigquery-ai-functions-cost-optimization.md
-K-18,BigQuery AIエージェント,AI関数の精度を検証する — 評価用データセットとテストの作り方,tech,1,FALSE,,bigquery-ai-accuracy-validation-framework.md
+K-18,BigQuery AIエージェント,AI関数の精度を検証する — 評価用データセットとテストの作り方,tech,1,TRUE,2026-10-09,bigquery-ai-accuracy-validation-framework.md
 K-19,BigQuery AIエージェント,Conversational Analyticsでデータエージェントを作る,tech,1,FALSE,,bigquery-conversational-analytics-data-agent.md
 K-20,BigQuery AIエージェント,データエージェントに効く指示（instructions）の書き方,tech,1,FALSE,,bigquery-data-agent-instructions-tuning.md
 K-21,BigQuery AIエージェント,Data Engineering Agentで自然言語からパイプラインを作る,tech,1,FALSE,,bigquery-data-engineering-agent-pipelines.md
