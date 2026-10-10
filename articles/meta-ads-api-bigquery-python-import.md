@@ -1,9 +1,10 @@
 ---
-title: "Meta広告APIからBigQueryにデータを自動取得するPythonスクリプトの作り方"
+title: "facebook_business の AdsInsights を pandas 経由で BigQuery に load する"
 emoji: "📊"
 type: "tech"
 topics: ["bigquery","python","googlecloud","advertising","dataengineering"]
 published: false
+publish_queue: true
 ---
 
 ## はじめに
