@@ -1,5 +1,5 @@
 ---
-title: "WEBコンサルタントのサービス単価を5倍にしたデータ基盤提案の話し方"
+title: "WEBコンサルタントがサービス単価を上げるためのデータ基盤提案の話し方"
 emoji: "💼"
 type: "idea"
 topics: ["consulting", "business", "dataanalytics"]
