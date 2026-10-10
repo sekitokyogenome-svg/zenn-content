@@ -3,7 +3,7 @@ title: "ECの送料無料ラインをBigQueryの購買データから最適設�
 emoji: "🆓"
 type: "idea"
 topics: ["bigquery","ec","sql","googleanalytics","datanalysis"]
-published: false
+published: true
 ---
 
 ## はじめに
