@@ -7,7 +7,7 @@ published: true
 ---
 
 :::message
-2026-10-10 に、製品の仕様変更とコードの誤りを修正しました。変更点: (1) MCP の登録方法を `claude mcp add` に直し、Google 公式のリモート BigQuery MCP を主役にした (2) セッション/CVR の SQL をセッション単位の流入元で書き直した (3) 日次レポートの集計対象を前々日にし、読み取り専用・費用ガードの節を追加した
+2026-10-10 に、製品の仕様変更とコードの誤りを修正しました。変更点: (1) MCP の登録方法を `claude mcp add` に直し、Google 公式のリモート BigQuery MCP を主役にした (2) セッション/CVR の SQL をセッション単位の流入元で書き直した (3) 日次レポートの集計対象を前々日にし、読み取り専用・費用ガードの節を追加した (4) セッション/CVR の SQL に購入の重複排除を追加した
 :::
 
 ## この記事でわかること
@@ -172,10 +172,26 @@ AI にクエリを書かせると、期間を絞らない SQL が出ることが
 - 流入元は、イベント単位の `collected_traffic_source` ではなく、セッション単位の `session_traffic_source_last_click` を使う（purchase 行と session_start 行で medium が別になり、CVR が崩れるのを避ける）
 - 分母・分子ともに「セッション」で数える（購入があったセッション数 ÷ セッション数）
 - 売上は `ecommerce.purchase_revenue`（プロパティの現地通貨）。USD で揃えたい場合は `purchase_revenue_in_usd` を使う
+- 同じ `transaction_id` の purchase が重複して送られると売上が二重に数えられるため、先頭で1件に絞る
 
 ```sql
 -- 先月のチャネル(medium)別に、セッション数・購入セッション数・CVR・売上を出す
-WITH sessions AS (
+WITH events_dedup AS (
+  -- 同じ transaction_id の purchase が複数送られていても、最初の1件だけ残す
+  SELECT *
+  FROM `project.analytics_XXXXXXXXX.events_*`
+  WHERE _TABLE_SUFFIX BETWEEN
+    FORMAT_DATE('%Y%m%d', DATE_TRUNC(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH), MONTH))
+    AND FORMAT_DATE('%Y%m%d', LAST_DAY(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH)))
+  QUALIFY NOT (
+    event_name = 'purchase' AND ecommerce.transaction_id IS NOT NULL
+    AND ROW_NUMBER() OVER (
+      PARTITION BY user_pseudo_id, event_name, ecommerce.transaction_id
+      ORDER BY event_timestamp
+    ) > 1
+  )
+),
+sessions AS (
   SELECT
     user_pseudo_id,
     (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS ga_session_id,
@@ -186,10 +202,7 @@ WITH sessions AS (
     )) AS medium,
     LOGICAL_OR(event_name = 'purchase') AS has_purchase,
     SUM(IF(event_name = 'purchase', ecommerce.purchase_revenue, 0)) AS revenue
-  FROM `project.analytics_XXXXXXXXX.events_*`
-  WHERE _TABLE_SUFFIX BETWEEN
-    FORMAT_DATE('%Y%m%d', DATE_TRUNC(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH), MONTH))
-    AND FORMAT_DATE('%Y%m%d', LAST_DAY(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH)))
+  FROM events_dedup
   GROUP BY user_pseudo_id, ga_session_id
   HAVING ga_session_id IS NOT NULL
 )
@@ -206,7 +219,7 @@ ORDER BY sessions DESC
 
 注意点です。
 
-- 上の SQL は、スキーマの定義（[公式](https://support.google.com/analytics/answer/7029846)）に沿って組んだ例です。自分のデータで結果を確認してから使ってください。`medium` に何が入るかはプロパティによって違います
+- 上の SQL は、スキーマの定義（[公式](https://support.google.com/analytics/answer/7029846)）に沿って組んだ例です。架空のダミーデータ（重複購入を意図的に混ぜたもの）では、エラーなく実行でき、重複排除の有無で売上合計が変わることを確認しました。実際のデータでの確認は行っていないので、自分のデータで結果を確認してから使ってください。`medium` に何が入るかはプロパティによって違います
 - Google 広告のセッションは `google_ads_campaign` 側に情報が入ります。広告別に分けたい場合は、そのレコードも見る必要があります
 - 当日分の `events_intraday_` テーブルでは、流入元が欠けることがあります。流入元の分析は日次テーブルで行ってください（ストリーミングのエクスポートは、新規ユーザー・新規セッションの流入元を含みません。[GA4ヘルプ](https://support.google.com/analytics/answer/9358801)）
 
