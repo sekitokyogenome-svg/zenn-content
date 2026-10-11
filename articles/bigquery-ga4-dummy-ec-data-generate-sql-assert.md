@@ -3,8 +3,7 @@ title: "BigQuery だけで GA4 風の EC ダミーデータを作る — 重複�
 emoji: "🧪"
 type: "tech"
 topics: ["bigquery", "googleanalytics", "sql", "ga4"]
-published: false
-publish_queue: true
+published: true
 ---
 
 ## この記事でわかること
