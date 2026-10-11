@@ -192,6 +192,8 @@ END FOR;
 - 重複購入・NULL・ID の衝突を仕込み、期待値を `ASSERT` で固定すると、SQL の検証が機械的になる
 - 本番データに流す前の動作確認に使い、数値の妥当性は本番データで見る
 
+経営者・発注側の視点で、同じ考え方（納品された数字を答えの分かるデータで確かめる）を書いた記事は[こちら](https://logical-web.jp/blog/outsourced-report-numbers-check-with-known-answer-data/?utm_source=zenn&utm_medium=article&utm_campaign=dummy_data_crosslink)です。
+
 ---
 
 :::message
