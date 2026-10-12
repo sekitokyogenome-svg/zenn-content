@@ -1,5 +1,5 @@
 ---
-title: "Claude Code × Google Workspace を認証なしで試せるところまで試した — gws と公式リモート MCP の現状（2026-10）"
+title: "Claude Code × Google Workspace を認証なしで試した — gws と公式MCPの現状"
 emoji: "🧰"
 type: "tech"
 topics: ["claudecode", "googleworkspace", "mcp", "cli", "gmail"]
