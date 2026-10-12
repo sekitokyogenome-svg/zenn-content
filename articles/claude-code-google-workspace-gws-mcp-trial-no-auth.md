@@ -3,8 +3,7 @@ title: "Claude Code × Google Workspace を認証なしで試した — gws と�
 emoji: "🧰"
 type: "tech"
 topics: ["claudecode", "googleworkspace", "mcp", "cli", "gmail"]
-published: false
-publish_queue: true
+published: true
 ---
 
 ## この記事でわかること
