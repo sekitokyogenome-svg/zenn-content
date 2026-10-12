@@ -181,6 +181,14 @@ END FOR;
 
 実際に、このデータでアトリビューションや LTV 予測の SQL を流して、構文エラーや配分合計の不一致がないか確認できました。
 
+## データをダウンロードする
+
+生成済みのデータと、同じものを作る SQL・Python は、GitHub に置いています（すべて架空のデータです）。
+
+- [datasets/ga4-dummy-ec](https://github.com/sekitokyogenome-svg/zenn-content/tree/main/datasets/ga4-dummy-ec)（`events_all.ndjson.gz`、`schema.json`、生成 SQL、期待値の `ASSERT`、`generate_ndjson.py`）
+
+`bq load` で取り込めます。ただし、この取り込みの手順は自分では実行していません（スキーマは、生成したテーブルの定義から書き起こしました）。Python の生成結果は、BigQuery で作ったテーブルと、行数・売上合計・各種チェックサムが一致することを確認しています。行ごとの完全一致までは確認していません。
+
 ## 限界
 
 - 本物の GA4 エクスポートとは異なります。日別シャードと `events_all` を併用しており、`events_intraday_*` や、多くの項目（`user_properties`、`app_info` など）はありません
