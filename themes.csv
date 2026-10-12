@@ -210,7 +210,7 @@ K-16,BigQuery AIエージェント,SQL内プロンプト設計のコツ — 出�
 K-17,BigQuery AIエージェント,AI関数のコスト最適化 — トークン課金を膨らませない設計,tech,1,TRUE,2026-10-08,bigquery-ai-functions-cost-optimization.md
 K-18,BigQuery AIエージェント,AI関数の精度を検証する — 評価用データセットとテストの作り方,tech,1,TRUE,2026-10-09,bigquery-ai-accuracy-validation-framework.md
 K-19,BigQuery AIエージェント,Conversational Analyticsでデータエージェントを作る,tech,1,TRUE,2026-10-11,bigquery-conversational-analytics-data-agent.md
-K-20,BigQuery AIエージェント,データエージェントに効く指示（instructions）の書き方,tech,1,FALSE,,bigquery-data-agent-instructions-tuning.md
+K-20,BigQuery AIエージェント,データエージェントに効く指示（instructions）の書き方,tech,1,TRUE,2026-10-12,bigquery-data-agent-instructions-tuning.md
 K-21,BigQuery AIエージェント,Data Engineering Agentで自然言語からパイプラインを作る,tech,1,FALSE,,bigquery-data-engineering-agent-pipelines.md
 K-22,BigQuery AIエージェント,Data Engineering Agentで既存パイプラインを改修・移行する,tech,1,FALSE,,bigquery-data-engineering-agent-migration.md
 K-23,BigQuery AIエージェント,Data Science Agentで特徴量エンジニアリングからモデル評価まで回す,tech,1,FALSE,,bigquery-data-science-agent-workflow.md
