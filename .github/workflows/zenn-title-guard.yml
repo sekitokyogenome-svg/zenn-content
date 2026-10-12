@@ -1,0 +1,31 @@
+# Zenn の保存失敗ガード（title 70文字・slug・topics）
+#
+# 【なぜ必要か】
+# 2026-10-10 に title が79文字の記事を push し、Zenn が「Titleには最大70文字まで使用できます」で
+# 保存に失敗した。1本の失敗でデプロイ全体が中断し、その後の push（別の記事の公開を含む）が
+# すべて反映されなかった。Zenn の画面を見るまで気づけなかった。
+#
+# 【何を見るか】 articles/ の全記事（変更分だけでなく）。1本でも失敗するとデプロイ全体が止まるため。
+# 基準は .github/scripts/zenn_title_guard.py の冒頭に書いてある。
+#
+# 【止め方】 このファイルと .github/scripts/zenn_title_guard.py を削除する。
+
+name: Zenn 保存失敗ガード
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "articles/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: frontmatter を検査
+        run: python3 .github/scripts/zenn_title_guard.py
