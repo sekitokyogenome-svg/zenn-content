@@ -1,5 +1,5 @@
 ---
-title: "Cloudflare Pages 移行後、独自ドメインの MX が _dc-mx 経由で Pages を向いていた — 検証手順と Google Workspace への切り替え"
+title: "Pages 移行後に独自ドメインの MX が Pages を向いていた — 検証と Workspace への切り替え"
 emoji: "📭"
 type: "tech"
 topics: ["cloudflare", "dns", "googleworkspace", "email"]
