@@ -3,8 +3,7 @@ title: "facebook_business の AdsInsights を pandas 経由で BigQuery に load
 emoji: "📊"
 type: "tech"
 topics: ["bigquery","python","googlecloud","advertising","dataengineering"]
-published: false
-publish_queue: true
+published: true
 ---
 
 ## はじめに
