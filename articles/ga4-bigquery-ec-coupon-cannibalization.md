@@ -3,7 +3,7 @@ title: "GA4×BigQueryでECクーポン施策のカニバリゼーションを検
 emoji: "🎫"
 type: "tech"
 topics: ["bigquery","googleanalytics","ec","sql","datanalysis"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -38,7 +38,7 @@ GA4には「BigQueryエクスポート」という機能があり、サイトで
 
 エクスポートされるテーブルの主な構造は以下のとおりです。
 
-```
+```text
 プロジェクト.データセット.events_YYYYMMDD
 （例）myproject.analytics_123456789.events_20250801
 ```
