@@ -3,7 +3,7 @@ title: "ECサイトのサイト速度がCVRに与える影響をBigQueryのCrUX�
 emoji: "⚡"
 type: "tech"
 topics: ["bigquery","googleanalytics","ec","sql","googlecloud"]
-published: false
+published: true
 ---
 
 ## はじめに
