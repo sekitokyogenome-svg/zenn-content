@@ -158,7 +158,7 @@ I-16,EC実務×データ活用,ECの商品レビュー数×売上の関係をBig
 I-17,EC実務×データ活用,Shopifyの注文Webhook × Cloud Functions × BigQueryでリアルタイム売上基盤を作る,tech,3,FALSE,,shopify-webhook-cloud-functions-bigquery-realtime.md
 I-18,EC実務×データ活用,EC事業の粗利率をBigQueryで商品×チャネル別に自動計算する仕組み,tech,2,TRUE,2026-10-14,ec-gross-margin-bigquery-product-channel.md
 I-19,EC実務×データ活用,ECサイトのサイト速度がCVRに与える影響をBigQueryのCrUXデータで検証する,tech,2,TRUE,2026-10-18,ec-site-speed-cvr-bigquery-crux.md
-I-20,EC実務×データ活用,越境ECのGA4多言語計測をBigQueryで国別に正確に集計する方法,tech,2,FALSE,,cross-border-ec-ga4-bigquery-multilingual.md
+I-20,EC実務×データ活用,越境ECのGA4多言語計測をBigQueryで国別に正確に集計する方法,tech,2,TRUE,2026-10-19,cross-border-ec-ga4-bigquery-multilingual.md
 I-21,EC実務×データ活用,ECの価格変更がCVRと売上に与えた影響をGA4×BigQueryで因果推論する,tech,3,FALSE,,ec-price-change-cvr-causal-inference-bigquery.md
 I-22,EC実務×データ活用,Amazon広告とGA4自社ECデータをBigQueryで統合してチャネルミックスを最適化する,tech,3,FALSE,,amazon-ads-ga4-bigquery-channel-mix.md
 I-23,EC実務×データ活用,ECのギフト需要をGA4×BigQueryで時系列分析して在庫計画に反映する,idea,3,FALSE,,ec-gift-demand-ga4-bigquery-seasonal.md
