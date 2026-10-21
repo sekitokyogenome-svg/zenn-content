@@ -216,26 +216,26 @@ K-22,BigQuery AIエージェント,Data Engineering Agentで既存パイプラ�
 K-23,BigQuery AIエージェント,Data Science Agentで特徴量エンジニアリングからモデル評価まで回す,tech,1,TRUE,2026-10-17,bigquery-data-science-agent-workflow.md
 K-24,BigQuery AIエージェント,Data Preparation Agentでデータクレンジングを任せる,tech,1,TRUE,2026-10-20,bigquery-data-preparation-agent.md
 K-25,BigQuery AIエージェント,BigQuery MCPサーバーをつなぐ — エージェントからBigQueryを操作する,tech,1,TRUE,2026-10-21,bigquery-mcp-server-setup.md
-K-26,BigQuery AIエージェント,Claude Code × BigQuery MCPでGA4分析を任せる,tech,1,FALSE,,bigquery-mcp-claude-code-ga4.md
-K-27,BigQuery AIエージェント,MCP Toolbox for Databasesで独自ツールをエージェントに渡す,tech,1,FALSE,,bigquery-mcp-toolbox-custom-tools.md
-K-28,BigQuery AIエージェント,ADK（Agent Development Kit）とBigQueryを組み合わせる,tech,1,FALSE,,bigquery-adk-agent-integration.md
-K-29,BigQuery AIエージェント,A2Aでエージェント同士を連携させる,tech,1,FALSE,,bigquery-a2a-agent-interop.md
-K-30,BigQuery AIエージェント,エージェントにガードレールを設ける — 権限・コスト・破壊的操作の制御,tech,1,FALSE,,bigquery-agent-guardrails.md
-K-31,BigQuery AIエージェント,GA4のイベントデータをAI.CLASSIFYでユーザー意図に分類する,tech,1,FALSE,,bigquery-ai-ga4-intent-classification.md
-K-32,BigQuery AIエージェント,商品レビューの感情分析をSQLだけで完結させる,tech,1,FALSE,,bigquery-ai-review-sentiment-analysis.md
-K-33,BigQuery AIエージェント,商品説明文をAI.GENERATEで一括生成・リライトする,tech,1,FALSE,,bigquery-ai-product-description-generation.md
-K-34,BigQuery AIエージェント,サイト内検索キーワードを意図分類して商品改善につなげる,tech,1,FALSE,,bigquery-ai-site-search-intent.md
-K-35,BigQuery AIエージェント,問い合わせ内容を自動分類してCSの負荷を可視化する,tech,1,FALSE,,bigquery-ai-inquiry-classification.md
-K-36,BigQuery AIエージェント,商品画像をマルチモーダル埋め込みで検索可能にする,tech,1,FALSE,,bigquery-ai-product-image-multimodal.md
-K-37,BigQuery AIエージェント,ベクトル検索で類似商品レコメンドを実装する,tech,1,FALSE,,bigquery-ai-similar-product-recommendation.md
-K-38,BigQuery AIエージェント,AI.FORECASTでEC売上を予測し在庫計画に使う,tech,1,FALSE,,bigquery-ai-forecast-ec-sales.md
-K-39,BigQuery AIエージェント,売上・トラフィックの異常検知を自動化する,tech,1,FALSE,,bigquery-ai-anomaly-detection-ec.md
-K-40,BigQuery AIエージェント,広告クリエイティブの訴求をAIで分類しROASと突き合わせる,tech,1,FALSE,,bigquery-ai-ad-creative-classification.md
-K-41,BigQuery AIエージェント,LTV予測をBigQuery MLとAI関数で組み立てる,tech,1,FALSE,,bigquery-ai-ltv-prediction.md
-K-42,BigQuery AIエージェント,解約・離脱の予兆をAIで検知する,tech,1,FALSE,,bigquery-ai-churn-prediction.md
-K-43,BigQuery AIエージェント,AIの出力がおかしい時の切り分け — ハルシネーション対策,tech,1,FALSE,,bigquery-ai-hallucination-countermeasures.md
-K-44,BigQuery AIエージェント,AI関数の実行コストを監視・アラートする仕組みを作る,tech,1,FALSE,,bigquery-ai-cost-monitoring-alerting.md
-K-45,BigQuery AIエージェント,dbtでAI関数を含む変換パイプラインを管理する,tech,1,FALSE,,bigquery-ai-dbt-integration.md
-K-46,BigQuery AIエージェント,AI生成結果をLooker Studioでダッシュボード化する,tech,1,FALSE,,bigquery-ai-looker-studio-dashboard.md
-K-47,BigQuery AIエージェント,PII・機密情報をAI関数に渡さないための設計,tech,1,FALSE,,bigquery-ai-pii-security-design.md
-K-48,BigQuery AIエージェント,本番運用で踏んだ落とし穴と、次に作るなら選ぶ構成,tech,1,FALSE,,bigquery-ai-production-pitfalls-roadmap.md
+K-26,BigQuery AIエージェント,Claude Code × BigQuery MCPでGA4分析を任せる,tech,1,NOFILE,,bigquery-mcp-claude-code-ga4.md
+K-27,BigQuery AIエージェント,MCP Toolbox for Databasesで独自ツールをエージェントに渡す,tech,1,NOFILE,,bigquery-mcp-toolbox-custom-tools.md
+K-28,BigQuery AIエージェント,ADK（Agent Development Kit）とBigQueryを組み合わせる,tech,1,NOFILE,,bigquery-adk-agent-integration.md
+K-29,BigQuery AIエージェント,A2Aでエージェント同士を連携させる,tech,1,NOFILE,,bigquery-a2a-agent-interop.md
+K-30,BigQuery AIエージェント,エージェントにガードレールを設ける — 権限・コスト・破壊的操作の制御,tech,1,NOFILE,,bigquery-agent-guardrails.md
+K-31,BigQuery AIエージェント,GA4のイベントデータをAI.CLASSIFYでユーザー意図に分類する,tech,1,NOFILE,,bigquery-ai-ga4-intent-classification.md
+K-32,BigQuery AIエージェント,商品レビューの感情分析をSQLだけで完結させる,tech,1,NOFILE,,bigquery-ai-review-sentiment-analysis.md
+K-33,BigQuery AIエージェント,商品説明文をAI.GENERATEで一括生成・リライトする,tech,1,NOFILE,,bigquery-ai-product-description-generation.md
+K-34,BigQuery AIエージェント,サイト内検索キーワードを意図分類して商品改善につなげる,tech,1,NOFILE,,bigquery-ai-site-search-intent.md
+K-35,BigQuery AIエージェント,問い合わせ内容を自動分類してCSの負荷を可視化する,tech,1,NOFILE,,bigquery-ai-inquiry-classification.md
+K-36,BigQuery AIエージェント,商品画像をマルチモーダル埋め込みで検索可能にする,tech,1,NOFILE,,bigquery-ai-product-image-multimodal.md
+K-37,BigQuery AIエージェント,ベクトル検索で類似商品レコメンドを実装する,tech,1,NOFILE,,bigquery-ai-similar-product-recommendation.md
+K-38,BigQuery AIエージェント,AI.FORECASTでEC売上を予測し在庫計画に使う,tech,1,NOFILE,,bigquery-ai-forecast-ec-sales.md
+K-39,BigQuery AIエージェント,売上・トラフィックの異常検知を自動化する,tech,1,NOFILE,,bigquery-ai-anomaly-detection-ec.md
+K-40,BigQuery AIエージェント,広告クリエイティブの訴求をAIで分類しROASと突き合わせる,tech,1,NOFILE,,bigquery-ai-ad-creative-classification.md
+K-41,BigQuery AIエージェント,LTV予測をBigQuery MLとAI関数で組み立てる,tech,1,NOFILE,,bigquery-ai-ltv-prediction.md
+K-42,BigQuery AIエージェント,解約・離脱の予兆をAIで検知する,tech,1,NOFILE,,bigquery-ai-churn-prediction.md
+K-43,BigQuery AIエージェント,AIの出力がおかしい時の切り分け — ハルシネーション対策,tech,1,NOFILE,,bigquery-ai-hallucination-countermeasures.md
+K-44,BigQuery AIエージェント,AI関数の実行コストを監視・アラートする仕組みを作る,tech,1,NOFILE,,bigquery-ai-cost-monitoring-alerting.md
+K-45,BigQuery AIエージェント,dbtでAI関数を含む変換パイプラインを管理する,tech,1,NOFILE,,bigquery-ai-dbt-integration.md
+K-46,BigQuery AIエージェント,AI生成結果をLooker Studioでダッシュボード化する,tech,1,NOFILE,,bigquery-ai-looker-studio-dashboard.md
+K-47,BigQuery AIエージェント,PII・機密情報をAI関数に渡さないための設計,tech,1,NOFILE,,bigquery-ai-pii-security-design.md
+K-48,BigQuery AIエージェント,本番運用で踏んだ落とし穴と、次に作るなら選ぶ構成,tech,1,NOFILE,,bigquery-ai-production-pitfalls-roadmap.md
