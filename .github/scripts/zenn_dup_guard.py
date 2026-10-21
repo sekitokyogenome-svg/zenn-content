@@ -178,6 +178,9 @@ def main() -> int:
                     help="未公開在庫を、自サイトとの題名衝突つきで一覧する（増産の入口）")
     ap.add_argument("--base", default="",
                     help="この push の直前のコミット（GitHub Actions の github.event.before）")
+    ap.add_argument("--check", default="",
+                    help="公開する前に1本だけ照合する（例: articles/foo.md）。重複なら終了コード 1。"
+                         " zenn-evening-publish Routine が published: true にする前に使う")
     args = ap.parse_args()
 
     q = load_queue_module()
@@ -199,6 +202,20 @@ def main() -> int:
         return 0
     if not hp:
         print("::warning title=重複チェックをスキップ::RSS からタイトルを取得できませんでした")
+        return 0
+
+    if args.check:
+        p = Path(args.check)
+        if not p.exists():
+            print(f"ファイルがありません: {p}")
+            return 2
+        hit = q.find_duplicate(q.article_title(p), hp, q.DUP_THRESHOLD_DEFAULT)
+        if hit and p.stem not in allow:
+            print(f"DUPLICATE 類似 {hit[1]:.2f}")
+            print(f"  Zenn   : {q.article_title(p)}")
+            print(f"  自サイト: {hit[0]}")
+            return 1
+        print(f"OK（自サイトRSS {len(hp)} 件と照合、閾値 {q.DUP_THRESHOLD_DEFAULT}）")
         return 0
 
     if args.all or not args.base:

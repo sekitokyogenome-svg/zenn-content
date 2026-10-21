@@ -3,7 +3,7 @@ title: "ECのセール施策効果をGA4×BigQueryでbefore/after比較する分
 emoji: "🏷️"
 type: "tech"
 topics: ["bigquery","googleanalytics","ec","sql","lookerstudio"]
-published: true
+published: false
 ---
 
 ## はじめに

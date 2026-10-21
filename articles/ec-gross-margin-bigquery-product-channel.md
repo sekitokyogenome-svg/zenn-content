@@ -3,7 +3,7 @@ title: "EC事業の粗利率をBigQueryで商品×チャネル別に自動計算
 emoji: "💹"
 type: "tech"
 topics: ["bigquery","ec","sql","googleanalytics","lookerstudio"]
-published: true
+published: false
 ---
 
 ## はじめに

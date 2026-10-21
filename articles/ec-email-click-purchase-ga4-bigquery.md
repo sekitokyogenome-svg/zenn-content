@@ -3,7 +3,7 @@ title: "ECメルマガのクリック→購入をGA4×BigQueryで追跡してセ
 emoji: "📧"
 type: "tech"
 topics: ["bigquery","googleanalytics","ec","sql","advertising"]
-published: true
+published: false
 ---
 
 ## はじめに

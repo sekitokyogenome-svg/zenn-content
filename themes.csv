@@ -107,20 +107,20 @@ G-05,AI×データ分析,Claude CodeにGA4の異常値を検知させて原因�
 G-06,AI×データ分析,Gemini in BigQueryの料金体系を完全解説》思わぬ課金を防ぐ設定』,tech,1,TRUE,2026-08-06,gemini-bigquery-pricing-complete-guide.md
 G-07,AI×データ分析,AI.GENERATE関数でBigQueryから直接Geminiを呼び出してテキスト分析する方法,tech,2,TRUE,2026-08-27,bigquery-ai-generate-gemini-text-analysis.md
 G-08,AI×データ分析,NotebookLM × BigQueryエクスポートでGA4データを対話的に分析する,tech,2,TRUE,2026-08-28,notebooklm-bigquery-ga4-interactive-analysis.md
-G-09,AI×データ分析,Claude Codeで競合ECサイトのSEO戦略をGA4×Search Consoleデータから逆算する,tech,3,FALSE,,claude-code-ec-seo-ga4-search-console-reverse.md
-G-10,AI×データ分析,BigQuery × Vertex AIでEC商品レコメンドエンジンを自作した話,tech,3,FALSE,,bigquery-vertex-ai-ec-recommendation.md
+G-09,AI×データ分析,Claude Codeで競合ECサイトのSEO戦略をGA4×Search Consoleデータから逆算する,tech,3,DUP,,claude-code-ec-seo-ga4-search-console-reverse.md
+G-10,AI×データ分析,BigQuery × Vertex AIでEC商品レコメンドエンジンを自作した話,tech,3,DUP,,bigquery-vertex-ai-ec-recommendation.md
 G-11,AI×データ分析,AIエージェントにBigQueryのクエリレビューをさせてコスト削減した方法,tech,2,TRUE,2026-08-29,ai-agent-bigquery-query-review-cost-reduction.md
 G-12,AI×データ分析,Claude CodeのAgents SDKでEC在庫アラート→発注提案→Slack通知を全自動化した,tech,2,TRUE,2026-08-30,claude-agents-sdk-ec-inventory-alert-slack.md
 G-13,AI×データ分析,Gemini CLIをGA4データアナリストとして使う具体的な設定と活用例,tech,2,TRUE,2026-08-31,gemini-cli-ga4-analyst-setup-guide.md
 G-14,AI×データ分析,BigQuery MLの需要予測モデルでEC仕入れ量を最適化する実装手順,tech,2,TRUE,2026-09-01,bigquery-ml-demand-forecast-ec-inventory.md
 G-15,AI×データ分析,AIコーディングアシスタン3种でBigQueryのデータパイプラインを作り比べた,idea,2,TRUE,2026-09-02,ai-coding-assistant-bigquery-pipeline-comparison.md
-G-16,AI×データ分析,Claude Code × Pythonで顧客レビューを感情分析してNPS予測に使う,tech,3,FALSE,,claude-code-python-review-sentiment-nps.md
+G-16,AI×データ分析,Claude Code × Pythonで顧客レビューを感情分析してNPS予測に使う,tech,3,DUP,,claude-code-python-review-sentiment-nps.md
 G-17,AI×データ分析,BigQueryのGeminiアシスタントで非エンジニアが自力でSQL分析できるか検証した,idea,1,TRUE,2026-08-07,bigquery-gemini-assistant-noneng-sql-validation.md
-G-18,AI×データ分析,AI×BigQueryでEC商品説明文のA/Bテスト結果を自動分析・改善提案する仕組み,tech,3,FALSE,,ai-bigquery-ec-product-desc-ab-test-auto.md
+G-18,AI×データ分析,AI×BigQueryでEC商品説明文のA/Bテスト結果を自動分析・改善提案する仕組み,tech,3,DUP,,ai-bigquery-ec-product-desc-ab-test-auto.md
 G-19,AI×データ分析,Claude Codeに月次KPIレポートの「考察」まで書かせるプロンプト設計術,tech,1,TRUE,2026-08-08,claude-code-monthly-kpi-insight-prompt-design.md
-G-20,AI×データ分析,BigQuery × AI.EMBED関数でEC商品の類似度検索を実装する,tech,3,FALSE,,bigquery-ai-embed-ec-product-similarity.md
-G-21,AI×データ分析,Gemini in BigQuery Studioのリソース検出機能でマルチプロジェクト分析を効率化する,tech,3,FALSE,,gemini-bigquery-studio-resource-discovery.md
-G-22,AI×データ分析,Claude Code × dbtでデータ変換パイプラインのテストコードを自動生成する,tech,3,FALSE,,claude-code-dbt-pipeline-test-generation.md
+G-20,AI×データ分析,BigQuery × AI.EMBED関数でEC商品の類似度検索を実装する,tech,3,DUP,,bigquery-ai-embed-ec-product-similarity.md
+G-21,AI×データ分析,Gemini in BigQuery Studioのリソース検出機能でマルチプロジェクト分析を効率化する,tech,3,DUP,,gemini-bigquery-studio-resource-discovery.md
+G-22,AI×データ分析,Claude Code × dbtでデータ変換パイプラインのテストコードを自動生成する,tech,3,DUP,,claude-code-dbt-pipeline-test-generation.md
 G-23,AI×データ分析,AIが生成したSQLは本当に正しいのか？BigQueryでの検証フレームワークを作った,tech,2,TRUE,2026-09-03,ai-sql-verification-bigquery-framework.md
 G-24,AI×データ分析,Claude CodeでGA4のイベント計測漏れを自動検知・修正提案する仕組み,tech,2,TRUE,2026-09-04,claude-code-ga4-event-tracking-gap-detection.md
 G-25,AI×データ分析,BigQuery ML × 時系列モデルARIMA_PLUSでEC売上の週次予測を自動化する,tech,2,TRUE,2026-09-05,bigquery-ml-arima-plus-ec-sales-forecast.md
@@ -131,7 +131,7 @@ H-04,広告運用×データ基盤,P-MAXキャンペーンの配信実績をBigQ
 H-05,広告運用×データ基盤,BigQuery × Looker Studioで広告媒体横断ROASダッシュボードを構築する全手順,tech,1,TRUE,2026-08-12,bigquery-looker-studio-cross-media-roas.md
 H-06,広告運用×データ基盤,LINE広告×GA4×BigQueryでCPA・ROASを正確に計測する設定と集計SQL,tech,2,TRUE,2026-09-07,line-ads-ga4-bigquery-cpa-roas.md
 H-07,広告運用×データ基盤,TikTok広告のコンバージョンAPIをサーバーサイドGTMで実装する手順,tech,2,TRUE,2026-09-08,tiktok-ads-conversion-api-server-side-gtm.md
-H-08,広告運用×データ基盤,BigQueryで広告の貢献度をデータドリブンアトリビューションで再計算する,tech,3,FALSE,,bigquery-data-driven-attribution.md
+H-08,広告運用×データ基盤,BigQueryで広告の貢献度をデータドリブンアトリビューションで再計算する,tech,3,DUP,,bigquery-data-driven-attribution.md
 H-09,広告運用×データ基盤,Google広告のオフラインコンバージョンインポートをBigQuery経由で自動化する,tech,2,TRUE,2026-09-09,google-ads-offline-conversion-bigquery-auto.md
 H-10,広告運用×データ基盤,EC広告費の予算配分をBigQueryの過去データから最適化するフレームワーク,idea,2,TRUE,2026-09-10,ec-ads-budget-allocation-bigquery-framework.md
 H-11,広告運用×データ基盤,Yahoo!広告データをBigQueryに取り込んでGoogle広告と統合分析する方法,tech,2,TRUE,2026-09-11,yahoo-ads-bigquery-google-integrated-analysis.md
@@ -149,45 +149,45 @@ I-07,EC実務×データ活用,BASE・STORES・ShopifyのGA4計測精度を比�
 I-08,EC実務×データ活用,BigQueryでEC受注データ×GA4データを結合して正確な売上帰属分析をする,tech,2,TRUE,2026-09-30,bigquery-ec-order-ga4-revenue-attribution.md
 I-09,EC実務×データ活用,ECのセール施策効果をGA4×BigQueryでbefore/after比較する分析テンプレート,tech,2,TRUE,2026-10-02,ec-sale-effect-ga4-bigquery-before-after.md
 I-10,EC実務×データ活用,ECメルマガのクリック→購入をGA4×BigQueryで追跡してセグメント別効果を測定する,tech,2,TRUE,2026-10-03,ec-email-click-purchase-ga4-bigquery.md
-I-11,EC実務×データ活用,ECの商品ページ写真枚数×CVRの相関をGA4×BigQueryで検証した,idea,3,FALSE,,ec-product-photo-cvr-ga4-bigquery-correlation.md
+I-11,EC実務×データ活用,ECの商品ページ写真枚数×CVRの相関をGA4×BigQueryで検証した,idea,3,DUP,,ec-product-photo-cvr-ga4-bigquery-correlation.md
 I-12,EC実務×データ活用,定期購入ECの解約予兆をGA4行動ログから検知するBigQueryモデル,tech,2,TRUE,2026-10-06,subscription-ec-churn-bigquery-model.md
 I-13,EC実務×データ活用,樽天・Amazon・自社ECの売上データをBigQueryに集約して一元管理する方法,tech,1,TRUE,2026-08-19,rakuten-amazon-ec-bigquery-integration.md
 I-14,EC実務×データ活用,ECの送料無料ラインをBigQueryの購買データから最適設定する分析手法,idea,2,TRUE,2026-10-10,ec-free-shipping-threshold-bigquery.md
 I-15,EC実務×データ活用,GA4×BigQueryでECクーポン施策のカニバリゼーションを検証する,tech,2,TRUE,2026-10-13,ga4-bigquery-ec-coupon-cannibalization.md
-I-16,EC実務×データ活用,ECの商品レビュー数×売上の関係をBigQueryで定量分析した結果,idea,3,FALSE,,ec-product-review-sales-bigquery-analysis.md
-I-17,EC実務×データ活用,Shopifyの注文Webhook × Cloud Functions × BigQueryでリアルタイム売上基盤を作る,tech,3,FALSE,,shopify-webhook-cloud-functions-bigquery-realtime.md
+I-16,EC実務×データ活用,ECの商品レビュー数×売上の関係をBigQueryで定量分析した結果,idea,3,DUP,,ec-product-review-sales-bigquery-analysis.md
+I-17,EC実務×データ活用,Shopifyの注文Webhook × Cloud Functions × BigQueryでリアルタイム売上基盤を作る,tech,3,DUP,,shopify-webhook-cloud-functions-bigquery-realtime.md
 I-18,EC実務×データ活用,EC事業の粗利率をBigQueryで商品×チャネル別に自動計算する仕組み,tech,2,TRUE,2026-10-14,ec-gross-margin-bigquery-product-channel.md
 I-19,EC実務×データ活用,ECサイトのサイト速度がCVRに与える影響をBigQueryのCrUXデータで検証する,tech,2,TRUE,2026-10-18,ec-site-speed-cvr-bigquery-crux.md
 I-20,EC実務×データ活用,越境ECのGA4多言語計測をBigQueryで国別に正確に集計する方法,tech,2,TRUE,2026-10-19,cross-border-ec-ga4-bigquery-multilingual.md
-I-21,EC実務×データ活用,ECの価格変更がCVRと売上に与えた影響をGA4×BigQueryで因果推論する,tech,3,FALSE,,ec-price-change-cvr-causal-inference-bigquery.md
-I-22,EC実務×データ活用,Amazon広告とGA4自社ECデータをBigQueryで統合してチャネルミックスを最適化する,tech,3,FALSE,,amazon-ads-ga4-bigquery-channel-mix.md
-I-23,EC実務×データ活用,ECのギフト需要をGA4×BigQueryで時系列分析して在庫計画に反映する,idea,3,FALSE,,ec-gift-demand-ga4-bigquery-seasonal.md
-I-24,EC実務×データ活用,Shopifyのチェックアウト拡張機能のイベントをGA4×BigQueryで分析する,tech,3,FALSE,,shopify-checkout-extension-ga4-bigquery.md
-I-25,EC実務×データ活用,ECの同抱チラシ施策効果をGA4のオフラインCV連携×BigQueryで測定する,idea,3,FALSE,,ec-flyer-offline-cv-ga4-bigquery.md
+I-21,EC実務×データ活用,ECの価格変更がCVRと売上に与えた影響をGA4×BigQueryで因果推論する,tech,3,DUP,,ec-price-change-cvr-causal-inference-bigquery.md
+I-22,EC実務×データ活用,Amazon広告とGA4自社ECデータをBigQueryで統合してチャネルミックスを最適化する,tech,3,DUP,,amazon-ads-ga4-bigquery-channel-mix.md
+I-23,EC実務×データ活用,ECのギフト需要をGA4×BigQueryで時系列分析して在庫計画に反映する,idea,3,DUP,,ec-gift-demand-ga4-bigquery-seasonal.md
+I-24,EC実務×データ活用,Shopifyのチェックアウト拡張機能のイベントをGA4×BigQueryで分析する,tech,3,DUP,,shopify-checkout-extension-ga4-bigquery.md
+I-25,EC実務×データ活用,ECの同抱チラシ施策効果をGA4のオフラインCV連携×BigQueryで測定する,idea,3,DUP,,ec-flyer-offline-cv-ga4-bigquery.md
 J-01,データ基盤設計・運用Tips,BigQueryのスケジュールクエリでデータマートを毎朝自動更新する設定と監視方法,tech,1,TRUE,2026-08-20,bigquery-scheduled-query-datamart-auto.md
 J-02,データ基盤設計・運用Tips,BigQueryのクエリコストを月1万円以下に押える7つの実践テクニック,tech,1,TRUE,2026-08-21,bigquery-query-cost-under-10k-techniques.md
-J-03,データ基盤設計・運用Tips,BigQueryのINFORMATION_SCHEMAでクエリコスト・実行履歴を自動監視する,tech,2,FALSE,,bigquery-information-schema-cost-monitoring.md
-J-04,データ基盤設計・運用Tips,BigQueryのマテリアライズドビューでGA4集計クエリを高速化した,tech,2,FALSE,,bigquery-materialized-view-ga4-speedup.md
-J-05,データ基盤設計・運用Tips,Cloud Scheduler × Cloud Functions × BigQueryで完全サーバーレスなETLを構築する,tech,2,FALSE,,cloud-scheduler-functions-bigquery-etl.md
-J-06,データ基盤設計・運用Tips,BigQueryのSTRUCT・ARRAY型を活用してGA4データを効率的にモデリングする,tech,3,FALSE,,bigquery-struct-array-ga4-modeling.md
-J-07,データ基盤設計・運用Tips,BigQueryのデータリネージ機能でデータマートの依存関係を可視化する,tech,3,FALSE,,bigquery-data-lineage-datamart-dependency.md
+J-03,データ基盤設計・運用Tips,BigQueryのINFORMATION_SCHEMAでクエリコスト・実行履歴を自動監視する,tech,2,DUP,,bigquery-information-schema-cost-monitoring.md
+J-04,データ基盤設計・運用Tips,BigQueryのマテリアライズドビューでGA4集計クエリを高速化した,tech,2,DUP,,bigquery-materialized-view-ga4-speedup.md
+J-05,データ基盤設計・運用Tips,Cloud Scheduler × Cloud Functions × BigQueryで完全サーバーレスなETLを構築する,tech,2,DUP,,cloud-scheduler-functions-bigquery-etl.md
+J-06,データ基盤設計・運用Tips,BigQueryのSTRUCT・ARRAY型を活用してGA4データを効率的にモデリングする,tech,3,DUP,,bigquery-struct-array-ga4-modeling.md
+J-07,データ基盤設計・運用Tips,BigQueryのデータリネージ機能でデータマートの依存関係を可視化する,tech,3,DUP,,bigquery-data-lineage-datamart-dependency.md
 J-08,データ基盤設計・運用Tips,BigQueryからGoogleスプレッドシートに自動出力して非エンジニアとデータ共有する,tech,1,TRUE,2026-08-22,bigquery-sheets-auto-export-data-sharing.md
-J-09,データ基盤設計・運用Tips,BigQueryのタイムトラベル機能で誤削除・誤更新からデータを復旧する方法,tech,2,FALSE,,bigquery-time-travel-data-recovery.md
-J-10,データ基盤設計・運用Tips,BigQueryのBI Engineを有効化してLooker Studioの表示速度を改善する,tech,2,FALSE,,bigquery-bi-engine-looker-studio-speedup.md
+J-09,データ基盤設計・運用Tips,BigQueryのタイムトラベル機能で誤削除・誤更新からデータを復旧する方法,tech,2,DUP,,bigquery-time-travel-data-recovery.md
+J-10,データ基盤設計・運用Tips,BigQueryのBI Engineを有効化してLooker Studioの表示速度を改善する,tech,2,DUP,,bigquery-bi-engine-looker-studio-speedup.md
 J-11,データ基盤設計・運用Tips,GA4 BigQueryエクスポートのストリーミング vs 日次の違いと使い分け,tech,1,TRUE,2026-08-23,ga4-bigquery-streaming-vs-daily-export.md
-J-12,データ基盤設計・運用Tips,BigQueryのアクセス制御をIAMで適切に設計する》チーム運用編』,tech,3,FALSE,,bigquery-iam-access-control-team.md
-J-13,データ基盤設計・運用Tips,BigQueryのクエリキャッシュの仕組みを理解してコスト効率を最大化する,tech,2,FALSE,,bigquery-query-cache-cost-efficiency.md
-J-14,データ基盤設計・運用Tips,TerraformでBigQueryのデータセット・テーブル・ビューをコード管理する,tech,3,FALSE,,terraform-bigquery-code-management.md
-J-15,データ基盤設計・運用Tips,BigQueryのエクスポート上限に引っかかったときの回避策まとめ,tech,2,FALSE,,bigquery-export-limit-workarounds.md
-J-16,データ基盤設計・運用Tips,GA4×BigQueryのテーブル肖大化を防ぐパーティション有効期限の設定方法,tech,2,FALSE,,ga4-bigquery-table-partition-expiry.md
-J-17,データ基盤設計・運用Tips,BigQuery Data Transfer Serviceの転送エラーを自動検知してSlack通知する,tech,2,FALSE,,bigquery-dts-error-slack-notification.md
-J-18,データ基盤設計・運用Tips,BigQueryでSQLテストを書く方法―データマートの品質を担保する仕組み,tech,2,FALSE,,bigquery-sql-testing-datamart-quality.md
-J-19,データ基盤設計・運用Tips,BigQueryのフラットレート vs オンデマンド料金を実データで比較してどちらが安いか検証した,idea,2,FALSE,,bigquery-flat-rate-vs-on-demand-comparison.md
-J-20,データ基盤設計・運用Tips,dbt × BigQueryで再現可能なデータパイプラインを構築する入門》GA4データ編』,tech,2,FALSE,,dbt-bigquery-ga4-reproducible-pipeline.md
-J-21,データ基盤設計・運用Tips,BigQueryのCOLUMN_FIELD_PATHSでGA4のネストされたスキーマを効率的に探索する,tech,3,FALSE,,bigquery-column-field-paths-ga4-schema.md
-J-22,データ基盤設計・運用Tips,GCSにバックアップしたGA4データをBigQueryに再インポートする手順,tech,3,FALSE,,gcs-ga4-bigquery-reimport.md
-J-23,データ基盤設計・運用Tips,BigQueryのクエリ結果をCloud Storageに自動エクスポートして外部ツール連携する,tech,2,FALSE,,bigquery-query-export-cloud-storage.md
-J-24,データ基盤設計・運用Tips,BigQueryのラベル機能でプロジェクト横断のコスト配分を自動管理する,tech,3,FALSE,,bigquery-labels-cross-project-cost.md
+J-12,データ基盤設計・運用Tips,BigQueryのアクセス制御をIAMで適切に設計する》チーム運用編』,tech,3,DUP,,bigquery-iam-access-control-team.md
+J-13,データ基盤設計・運用Tips,BigQueryのクエリキャッシュの仕組みを理解してコスト効率を最大化する,tech,2,DUP,,bigquery-query-cache-cost-efficiency.md
+J-14,データ基盤設計・運用Tips,TerraformでBigQueryのデータセット・テーブル・ビューをコード管理する,tech,3,DUP,,terraform-bigquery-code-management.md
+J-15,データ基盤設計・運用Tips,BigQueryのエクスポート上限に引っかかったときの回避策まとめ,tech,2,DUP,,bigquery-export-limit-workarounds.md
+J-16,データ基盤設計・運用Tips,GA4×BigQueryのテーブル肖大化を防ぐパーティション有効期限の設定方法,tech,2,DUP,,ga4-bigquery-table-partition-expiry.md
+J-17,データ基盤設計・運用Tips,BigQuery Data Transfer Serviceの転送エラーを自動検知してSlack通知する,tech,2,DUP,,bigquery-dts-error-slack-notification.md
+J-18,データ基盤設計・運用Tips,BigQueryでSQLテストを書く方法―データマートの品質を担保する仕組み,tech,2,DUP,,bigquery-sql-testing-datamart-quality.md
+J-19,データ基盤設計・運用Tips,BigQueryのフラットレート vs オンデマンド料金を実データで比較してどちらが安いか検証した,idea,2,DUP,,bigquery-flat-rate-vs-on-demand-comparison.md
+J-20,データ基盤設計・運用Tips,dbt × BigQueryで再現可能なデータパイプラインを構築する入門》GA4データ編』,tech,2,DUP,,dbt-bigquery-ga4-reproducible-pipeline.md
+J-21,データ基盤設計・運用Tips,BigQueryのCOLUMN_FIELD_PATHSでGA4のネストされたスキーマを効率的に探索する,tech,3,DUP,,bigquery-column-field-paths-ga4-schema.md
+J-22,データ基盤設計・運用Tips,GCSにバックアップしたGA4データをBigQueryに再インポートする手順,tech,3,DUP,,gcs-ga4-bigquery-reimport.md
+J-23,データ基盤設計・運用Tips,BigQueryのクエリ結果をCloud Storageに自動エクスポートして外部ツール連携する,tech,2,DUP,,bigquery-query-export-cloud-storage.md
+J-24,データ基盤設計・運用Tips,BigQueryのラベル機能でプロジェクト横断のコスト配分を自動管理する,tech,3,DUP,,bigquery-labels-cross-project-cost.md
 J-25,データ基盤設計・運用Tips,小規模EC事業者がBigQueryを無料枠内で運用し続けるための設計戦略,idea,1,TRUE,2026-08-24,small-ec-bigquery-free-tier-strategy.md
 F-11,フリーランス・ビジネス,"ココナラ154件、3時間で構造化した実装ログ（Playwright × 構造的ダミー化）",tech,1,TRUE,2026-05-06,coconala-154-3hours.md
 F-12,フリーランス・ビジネス,"ココナラ7年・154件のデータから見えた、コンサル仕事の構造（分析編）",tech,1,TRUE,2026-05-08,coconala-154-structure.md
