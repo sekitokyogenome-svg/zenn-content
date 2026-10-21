@@ -215,7 +215,7 @@ K-21,BigQuery AIエージェント,Data Engineering Agentで自然言語から�
 K-22,BigQuery AIエージェント,Data Engineering Agentで既存パイプラインを改修・移行する,tech,1,TRUE,2026-10-16,bigquery-data-engineering-agent-migration.md
 K-23,BigQuery AIエージェント,Data Science Agentで特徴量エンジニアリングからモデル評価まで回す,tech,1,TRUE,2026-10-17,bigquery-data-science-agent-workflow.md
 K-24,BigQuery AIエージェント,Data Preparation Agentでデータクレンジングを任せる,tech,1,TRUE,2026-10-20,bigquery-data-preparation-agent.md
-K-25,BigQuery AIエージェント,BigQuery MCPサーバーをつなぐ — エージェントからBigQueryを操作する,tech,1,FALSE,,bigquery-mcp-server-setup.md
+K-25,BigQuery AIエージェント,BigQuery MCPサーバーをつなぐ — エージェントからBigQueryを操作する,tech,1,TRUE,2026-10-21,bigquery-mcp-server-setup.md
 K-26,BigQuery AIエージェント,Claude Code × BigQuery MCPでGA4分析を任せる,tech,1,FALSE,,bigquery-mcp-claude-code-ga4.md
 K-27,BigQuery AIエージェント,MCP Toolbox for Databasesで独自ツールをエージェントに渡す,tech,1,FALSE,,bigquery-mcp-toolbox-custom-tools.md
 K-28,BigQuery AIエージェント,ADK（Agent Development Kit）とBigQueryを組み合わせる,tech,1,FALSE,,bigquery-adk-agent-integration.md
