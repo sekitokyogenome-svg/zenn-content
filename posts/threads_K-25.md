@@ -1,0 +1,17 @@
+AIエージェントにBigQueryを操作させようとして、どこから手をつければいいか迷ったことはないでしょうか。
+
+ClaudeなどのAIエージェントからBigQueryを直接操作できる「MCP接続」の設定方法を解説しました。
+
+・MCPはエージェントと外部ツールをつなぐAnthropicのオープンプロトコル
+・MCP Toolbox for Databasesを使うとBigQueryへの接続を数十行の設定ファイルで実現できる
+・Claude Codeの設定ファイルにMCPサーバーのURLを1行追加するだけで接続が完了する
+・エージェントがスキーマを確認しながらSQLを生成・実行する自律分析が可能になる
+・バイトスキャン上限の設定でクエリコストの暴走を防ぐ方法も解説している
+・サービスアカウントのスコープをデータセット単位に絞るセキュリティ設計も紹介している
+
+自然言語でBigQueryへ問い合わせができるようになると、SQLを書けないメンバーも分析に参加できるようになります。
+
+詳細はこちらをどうぞ。
+https://zenn.dev/web_benriya/articles/bigquery-mcp-server-setup
+
+#BigQuery #Claude
