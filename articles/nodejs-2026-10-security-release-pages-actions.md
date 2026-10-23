@@ -1,10 +1,10 @@
 ---
-title: "Node.js 2026年10月のセキュリティリリース — 静的サイトで影響を棚卸しして Node 24 に固定した"
+title: "Node.js のセキュリティ修正版に Cloudflare Pages で固定したらビルドが落ちた — 原因と再固定まで"
 emoji: "🛡️"
 type: "tech"
 topics: ["nodejs", "cloudflare", "githubactions", "astro", "security"]
 published: false
-publish_queue: false
+publish_queue: true
 ---
 
 ## この記事でわかること
@@ -73,13 +73,50 @@ Cloudflare Pages の既定のバージョンは、[ビルドイメージのペ�
 
 ```bash
 # Pages のビルドで使う Node.js を固定する（中身はバージョン番号だけ）
-echo "24.22.1" > .nvmrc
 echo "24.22.1" > site/.nvmrc
 ```
 
-Cloudflare のページには、`.nvmrc` か `.node-version` を「プロジェクトのルートディレクトリ」に置くとあります。Pages の設定で、ルートディレクトリをリポジトリ直下にしているか `site/` にしているかを確認しないまま進めたので、両方に置きました。環境変数 `NODE_VERSION` でも指定できます。
+Cloudflare のページには、`.nvmrc` か `.node-version` を「プロジェクトのルートディレクトリ」に置くとあります。自分のプロジェクトはルートディレクトリが `/site` なので、`site/.nvmrc` に置きます。環境変数 `NODE_VERSION` でも指定できます。
 
-Actions と違い、こちらは版を固定しています。次のセキュリティリリースでは、`.nvmrc` の版を自分で上げる必要があります。運用メモ（リポジトリの CLAUDE.md）にそう書きました。
+Actions と違い、こちらは版を固定しています。次のセキュリティリリースでは、`.nvmrc` の版を自分で上げる必要があります。
+
+### ここでビルドが落ちた
+
+リリース当日（2026-10-21）にこれを push したところ、Cloudflare Pages のビルドが2回続けて失敗しました。ログの要点です。
+
+```text
+Detected the following tools from environment: nodejs@24.22.1
+Installing nodejs 24.22.1
+Trying to update node-build... ok
+node-build: definition not found: 24.22.1
+CFPAGESLOG:ASDF_RETRY: nodejs 24.22.1 not found in image, updating plugin and retrying...
+node-build: definition not found: 24.22.1
+Failed: build command exited with code: 1
+```
+
+`.nvmrc` は正しく読まれていました。失敗したのは、そのあとのインストールです。Pages のビルド環境は、asdf の node-build プラグインで Node.js を入れています。その node-build に、**公開されたばかりの 24.22.1 の定義がまだ無かった**のが原因でした。
+
+node-build の定義は GitHub で公開されているので、次のように確かめられます。
+
+```bash
+# node-build に指定の版の定義があるか（200 なら有る、404 なら無い）
+curl -s -o /dev/null -w "%{http_code}\n" \
+  https://raw.githubusercontent.com/nodenv/node-build/master/share/node-build/24.22.1
+```
+
+10/21 の時点では 24.22.0 は 200、24.22.1 は 404 でした。
+
+本番のサイトは、最後に成功したデプロイがそのまま配信されるので、表示は止まりません。ただ、新しいデプロイが通らない間は、予約投稿も公開されません。そこで `.nvmrc` をいったん外して既定の版に戻し、定義が入るのを待ちました。
+
+### 定義が入ってから再固定する
+
+2026-10-23 の朝には、24.22.1（ほかに 22.23.4、26.12.1）の定義が 200 になっていました。`site/.nvmrc` を戻して push し、Pages のデプロイが成功したことを管理画面で確認しました。
+
+公開直後の版に固定するときの手順は、次のとおりにしています。
+
+1. 上の `curl` で、node-build に定義があることを確かめる
+2. `.nvmrc` を push する
+3. Pages の管理画面で、デプロイが成功したかを確かめる（push しただけで終わりにしない）
 
 ### 24 と 26 のどちらにするか
 
@@ -105,9 +142,9 @@ diff d22.txt d24.txt && echo "同一"
 
 788 ファイルすべてで一致しました。少なくとも自分のサイトでは、Node のバージョンを上げても、配信される中身は1バイトも変わりませんでした。
 
-## つまずいた点: npm がインストールスクリプトを実行しなかった
+## 手元で試したときの注意: npm がインストールスクリプトを実行しなかった
 
-Node 24.22.1 に付いてくる npm（11.19.1）で `npm ci` をすると、次の警告が出ました。
+手元で Node 24.22.1 を公式から取得し、付いてくる npm（11.19.1）で `npm ci` をすると、次の警告が出ました。
 
 ```text
 3 packages have install scripts not yet covered by allowScripts:
@@ -116,17 +153,18 @@ Node 24.22.1 に付いてくる npm（11.19.1）で `npm ci` をすると、次�
   esbuild@0.25.12 (postinstall: node install.js)
 ```
 
-esbuild と sharp のインストール時のスクリプトは、実行されなかったとみられます。それでもビルドは通り、出力も上のとおり Node 22 と同じでした。自分のサイトでは影響がありませんでしたが、インストール時のスクリプトに頼るパッケージを使っている場合は、ビルドが通るかを先に確かめておくべきです。この警告の仕様は、npm のドキュメントでは確認していません。上は自分の環境での出力です。
+esbuild と sharp のインストール時のスクリプトは、実行されなかったとみられます。それでもビルドは通り、出力も上のとおり Node 22 と同じでした。自分のサイトでは影響がありませんでしたが、インストール時のスクリプトに頼るパッケージを使っている場合は、ビルドが通るかを先に確かめておくべきです。この警告の仕様は、npm のドキュメントでは確認していません。上は自分の環境での出力です。なお、Cloudflare Pages のビルドログでは npm は 10.9.2 と表示されていて、手元とは版が違いました。Pages のビルドで同じことが起きるとは限りません。
 
-## 確認できていないこと
+## 確認したこと
 
-- Cloudflare Pages が実際に 24.22.1 でビルドしたか。管理画面のビルドログで確認する必要があります
-- GitHub Actions の定期処理が Node 24 で通るか。次回の実行で確認します
+- Cloudflare Pages: 2026-10-23 の再固定後、デプロイが成功した（管理画面で確認）
+- GitHub Actions: Node 24 に変えた後の定期処理は、3回とも成功した
 
 ## まとめ
 
 - 静的サイトでも、ビルドと CI には Node.js が残っている。今回は CI がサポート終了の Node 20、Pages のビルドがバージョン未指定だった
-- Actions は `node-version: "24"` と `check-latest: true`、Pages は `.nvmrc` で版を指定した（Pages での適用は未確認）。ビルド結果がファイル単位で同一なことは確かめた
+- 公開直後の版に Pages で固定すると、node-build に定義が入るまでビルドが落ちる。固定の前に定義の有無を確かめ、push の後はデプロイの成否まで見る
+- Actions は `node-version: "24"` と `check-latest: true`、Pages は `site/.nvmrc` で 24.22.1 に固定した。ビルド結果がファイル単位で同一なことも確かめた
 - 次のリリースでは `.nvmrc` を上げる。26 系は LTS になってから検討する
 
 ---
