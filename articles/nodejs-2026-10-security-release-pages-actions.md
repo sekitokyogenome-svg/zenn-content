@@ -3,8 +3,7 @@ title: "Node.js のセキュリティ修正版に Cloudflare Pages で固定し�
 emoji: "🛡️"
 type: "tech"
 topics: ["nodejs", "cloudflare", "githubactions", "astro", "security"]
-published: false
-publish_queue: true
+published: true
 ---
 
 ## この記事でわかること
