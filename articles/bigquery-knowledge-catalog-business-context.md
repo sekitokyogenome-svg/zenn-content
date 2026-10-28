@@ -301,3 +301,10 @@ Knowledge Catalog はエージェントにとっての「正解」になりま�
 ---
 
 Knowledge Catalog の整備は地味ですが、エージェントの回答精度に直結します。まず売上などの基幹指標の定義から着手して、効果を確認してみてください。試した結果やご質問はコメントでお知らせください。
+
+:::message
+GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承っています（中小EC・個人事業主向け／スポット相談1万円〜）。「自社の場合はどうすれば？」のご相談も歓迎です。
+[ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
+:::
+
+ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
