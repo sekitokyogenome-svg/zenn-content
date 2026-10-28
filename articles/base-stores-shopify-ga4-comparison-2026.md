@@ -166,6 +166,6 @@ GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承って
 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
 
-ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+ココナラからのご依頼はこちら → [ShopifyのGA4計測を健康診断します](https://coconala.com/services/4298407)
 
 関連記事: [BASE・STORES・ShopifyのGA4計測精度を比較検証した【2026年版】](https://logical-web.jp/blog/base-stores-shopify-ga4-accuracy-comparison-2026/?utm_source=zenn&utm_medium=article&utm_campaign=related_article)

@@ -536,7 +536,7 @@ LTV 予測は過去の購買パターンの延長です。大規模なサイト�
 ---
 :::message
 「Claude Codeを使ったデータ分析の自動化に興味がある」という方は、お気軽にご相談ください。
-[データ分析スポットプラン](https://coconala.com/services/554778)
+[Claudeの活用法を一緒に設計します](https://coconala.com/services/4170602)
 :::
 
 ---

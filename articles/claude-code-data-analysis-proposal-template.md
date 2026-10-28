@@ -257,7 +257,7 @@ Claude Codeに業種を伝えると、テンプレートの「期待される効
 
 :::message
 「データ分析サービスの立ち上げや改善に興味がある」という方は、お気軽にご相談ください。
-[データ分析スポットプラン](https://coconala.com/services/554778)
+[Claudeの活用法を一緒に設計します](https://coconala.com/services/4170602)
 :::
 
 ---
