@@ -393,3 +393,5 @@ GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承って
 ココナラでの販売実績は156件、評価は4.9をいただいています。
 [ウェブの便利屋（ろじかる）](https://logical-web.jp/?utm_source=zenn&utm_medium=article&utm_campaign=footer_cta)
 :::
+
+この記事の仕組みを含む『Claude Code×BigQuery 自動化レシピ集』（全15本・PDF）をココナラで販売中です → https://coconala.com/contents_market/pictures/cmvszkbc601fs950ibzcu6v8a
