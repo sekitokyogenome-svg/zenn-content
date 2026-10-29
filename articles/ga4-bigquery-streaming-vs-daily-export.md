@@ -253,4 +253,6 @@ GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承って
 
 ココナラからのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
 
+この記事のSQLを含む『GA4×BigQuery 分析SQLテンプレート集』（全20本・PDF）をココナラで販売中です → https://coconala.com/contents_market/pictures/cmvsf1doa01ie6w0iwgcuxlbc
+
 関連記事: [GA4 BigQueryエクスポートのストリーミングと日次の違いと使い分け](https://logical-web.jp/blog/ga4-bigquery-export-streaming-vs-daily/?utm_source=zenn&utm_medium=article&utm_campaign=related_article)
