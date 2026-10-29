@@ -303,3 +303,5 @@ GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承って
 :::
 
 ココナラからのご依頼はこちら → [Claudeの活用法を一緒に設計します](https://coconala.com/services/4170602)
+
+この記事の仕組みを含む『Claude Code×BigQuery 自動化レシピ集』（全15本・PDF）をココナラで販売中です → https://coconala.com/contents_market/pictures/cmvszkbc601fs950ibzcu6v8a
