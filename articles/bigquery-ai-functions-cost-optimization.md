@@ -283,3 +283,5 @@ AI関数は適切に設計すれば、データ分析の質を大幅に高めら
 データ基盤の設計・GA4分析の自動化・AI活用についてのご相談は、ぜひ以下からお問い合わせください。
 
 https://coconala.com/services/1791205
+
+この記事のSQLを含む『BigQuery AI関数 実践SQLテンプレート集』（全15本・PDF）をココナラで販売中です → https://coconala.com/contents_market/pictures/cmvt8dm9k01p58p0imrpk261o
