@@ -260,3 +260,5 @@ GA4・BigQuery・Looker Studio・AI自動化の構築や設定代行を承って
 :::
 
 ココナラ からのご依頼はこちら → [GA4×BigQuery基盤構築サービス](https://coconala.com/services/1791205)
+
+この記事のSQLを含む『BigQuery AI関数 実践SQLテンプレート集』（全15本・PDF）をココナラで販売中です → https://coconala.com/contents_market/pictures/cmvt8dm9k01p58p0imrpk261o

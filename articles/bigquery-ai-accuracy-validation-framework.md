@@ -275,3 +275,5 @@ AI関数はモデルの確率的な出力に依存します。精度検証の仕
 データ基盤の設計・AI関数の活用支援・BigQuery × GA4分析についてのご相談は、ぜひ以下からお問い合わせください。
 
 https://coconala.com/services/1791205
+
+この記事のSQLを含む『BigQuery AI関数 実践SQLテンプレート集』（全15本・PDF）をココナラで販売中です → https://coconala.com/contents_market/pictures/cmvt8dm9k01p58p0imrpk261o
