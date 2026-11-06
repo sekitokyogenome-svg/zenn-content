@@ -3,7 +3,7 @@ title: "BigQueryのINFORMATION_SCHEMAでクエリコスト・実行履歴を自�
 emoji: "📊"
 type: "tech"
 topics: ["bigquery","sql","googlecloud","cost","dataengineering"]
-published: false
+published: true
 ---
 
 ## はじめに
