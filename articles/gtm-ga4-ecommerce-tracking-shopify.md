@@ -3,7 +3,7 @@ title: "GTMでGA4のeコマース計測を完全設定する手順【Shopify対�
 emoji: "🏷️"
 type: "tech"
 topics: ["gtm", "googleanalytics", "shopify"]
-published: false
+published: true
 publish_queue: false
 ---
 
