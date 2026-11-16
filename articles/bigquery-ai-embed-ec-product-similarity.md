@@ -3,7 +3,7 @@ title: "BigQuery × AI.EMBED関数でEC商品の類似度検索を実装する"
 emoji: "🔗"
 type: "tech"
 topics: ["bigquery","gemini","ai","ec","googlecloud"]
-published: false
+published: true
 ---
 
 ## はじめに
