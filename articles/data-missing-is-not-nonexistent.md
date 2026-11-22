@@ -3,7 +3,7 @@ title: "「記録がない」を「存在しない」と読むな — 758件の�
 emoji: "🕳️"
 type: "tech"
 topics: ["dataengineering", "bigquery", "ga4", "データ分析", "ai"]
-published: false
+published: true
 ---
 
 ## はじめに
