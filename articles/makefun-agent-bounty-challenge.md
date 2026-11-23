@@ -3,7 +3,7 @@ title: "AIエージェントに懸賞レースへ出てもらった — make.fun
 emoji: "🏆"
 type: "tech"
 topics: ["ai", "gemini", "aiエージェント", "個人開発", "solana"]
-published: false
+published: true
 ---
 
 ## はじめに
