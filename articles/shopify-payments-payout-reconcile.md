@@ -3,8 +3,7 @@ title: "Shopify Payments の入金を注文取引にひもづける — GraphQL�
 emoji: "🧮"
 type: "tech"
 topics: ["shopify", "graphql", "ec"]
-published: false
-publish_queue: true
+published: true
 ---
 
 ## はじめに
