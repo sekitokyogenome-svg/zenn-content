@@ -1,5 +1,5 @@
 ---
-title: "Shopify Payments の入金を注文取引にひもづける — Admin GraphQL の ShopifyPaymentsBalanceTransaction で照合する"
+title: "Shopify Payments の入金を注文取引にひもづける — GraphQLで照合"
 emoji: "🧮"
 type: "tech"
 topics: ["shopify", "graphql", "ec"]
